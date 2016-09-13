@@ -1,0 +1,19 @@
+{
+  "name": "mountain_meteors",
+  "version": "1.0.0",
+  "description": "Thesis Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mountainMeteors/mountainMeteors.git"
+  },
+  "author": "mountain_meteors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mountainMeteors/mountainMeteors/issues"
+  },
+  "homepage": "https://github.com/mountainMeteors/mountainMeteors#readme"
+}
