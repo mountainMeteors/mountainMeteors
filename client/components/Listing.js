@@ -4,7 +4,7 @@ import ListingEntry from './ListingEntry';
 const Listing = React.createClass({
   render() {
     return (
-      <div className="photo-grid">
+      <div>
         {this.props.listings.map((listing, i) => <ListingEntry {...this.props} key={i} i={i} listing={listing} />)}
       </div>
     )
