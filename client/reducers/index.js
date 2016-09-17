@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import listings from './listings';
-import comments from './comments';
+import survey from './survey';
 
-const rootReducer = combineReducers({listings, comments, routing: routerReducer });
+const rootReducer = combineReducers({listings, survey, routing: routerReducer });
 
 export default rootReducer;
