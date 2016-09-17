@@ -1,10 +1,42 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config.dev');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const config = require('./webpack.config.dev');
+const jwt = require('express-jwt');
+const cors = require('cors');
 
-var app = express();
-var compiler = webpack(config);
+const app = express();
+const compiler = webpack(config);
+
+// const authCheck = jwt({
+//
+// })
+//need to decide on authentication middleware
+
+//
+// var users = [
+//   {
+//     id: 1,
+//     name: 'Sam Gowda',
+//     email: 'samgowda@gmail.com'
+//   },
+//   {
+//     id: 2.
+//     name: "Wen Tran",
+//     email: 'wen@gmail.com'
+//   }
+// ]
+
+// app.get('/api/login', (req, res) => {
+//   const allUsers = users.map(user => {
+//     return {id: user.id, name: user.name}
+//   })
+//   res.json(allUsers);
+// })
+//
+// app.get('/api/login/:id', authCheck, (req, res) => {
+//   res.json(users.filter(user => user.id === parseInt(req.params.id)));
+// })
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -17,11 +49,11 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(7770, 'localhost', function(err) {
+app.listen(7779, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://localhost:7770');
+  console.log('Listening at http://localhost:7779');
 });
