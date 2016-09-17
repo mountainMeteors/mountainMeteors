@@ -6,7 +6,7 @@
     "mountain_meteors"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/JackSappo/mountainMeteors",
+  "homepage": "https://github.com/mountainMeteors/mountainMeteors/",
   "private": true,
   "ignore": [
     "**/.*",
@@ -16,6 +16,5 @@
     "tests"
   ],
   "dependencies": {
-    "react-bootstrap": "^0.30.3"
   }
 }

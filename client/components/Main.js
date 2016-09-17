@@ -5,15 +5,18 @@ import { Grid, Row, Col } from 'react-bootstrap'
 const Main = React.createClass({
   render() {
     const styles = {
+      background: {
+        backgroundColor: '#00bfff'
+      },
       left: {
-        backgroundColor: '#DDDDDD',
+        backgroundColor: '#33ccff',
         height: 450,
         padding: 0,
         margin: 0,
         overflow: 'hidden'
       },
       right: {
-        backgroundColor: '#BBBBBB',
+        backgroundColor: '#1ac6ff',
         overflowY: 'auto',
         padding: 0,
         height: 450,
@@ -24,7 +27,7 @@ const Main = React.createClass({
       }
     }
     return (
-      <Grid fluid={ true }>
+      <Grid fluid={ true } style={styles.background}>
         <Row>
           <h1>
             <Link to="/">seekPad</Link>
