@@ -1,0 +1,21 @@
+{
+  "name": "seekPad",
+  "description": "Thesis Project",
+  "main": "devServer.js",
+  "authors": [
+    "mountain_meteors"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/JackSappo/mountainMeteors",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react-bootstrap": "^0.30.3"
+  }
+}

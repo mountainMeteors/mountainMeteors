@@ -6,7 +6,7 @@ const ListingEntry = React.createClass({
   render() {
     const { listing, i, comments } = this.props;
     return (
-      <div className="col-md-5">
+      <div>
         {listing.listingId}&nbsp;
         {listing.rent}&nbsp;
         {listing.pets}&nbsp;
