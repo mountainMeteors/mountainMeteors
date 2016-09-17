@@ -2,7 +2,6 @@
   "name": "mountain_meteors",
   "version": "1.0.0",
   "description": "Thesis Project",
-  "main": "index.js",
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
