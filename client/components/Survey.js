@@ -13,7 +13,7 @@ const Survey = React.createClass({
 
   render() {
     return (
-      <div className="comments">
+      <div className="bubble">
         <Form>
                <Input type="Text" name="username" label="Location"
                     />,

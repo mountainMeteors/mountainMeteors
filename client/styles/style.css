@@ -5,6 +5,34 @@
 body
   background offwhite
 
+  .bubble 
+  {
+  position: relative;
+  width: 250px;
+  height: 120px;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  }
+
+  .bubble:after 
+  {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -15px;
+  left: 110px;
+  }
+
+
+
 .photo-grid
   display flex
   flex-wrap wrap
