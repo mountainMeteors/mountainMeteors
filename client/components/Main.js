@@ -13,6 +13,8 @@ var tempMarkers = [{
   defaultAnimation: 2,
 }]
 
+var tempOrigin = { lat: 40.7725833, lng: -73.9736894 }
+
 const Main = React.createClass({
   render() {
     return (
@@ -27,7 +29,7 @@ const Main = React.createClass({
           { /* Map */ }
           <Col xs={12} sm={8} md={8} lg={9} id="leftcol">
             {/*Bomb ass map*/}
-            <GoogMap markers={tempMarkers} />
+            <GoogMap markers={tempMarkers}, origin={tempOrigin} />
           </Col>
 
           { /* Options */ }
