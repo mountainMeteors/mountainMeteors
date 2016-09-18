@@ -1,3 +1,27 @@
+#header {
+  background-color: #00bfff;
+}
+
+#leftcol {
+  background-color: #33ccff;
+  height: 450px;
+  padding: 0;
+  margin: 0;
+  overflow: 'hidden'
+}
+
+#rightcol {
+  background-color: #1ac6ff;
+  overflowY: 'auto';
+  padding: 0;
+  height: 450px;
+  padding-bottom: '50px'
+}
+
+.row {
+  margin-bottom: 0
+}
+
 article,
 aside,
 details,
@@ -361,16 +385,4 @@ button:focus,
   border-color: transparent #125688 transparent transparent;
   top: 30%;
   left: 0;
-}
-.leftcol {
-  background-color: #777;
-  position: relative;
-  height: 100%;
-  width: 60px;
-}
-.rightcol {
-  background-color: #aaa;
-  position: relative;
-  height: 100%;
-  width: 60px;
 }
