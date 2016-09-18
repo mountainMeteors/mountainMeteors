@@ -1,4 +1,7 @@
 /*  MAIN PAGE  */
+/*html, body {
+  height: 100%
+}*/
 
 #header {
   background-color: #00bfff;
@@ -20,7 +23,8 @@
   padding-bottom: '50px';
 }
 
-.row {
+#bodyrow {
+  height: 100%;
   margin-bottom: 0;
 }
 

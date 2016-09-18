@@ -4,12 +4,12 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import GoogMap from './Map';
 // import { GoogleMapLoader } from "react-google-maps";
 
-var markers = [{
+var tempMarkers = [{
   position: {
-    lat: 25.0112183,
-    lng: 121.52067570000001,
+    lat: 40.7701008,
+    lng: -73.9775276,
   },
-  key: `Taiwan`,
+  key: `Central Park`,
   defaultAnimation: 2,
 }]
 
@@ -22,12 +22,12 @@ const Main = React.createClass({
             <Link to="/">seekPad</Link>
           </h1>
         </Row>
-        <Row className="row">
+        <Row id="bodyrow">
 
           { /* Map */ }
           <Col xs={12} sm={8} md={8} lg={9} id="leftcol">
             {/*Bomb ass map*/}
-            <GoogMap markers={markers} />
+            <GoogMap markers={tempMarkers} />
           </Col>
 
           { /* Options */ }
@@ -39,12 +39,5 @@ const Main = React.createClass({
     )
   }
 });
-
-// <div>
-//   <h1>
-//     <Link to="/">seekPad</Link>
-//   </h1>
-//   {React.cloneElement({...this.props}.children, {...this.props})}
-// </div>
 
 export default Main;
