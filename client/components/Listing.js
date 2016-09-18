@@ -1,7 +1,7 @@
 import React from 'react';
 import ListingEntry from './ListingEntry';
 import { SplitButton, MenuItem } from 'react-bootstrap';
-import {Table, Tr} from 'reactable';
+import {Table, Thead, Th, Tr} from 'reactable';
 
 const Listing = React.createClass({
   render() {
@@ -16,6 +16,12 @@ const Listing = React.createClass({
         */}
 
         <Table className="table">
+          <Thead>
+            <Th className="table-head" column=''></Th>
+            <Th className="table-head" column="Rent">Rent</Th>
+            <Th className="table-head" column="Pets">Pets</Th>
+            <Th className="table-head" column="Gym">Gym</Th>
+          </Thead>
 
         {this.props.listings.map((listing, i) =>
           <Tr {...this.props} className="special-row" key={i} i={i} listing={listing} data={{
