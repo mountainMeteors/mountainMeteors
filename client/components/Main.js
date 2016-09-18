@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import GoogMap from './Map';
-// import { GoogleMapLoader } from "react-google-maps";
 
 var tempMarkers = [{
   position: {
@@ -29,7 +28,7 @@ const Main = React.createClass({
           { /* Map */ }
           <Col xs={12} sm={8} md={8} lg={9} id="leftcol">
             {/*Bomb ass map*/}
-            <GoogMap markers={tempMarkers}, origin={tempOrigin} />
+            <GoogMap markers={tempMarkers} origin={tempOrigin} />
           </Col>
 
           { /* Options */ }
