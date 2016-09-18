@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
-// import GooglePlacesSuggest from 'react-google-map';
+import GoogMap from './Map';
+// import { GoogleMapLoader } from "react-google-maps";
+
+var markers = [{
+  position: {
+    lat: 25.0112183,
+    lng: 121.52067570000001,
+  },
+  key: `Taiwan`,
+  defaultAnimation: 2,
+}]
 
 const Main = React.createClass({
   render() {
@@ -16,7 +26,8 @@ const Main = React.createClass({
 
           { /* Map */ }
           <Col xs={12} sm={8} md={8} lg={9} id="leftcol">
-            Bomb ass map
+            {/*Bomb ass map*/}
+            <GoogMap markers={markers} />
           </Col>
 
           { /* Options */ }
