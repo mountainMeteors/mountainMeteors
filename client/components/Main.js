@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
+import Nav from './Nav'
+
 
 
 const Main = React.createClass({
@@ -50,7 +52,15 @@ const Main = React.createClass({
         </Row>
       </Grid>
       <div>
+
         <Header/>
+
+        <h2>
+        <Nav/>
+         <Link to="/">Reduxstagram</Link>
+        </h2>
+        {React.cloneElement({...this.props}.children, {...this.props})}
+
       </div>
 
     )
@@ -65,3 +75,6 @@ const Main = React.createClass({
 // </div>
 
 export default Main;
+
+
+
