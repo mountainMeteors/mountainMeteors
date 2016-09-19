@@ -39,7 +39,11 @@
     "raven-js": "^2.3.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
+<<<<<<< HEAD
     "react-bootstrap-form": "^0.1.4-beta6",
+=======
+    "react-bootstrap": "^0.30.3",
+>>>>>>> featBranch
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
