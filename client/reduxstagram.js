@@ -9,8 +9,8 @@ import { render } from 'react-dom';
 import App from './components/App';
 import Single from './components/Single';
 import Listing from './components/Listing';
-import Survey from './components/Survey';
 import Grid from './components/Grid';
+import Survey from './components/Survey';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -22,8 +22,8 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Listing}></IndexRoute>
-        <IndexRoute component={Survey}></IndexRoute>
         <IndexRoute component={Grid}></IndexRoute>
+
         <Route path="/view/:listingId" component={Single}></Route>
       </Route>
     </Router>
