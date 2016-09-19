@@ -4,8 +4,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
 import Nav from './Nav'
 
-
-
 const Main = React.createClass({
   render() {
     const styles = {
