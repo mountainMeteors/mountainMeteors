@@ -1,3 +1,4 @@
+
 ### node etc ###
 
 # Logs
@@ -27,4 +28,13 @@ dist/
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules/
 bower_components/
+
 client/lib
+=======
+node_modules/
+dist/
+.DS_Store
+bundle.js
+*.log
+course.md
+video-notes/

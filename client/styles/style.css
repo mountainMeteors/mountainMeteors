@@ -413,8 +413,8 @@ body
   &:hover
     .remove-comment
       opacity 1
- 
-.comment-form 
+
+.comment-form
   input, textarea
     width 100%
     border 0
@@ -427,7 +427,7 @@ body
 
 .grid-photo-wrap
   position relative
-  
+
 .likes-heart
   background url(http://f.cl.ly/items/3Y373q2Q3J3Y1j203n0m/Bitmap-3.png) center no-repeat
   background-size contain
@@ -438,10 +438,37 @@ body
   left 50%
   top 50%
   pointer-events none
-  
 
+<<<<<<< HEAD
 /*  
   Buttons  
+=======
+
+/*
+  Buttons
+*/
+
+.control-buttons
+  display flex
+  justify-content space-between
+
+button, .button
+  border 2px solid lighten(grey, 90%)
+  background none
+  flex-basis 48%
+  display inline-block
+  line-height 2
+  text-decoration none
+  padding 5px
+  text-align center
+  font-size 15px
+  color blue
+  transition all 0.2s
+  box-sizing padding-box
+  &:hover, &:focus
+    border-color blue
+    outline 0
+>>>>>>> featBranch
 
 */
 .control-buttons {
@@ -473,6 +500,7 @@ button:focus,
 /*
   Cowboy style speech bubble - you should probably use an SVG for this if you are doing more icons.
 */
+<<<<<<< HEAD
 .speech-bubble {
   width: 1.5rem;
   height: 1.25rem;
@@ -505,3 +533,24 @@ button:focus,
   height: 100%;
   width: 60px;
 }
+=======
+.speech-bubble
+  size = 1.25rem
+  width size * 1.2
+  height size
+  background blue
+  display inline-block
+  border-radius 50%
+  position relative
+  &:after
+    display inline-block
+    position absolute
+    content ''
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 size size 0
+    border-color: transparent blue transparent transparent
+    top 30%
+    left 0
+>>>>>>> featBranch
