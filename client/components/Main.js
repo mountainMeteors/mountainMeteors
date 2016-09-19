@@ -4,8 +4,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
 
 
-import Header from './Header';
-
 
 const Main = React.createClass({
   render() {
