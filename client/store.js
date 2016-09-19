@@ -7,10 +7,12 @@ import rootReducer from './reducers/index';
 
 // import comments from './data/comments';
 import listings from './data/listings';
+import user from './data/user';
 
 // create an object for the default data
 const defaultState = {
   listings,
+  user
   // comments
 };
 
