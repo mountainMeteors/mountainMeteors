@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
+import Nav from './Nav'
 
 
 
@@ -30,10 +31,10 @@ const Main = React.createClass({
       }
     }
     return (
-
       <Grid fluid={ true } style={styles.background}>
         <Row>
           <h1>
+          <Nav/>
             <Link to="/">seekPad</Link>
               <Header/>
           </h1>
@@ -52,16 +53,11 @@ const Main = React.createClass({
           </Col>
         </Row>
       </Grid>
-
     )
   }
 });
 
-// <div>
-//   <h1>
-//     <Link to="/">seekPad</Link>
-//   </h1>
-//   {React.cloneElement({...this.props}.children, {...this.props})}
-// </div>
-
 export default Main;
+
+
+
