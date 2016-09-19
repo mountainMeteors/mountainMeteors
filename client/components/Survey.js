@@ -24,7 +24,7 @@ const Survey = React.createClass({
                <Fieldset label="">
                  <button className="btn btn-primary" type="submit">submit</button>
                </Fieldset>
-             </Form>
+        </Form>
       </div>
     )
   }
