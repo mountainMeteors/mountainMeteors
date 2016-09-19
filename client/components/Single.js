@@ -1,6 +1,6 @@
 import React from 'react';
 import ListingEntry from './ListingEntry';
-import Comments from './Comments';
+// import Comments from './Comments';
 
 const Single = React.createClass({
   render() {

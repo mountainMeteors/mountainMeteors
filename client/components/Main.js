@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
+<<<<<<< HEAD
 import GoogMap from './Map';
 
 var tempMarkers = [{
@@ -13,6 +14,10 @@ var tempMarkers = [{
 }]
 
 var tempOrigin = { lat: 40.7725833, lng: -73.9736894 }
+=======
+import Header from './Header';
+import Nav from './Nav'
+>>>>>>> dev
 
 const Main = React.createClass({
   render() {
@@ -20,7 +25,9 @@ const Main = React.createClass({
       <Grid fluid={ true }>
         <Row id="header">
           <h1>
+          <Nav/>
             <Link to="/">seekPad</Link>
+              <Header/>
           </h1>
         </Row>
         <Row id="bodyrow">
@@ -32,7 +39,12 @@ const Main = React.createClass({
           </Col>
 
           { /* Options */ }
+<<<<<<< HEAD
           <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
+=======
+          <Col xs={12} sm={4} md={4} lg={3} style={ styles.right }>
+
+>>>>>>> dev
             {React.cloneElement({...this.props}.children, {...this.props})}
           </Col>
         </Row>
@@ -42,3 +54,6 @@ const Main = React.createClass({
 });
 
 export default Main;
+
+
+

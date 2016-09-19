@@ -11,6 +11,7 @@ const ListingEntry = React.createClass({
     const { listing, i, comments } = this.props;
     return (
       <div>
+
         <Glyphicon glyph="triangle-right" />
         Rent: {listing.rent}&nbsp;
         <br/>
@@ -19,6 +20,7 @@ const ListingEntry = React.createClass({
         <br/>
         <Glyphicon glyph="triangle-right" />
         Gym: {listing.gym}&nbsp;
+
         <br/>
         <br/>
       </div>

@@ -3,12 +3,26 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import css
+<<<<<<< HEAD
 import styles from './styles/style.css';
+=======
+<<<<<<< HEAD
+// import css from './styles/style.styl';
+=======
+>>>>>>> formSurvey
+
+>>>>>>> dev
 
 // Import Components
 import App from './components/App';
 import Single from './components/Single';
 import Listing from './components/Listing';
+<<<<<<< HEAD
+import Add from './components/Add';
+=======
+>>>>>>> formSurvey
+import Grid from './components/Grid';
+import Survey from './components/Survey';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -20,7 +34,10 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Listing}></IndexRoute>
+        <IndexRoute component={Grid}></IndexRoute>
+
         <Route path="/view/:listingId" component={Single}></Route>
+        <Route path="/add" component={Add}></Route>
       </Route>
     </Router>
   </Provider>
