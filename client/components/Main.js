@@ -4,7 +4,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
 
 
-
 const Main = React.createClass({
   render() {
     const styles = {
@@ -52,7 +51,10 @@ const Main = React.createClass({
           </Col>
         </Row>
       </Grid>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2634f398390d14895942556cecb7c47e3999706c
 
     )
   }
