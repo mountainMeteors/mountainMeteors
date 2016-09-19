@@ -18,8 +18,6 @@ const styles = {
   gridList: {
     width: 500,
     height: 500,
-    padding:10px;
-
     overflowY: 'auto',
     marginBottom: 24,
   },
@@ -92,4 +90,4 @@ const tilesData = [
     muiTheme: React.PropTypes.object.isRequired,
   };
 
-export default Grid;
+export default Grid
