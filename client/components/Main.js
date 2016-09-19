@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap';
+import Header from './Header';
+
 
 import Header from './Header';
 
