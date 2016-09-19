@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap';
+import Header from './Header';
+
 
 const Main = React.createClass({
   render() {
@@ -27,6 +29,7 @@ const Main = React.createClass({
       }
     }
     return (
+
       <Grid fluid={ true } style={styles.background}>
         <Row>
           <h1>
@@ -46,6 +49,10 @@ const Main = React.createClass({
           </Col>
         </Row>
       </Grid>
+      <div>
+        <Header/>
+      </div>
+
     )
   }
 });
