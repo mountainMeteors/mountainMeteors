@@ -16,8 +16,8 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 500,
+    width: 800,
+    height: 800,
     overflowY: 'auto',
     marginBottom: 24,
   },
@@ -84,7 +84,7 @@ const tilesData = [
     </GridList>
   </div>
       );
-    }        
+    }
   }
   Grid.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
