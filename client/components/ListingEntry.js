@@ -7,10 +7,10 @@ const ListingEntry = React.createClass({
     const { listing, i, comments } = this.props;
     return (
       <div>
-        {listing.listingId}&nbsp;
-        {listing.rent}&nbsp;
-        {listing.pets}&nbsp;
-        {listing.gym}&nbsp;
+        {listing.listingId}{' '}
+        {listing.rent}{' '}
+        {listing.pets}{' '}
+        {listing.gym}{' '}
         <br/>
         <br/>
       </div>

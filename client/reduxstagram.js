@@ -3,12 +3,13 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import css
-import css from './styles/style.styl';
+// import css from './styles/style.styl';
 
 // Import Components
 import App from './components/App';
 import Single from './components/Single';
 import Listing from './components/Listing';
+import Add from './components/Add';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -21,6 +22,7 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={Listing}></IndexRoute>
         <Route path="/view/:listingId" component={Single}></Route>
+        <Route path="/add" component={Add}></Route>
       </Route>
     </Router>
   </Provider>
