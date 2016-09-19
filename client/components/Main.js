@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Header from './Header';
 
 
+
 const Main = React.createClass({
   render() {
     const styles = {
@@ -34,6 +35,7 @@ const Main = React.createClass({
         <Row>
           <h1>
             <Link to="/">seekPad</Link>
+              <Header/>
           </h1>
         </Row>
         <Row style={ styles.row }>
@@ -45,13 +47,11 @@ const Main = React.createClass({
 
           { /* Options */ }
           <Col xs={12} sm={4} md={4} lg={3} style={ styles.right }>
+
             {React.cloneElement({...this.props}.children, {...this.props})}
           </Col>
         </Row>
       </Grid>
-      <div>
-        <Header/>
-      </div>
 
     )
   }
