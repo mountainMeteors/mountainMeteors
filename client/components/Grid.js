@@ -25,7 +25,7 @@ const styles = {
 
 const tilesData = [
   {
-    img: <img src="../assets/Piggy-bank-icon.png"/>,
+    img: "client/assets/Piggy-bank-icon.png",
     title: 'Budget',
     Status: 'jill111',
   },
