@@ -1,3 +1,5 @@
+// NOT CURRENTLY USED. Delete if we don't re-implement in Listing.js
+
 import React from 'react';
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';

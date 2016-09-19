@@ -26,13 +26,13 @@ const Main = React.createClass({
         <Row id="bodyrow">
 
           { /* Map */ }
-          <Col xs={12} sm={8} md={8} lg={9} id="leftcol">
+          <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
             {/*Bomb ass map*/}
             <GoogMap markers={tempMarkers} origin={tempOrigin} />
           </Col>
 
           { /* Options */ }
-          <Col xs={12} sm={4} md={4} lg={3} id="rightcol">
+          <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
             {React.cloneElement({...this.props}.children, {...this.props})}
           </Col>
         </Row>

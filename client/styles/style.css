@@ -55,11 +55,23 @@ h1 a:focus {
 }
 
 /*  LISTING TABLE  */
-.table-head {
-  background-color: blue;
+th.sort-column {
+  background-color: darkblue;
   color: white;
 }
 
+th.sort-column:hover {
+  cursor: pointer;
+  background-color:
+}
+
+td.react-bs-container-body {
+  background-color: #0066ff;
+}
+
+.react-bs-table {
+  margin: 0;
+}
 
 
 /* LEFTOVER FROM REDUXSTAGRAM. Delete eventually.*/
