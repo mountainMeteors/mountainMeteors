@@ -3,20 +3,13 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Import css
-<<<<<<< HEAD
-// import css from './styles/style.styl';
-=======
->>>>>>> formSurvey
-
+import styles from './styles/style.css';
 
 // Import Components
 import App from './components/App';
 import Single from './components/Single';
 import Listing from './components/Listing';
-<<<<<<< HEAD
 import Add from './components/Add';
-=======
->>>>>>> formSurvey
 import Grid from './components/Grid';
 import Survey from './components/Survey';
 
