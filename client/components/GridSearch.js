@@ -58,7 +58,7 @@ const tilesData = [
  ];
 
 
- export class Grid extends React.Component {
+ export class GridSearch extends React.Component {
    getChildContext() {
      return { muiTheme: getMuiTheme(baseTheme) };
    };
@@ -91,9 +91,9 @@ const tilesData = [
       );
     }
   }
-  Grid.childContextTypes = {
+  GridSearch.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
   };
 
 
-export default Grid
+export default GridSearch
