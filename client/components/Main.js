@@ -6,7 +6,9 @@ import Header from './Header';
 import Nav from './Nav'
 import Listing from './Listing';
 import Survey from './Survey';
+import submitButton from './submitButton';
 
+import GridSearch from './GridSearch'
 const tempMarkers = [{
   position: {
     lat: 40.7701008,
@@ -26,7 +28,12 @@ const Main = React.createClass({
         <Row id="header">
           <h1>
           <Nav/>
+
             <Link to="/">seekPad</Link>
+            {/* Wen's section - don't touch!
+            <GridSearch/>
+            <submitButton/>
+            */}
               <Header/>
           </h1>
         </Row>

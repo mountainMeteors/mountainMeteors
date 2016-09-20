@@ -6,7 +6,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import DropdownMenu from './DropdownMenu'
-
+import submitButton from './submitButton'
 
 
 
@@ -58,7 +58,7 @@ const tilesData = [
  ];
 
 
- export class Grid extends React.Component {
+ export class GridSearch extends React.Component {
    getChildContext() {
      return { muiTheme: getMuiTheme(baseTheme) };
    };
@@ -85,13 +85,15 @@ const tilesData = [
         </GridTile>
       ))}
     </GridList>
+    <submitButton{...this.props}/>
+
   </div>
       );
     }
   }
-  Grid.childContextTypes = {
+  GridSearch.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
   };
 
 
-export default Grid
+export default GridSearch
