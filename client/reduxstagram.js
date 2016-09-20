@@ -9,6 +9,7 @@ import styles from './styles/style.css';
 import App from './components/App';
 import Single from './components/Single';
 import Listing from './components/Listing';
+import Welcome from './components/Welcome';
 import Add from './components/Add';
 import Grid from './components/Grid';
 import Survey from './components/Survey';
@@ -23,13 +24,14 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Listing}></IndexRoute>
-        <IndexRoute component={Grid}></IndexRoute>
-
-        <Route path="/view/:listingId" component={Single}></Route>
+        <Route path="/welcome" component={Welcome}></Route>
         <Route path="/add" component={Add}></Route>
+        <Route path="/survey" component={Survey}></Route>
       </Route>
     </Router>
   </Provider>
 )
+
+// <IndexRoute component={Mainview}></IndexRoute>
 
 render(router, document.getElementById('root'));
