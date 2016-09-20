@@ -5,6 +5,7 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import DropdownMenu from './DropdownMenu'
 
 
 
@@ -16,8 +17,8 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 500,
+    width: 800,
+    height: 800,
     overflowY: 'auto',
     marginBottom: 24,
   },
@@ -25,57 +26,59 @@ const styles = {
 
 const tilesData = [
   {
-    img: "client/assets/Piggy-bank-icon.png",
+    img: "http://img.freepik.com/free-photo/piggybank-with-blue-sunglasses_1101-103.jpg?size=338&ext=jpg",
     title: 'Budget',
-    Status: 'jill111',
+    status: "What is your price range ? ",
   },
   {
-    img: 'images/grid-list/burger-827309_640.jpg',
+    img:"https://thumb9.shutterstock.com/display_pic_with_logo/98341/219101932/stock-vector-seamless-new-york-city-travel-icon-souvenir-illustration-usa-background-pattern-in-vector-219101932.jpg",
     title: 'Location',
-    Status: 'pashminu',
+    status: "Let's take a look at where you want to live ?" ,
   },
   {
-    img: 'images/grid-list/camera-813814_640.jpg',
+    img: "http://smartcommute.ca/wp-content/uploads/2015/06/Re-modeIcon_EN-01.jpg",
     title: 'Commute',
-    Status: 'Danson67',
+    status: "Time is of the essence. how long of a commute are you looking at? ",
   },
   {
     img: 'images/grid-list/morning-819362_640.jpg',
     title: 'The basics',
-    Status: 'fancycrave1',
+    status: "How many bedrooms?",
   },
   {
-    img: 'images/grid-list/hats-829509_640.jpg',
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPj_EOfkdGxrg5OMtxrb1bwAlWUUpfWO1aVbNdvNQP9eLdcgL_Dw",
     title: 'Extra Amenities',
-    Status: 'Hans',
+    status: "There are a few other things...let's make it simple for you",
   },
   {
-    img: 'images/grid-list/honey-823614_640.jpg',
+    img:"http://www.apk20.com/image/icon-327288",
     title: 'Pets',
-    Status: 'fancycravel',
+    status: " Pets are our best friends. Let us get to know if you have any little furry friends",
   },
  ];
 
 
-  export class Grid extends React.Component {
-    getChildContext() {
-      return { muiTheme: getMuiTheme(baseTheme) };
-    }
-    render() {
-      return (
+ export class Grid extends React.Component {
+   getChildContext() {
+     return { muiTheme: getMuiTheme(baseTheme) };
+   };
 
 
+   render() {
+     return (
   <div style={styles.root}>
     <GridList
-      cellHeight={200}
+      cellHeight={300}
       style={styles.gridList}
     >
-      <Subheader>December</Subheader>
+      <Subheader>" Let's get to know a little bit about you"</Subheader>
+    <DropdownMenu{...this.props}/>
+
       {tilesData.map((tile) => (
         <GridTile
           key={tile.img}
           title={tile.title}
-          subtitle={<span> View <b>{tile.status}</b></span>}
+          subtitle={<span><b>{tile.status}</b></span>}
           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
         >
           <img src={tile.img} />
@@ -84,10 +87,11 @@ const tilesData = [
     </GridList>
   </div>
       );
-    }        
+    }
   }
   Grid.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
   };
+
 
 export default Grid

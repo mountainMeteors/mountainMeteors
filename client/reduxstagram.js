@@ -12,6 +12,7 @@ import Listing from './components/Listing';
 import Add from './components/Add';
 import Grid from './components/Grid';
 import Survey from './components/Survey';
+import DropdownMenu from './components/DropdownMenu';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
