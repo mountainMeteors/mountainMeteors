@@ -6,7 +6,8 @@
     onFormSubmit: function (e) {
       e.preventDefault();
 
-      var location = this.refs.location.value;
+      var address = this.refs.address
+.value;
 
       // if (location.length > 0) {
       //   this.refs.location.value = '';
