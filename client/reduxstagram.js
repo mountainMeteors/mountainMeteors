@@ -11,6 +11,7 @@ import Single from './components/Single';
 import Listing from './components/Listing';
 import Grid from './components/Grid';
 import Survey from './components/Survey';
+import DropdownMenu from './components/DropdownMenu';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
