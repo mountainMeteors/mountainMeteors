@@ -50,6 +50,12 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+app.get('*', function(req, res) {
+  console.log('req.url', req.url);
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.listen(7779, 'localhost', function(err) {
   if (err) {
     console.log(err);

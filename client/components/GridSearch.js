@@ -17,8 +17,8 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 900,
-    height: 800,
+    width: 700,
+    height: 700,
     overflowY: 'auto',
     marginBottom: 24,
   },
@@ -41,7 +41,7 @@ const tilesData = [
     status: "Time is of the essence. how long of a commute are you looking at? ",
   },
   {
-    img:
+    img:"https://pics.onsizzle.com/Twitter-New-studio-apartment-in-NYC-on-691388634822512640.png"
     ,
     title: 'The basics',
     status: "How many bedrooms?",

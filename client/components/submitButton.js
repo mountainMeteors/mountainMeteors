@@ -3,9 +3,7 @@
 
 
   const submitButton = React.createClass({
-    componentWillMount(){
-      console.log("iiiiiiiiiii");
-    },
+
     renderComment(comment, i) {
       return (
         <div className="comment" key={i}>
@@ -26,7 +24,7 @@
       this.refs.commentForm.reset();
     },
     render() {
-      console.log('hhhhheii')
+
       return (
         <div className="comments">
           {this.props.postComments.map(this.renderComment)}

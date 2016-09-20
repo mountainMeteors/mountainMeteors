@@ -5,25 +5,27 @@ import Form, { Input, Fieldset } from 'react-bootstrap-form';
 
 
 const Survey = React.createClass({
-  getInitialState: function () {
-    return {
-      isLoading: false
-    }
+  handleSubmit(e) {
+    e.preventDefault();
+    const price = this.refs.price.value;
+    let payload = price
+    this.refs.commentForm.reset();
   },
 
   render() {
     return (
       <div>
-        <Form>
+        <div className="comments">
+          <form>
+            <input type="text" ref="price" placeholder="Enter your price range"/>
+            <input type="text" ref="numberOfRooms" placeholder="Enter Number of room"/>
+          </form>
+        </div>
+         <form onSubmit={this.onFormSubmit}>
+                           <input type="text" ref="price"/>
+                           <button>Get Listings</button>
+                         </form>
 
-               <Input type="Date" name="dob" label="Move-in Date"
-                     />
-               <Input type="TextArea" name="description" label="Number of Rooms" />
-
-               <Fieldset label="">
-                 <button className="btn btn-primary" type="submit">submit</button>
-               </Fieldset>
-        </Form>
       </div>
     )
   }
