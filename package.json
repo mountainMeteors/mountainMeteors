@@ -42,7 +42,8 @@
     "material-ui": "^0.15.4",
     "muicss": "^0.8.0",
     "raven-js": "^2.3.0",
-    "react": "^15.0.2",
+    "react": "^15.3.2",
+    "react-addons-create-fragment": "^15.3.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-bootstrap": "^0.30.3",
     "react-bootstrap-form": "^0.1.4-beta6",
@@ -52,6 +53,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
+    "react-tap-event-plugin": "^1.0.0",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "reactable": "^0.14.0",
@@ -65,9 +67,16 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
+    "babel-preset-stage-1": "^6.13.0",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
-  }
+  },
+  "babel": {
+   "presets": [
+     "es2015",
+     "stage-1"
+   ]
+ }
 }
