@@ -9,6 +9,7 @@ import DropdownMenu from './DropdownMenu'
 
 
 
+
 const styles = {
   root: {
     display: 'flex',
@@ -50,7 +51,7 @@ const tilesData = [
     status: "There are a few other things...let's make it simple for you",
   },
   {
-    img: "https://image.freepik.com/free-vector/cute-pets-icons_23-2147498922.jpg",
+    img:"http://www.apk20.com/image/icon-327288",
     title: 'Pets',
     status: " Pets are our best friends. Let us get to know if you have any little furry friends",
   },
@@ -72,6 +73,7 @@ const tilesData = [
     >
       <Subheader>" Let's get to know a little bit about you"</Subheader>
     <DropdownMenu{...this.props}/>
+
       {tilesData.map((tile) => (
         <GridTile
           key={tile.img}
