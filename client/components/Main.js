@@ -32,7 +32,7 @@ const Main = React.createClass({
     console.log('PROPS', this.props);
     var displayModule;
     // if (loginUser) {
-    if (true === false) {
+    if (!this.props.user.authenticated) {
       displayModule = <Welcome />
     } else if (this.props.user.surveys.length > 0) {
       displayModule = <MainView {...this.props}/>
@@ -45,13 +45,12 @@ const Main = React.createClass({
           <h1 className="title">
           <Nav/>
 
-            <Link to="/">seekPad</Link>
             {/* Wen's section - don't touch!
             <GridSearch/>
             <submitButton/>
             */}
           </h1>
-          <Header/>
+          <Header />
         </Row>
 
         <Row className="bodyrow">
