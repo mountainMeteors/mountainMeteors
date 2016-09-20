@@ -30,7 +30,7 @@ const Main = React.createClass({
     console.log('PROPS', this.props);
     var displayModule;
     // if (loginUser) {
-    if (true) {
+    if (true === false) {
       displayModule = <Welcome />
     } else if (this.props.user.surveys.length > 0) {
       displayModule = <MainView {...this.props}/>
