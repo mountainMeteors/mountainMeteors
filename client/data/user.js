@@ -4,7 +4,7 @@ const user = {
   surveys: [{
     'address': 'anywhere',
   }],
-  authenticated: false
+  authenticated: true
 }
 
 export default user;

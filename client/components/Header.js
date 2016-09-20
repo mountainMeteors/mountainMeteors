@@ -50,8 +50,9 @@ class Header extends Component {
       <ul className="nav navbar-nav">
         {this.renderLinks()}
       </ul>
-
-      <span className = "title"><Link to="/">seekPad</Link></span>
+      <h1 className="title">
+        <Link to="/">seekPad</Link>
+      </h1>
     </nav>
   );
  }

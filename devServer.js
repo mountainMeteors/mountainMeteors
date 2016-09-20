@@ -44,7 +44,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-app.use("/api", apiRouter);
+// app.use("/api", apiRouter);
 
 app.get('*', function(req, res) {
   console.log('req.url', req.url);

@@ -30,7 +30,7 @@ const popover = (
 
    return (
      <div>
-       <p>Click to get the full Modal experience!</p>
+       <p>Welcome to the </p>
 
        <Button
          bsStyle="primary"
