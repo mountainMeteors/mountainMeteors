@@ -30,10 +30,10 @@ const Main = React.createClass({
           <Nav/>
 
             <Link to="/">seekPad</Link>
-            {/* Wen's section - don't touch!
+
             <GridSearch/>
             <submitButton/>
-            */}
+
               <Header/>
           </h1>
         </Row>

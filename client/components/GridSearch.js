@@ -5,8 +5,8 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import DropdownMenu from './DropdownMenu'
-import submitButton from './submitButton'
+import DropdownMenu from './DropdownMenu';
+import Survey from './Survey';
 
 
 
@@ -17,7 +17,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 800,
+    width: 900,
     height: 800,
     overflowY: 'auto',
     marginBottom: 24,
@@ -41,7 +41,8 @@ const tilesData = [
     status: "Time is of the essence. how long of a commute are you looking at? ",
   },
   {
-    img: 'images/grid-list/morning-819362_640.jpg',
+    img:
+    ,
     title: 'The basics',
     status: "How many bedrooms?",
   },
@@ -65,6 +66,7 @@ const tilesData = [
 
 
    render() {
+
      return (
   <div style={styles.root}>
     <GridList
@@ -73,6 +75,7 @@ const tilesData = [
     >
       <Subheader>" Let's get to know a little bit about you"</Subheader>
     <DropdownMenu{...this.props}/>
+    <Survey />
 
       {tilesData.map((tile) => (
         <GridTile
@@ -85,7 +88,6 @@ const tilesData = [
         </GridTile>
       ))}
     </GridList>
-    <submitButton{...this.props}/>
 
   </div>
       );

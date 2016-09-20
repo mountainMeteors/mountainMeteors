@@ -13,10 +13,9 @@ const Survey = React.createClass({
 
   render() {
     return (
-      <div className="bubble">
+      <div>
         <Form>
-               <Input type="Text" name="username" label="Location"
-                    />,
+
                <Input type="Date" name="dob" label="Move-in Date"
                      />
                <Input type="TextArea" name="description" label="Number of Rooms" />
