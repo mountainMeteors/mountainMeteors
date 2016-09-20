@@ -30,7 +30,6 @@ const popover = (
 
    return (
      <div>
-       <p>Welcome to the </p>
 
        <Button
          bsStyle="primary"
