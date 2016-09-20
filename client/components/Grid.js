@@ -5,7 +5,7 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
+import DropdownMenu from './DropdownMenu'
 
 
 
@@ -30,12 +30,12 @@ const tilesData = [
     status: "What is your price range ? ",
   },
   {
-    img: 'images/grid-list/burger-827309_640.jpg',
+    img:"https://thumb9.shutterstock.com/display_pic_with_logo/98341/219101932/stock-vector-seamless-new-york-city-travel-icon-souvenir-illustration-usa-background-pattern-in-vector-219101932.jpg",
     title: 'Location',
     status: "Let's take a look at where you want to live ?" ,
   },
   {
-    img: 'images/grid-list/camera-813814_640.jpg',
+    img: "http://smartcommute.ca/wp-content/uploads/2015/06/Re-modeIcon_EN-01.jpg",
     title: 'Commute',
     status: "Time is of the essence. how long of a commute are you looking at? ",
   },
@@ -45,12 +45,12 @@ const tilesData = [
     status: "How many bedrooms?",
   },
   {
-    img: 'images/grid-list/hats-829509_640.jpg',
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPj_EOfkdGxrg5OMtxrb1bwAlWUUpfWO1aVbNdvNQP9eLdcgL_Dw",
     title: 'Extra Amenities',
     status: "There are a few other things...let's make it simple for you",
   },
   {
-    img: 'images/grid-list/honey-823614_640.jpg',
+    img: "https://image.freepik.com/free-vector/cute-pets-icons_23-2147498922.jpg",
     title: 'Pets',
     status: " Pets are our best friends. Let us get to know if you have any little furry friends",
   },
@@ -71,6 +71,7 @@ const tilesData = [
       style={styles.gridList}
     >
       <Subheader>" Let's get to know a little bit about you"</Subheader>
+    <DropdownMenu{...this.props}/>
       {tilesData.map((tile) => (
         <GridTile
           key={tile.img}

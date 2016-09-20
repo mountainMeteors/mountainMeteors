@@ -1,46 +1,24 @@
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
+import ReactDOM from 'react-dom';
+import Dropdown from 'muicss/lib/react/dropdown';
+import DropdownItem from 'muicss/lib/react/dropdown-item';
 
-const styles = {
-  customWidth: {
-    width: 200,
-  },
-};
 
-// export default class DropdownMenu extends React.Component {
-//
-//   constructor(props) {
-//     super(props);
-//     this.state = {value: 1};
-//   }
-//
-//   handleChange = (event, index, value) => this.setState({value});
-//
-//   render() {
-//     return (
-//       <div>
-//         <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-//           <MenuItem value={1} primaryText="Never" />
-//           <MenuItem value={2} primaryText="Every Night" />
-//           <MenuItem value={3} primaryText="Weeknights" />
-//           <MenuItem value={4} primaryText="Weekends" />
-//           <MenuItem value={5} primaryText="Weekly" />
-//         </DropDownMenu>
-//         <br />
-//         <DropDownMenu
-//           value={this.state.value}
-//           onChange={this.handleChange}
-//           style={styles.customWidth}
-//           autoWidth={false}
-//         >
-//           <MenuItem value={1} primaryText="Custom width" />
-//           <MenuItem value={2} primaryText="Every Night" />
-//           <MenuItem value={3} primaryText="Weeknights" />
-//           <MenuItem value={4} primaryText="Weekends" />
-//           <MenuItem value={5} primaryText="Weekly" />
-//         </DropDownMenu>
-//       </div>
-//     );
-//   }
-// }
+class DropdownMenu extends React.Component {
+  render() {
+    return (
+      <div>
+      <Dropdown color="primary" label="Pick a Neighborhood">
+        <DropdownItem link="#/link1">Option 1</DropdownItem>
+        <DropdownItem> West Village</DropdownItem>
+        <DropdownItem>East Village</DropdownItem>
+        <DropdownItem>Hudson</DropdownItem>
+      </Dropdown>
+      </div>
+    );
+  }
+}
+
+
+
+export default DropdownMenu
