@@ -1,3 +1,7 @@
+#header {
+    /*background-color: #00bfff;*/
+}
+
 #leftcol {
   background-color: #33ccff;
   height: 450px;
@@ -19,33 +23,16 @@
   margin-bottom: 0;
 }
 
-/*  HEADER  */
-#header {
-  background-color: #00bfff;
-}
-
-    /* This is cheating so hard. */
-a.nav-link {
-  padding-top: 100px !important;
-}
-
-ul.nav, nav.navbar {
-  text-align: center;
-  margin: 0 auto;
-}
-
 /*  TITLE TREATMENT  */
 
-span.title {
+h1.title {
   font-family: billabong, 'billabongregular';
-  display: inline-block;
   text-align: center;
   font-weight: 100;
   font-size: 13rem;
   /*margin: 2rem 0;*/
   letter-spacing: -1px;
   text-shadow: 0px 4px 0 rgba(18,86,136,0.11);
-  margin-right: 15%; /*CHEATING*/
 }
 h1 a {
   color: #125688;
