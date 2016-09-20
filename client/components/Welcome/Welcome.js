@@ -2,7 +2,7 @@ import React from 'react';
 // import ListingEntry from './ListingEntry';
 import { SplitButton, MenuItem } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import styles from '../styles/react-bootstrap-table.min.css';
+import styles from '../../styles/react-bootstrap-table.min.css';
 // import {Table, Thead, Th, Tr} from 'reactable';
 
 const Welcome = React.createClass({
