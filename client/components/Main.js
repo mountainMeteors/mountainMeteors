@@ -47,8 +47,6 @@ const Main = React.createClass({
           <Header/>
         </Row>
 
-
-        {/* TODO: Make this ternary more modular -JS */}
         <Row className="bodyrow">
           {displayModule}
         </Row>
