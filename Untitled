@@ -1,0 +1,10 @@
+var Wrapper = require('./wrapper');
+var Header = require('./title');
+var Content = require('./content');
+var Footer = require('./footer');
+
+var MyComponent = React.createClass({
+  render() {
+    return <Wrapper footer={Footer} header={Header} content={Content} />;
+  }
+});
