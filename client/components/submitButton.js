@@ -2,11 +2,12 @@
   import Form, { Input, Fieldset } from 'react-bootstrap-form';
 
 
-  const surveyForm = React.createClass({
+  const submitButton = React.createClass({
     onFormSubmit: function (e) {
       e.preventDefault();
 
-      var location = this.refs.location.value;
+      var address = this.refs.address
+.value;
 
       // if (location.length > 0) {
       //   this.refs.location.value = '';
@@ -35,4 +36,4 @@
   }
 });
 
-export default surveyForm;
+export default submitButton;

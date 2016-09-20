@@ -1,5 +1,5 @@
 import React from 'react';
-import surveyForm from './SurveyForm';
+import submitButton from './submitButton';
 import Form, { Input, Fieldset } from 'react-bootstrap-form';
 
 
@@ -29,6 +29,6 @@ const Survey = React.createClass({
     )
   }
 
-})  
+})
 
 module.exports = Survey;
