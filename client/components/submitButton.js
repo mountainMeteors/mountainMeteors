@@ -2,7 +2,7 @@
   import Form, { Input, Fieldset } from 'react-bootstrap-form';
 
 
-  const surveyForm = React.createClass({
+  const submitButton = React.createClass({
     onFormSubmit: function (e) {
       e.preventDefault();
 
@@ -35,4 +35,4 @@
   }
 });
 
-export default surveyForm;
+export default submitButton;
