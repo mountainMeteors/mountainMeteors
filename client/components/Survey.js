@@ -1,15 +1,21 @@
 import React from 'react';
 import submitButton from './submitButton';
 import Form, { Input, Fieldset } from 'react-bootstrap-form';
-
+import axios from 'axios'
 
 
 const Survey = React.createClass({
-  handleSubmit(e) {
+  getInitialState(){
+    return {price: 0}
+  },
+
+  onFormSubmit(e) {
     e.preventDefault();
     const price = this.refs.price.value;
     let payload = price
-    this.refs.commentForm.reset();
+    this.setState({price: price})
+    console.log(payload)
+    //this.props.talkToServer()
   },
 
   render() {
@@ -17,12 +23,11 @@ const Survey = React.createClass({
       <div>
         <div className="comments">
           <form>
-            <input type="text" ref="price" placeholder="Enter your price range"/>
-            <input type="text" ref="numberOfRooms" placeholder="Enter Number of room"/>
+            <input type="text" ref="Pets?" placeholder="Any furry friends?"/>
           </form>
         </div>
          <form onSubmit={this.onFormSubmit}>
-                           <input type="text" ref="price"/>
+                           <input type="text" ref="price"  placeholder="Enter your price range"/>
                            <button>Get Listings</button>
                          </form>
 

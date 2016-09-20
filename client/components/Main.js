@@ -29,11 +29,7 @@ const Main = React.createClass({
           <h1>
           <Nav/>
 
-            <Link to="/">seekPad</Link>
-
-            <GridSearch/>
-            <submitButton/>
-
+            <Link to="/">seekPad</Link>   
               <Header/>
           </h1>
         </Row>
