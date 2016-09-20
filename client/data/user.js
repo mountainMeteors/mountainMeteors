@@ -1,7 +1,7 @@
 const user = {
   id: 1,
   name: 'johnny',
-  surveys: []
+  surveys: [{}]
 }
 
 export default user;

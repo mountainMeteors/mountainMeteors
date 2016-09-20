@@ -8,6 +8,7 @@ import Listing from './Listing';
 import MainView from './MainView';
 import Welcome from './Welcome';
 import Survey from './Survey';
+import Add from './Add';
 import submitButton from './submitButton';
 import styles from '../styles/style.css';
 
@@ -53,6 +54,7 @@ const Main = React.createClass({
           </h1>
           <Header/>
         </Row>
+        <Add/>
 
         <Row className="bodyrow">
           {displayModule}
