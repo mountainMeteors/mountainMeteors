@@ -45,16 +45,11 @@ const Main = React.createClass({
         <Row id="header">
           <h1 className="title">
           <Nav/>
-
-            {/* Wen's section - don't touch!
-            <GridSearch/>
-            <submitButton/>
-            */}
+          <GridSearch/>
           </h1>
           <Header />
         </Row>
         <Add/>
-
         <Row className="bodyrow">
           {displayModule}
         </Row>

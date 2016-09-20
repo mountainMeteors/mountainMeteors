@@ -41,7 +41,7 @@ const tilesData = [
     status: "Time is of the essence. how long of a commute are you looking at? ",
   },
   {
-    img: 'images/grid-list/morning-819362_640.jpg',
+    img: "https://d13yacurqjgara.cloudfront.net/users/6670/screenshots/1944687/amenities-icons.png",
     title: 'The basics',
     status: "How many bedrooms?",
   },
