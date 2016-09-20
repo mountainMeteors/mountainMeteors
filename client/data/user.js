@@ -1,7 +1,10 @@
 const user = {
   id: 1,
   name: 'johnny',
-  surveys: []
+  surveys: [{
+    'address': 'anywhere',
+  }],
+  authenticated: false
 }
 
 export default user;
