@@ -6,6 +6,7 @@ import Header from './Header';
 import Nav from './Nav'
 import Listing from './Listing';
 import Survey from './Survey';
+import Login from './Login';
 
 const tempMarkers = [{
   position: {
@@ -29,6 +30,8 @@ const Main = React.createClass({
             <Link to="/">seekPad</Link>
               <Header/>
           </h1>
+
+
         </Row>
 
 
@@ -38,15 +41,8 @@ const Main = React.createClass({
           <Row id="bodyrow">
 
             {/* Map */}
-            <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
-              <GoogMap markers={tempMarkers} origin={tempOrigin} />
-            </Col>
 
-            {/* Listings */}
-            <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
-              <Listing {...this.props}/>
-            </Col>
-
+          <Login />
           </Row>
 
         :
@@ -61,3 +57,12 @@ const Main = React.createClass({
 });
 
 export default Main;
+
+// <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
+//   <GoogMap markers={tempMarkers} origin={tempOrigin} />
+// </Col>
+//
+// {/* Listings */}
+// <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
+//   <Listing {...this.props}/>
+// </Col>
