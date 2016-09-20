@@ -25,7 +25,7 @@ const styles = {
 
 const tilesData = [
   {
-    img: "client/assets/Piggy-bank-icon.png",
+    img: "http://img.freepik.com/free-photo/piggybank-with-blue-sunglasses_1101-103.jpg?size=338&ext=jpg",
     title: 'Budget',
     status: "What is your price range ? ",
   },
