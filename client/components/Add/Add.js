@@ -3,18 +3,21 @@ import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Modal, Form, FormControl, FormGroup, ControlLabel, Button, div, Popover, Tooltip, OverlayTrigger } from 'react-bootstrap';
 
-const formModal = React.createClass({
-  getInitialState() {
-    return { showModal: false };
-  },
+class formModal extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      showModal: false
+    }
+  }
 
   close() {
     this.setState({ showModal: false });
-  },
+  }
 
   open() {
     this.setState({ showModal: true });
-  },
+  }
 
   render() {
 const popover = (
@@ -76,7 +79,7 @@ const popover = (
      </div>
    );
  }
-});
+};
 
 // ReactDOM.render(formModal, mountNode);
 export default formModal;
