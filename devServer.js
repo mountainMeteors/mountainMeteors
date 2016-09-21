@@ -2,9 +2,9 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config.dev');
+const apiRouter = require('./server/router.js');
 const jwt = require('express-jwt');
 const cors = require('cors');
-
 const app = express();
 const compiler = webpack(config);
 
@@ -44,6 +44,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+// app.use("/api", apiRouter);
 
 app.get('*', function(req, res) {
   console.log('req.url', req.url);

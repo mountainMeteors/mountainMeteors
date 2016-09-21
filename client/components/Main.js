@@ -1,12 +1,31 @@
+//React
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
+<<<<<<< 88ec910aa1c72d4d5f9bf553fbd4ad4cf2329d81
+
+//Components
+import Header from './Header/Header';
+import Nav from './Header/Nav'
+import MainView from './MainView/MainView';
+import GoogMap from './MainView/Map';
+import Listing from './MainView/Listing';
+import Welcome from './Welcome/Welcome';
+import Add from './Add/Add';
+import Survey from './Survey/Survey';
+import submitButton from './Survey/submitButton';
+import GridSearch from './Survey/GridSearch';
+
+//CSS
+import styles from '../styles/style.css';
+=======
 import GoogMap from './Map';
 import Header from './Header';
 import Nav from './Nav'
 import Listing from './Listing';
 import Survey from './Survey';
 import Login from './Login';
+>>>>>>> user login form
 
 const tempMarkers = [{
   position: {
@@ -20,36 +39,35 @@ const tempMarkers = [{
 const tempOrigin = { lat: 40.7725833, lng: -73.9736894 }
 
 const Main = React.createClass({
+
+  componentWillMount() {
+  },
+
   render() {
-    console.log('PROPS', this.props.user.surveys.length);
+    console.log('PROPS', this.props);
+    var displayModule;
+    // if (loginUser) {
+    if (!this.props.user.authenticated) {
+      displayModule = <Welcome />
+    } else if (this.props.user.surveys.length > 0) {
+      displayModule = <MainView {...this.props}/>
+    } else {
+      displayModule = <GridSearch />
+    }
     return (
       <Grid fluid={ true }>
         <Row id="header">
-          <h1>
+          <h1 className="title">
           <Nav/>
-            <Link to="/">seekPad</Link>
-              <Header/>
           </h1>
 
-
+          <Header />
+        </Row>
+        <Add/>
+        <Row className="bodyrow">
+          {displayModule}
         </Row>
 
-
-        {/* TODO: Make this ternary more modular -JS */}
-        {this.props.user.surveys.length > 0 ?
-
-          <Row id="bodyrow">
-
-            {/* Map */}
-
-          <Login />
-          </Row>
-
-        :
-          <Row id="bodyrow">
-            <Survey />
-          </Row>
-        }
       </Grid>
 
     )

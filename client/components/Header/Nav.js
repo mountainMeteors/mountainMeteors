@@ -15,10 +15,10 @@ export class Nav extends React.Component {
       />
       </div>
       );
-    }        
+    }
   }
   Nav.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
   };
-  
+
   export default Nav;

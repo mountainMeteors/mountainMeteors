@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
 import { Link } from 'react-router';
+import styles from '../../styles/style.css';
 
 
 class Header extends Component {
@@ -46,10 +47,12 @@ class Header extends Component {
  render(){
   return (
     <nav className="navbar navbar-light">
-      <Link to="/" className="navbar-brand">TESTING NAVBAR</Link>
       <ul className="nav navbar-nav">
         {this.renderLinks()}
       </ul>
+      <h1 className="title">
+        <Link to="/">seekPad</Link>
+      </h1>
     </nav>
   );
  }
