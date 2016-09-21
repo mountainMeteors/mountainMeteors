@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
-<<<<<<< 88ec910aa1c72d4d5f9bf553fbd4ad4cf2329d81
 
 //Components
 import Header from './Header/Header';
@@ -18,14 +17,6 @@ import GridSearch from './Survey/GridSearch';
 
 //CSS
 import styles from '../styles/style.css';
-=======
-import GoogMap from './Map';
-import Header from './Header';
-import Nav from './Nav'
-import Listing from './Listing';
-import Survey from './Survey';
-import Login from './Login';
->>>>>>> user login form
 
 const tempMarkers = [{
   position: {
