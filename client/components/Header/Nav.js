@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-export class Nav extends React.Component {
+class Nav extends React.Component {
   getChildContext() {
     return { muiTheme: getMuiTheme(baseTheme) };
   }

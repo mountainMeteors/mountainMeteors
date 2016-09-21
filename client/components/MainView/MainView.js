@@ -14,7 +14,12 @@ const tempMarkers = [{
 
 const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 
-const MainView = React.createClass({
+// const MainView = React.createClass({
+class MainView extends React.Component {
+  constructor(){
+    super();
+  }
+
   render() {
     return (
       <div>
@@ -28,6 +33,6 @@ const MainView = React.createClass({
       </div>
     )
   }
-});
+};
 
 export default MainView;
