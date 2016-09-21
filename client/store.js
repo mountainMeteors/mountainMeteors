@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 // import the root reducer
 import rootReducer from './reducers/index';
 
-// import comments from './data/comments';
+// Import our data (To be replaced when DB is in)
 import listings from './data/listings';
 import user from './data/user';
 

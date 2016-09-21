@@ -18,21 +18,7 @@ import GridSearch from './Survey/GridSearch';
 //CSS
 import styles from '../styles/style.css';
 
-const tempMarkers = [{
-  position: {
-    lat: 40.7701008,
-    lng: -73.9775276,
-  },
-  key: `Central Park`,
-  defaultAnimation: 2,
-}]
-
-const tempOrigin = { lat: 40.7725833, lng: -73.9736894 }
-
 const Main = React.createClass({
-
-  componentWillMount() {
-  },
 
   render() {
     console.log('PROPS', this.props);
