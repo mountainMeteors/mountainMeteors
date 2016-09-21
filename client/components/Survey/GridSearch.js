@@ -31,27 +31,27 @@ const tilesData = [
     status: "What is your price range ? ",
   },
   {
-    img:"https://thumb9.shutterstock.com/display_pic_with_logo/98341/219101932/stock-vector-seamless-new-york-city-travel-icon-souvenir-illustration-usa-background-pattern-in-vector-219101932.jpg",
+    img:"http://toeuropeandbeyond.com/wp-content/uploads/2012/10/things-to-do-in-the-west-village.jpg",
     title: 'Location',
     status: "Let's take a look at where you want to live ?" ,
   },
   {
-    img: "http://smartcommute.ca/wp-content/uploads/2015/06/Re-modeIcon_EN-01.jpg",
+    img: "http://cdn.makeuseof.com/wp-content/uploads/2013/03/icon3.png?820756",
     title: 'Commute',
     status: "Time is of the essence. how long of a commute are you looking at? ",
   },
   {
-    img: "https://d13yacurqjgara.cloudfront.net/users/6670/screenshots/1944687/amenities-icons.png",
+    img: "http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg",
     title: 'The basics',
     status: "How many bedrooms?",
   },
   {
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPj_EOfkdGxrg5OMtxrb1bwAlWUUpfWO1aVbNdvNQP9eLdcgL_Dw",
+    img: "https://d13yacurqjgara.cloudfront.net/users/52920/screenshots/1855173/amenities_icons.jpg",
     title: 'Extra Amenities',
     status: "There are a few other things...let's make it simple for you",
   },
   {
-    img:"http://www.apk20.com/image/icon-327288",
+    img:"http://www.cvranker.com/img/workwithus/petfriendly.png",
     title: 'Pets',
     status: " Pets are our best friends. Let us get to know if you have any little furry friends",
   },
