@@ -8,7 +8,11 @@ function rentDisplay(cell, row){
   return '$' + cell;
 }
 
-const Listing = React.createClass({
+class Listing extends React.Component{
+  constructor(){
+    super();
+  }
+  
   render() {
     return (
       <div>
@@ -30,6 +34,6 @@ const Listing = React.createClass({
       </div>
     )
   }
-});
+};
 
 export default Listing;
