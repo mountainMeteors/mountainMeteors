@@ -51,6 +51,7 @@ const Main = React.createClass({
           <h1 className="title">
           <Nav/>
           </h1>
+
           <Header />
         </Row>
         <Add/>
@@ -65,3 +66,12 @@ const Main = React.createClass({
 });
 
 export default Main;
+
+// <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
+//   <GoogMap markers={tempMarkers} origin={tempOrigin} />
+// </Col>
+//
+// {/* Listings */}
+// <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
+//   <Listing {...this.props}/>
+// </Col>
