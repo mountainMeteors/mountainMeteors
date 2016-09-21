@@ -1,11 +1,9 @@
-// NOT CURRENTLY USED. BUT SHOULD REPLACE THE MAP/LISTING RENDERING IN MAIN.JS
-
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import GoogMap from './Map';
 
-var tempMarkers = [{
+const tempMarkers = [{
   position: {
     lat: 40.7701008,
     lng: -73.9775276,
@@ -14,7 +12,7 @@ var tempMarkers = [{
   defaultAnimation: 2,
 }];
 
-var tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
+const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 
 const MainView = React.createClass({
   render() {
