@@ -24,7 +24,7 @@ class Main extends React.Component{
   }
 
   render() {
-    console.log('PROPS', this.props);
+    console.log('PROPS', this.props.children);
     var displayModule;
     // if (loginUser) {
     if (!this.props.user.authenticated) {
@@ -45,7 +45,7 @@ class Main extends React.Component{
         </Row>
         <Add/>
         <Row className="bodyrow">
-          {displayModule}
+          {React.cloneElement({...this.props}.children, {...this.props})}
         </Row>
 
       </Grid>
