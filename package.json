@@ -65,6 +65,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
+    "commitizen": "^2.8.6",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
     "mocha": "^2.4.5",
