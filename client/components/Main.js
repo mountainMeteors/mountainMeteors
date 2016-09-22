@@ -14,6 +14,7 @@ import Add from './Add/Add';
 import Survey from './Survey/Survey';
 import submitButton from './Survey/submitButton';
 import GridSearch from './Survey/GridSearch';
+import DropdownMenu from './Survey/DropdownMenu';
 
 //CSS
 import styles from '../styles/style.css';
@@ -32,7 +33,7 @@ class Main extends React.Component{
     } else if (this.props.user.surveys.length > 0) {
       displayModule = <MainView {...this.props}/>
     } else {
-      displayModule = <GridSearch />
+      displayModule = <DropdownMenu />
     }
     return (
       <Grid fluid={ true }>
