@@ -1,9 +1,8 @@
 
 import React from 'react';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
-  import Form, { Input, Fieldset } from 'react-bootstrap-form';
-
+import  { postSurveyAnswers } from '../actions/actionCreators'
+import Form, { Input, Fieldset } from 'react-bootstrap-form';
+import connect from 'react-redux'
 
 const styles = {
   customWidth: {
@@ -12,21 +11,39 @@ const styles = {
 };
 
 
-const DropdownMenu = React.createClass({
-    getInitialState:function(){
-        return {selectValue:'far away from MKS'};
-    },
-    handleChange:function(e){
-        this.setState({selectValue:e.target.value});
-    },
+class DropdownMenu extends Component({
+
+    constructor(props) {
+      super(props);
+
+      this.state = {filter: 'far away'}
+
+      this.getSelectedValue =
+      this.getSelectedValue.bind(this);
+      this.onFormSubmit =
+      this.onFormSubmit.bind(this);
+
+      getSelectedValue:function(event,value){
+        this.setState({filter:event.target.value});
+      },
+
+      onFormSubmit(event){
+        event.preventDefault();
+        this.props.postSurveyAnswers(this.state.filter);
+        this.setState({filter: 'far away'});
+      }
+
+
+
+
     render: function() {
-        var message='You selected '+this.state.selectValue;
-        var selection = this.state.selectValue
+        var message='You selected '+this.state.filter;
+        var selection = this.state.filter
         {console.log(message, selection)}
         return (
         <div>
-         <select value={this.state.selectValue}
-         onChange={this.handleChange}
+         <select value={this.state.filter}
+         onClick={this.onFormSubmit(event)}
          style={styles.customWidth}
          >
             <option value="somewhere near MKS">somewhere near MKS</option>
@@ -36,12 +53,17 @@ const DropdownMenu = React.createClass({
           </select>
           <p>{message}</p>
               <button className="btn btn-primary" type="submit">Submit</button>
-
-
           </div>
         );
     }
 });
 
 
-export default DropdownMenu
+//
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({postSurveyResponses}, dispatch)
+}
+
+
+
+export default connect(null, mapDispatchToProps)(DropdownMenu)

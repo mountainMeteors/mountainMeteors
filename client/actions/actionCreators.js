@@ -1,27 +1,22 @@
-// increment
-export function increment(index) {
-  return {
-    type: 'INCREMENT_LIKES',
-    index
-  }
-}
+import axios from 'axios';
 
-// add comment
-export function addComment(postId, author, comment) {
-  return {
-    type: 'ADD_COMMENT',
-    postId,
-    author,
-    comment
-  }
-}
 
-// remove comment
+export const POST_SURVEY_RESPONSES =  "POST_SURVEY_RESPONSES"
+// add surveyAnswer
+export function postSurveyAnswers({surveyAnswers}){
+		const postSurveyAnswers = axios.post(`/results`, { id  : {
+      id: id,
+      answer: answer
+    },
+		}) .then(response => {
+				console.log('good response: ', response);
+			}) .catch(response => {
+				console.log('error in action Creator: ',response);
+			});
 
-export function removeComment(postId, i) {
   return {
-    type: 'REMOVE_COMMENT',
-    i,
-    postId
+    type: POST_SURVEY_RESPONSES,
+    payload: postSurveyAnswers
   }
+
 }

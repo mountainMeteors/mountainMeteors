@@ -33,7 +33,7 @@ class Main extends React.Component{
     } else if (this.props.user.surveys.length > 0) {
       displayModule = <MainView {...this.props}/>
     } else {
-      displayModule = <DropdownMenu />
+      displayModule = <DropdownMenu {...this.props} />
     }
     return (
       <Grid fluid={ true }>
