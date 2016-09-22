@@ -9,7 +9,7 @@ class SurveyListEntry extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="surveylistentry">
         {this.props.survey.name} <br/>
         {this.props.survey.address}
       </div>
