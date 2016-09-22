@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
+
 const styles = {
   customWidth: {
     width: 200,
@@ -18,26 +19,22 @@ class DropdownMenu extends React.Component{
     constructor(props) {
       super(props);
 
-      this.state = {filter: 'far away'}
-
-      this.getSelectedValue =
-      this.getSelectedValue.bind(this);
-      this.onFormSubmit =
-      this.onFormSubmit.bind(this);
+      this.state = {filter: ''}
+      this.getSelectedValue = this.getSelectedValue.bind(this);
+      this.onFormSubmit = this.onFormSubmit.bind(this);
 
     }
 
     getSelectedValue (event,value) {
-      console.log('setting state to', value);
-      this.setState({filter:event.target.value});
+      this.setState({ filter:event.target.value });
     }
 
     onFormSubmit (event) {
       console.log('submitted', event);
       console.log('filter', this.state.filter);
-      event.preventDefault();
+      // event.preventDefault();
       this.props.postSurveyAnswers(this.state.filter);
-      // this.setState({filter: 'far away'});
+      this.setState({ filter: "" });
     }
 
 
@@ -45,12 +42,11 @@ class DropdownMenu extends React.Component{
     render() {
       var message='You selected '+this.state.filter;
       var selection = this.state.filter
-      {console.log(message, selection)}
+      {console.log(selection)}
       return (
         <div>
-         <select
-         style={styles.customWidth}
-         >
+         <select value={this.state.filter}
+          onChange={this.getSelectedValue} />
             <option value="somewhere near MKS">somewhere near MKS</option>
             <option value="MKS">MKS</option>
             <option value="West Village">West Village</option>
@@ -58,7 +54,7 @@ class DropdownMenu extends React.Component{
           </select>
           <p>{message}</p>
               <button className="btn btn-primary" type="submit"
-              onClick={this.onFormSubmit.bind(this, this.state.filter)}>
+              onSubmit={()=>this.onFormSubmit(this.state.filter)}>
                 Submit
               </button>
           </div>
@@ -69,7 +65,7 @@ class DropdownMenu extends React.Component{
 
 //
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({postSurveyAnswers}, dispatch)
+	return bindActionCreators({ postSurveyAnswers }, dispatch)
 }
 
 
