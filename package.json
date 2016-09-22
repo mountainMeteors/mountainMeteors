@@ -8,7 +8,8 @@
     "test": "NODE_ENV=production mocha './tests/**/*.spec.js' --compilers js:babel-core/register",
     "clean": "rimraf dist",
     "start": "node devServer.js",
-    "tunnel": "browser-sync start --proxy localhost:7770 --tunnel wesbos"
+    "tunnel": "browser-sync start --proxy localhost:7770 --tunnel wesbos",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -68,15 +69,22 @@
   },
   "devDependencies": {
     "babel-preset-stage-1": "^6.13.0",
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.2.0",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
   },
   "babel": {
-   "presets": [
-     "es2015",
-     "stage-1"
-   ]
- }
+    "presets": [
+      "es2015",
+      "stage-1"
+    ]
+  },
+  "config": {
+    "commitizen": {
+        "path": "node_modules/cz-conventional-changelog"
+    }
+  }
 }

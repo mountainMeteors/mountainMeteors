@@ -1,5 +1,5 @@
 //React
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 
@@ -18,7 +18,10 @@ import GridSearch from './Survey/GridSearch';
 //CSS
 import styles from '../styles/style.css';
 
-const Main = React.createClass({
+class Main extends React.Component{
+  constructor(){
+    super();
+  }
 
   render() {
     console.log('PROPS', this.props);
@@ -49,15 +52,6 @@ const Main = React.createClass({
 
     )
   }
-});
+};
 
 export default Main;
-
-// <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
-//   <GoogMap markers={tempMarkers} origin={tempOrigin} />
-// </Col>
-//
-// {/* Listings */}
-// <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
-//   <Listing {...this.props}/>
-// </Col>
