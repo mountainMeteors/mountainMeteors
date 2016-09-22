@@ -1,0 +1,7 @@
+var config = {
+hostName: 'mysqlcluster14.registeredsite.com',
+userName: 'meteoradmin',
+password: '4Rfv5tgb6yhn'
+}
+
+module.exports = config;
