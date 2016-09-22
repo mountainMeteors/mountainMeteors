@@ -11,6 +11,8 @@ import Listing from './components/MainView/Listing';
 import Welcome from './components/Welcome/Welcome';
 import Add from './components/Add/Add';
 import GridSearch from './components/Survey/GridSearch';
+import SurveyList from './components/SurveyList/SurveyList';
+import MainView from './components/MainView/MainView';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -21,10 +23,11 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Listing}></IndexRoute>
+        <IndexRoute component={MainView}></IndexRoute>
         <Route path="/welcome" component={Welcome}></Route>
         <Route path="/add" component={Add}></Route>
         <Route path="/survey" component={GridSearch}></Route>
+        <Route path="/results" component={SurveyList} />
       </Route>
     </Router>
   </Provider>

@@ -12,11 +12,10 @@ class Listing extends React.Component{
   constructor(){
     super();
   }
-  
+
   render() {
     return (
       <div>
-
         <BootstrapTable data={this.props.listings} hover={true} pagination={true}>
           <TableHeaderColumn dataField="address" isKey={true} dataSort={true}>
             Address
