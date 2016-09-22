@@ -11,6 +11,7 @@ import Listing from './components/MainView/Listing';
 import Welcome from './components/Welcome/Welcome';
 import Add from './components/Add/Add';
 import GridSearch from './components/Survey/GridSearch';
+import SurveyList from './components/SurveyList/SurveyList';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -26,6 +27,7 @@ const router = (
         <Route path="/add" component={Add}></Route>
         <Route path="/survey" component={GridSearch}></Route>
       </Route>
+      <Route path="/surveylist" component={SurveyList} />
     </Router>
   </Provider>
 )
