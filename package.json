@@ -71,6 +71,7 @@
     "babel-preset-stage-1": "^6.13.0",
     "commitizen": "^2.8.6",
     "cz-conventional-changelog": "^1.2.0",
+    "commitizen": "^2.8.6",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
     "mocha": "^2.4.5",
