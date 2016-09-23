@@ -20,8 +20,8 @@ class DropdownMenu extends React.Component{
       super(props);
 
       this.state = {filter: ''}
-      // this.getSelectedValue = this.getSelectedValue.bind(this);
-      // this.onFormSubmit = this.onFormSubmit.bind(this);
+      this.getSelectedValue = this.getSelectedValue.bind(this);
+      this.onFormSubmit = this.onFormSubmit.bind(this);
 
     }
 
@@ -31,9 +31,9 @@ class DropdownMenu extends React.Component{
     }
 
     onFormSubmit (event) {
-      console.log('submitted', event);
-      console.log('filter', this.state.filter);
+      // console.log('submitted', event);
       event.preventDefault();
+      console.log('filter', this.state.filter);
       // this.props.postSurveyAnswers(this.state.filter);
       // this.setState({ filter: "" });
 
@@ -53,9 +53,9 @@ class DropdownMenu extends React.Component{
       {console.log('rendered', selection)}
       return (
         <div className="col-sm-12">
-          <form onSubmit={() => this.onFormSubmit()}>
+          <form onSubmit={this.onFormSubmit}>
             <div className="form-group col-sm-7">
-              <select ref={(ref) => this.getRef(ref)}>
+              <select value={this.state.filter} onChange={this.getSelectedValue}>
                  <option value="somewhere near MKS">somewhere near MKS</option>
                  <option value="MKS">MKS</option>
                  <option value="West Village">West Village</option>
