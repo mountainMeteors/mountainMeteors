@@ -13,6 +13,7 @@ import Add from './components/Add/Add';
 import GridSearch from './components/Survey/GridSearch';
 import SurveyList from './components/SurveyList/SurveyList';
 import MainView from './components/MainView/MainView';
+import DropdownMenu from './components/Survey/DropdownMenu';
 
 // import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -26,7 +27,7 @@ const router = (
         <IndexRoute component={MainView}></IndexRoute>
         <Route path="/welcome" component={Welcome}></Route>
         <Route path="/add" component={Add}></Route>
-        <Route path="/survey" component={GridSearch}></Route>
+        <Route path="/survey" component={DropdownMenu}></Route>
         <Route path="/results" component={SurveyList} />
       </Route>
     </Router>

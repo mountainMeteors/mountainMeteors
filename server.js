@@ -7,6 +7,12 @@ const jwt = require('express-jwt');
 const cors = require('cors');
 const app = express();
 const compiler = webpack(config);
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // const authCheck = jwt({
 //
@@ -49,6 +55,11 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.get('*', function(req, res) {
   console.log('req.url', req.url);
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+
+app.post('/results', (req, res) => {
+  res.send('got here');
 });
 
 app.listen(7779, 'localhost', function(err) {

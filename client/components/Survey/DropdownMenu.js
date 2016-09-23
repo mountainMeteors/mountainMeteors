@@ -20,7 +20,11 @@ class DropdownMenu extends React.Component{
     constructor(props) {
       super(props);
 
-      this.state = {filter: ''}
+      //TODO: Change to be dynamic
+      this.state = {
+        location: 'somewhere near MKS',
+        pets: 'Cats'
+      }
       this.onSelectChange = this.onSelectChange.bind(this);
       this.onFormSubmit = this.onFormSubmit.bind(this);
 
@@ -31,6 +35,8 @@ class DropdownMenu extends React.Component{
       var stateObj = {};
       stateObj[dropdown.target.name] = dropdown.target.value;
       this.setState(stateObj);
+      // this.setState({dropdown.target.name: dropdown.target.value});
+
     }
 
     onFormSubmit (event) {              //onSubmit fn
@@ -39,6 +45,7 @@ class DropdownMenu extends React.Component{
         location: this.state.location,
         pets: this.state.pets
       }
+      console.log("this+++++",this)
       this.props.postSurveyAnswers(surveyResponse);
     }
 
