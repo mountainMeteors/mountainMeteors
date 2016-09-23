@@ -26,25 +26,32 @@ class DropdownMenu extends React.Component{
     }
 
     getSelectedValue (event) {
-      console.log('setting state to', event);
-      this.setState({ filter:event.target.value });
+      console.log('SETTING STATE AT', event.target.name, 'TO', event.target.value);
+      var stateObj = {};
+      stateObj[event.target.name] = event.target.value;
+      this.setState(stateObj);
+
+      // WORKS, BUT FOR SINGLE BOXES ONLY
+      // this.setState({ filter:event.target.value });
     }
 
     onFormSubmit (event) {
-      // console.log('submitted', event);
       event.preventDefault();
-      console.log('filter', this.state.filter);
+
+        //WORKS, BUT ONLY ONE BOX
+      // console.log('filter', this.state.filter);
       // this.props.postSurveyAnswers(this.state.filter);
-      // this.setState({ filter: "" });
 
+      // console.log('state stuff', this.state.location, this.state.pets);
+      var surveyResponse = {
+        location: this.state.location,
+        pets: this.state.pets
+      }
+      // console.log('ready to send survey response', surveyResponse);
+      this.props.postSurveyAnswers(surveyResponse);
 
     }
 
-
-    getRef(ref){
-      console.log('getting ref', ref);
-      this.usernameRef = ref;
-    }
 
     render() {
 
@@ -55,12 +62,19 @@ class DropdownMenu extends React.Component{
         <div className="col-sm-12">
           <form onSubmit={this.onFormSubmit}>
             <div className="form-group col-sm-7">
-              <select value={this.state.filter} onChange={this.getSelectedValue}>
+              <select name="location" value={this.state.location} onChange={this.getSelectedValue}>
                  <option value="somewhere near MKS">somewhere near MKS</option>
                  <option value="MKS">MKS</option>
                  <option value="West Village">West Village</option>
                  <option value="East Village">East Village</option>
                </select>
+            </div>
+            <div className="form-group col-sm-7">
+              <select name="pets" value={this.state.pets} onChange={this.getSelectedValue}>
+                <option value="cats">Cats</option>
+                <option value="dogs">Dogs</option>
+                <option value="none">None</option>
+              </select>
             </div>
             <div className="form-group col-sm-5">
               <button type="submit" className="btn btn-block btn-primary">Search Github</button>
@@ -77,6 +91,14 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ postSurveyAnswers }, dispatch)
 }
 
-
-
 export default connect(null, mapDispatchToProps)(DropdownMenu)
+
+
+
+// <div className="form-group col-sm-7">
+//   <select name="pets" value={this.state.filter} onChange={this.getSelectedValue}>
+//     <option value="cats">Cats</option>
+//     <option value="dogs">Dogs</option>
+//     <option value="none">None</option>
+//   </select>
+// </div>
