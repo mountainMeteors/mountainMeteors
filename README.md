@@ -1,2 +1,0 @@
-# mountainMeteors
-Thesis
