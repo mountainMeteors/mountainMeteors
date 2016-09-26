@@ -2,26 +2,22 @@ import axios from 'axios';
 
 
 
-export const LOGIN_USER = 'LOGIN_USER';
+export const SIGNUP_USER = 'SIGNUP_USER';
 
-export function loginUser(email, password){
-  // const request = axios.post('/login', {user: {
-  //   email: email,
-  //   password: password
-  // }}).catch((response) => {
-  //   if(response instanceof Error){
-  //     console.error('Erros sending response', response);
-  //   } else {
-  //     console.error('Error from server', response);
-  //   }
-  // });
+export const signUpUser = function(user){
+  console.log("USER OBJ", user)
+  const request = axios.post('/api/signup', {
+    email: user.email,
+    password: user.password
+  }).catch((response) => {
+    if(response instanceof Error){
+      console.error('Error sending response', response);
+    } else {
+      console.error('Error from server', response);
+    }
+  });
   //
-  // return {
-  //   type: LOGIN_USER,
-  //   payload: request
-  // };
-
   return {
-    type: 'LOGIN'
-  }
+    type: 'SIGNUP'
+  };
 }

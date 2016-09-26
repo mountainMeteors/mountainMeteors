@@ -10,7 +10,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
   return db('users')
   .insert({ email: req.body.email, password: req.body.password})
   .then(function() {
