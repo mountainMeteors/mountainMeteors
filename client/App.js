@@ -5,8 +5,6 @@ import { render } from 'react-dom';
 import LoginForm from './LoginForm.js';
 import { loginUser } from './actionCreators/accountActions';
 
-console.log('connect', connect)
-
 class App extends React.Component {
   constructor(){
     super();
@@ -15,7 +13,6 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        Grah
         <LoginForm />
       </div>
     )
@@ -29,4 +26,4 @@ function mapDispatchToProps(dispatch) {
 // render(<App />, document.getElementById('root'))
 
 // export default connect(null, mapDispatchToProps)(App);
-export default App;
+export default Main

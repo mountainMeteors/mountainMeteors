@@ -4,10 +4,12 @@ import {browserHistory} from 'react-router';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/reducers.js'
 
+import listings from '../data/listings';
+
 const user = [];
 
 const defaultState = {
-  user
+  listings
 }
 
 const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
