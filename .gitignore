@@ -34,6 +34,7 @@ client/lib
 node_modules/
 dist/
 .DS_Store
+client/public
 bundle.js
 *.log
 course.md

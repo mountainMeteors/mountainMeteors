@@ -5,7 +5,7 @@ const BUILD_DIR = path.resolve(__dirname, 'client/public');
 const APP_DIR = path.resolve(__dirname, 'client');
 
 var config = {
-  devtool: 'eval',
+  // devtool: 'eval',
   entry: [
     './client/index.js'
   ],
@@ -15,11 +15,20 @@ var config = {
     },
   module: {
     loaders: [
-    {
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'client')
-    }
+      // Transpiler
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'client')
+      },
+
+      // CSS
+      {
+        test: /\.css?$/,
+        include: path.join(__dirname, 'client'),
+        // loader: 'style!css'
+        loaders: ["css"]
+      }
     ]
   }
 };
