@@ -6,15 +6,13 @@ import rootReducer from '../reducers/reducers.js'
 
 import listings from '../data/listings';
 
-const user = [];
-
 const defaultState = {
-  listings
+  listings: listings
 }
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
+const store = createStore(rootReducer, defaultState);
 
-
+console.log('store', store);
 
 export const history = syncHistoryWithStore(browserHistory, store);
 export default store;

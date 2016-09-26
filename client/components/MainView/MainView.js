@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
-import GoogMap from './Map';
-
-const tempMarkers = [{
-  position: {
-    lat: 40.7701008,
-    lng: -73.9775276,
-  },
-  key: `Central Park`,
-  defaultAnimation: 2,
-}];
-
-const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
+import {connect} from 'react-redux';
+// import GoogMap from './Map';
 
 // const MainView = React.createClass({
 class MainView extends React.Component {
@@ -35,4 +25,22 @@ class MainView extends React.Component {
 };
   // <GoogMap markers={tempMarkers} origin={tempOrigin} />
 
-export default MainView;
+  function mapStateToProps(state) {
+    return {
+      listings: state.listings
+    }
+  }
+
+  // function mapDispatchToProps(dispatch) {
+  //   return {
+  //     plsSignInUser: (user) => {
+  //       dispatch(signInUser(user))
+  //     }
+  //   }
+  // }
+
+  // export default LoginForm;
+  export default connect(mapStateToProps, null)(MainView);
+
+
+// export default MainView;
