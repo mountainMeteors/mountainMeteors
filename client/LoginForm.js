@@ -4,6 +4,7 @@ import { Form, FormControl, FormGroup, Col, Button, ControlLabel } from 'react-b
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { signUpUser } from './actionCreators/accountActions'
 
 class LoginForm extends React.Component {
   constructor(props){
@@ -15,6 +16,10 @@ class LoginForm extends React.Component {
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     console.log("THIS", this)
+  }
+
+  componentDidMount() {
+    console.log('props mounted', this.props)
   }
 
   onEmailChange(event){
@@ -30,18 +35,9 @@ class LoginForm extends React.Component {
     event.preventDefault();
     console.log("IN FORM SUBMIT", this.state.password)
     console.log('props', this.props);
-    this.props.loginUser();
+    console.log('sending', this.state.email, this.state.password);
+    this.props.signUpUser({email: this.state.email, password: this.state.password});
 
-    axios.post('/api/login', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(function(response){
-      console.log(response);
-    })
-    .catch(function (error){
-      console.log(error);
-    })
   }
 
 
@@ -56,7 +52,7 @@ class LoginForm extends React.Component {
                 Email
               </Col>
               <Col sm={10}>
-                <FormControl type="email" placeholder="Email" onChange={this.onEmailChange}/>
+                <FormControl value={this.state.email} type="email" placeholder="Email" onChange={this.onEmailChange}/>
               </Col>
             </FormGroup>
 
@@ -65,7 +61,7 @@ class LoginForm extends React.Component {
                 Password
               </Col>
               <Col sm={10}>
-                <FormControl type="password" placeholder="Password" onChange={this.onPasswordChange}/>
+                <FormControl value={this.state.password} type="password" placeholder="Password" onChange={this.onPasswordChange}/>
               </Col>
             </FormGroup>
 
@@ -82,9 +78,14 @@ class LoginForm extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    email: state.email
+  }
+}
 
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({signUpUser}, dispatch)
+}
 
-
-
-export default LoginForm;
-// export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
