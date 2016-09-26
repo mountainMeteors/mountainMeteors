@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-const authRoutes = require('./server/routes/authRoutes');
+const accountRoutes = require('./server/routes/accountRoutes');
 
-app.use('/api', authRoutes);
+app.use('/api', accountRoutes);
 
 app.get('/public/bundle.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/public/bundle.js'));

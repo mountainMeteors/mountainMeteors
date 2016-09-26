@@ -4,6 +4,7 @@ import { Form, FormControl, FormGroup, Col, Button, ControlLabel } from 'react-b
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { loginUser } from './actionCreators/accountActions'
 
 class LoginForm extends React.Component {
   constructor(props){
@@ -32,7 +33,7 @@ class LoginForm extends React.Component {
     console.log('props', this.props);
     this.props.loginUser();
 
-    axios.post('/api/login', {
+    axios.post('/api/', {
       email: this.state.email,
       password: this.state.password
     })
@@ -82,9 +83,14 @@ class LoginForm extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    email: state.email
+  }
+}
 
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(loginUser, dispatch)
+}
 
-
-
-export default LoginForm;
-// export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

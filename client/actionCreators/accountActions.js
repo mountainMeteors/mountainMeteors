@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 
+
 export const LOGIN_USER = 'LOGIN_USER';
 
 export function loginUser(email, password){
@@ -20,5 +21,7 @@ export function loginUser(email, password){
   //   payload: request
   // };
 
-  console.log("IN LOGIN USER")
+  return {
+    type: 'LOGIN'
+  }
 }
