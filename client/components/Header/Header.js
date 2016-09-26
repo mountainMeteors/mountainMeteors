@@ -2,7 +2,7 @@ import React from 'react';
 
 // import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
 import { Link } from 'react-router';
-import styles from '../../styles/style.css';
+import css from '../../styles/style.css';
 
 
 class Header extends React.Component {

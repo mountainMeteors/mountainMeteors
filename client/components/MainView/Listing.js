@@ -1,12 +1,9 @@
 import React from 'react';
-import { SplitButton, MenuItem } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import styles from '../../styles/react-bootstrap-table.min.css';
-// import {Table, Thead, Th, Tr} from 'reactable';
+// import { SplitButton, MenuItem } from 'react-bootstrap';
+// import css from '../../styles/react-bootstrap-table.min.css';
 
-function rentDisplay(cell, row){
-  return '$' + cell;
-}
+const rentDisplay = cell => '$' + cell;
 
 class Listing extends React.Component{
   constructor(){

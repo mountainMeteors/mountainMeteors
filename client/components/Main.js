@@ -32,7 +32,7 @@ class Main extends React.Component{
           <Header />
         </Row>
         <Row className="bodyrow">
-          <MainView />
+          {React.cloneElement({...this.props}.children, {...this.props})}
         </Row>
 
       </Grid>
@@ -41,5 +41,5 @@ class Main extends React.Component{
   }
 };
 
-  // {React.cloneElement({...this.props}.children, {...this.props})}
+
 export default Main;
