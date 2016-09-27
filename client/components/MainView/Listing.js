@@ -10,6 +10,10 @@ class Listing extends React.Component{
     super();
   }
 
+  componentDidMount() {
+    console.log('Listing props', this.props);
+  }
+
   render() {
     return (
       <div>

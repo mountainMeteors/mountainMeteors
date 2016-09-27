@@ -3,6 +3,9 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import {connect} from 'react-redux';
 import GoogMap from './Map';
+import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { getListings } from '../../actionCreators/listingActions.js';
 
 const tempMarkers = [{
   position: {
@@ -18,6 +21,12 @@ const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 class MainView extends React.Component {
   constructor(){
     super();
+  }
+
+
+
+  componentWillMount() {
+    this.props.getListings();
   }
 
   render() {
@@ -42,4 +51,8 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(MainView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({getListings}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);
