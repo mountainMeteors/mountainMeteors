@@ -27,12 +27,6 @@ class MainView extends React.Component {
     this.props.getListings();
   }
 
-
-  componentDidUpdate() {
-    console.log('props now', this.props);
-    console.log('state now', this.state);
-  }
-
   render() {
     return (
       <div>

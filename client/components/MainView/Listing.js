@@ -1,11 +1,11 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-// import { SplitButton, MenuItem } from 'react-bootstrap';
-// import css from '../../styles/react-bootstrap-table.min.css';
 
+//Formatting
 const rentDisplay = cell => '$' + cell;
-
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
+
+
 
 class Listing extends React.Component{
   constructor(props){
@@ -14,10 +14,6 @@ class Listing extends React.Component{
 
   componentDidMount() {
     console.log('Listing props', this.props);
-  }
-
-  componentDidUpdate() {
-    console.log('listing props now', this.props);
   }
 
   render() {

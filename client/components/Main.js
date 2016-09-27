@@ -14,10 +14,6 @@ class Main extends React.Component{
     super();
   }
 
-  componentDidMount() {
-    console.log('props', this.props);
-  }
-
   render() {
     return (
       <Grid fluid={ true }>
