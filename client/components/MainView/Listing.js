@@ -5,20 +5,26 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 const rentDisplay = cell => '$' + cell;
 
+const intToBool = cell  => cell === 0 ? 'yes' : 'no';
+
 class Listing extends React.Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   componentDidMount() {
     console.log('Listing props', this.props);
   }
 
+  componentDidUpdate() {
+    console.log('listing props now', this.props);
+  }
+
   render() {
     return (
       <div>
         <BootstrapTable data={this.props.listings} hover={true} pagination={true}>
-          <TableHeaderColumn dataField="address" isKey={true} dataSort={true}>
+          <TableHeaderColumn dataField="location" isKey={true} dataSort={true}>
             Address
           </TableHeaderColumn>
           <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
@@ -27,7 +33,7 @@ class Listing extends React.Component{
           <TableHeaderColumn dataField="pets" dataSort={true}>
             Pets
           </TableHeaderColumn>
-          <TableHeaderColumn dataField="gym" dataSort={true}>
+          <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
             Gym
           </TableHeaderColumn>
         </BootstrapTable>

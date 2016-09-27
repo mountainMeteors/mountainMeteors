@@ -23,10 +23,14 @@ class MainView extends React.Component {
     super();
   }
 
-
-
   componentWillMount() {
     this.props.getListings();
+  }
+
+
+  componentDidUpdate() {
+    console.log('props now', this.props);
+    console.log('state now', this.state);
   }
 
   render() {
