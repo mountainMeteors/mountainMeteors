@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-
 export const SIGNUP_USER = 'SIGNUP_USER';
 
 export const signUpUser = function(user){

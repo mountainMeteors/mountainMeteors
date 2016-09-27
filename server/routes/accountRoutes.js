@@ -5,10 +5,10 @@ const db = require('../db.js')
 
 // const authUtil = require('../util/authUtil')
 
-router.use((req, res, next) => {
-  console.log('Request at /accounts received');
-  next();
-});
+// router.use((req, res, next) => {
+//   console.log('Request at /accounts received');
+//   next();
+// });
 
 router.post('/signup', (req, res) => {
   return db('users')
