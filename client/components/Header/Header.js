@@ -59,18 +59,4 @@ class Header extends React.Component {
 
 }
 
-// <Navbar>
-//   <Navbar.Header>
-//     <Navbar.Brand>
-//     <h1>
-//         <Link to="/">seekPad</Link>
-//     </h1>
-//     </Navbar.Brand>
-//   </Navbar.Header>
-//   <Nav>
-//     <NavItem onClick={this.login}>Login</NavItem>
-//     <NavItem onClick={this.logout}>Logout</NavItem>
-//   </Nav>
-// </Navbar>
-
 export default Header;

@@ -5,13 +5,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 //Components
 import Header from './Header/Header';
-import MainView from './MainView/MainView';
-// import Welcome from './Welcome/Welcome';
-// import Add from './Add/Add';
-// import Survey from './Survey/Survey';
-// import submitButton from './Survey/submitButton';
-// import GridSearch from './Survey/GridSearch';
-// import DropdownMenu from './Survey/DropdownMenu';
 
 //CSS
 // import css from '../styles/style.css';

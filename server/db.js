@@ -35,5 +35,26 @@ db.schema.hasTable('users').then(function(exists){
   }
 });
 
+db.schema.hasTable('listings').then(function(exists){
+  if(!exists){
+    return db.schema.createTable('listings', function(user) {
+      user.increments('id').primary();
+      user.string('location', 255).unique();
+      user.string('rent', 50);
+      user.string('pets', 50);
+      user.integer('sq_ft');
+      user.boolean('gym');
+      user.boolean('washer_dryer');
+      user.boolean('dishwasher');
+      user.boolean('no_fee');
+      user.timestamps();
+      console.log('Created listings table');
+    })
+    .catch(function(err){
+      console.error(err);
+    });
+  }
+});
+
 
 module.exports = db;
