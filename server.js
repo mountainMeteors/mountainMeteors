@@ -22,8 +22,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 const accountRoutes = require('./server/routes/accountRoutes');
+const listingRoutes = require('./server/routes/listingRoutes');
 
 app.use('/api', accountRoutes);
+app.use('/api', listingRoutes);
 
 app.get('/public/bundle.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/public/bundle.js'));
