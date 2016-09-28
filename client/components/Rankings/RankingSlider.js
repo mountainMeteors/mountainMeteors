@@ -15,6 +15,9 @@ class RankingSlider extends Component {
       commute: 5,
       extras: 5
     }
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+
+
   }
 // state[criteria] = value
   handleChange = (criteria,value) => {
@@ -35,14 +38,15 @@ class RankingSlider extends Component {
       extras: this.state.extras
     }
     console.log("this+++++",this)
-    this.props.postSurveyAnswers(rankings);
+    console.log(rankings)
+    // this.props.postSurveyAnswers(rankings);
   }
 
   render () {
     const { value } = this.state
     return (
       <div>
-
+      <form onSubmit={this.onFormSubmit}>
       /*neighborhood*/
       <div className='horizontal-slider'>
       <h4>How important is neighborhood ?</h4>
@@ -128,6 +132,9 @@ class RankingSlider extends Component {
       <hr />
         </div>
 
+        <button type="submit" className="btn btn-block btn-primary">Submit</button>
+
+        </form>
           </div>
 
 
