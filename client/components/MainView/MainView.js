@@ -3,6 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import {connect} from 'react-redux';
 import GoogMap from './Map';
+import AddListingsModal from '../AddListingsModal'
 
 const tempMarkers = [{
   position: {
@@ -28,6 +29,7 @@ class MainView extends React.Component {
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
+          <AddListingsModal />
           <Listing listings={this.props.listings} />
         </Col>
       </div>

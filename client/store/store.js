@@ -10,7 +10,7 @@ const defaultState = {
   listings: listings
 }
 
-const store = createStore(rootReducer, defaultState);
+let store = createStore(rootReducer, defaultState, window.devToolsExtension && window.devToolsExtension());
 
 console.log('store', store);
 

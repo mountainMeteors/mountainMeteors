@@ -1,10 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom'
-import { Form, FormControl, FormGroup, Col, Button, ControlLabel } from 'react-bootstrap'
+import { render } from 'react-dom';
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { signUpUser } from './actionCreators/accountActions'
+import { signUpUser } from './actionCreators/accountActions';
 
 class LoginForm extends React.Component {
   constructor(props){
