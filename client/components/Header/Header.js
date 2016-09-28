@@ -15,7 +15,9 @@ class Header extends React.Component {
     this.state = {
       authenticated: false,
       signUpEmail: '',
-      signUpPassword: ''
+      signUpPassword: '',
+      loginEmail: '',
+      loginPassword: ''
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -52,14 +54,19 @@ class Header extends React.Component {
     } else {
       return [
       <li className="nav-item" key={1}>
-        <Link className="nav-link" to="/signin">Sign In</Link>
-      </li>,
-      <li className="nav-item" key={2}>
-        {/*<Link className="nav-link" to="/signup">Sign Up</Link>*/}
+        {/*<Link className="nav-link" to="/signin">Sign In</Link>*/}
         <form onSubmit={this.signUpSubmit}>
           <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
           <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
           <button type="submit">Signup</button>
+        </form>
+      </li>,
+      <li className="nav-item" key={2}>
+        {/*<Link className="nav-link" to="/signup">Sign Up</Link>*/}
+        <form onSubmit={this.loginSubmit}>
+          <input name="loginEmail" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
+          <input name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}></input>
+          <button type="submit">Login</button>
         </form>
       </li>
       ];
