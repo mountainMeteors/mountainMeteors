@@ -6,7 +6,7 @@ import css from '../../styles/style.css';
 
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { signUpUser } from '../../actionCreators/accountActions'
+import { signUpUser, loginUser } from '../../actionCreators/accountActions'
 
 class Header extends React.Component {
 
@@ -23,12 +23,12 @@ class Header extends React.Component {
     this.logout = this.logout.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.signUpSubmit = this.signUpSubmit.bind(this);
+    this.loginSubmit = this.loginSubmit.bind(this);
   }
 
   login(){
    this.setState({authenticated: true});
   }
-
 
   logout(){
    this.setState({authenticated: false});
@@ -44,6 +44,11 @@ class Header extends React.Component {
   signUpSubmit(e) {
     e.preventDefault();
     this.props.signUpUser({email: this.state.signUpEmail, password: this.state.signUpPassword});
+  }
+
+  loginSubmit(e) {
+    e.preventDefault();
+    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword});
   }
 
   renderLinks(){
@@ -90,7 +95,7 @@ class Header extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ signUpUser }, dispatch)
+	return bindActionCreators({ signUpUser, loginUser }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(Header)
