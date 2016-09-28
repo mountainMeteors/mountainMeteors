@@ -11,10 +11,14 @@ const db = require('../db.js')
 // });
 
 router.post('/signup', (req, res) => {
+  console.log('server-side signup');
   return db('users')
   .insert({ email: req.body.email, password: req.body.password})
   .then(function() {
      res.send('account created');
+  })
+  .catch(function() {
+    res.send('username exists');
   });
 });
 

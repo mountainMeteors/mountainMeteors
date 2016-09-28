@@ -4,18 +4,24 @@ import React from 'react';
 import { Link } from 'react-router';
 import css from '../../styles/style.css';
 
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { signUpUser } from '../../actionCreators/accountActions'
 
 class Header extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      authenticated: true
+      authenticated: false,
+      signUpEmail: '',
+      signUpPassword: ''
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.signUpSubmit = this.signUpSubmit.bind(this);
   }
-
 
   login(){
    this.setState({authenticated: true});
@@ -26,18 +32,35 @@ class Header extends React.Component {
    this.setState({authenticated: false});
   }
 
+  handleInputChange(input) {
+    // console.log('SETTING STATE AT', input.target.name, 'TO', input.target.value);
+    var stateObj = {};
+    stateObj[input.target.name] = input.target.value;
+    this.setState(stateObj);
+  }
+
+  signUpSubmit(e) {
+    e.preventDefault();
+    this.props.signUpUser({email: this.state.signUpEmail, password: this.state.signUpPassword});
+  }
+
   renderLinks(){
-    if(this.props.authenticated){
+    if(this.state.authenticated){
       return <li className="nav-item">
         <Link className="nav-link" to="/signout">Sign Out</Link>
       </li>
     } else {
       return [
-        <li className="nav-item" key={1}>
+      <li className="nav-item" key={1}>
         <Link className="nav-link" to="/signin">Sign In</Link>
       </li>,
       <li className="nav-item" key={2}>
-        <Link className="nav-link" to="/signup">Sign Up</Link>
+        {/*<Link className="nav-link" to="/signup">Sign Up</Link>*/}
+        <form onSubmit={this.signUpSubmit}>
+          <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
+          <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
+          <button type="submit">Signup</button>
+        </form>
       </li>
       ];
     }
@@ -59,4 +82,8 @@ class Header extends React.Component {
 
 }
 
-export default Header;
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ signUpUser }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Header)
