@@ -57,4 +57,23 @@ db.schema.hasTable('listings').then(function(exists){
 });
 
 
+db.schema.hasTable('Rankings').then(function(exists){
+  if(!exists){
+    return db.schema.createTable('rankings', function(user) {
+      user.increments('id').primary();
+      user.integer('neighborhood');
+      user.integer('rent');
+      user.integer('pets');
+      user.integer('amenities');
+      user.integer('commute');
+      user.integer('extras');
+      console.log('Created listings table');
+    })
+    .catch(function(err){
+      console.error(err);
+    });
+  }
+});
+
+
 module.exports = db;
