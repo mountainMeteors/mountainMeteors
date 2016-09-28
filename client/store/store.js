@@ -16,6 +16,7 @@ const defaultState = {
 
 let store = createStore(rootReducer, defaultState, applyMiddleware(ReduxPromise), window.devToolsExtension && window.devToolsExtension());
 
+
 console.log('store', store);
 
 export const history = syncHistoryWithStore(browserHistory, store);
