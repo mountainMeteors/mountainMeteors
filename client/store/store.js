@@ -14,7 +14,9 @@ const defaultState = {
 // const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 // const store = createStoreWithMiddleware(rootReducer);
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(ReduxPromise));
+
+let store = createStore(rootReducer, defaultState, applyMiddleware(ReduxPromise), window.devToolsExtension && window.devToolsExtension());
+
 
 console.log('store', store);
 
