@@ -3,7 +3,7 @@ const db = require('../db.js')
 
 
 router.post('/rankings', function (req, res) {
-	console.log('_-----',req.body.result)
+	console.log('_-----',req.body)
   // use insert to add item into DB
   db.insert({
     neighborhood:req.body.neighborhood,
