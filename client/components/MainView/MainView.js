@@ -6,6 +6,7 @@ import GoogMap from './Map';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
+import AddListingsModal from '../AddListingsModal'
 
 const tempMarkers = [{
   position: {
@@ -37,6 +38,7 @@ class MainView extends React.Component {
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
+          <AddListingsModal />
           <Listing listings={this.props.listings} />
         </Col>
       </div>

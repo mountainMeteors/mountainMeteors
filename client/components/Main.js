@@ -27,7 +27,6 @@ class Main extends React.Component{
         <Row className="bodyrow">
           {React.cloneElement({...this.props}.children, {...this.props})}
         </Row>
-
       </Grid>
 
     )
