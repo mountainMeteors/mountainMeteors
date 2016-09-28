@@ -79,10 +79,10 @@ class RankingSlider extends Component {
       <Slider
       min={0}
       max={5}
-      value={value}
-      onChange={this.handleChange}
+      value={this.state.pets}
+      onChange={(value) => this.handleChange("pets", value)}
       />
-      <div className='value'>Min: {0} to Max: {5}</div>
+      <div className='value'>Ranking:{this.state.pets}</div>
       <hr />
       </div>
 
@@ -92,8 +92,8 @@ class RankingSlider extends Component {
       <Slider
       min={0}
       max={5}
-      value={value}
-      onChange={this.handleChange}
+      value={this.state.amenities}
+    onChange={(value) => this.handleChange("amenities", value)}
       />
       <div className='value'>Min: {0} to Max: {5}</div>
       <hr />
@@ -106,8 +106,8 @@ class RankingSlider extends Component {
       <Slider
       min={0}
       max={5}
-      value={value}
-      onChange={this.handleChange}
+      value={this.state.commute}
+    onChange={(value) => this.handleChange("commute", value)}
       />
       <div className='value'>Min: {0} to Max: {5}</div>
       <hr />
@@ -120,7 +120,7 @@ class RankingSlider extends Component {
       <Slider
       min={0}
       max={5}
-      value={value}
+          onChange={(value) => this.handleChange("extras", value)}
       onChange={this.handleChange}
       />
       <div className='value'>Min: {0} to Max: {5}</div>
