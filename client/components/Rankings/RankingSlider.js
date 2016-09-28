@@ -95,21 +95,22 @@ class RankingSlider extends Component {
       value={this.state.amenities}
     onChange={(value) => this.handleChange("amenities", value)}
       />
-      <div className='value'>Min: {0} to Max: {5}</div>
+      <div className='value'>Ranking: {this.state.amenities}</div>
       <hr />
       </div>
 
 
       /*amenities*/
       <div className='horizontal-slider'>
-      <h4>How important is commute time? ?</h4>
+      <h4>How important is commute time? </h4>
       <Slider
       min={0}
       max={5}
       value={this.state.commute}
     onChange={(value) => this.handleChange("commute", value)}
       />
-      <div className='value'>Min: {0} to Max: {5}</div>
+      <div className='value'>
+      Ranking:{this.state.commute}</div>
       <hr />
       </div>
 
@@ -120,15 +121,16 @@ class RankingSlider extends Component {
       <Slider
       min={0}
       max={5}
+      value={this.state.extras}
           onChange={(value) => this.handleChange("extras", value)}
-      onChange={this.handleChange}
       />
-      <div className='value'>Min: {0} to Max: {5}</div>
+      <div className='value'>Ranking: {this.state.extras}</div>
       <hr />
-      </div>
+        </div>
+
+          </div>
 
 
-      </div>
     )
   }
 }
