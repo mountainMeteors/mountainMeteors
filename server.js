@@ -36,10 +36,6 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/index.html'));
 });
 
-// app.post('/results', (req, res) => {
-//   res.send('got here');
-// });
-
 app.listen(2500, 'localhost', function(err) {
   if (err) {
     console.log(err);

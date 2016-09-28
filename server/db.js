@@ -38,16 +38,17 @@ db.schema.hasTable('users').then(function(exists){
 db.schema.hasTable('listings').then(function(exists){
   if(!exists){
     return db.schema.createTable('listings', function(user) {
-      user.increments('id').primary();
-      user.string('location', 255).unique();
-      user.string('rent', 50);
-      user.string('pets', 50);
-      user.integer('sq_ft');
-      user.boolean('gym');
-      user.boolean('washer_dryer');
-      user.boolean('dishwasher');
-      user.boolean('no_fee');
-      user.timestamps();
+      listing.increments('id').primary();
+
+      listing.string('location', 255).unique();
+      listing.string('rent', 50);
+      listing.string('pets', 50);
+      listing.integer('sq_ft');
+      listing.boolean('gym');
+      listing.boolean('washer_dryer');
+      listing.boolean('dishwasher');
+      listing.boolean('no_fee');
+      listing.timestamps();
       console.log('Created listings table');
     })
     .catch(function(err){
