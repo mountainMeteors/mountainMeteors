@@ -2,6 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 const ReactDOM = require('react-dom');
 import Slider from 'react-rangeslider'
+import { postRankings } from '../../actionCreators/rankingActions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 
 class RankingSlider extends Component {
@@ -39,7 +42,7 @@ class RankingSlider extends Component {
     }
     console.log("this+++++",this)
     console.log(rankings)
-    // this.props.postSurveyAnswers(rankings);
+    this.props.postRankings(rankings);
   }
 
   render () {
@@ -142,5 +145,9 @@ class RankingSlider extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ postRankings }, dispatch)
+}
 
-export default RankingSlider;
+
+export default connect(null, mapDispatchToProps)(RankingSlider);
