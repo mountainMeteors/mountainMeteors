@@ -16,13 +16,13 @@ router.post('/signup', (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
 
-  let salt = bcrypt.genSaltSync(10);
-  bcrypt.hash(password, salt, null, function(err, hash) {
+  // let salt = bcrypt.genSaltSync(10);
+  bcrypt.hash(password, null, null, function(err, hash) {
     console.log('hashing', hash);
     return db('users')
       .insert({ email: email, password: hash})
       .then(function() {
-         res.send('account created');
+        res.send('account created');
       })
       .catch(function() {
         res.send('username exists');
@@ -40,11 +40,10 @@ router.post('/login', (req, res) => {
       email: email
     })
     .then(function(dbRes) {
-      console.log('DB user search results', dbRes);
       let user = dbRes[0];
-      if (user !== undefined) {
-        console.log('comparing', password, user.password);
+      if (user) {
         bcrypt.compare(password, user.password, function(err, match) {
+          if (err) console.log('err', err);
           if (match) res.send('user found, pw matches');
           else res.send('user found, no pw match');
         })
@@ -53,7 +52,7 @@ router.post('/login', (req, res) => {
       }
     })
     .catch(function(err) {
-      console.log('error in finding user', err);
+      res.send('error in finding user' + err);
     });
 
   // let salt = bcrypt.genSaltSync(10);
