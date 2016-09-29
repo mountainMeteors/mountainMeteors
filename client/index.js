@@ -3,6 +3,8 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
+import RankingSlider from './components/Rankings/RankingSlider'
+
 
 import { Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
@@ -14,7 +16,8 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={MainView}/>
+        <IndexRoute component={MainView} />
+      <Route path="survey" component={RankingSlider} />
       </Route>
     </Router>
   </Provider>
