@@ -1,0 +1,29 @@
+const router = require('express').Router()
+const db = require('../db.js')
+
+
+router.post('/rankings', function (req, res) {
+	console.log('_-----',req.body)
+  // use insert to add item into DB
+  db.insert({
+    neighborhood:req.body.neighborhood,
+    rent:req.body.rent,
+    pets:req.body.rent,
+    amenities:req.body.rent,
+    commute:req.body.commute,
+    extras:req.body.extras,
+	})
+  .into('Rankings')
+  .then(function(){
+    res.send('working');
+  });
+})
+
+router.get('/getRankings', function(req,res) {
+  db.select().table('Rankings')
+  .then(function(results){
+    res.send(results)
+  })
+})
+
+module.exports = router
