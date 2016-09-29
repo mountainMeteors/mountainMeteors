@@ -6,7 +6,8 @@ import GoogMap from './Map';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
-import AddListingsModal from '../AddListingsModal'
+import AddListingsModal from '../AddListingsModal';
+import { browserHistory } from 'react-router';
 
 const tempMarkers = [{
   position: {
@@ -24,13 +25,16 @@ class MainView extends React.Component {
     super();
   }
 
+
   componentWillMount() {
     this.props.getListings(this.props.user_id);
+    if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
   componentDidUpdate() {
     console.log('main state updated', this.props, this.state);
     this.props.getListings(this.props.user_id);
+    if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
   render() {
@@ -53,7 +57,8 @@ class MainView extends React.Component {
 function mapStateToProps(state) {
   return {
     listings: state.listings,
-    user_id: state.auth.user_id
+    user_id: state.auth.user_id,
+    authenticated: state.auth.authenticated,
   }
 }
 
