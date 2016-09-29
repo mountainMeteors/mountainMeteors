@@ -32,7 +32,7 @@ return(
   <ul className='list-group col-sm-4'
   onClick={this.props.fetchAnswers}>
   Click here to view Below
-   /*{console.log('in render===*******===>',this.props.rankings[0])}*/
+   {console.log('in render===*******===>',this.props.rankings)}
   {this.renderList()}
   </ul>
 )
@@ -43,7 +43,7 @@ return(
 
 
 function mapStateToProps({ rankings }) {
-  // console.log('in mapstate====>', rankings)
+  console.log('in mapstate====>',{ rankings })
   return {
     rankings: rankings
   };
