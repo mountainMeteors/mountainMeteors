@@ -17,7 +17,6 @@ class Main extends React.Component{
   render() {
     return (
       <div>
-
         <Grid fluid={ true }>
           <Row id="header">
             <Header />
@@ -26,7 +25,6 @@ class Main extends React.Component{
             {React.cloneElement({...this.props}.children, {...this.props})}
           </Row>
         </Grid>
-
       </div>
     )
   }
