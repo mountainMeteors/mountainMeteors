@@ -13,25 +13,19 @@ class Header extends React.Component {
   constructor(){
     super();
     this.state = {
-      authenticated: false,
       signUpEmail: '',
       signUpPassword: '',
       loginEmail: '',
       loginPassword: ''
     }
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.signUpSubmit = this.signUpSubmit.bind(this);
     this.loginSubmit = this.loginSubmit.bind(this);
   }
 
-  login(){
-   this.setState({authenticated: true});
-  }
-
-  logout(){
-   this.setState({authenticated: false});
+  componentDidUpdate() {
+    console.log('header props', this.props);
+    console.log('header state', this.state);
   }
 
   handleInputChange(input) {
@@ -52,7 +46,7 @@ class Header extends React.Component {
   }
 
   renderLinks(){
-    if(this.state.authenticated){
+    if(this.props.authenticated){
       return <li className="nav-item">
         <Link className="nav-link" to="/signout">Sign Out</Link>
       </li>
@@ -94,8 +88,14 @@ class Header extends React.Component {
 
 }
 
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth
+  }
+}
+
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ signUpUser, loginUser }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
