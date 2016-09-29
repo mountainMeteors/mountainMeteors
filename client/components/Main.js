@@ -16,16 +16,6 @@ class Main extends React.Component{
 
   render() {
     return (
-
-      <Grid fluid={ true }>
-        <Row id="header">
-          <Header />
-        </Row>
-        <Row className="bodyrow">
-          {React.cloneElement({...this.props}.children, {...this.props})}
-        </Row>
-      </Grid>
-
       <div>
 
         <Grid fluid={ true }>
@@ -38,7 +28,20 @@ class Main extends React.Component{
         </Grid>
 
 
+
+        <Grid fluid={ true }>
+          <Row id="header">
+            <Header />
+          </Row>
+          <Row className="bodyrow">
+            {React.cloneElement({...this.props}.children, {...this.props})}
+          </Row>
+        </Grid>
+
       </div>
+
+
+
     )
   }
 };
