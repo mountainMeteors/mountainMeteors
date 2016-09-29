@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 //Components
 import Header from './Header/Header';
@@ -12,6 +13,10 @@ import Header from './Header/Header';
 class Main extends React.Component{
   constructor(){
     super();
+  }
+
+  componentDidUpdate() {
+    console.log('Main updated');
   }
 
   render() {
@@ -29,5 +34,11 @@ class Main extends React.Component{
   }
 };
 
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated,
+  }
+}
 
-export default Main;
+export default connect(mapStateToProps, null)(Main);
+// export default Main;
