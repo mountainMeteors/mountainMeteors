@@ -47,9 +47,9 @@ class RankingSlider extends Component {
     console.log("this+++++",this)
     console.log(rankings)
     this.props.postRankings(rankings)
-      .then (() => {
-        this.context.router.push('/');
-      })
+      // .then (() => {
+      //   this.context.router.push('/');
+      // })
   }
 
   render () {

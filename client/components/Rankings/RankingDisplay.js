@@ -8,6 +8,10 @@ import { connect } from 'react-redux'
 
 class Display extends React.Component {
 
+  static contextTypes= {
+    router: PropTypes.object
+  }
+
 componentWillMount() {
     this.props.fetchAnswers()
 }

@@ -4,17 +4,22 @@ import axios from 'axios';
 export const POST_RANKINGS =  "POST_RANKINGS"
 export const FETCH_RANKINGS = 'FETCH_RANKINGS';
 
+
+
+
 export function postRankings({ amenities, commute, extras, neighborhood, pets, rent }){
-  console.log('======>>>>>>>>', "herereeee")
+  const prefs = JSON.stringify({ amenities, commute, extras, neighborhood, pets, rent })
+  console.log('======>>>>>>>>', "herereeee", typeof prefs)
+
   const surveyRankings = axios.post('/api/rankings', {
-    neighborhood, rent, pets, amenities, commute, extras
+    prefs : prefs
   })
   .then(function(response){
     console.log('saved successfully')
   })
   return {
     type: POST_RANKINGS,
-    payload: surveyRankings
+    payload: JSON.parse(surveyRankings)
   }
 }
 
