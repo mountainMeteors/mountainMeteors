@@ -7,7 +7,7 @@ import rankingsReducers from './rankings'
 
 
 const rootReducer = combineReducers({
-  user, listings,
+  auth, listings,
   rankings: rankingsReducers,
   routing: routerReducer
                                 });
