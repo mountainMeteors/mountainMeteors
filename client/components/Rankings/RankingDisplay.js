@@ -9,9 +9,7 @@ import { connect } from 'react-redux'
 class Display extends React.Component {
 
 componentWillMount() {
-
     this.props.fetchAnswers()
-
 }
 
 

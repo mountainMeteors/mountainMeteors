@@ -19,7 +19,7 @@ router.post('/rankings', function (req, res) {
   });
 })
 
-router.get('/getRankings', function(req,res) {
+router.get('/rankings', function(req,res) {
   db.select().table('Rankings')
   .then(function(results){
     res.send(results)

@@ -21,7 +21,7 @@ export function postRankings({ amenities, commute, extras, neighborhood, pets, r
 
 
 export function fetchAnswers() {
-  const request = axios.get('api/getRankings');
+  const request = axios.get('api/rankings');
   console.log('+here in ACTION+++++',request)
 
   return {
