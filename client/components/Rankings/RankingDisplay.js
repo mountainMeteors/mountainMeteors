@@ -14,9 +14,6 @@ componentWillMount() {
   }
 }
 
-componentDidMount() {
-  console.log('mounted props', this.props);
-}
 
 renderList() {
   if(this.props.rankings === null) {
@@ -35,7 +32,7 @@ return(
   <ul className='list-group col-sm-4'
   onClick={this.props.fetchAnswers}>
   Click here to view Below
-   /*{console.log('in render===*******===>',this.props.rankings.data[1])}*/
+   /*{console.log('in render===*******===>',this.props.rankings[0])}*/
   {this.renderList()}
   </ul>
 )
