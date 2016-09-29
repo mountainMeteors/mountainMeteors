@@ -3,10 +3,14 @@ import { routerReducer } from 'react-router-redux';
 
 import auth from './auth.js'
 import listings from './listings.js'
-import rankings from './rankings'
+import rankingsReducers from './rankings'
 
 
-const rootReducer = combineReducers({auth, listings, rankings, routing: routerReducer});
+const rootReducer = combineReducers({
+  auth, listings,
+  rankings: rankingsReducers,
+  routing: routerReducer
+                                });
 
 
 export default rootReducer;
