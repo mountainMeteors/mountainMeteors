@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export const GET_LISTINGS = 'GETLISTINGS';
 
-export const getListings = function(){
-  const request = axios.get('/api/listings')
+export const getListings = function(user_id){
+  const request = axios.get('/api/listings/' + user_id) //LOOK INTO PARAMS
   // .then(function (response) {
   //   console.log('listings response received', response.data);
   // })
