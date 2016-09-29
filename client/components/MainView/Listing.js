@@ -16,6 +16,10 @@ class Listing extends React.Component{
     console.log('Listing props', this.props);
   }
 
+  componentDidUpdate() {
+    console.log('Listing changed', this.props);
+  }
+
   render() {
     return (
       <div>

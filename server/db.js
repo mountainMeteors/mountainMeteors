@@ -37,9 +37,10 @@ db.schema.hasTable('users').then(function(exists){
 
 db.schema.hasTable('listings').then(function(exists){
   if(!exists){
-    return db.schema.createTable('listings', function(user) {
+    return db.schema.createTable('listings', function(listing) {
       listing.increments('id').primary();
-
+      listing.integer('user_id').index().references('id').inTable('users');
+        // listing.foreign('user_id').references('users.user_id_in_items')
       listing.string('location', 255).unique();
       listing.string('rent', 50);
       listing.string('pets', 50);
@@ -57,5 +58,9 @@ db.schema.hasTable('listings').then(function(exists){
   }
 });
 
+// 1216 Broadway, Apt 2A
+// 109 Greenwich Ave, Apt 4C
+// 261 Lorimer St, Apt 2B
+// 385 Flatbush Ave, Apt 3D
 
 module.exports = db;

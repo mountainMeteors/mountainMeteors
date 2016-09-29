@@ -29,7 +29,8 @@ export const loginUser = function(user){
 
   const request = axios.post('/api/login', {
     email: user.email,
-    password: user.password
+    password: user.password,
+    user_id: user.id
   })
 
     // TODO: ENABLING THIS .THEN MAKES PAYLOAD UNDEFINED, BUT WITHOUT IT THERE'S NO ERROR REPORTING
