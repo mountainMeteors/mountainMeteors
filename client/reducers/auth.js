@@ -9,13 +9,24 @@ const auth = function(state = tokenExists, action) {
       //TODO: SIGNUP should probably just log user in
 
     case 'LOGIN':
+      console.log('REDUC LOGIN USER', action);
       token = action.payload.data.token ? action.payload.data.token : null;
       window.localStorage.setItem('userToken', token)
-      if (token) console.log('LOGGED IN');
-        else console.log('ERROR LOGGING IN', token);
+      if (token) {
+        console.log('LOGGED IN');
+        return Object.assign({}, state, {
+          authenticated: true,
+          user_id: action.payload.data.user_id
+        })
+      } else {
+        console.log('ERROR LOGGING IN', token);
+        return Object.assign({}, state, {
+          authenticated: false
+        })
+      }
       // console.log('login reduc returning', Object.assign({}, state, {authenticated: true}));
-      // return Object.assign({}, state, {authenticated: true});
-      return !!token;
+      ;
+      // return !!token;
 
     case 'LOGOUT':
       window.localStorage.setItem('userToken', null)

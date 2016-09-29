@@ -25,8 +25,8 @@ class Header extends React.Component {
   }
 
   componentDidUpdate() {
-    // console.log('header props', this.props);
-    // console.log('header state', this.state);
+    console.log('header props', this.props);
+    console.log('header state', this.state);
   }
 
   handleInputChange(input) {
@@ -43,7 +43,7 @@ class Header extends React.Component {
 
   loginSubmit(e) {
     e.preventDefault();
-    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword});
+    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword, id: this.props.user_id});
   }
 
   logoutSubmit(e) {
@@ -94,7 +94,8 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth
+    authenticated: state.auth.authenticated,
+    user_id: state.auth.user_id
   }
 }
 

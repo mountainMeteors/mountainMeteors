@@ -41,7 +41,7 @@ class MainView extends React.Component {
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
           <AddListingsModal />
-          <Listing listings={this.props.listings} />
+          <Listing listings={this.props.listings} user_id={this.props.user_id}/>
         </Col>
       </div>
     )
@@ -51,7 +51,8 @@ class MainView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    listings: state.listings
+    listings: state.listings,
+    user_id: state.auth.user_id
   }
 }
 
