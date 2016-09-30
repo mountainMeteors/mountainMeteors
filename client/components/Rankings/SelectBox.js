@@ -1,6 +1,7 @@
 "use strict"
 
-var React = require('react')
+import React from 'react';
+
 
 var div = React.createElement.bind(null, 'div')
 var button = React.createElement.bind(null, 'button')
@@ -31,9 +32,6 @@ function interceptEvent(event) {
 module.exports = React.createClass(
   {displayName: 'exports',
 
-// export default class SelectBox extends Component {
-
-  // var SelectBox = React.createClass({
   getInitialState: function () {
     return {
       id: 'react-select-box-' + (++idInc),
@@ -146,7 +144,7 @@ module.exports = React.createClass(
   handleOpen: function (event) {
     interceptEvent(event)
     this.setState({open: true}, function () {
-      this.ref.menu.getDOMNode().focus()
+      // this.ref.menu.getDOMNode().focus()
     })
   },
 
@@ -396,6 +394,3 @@ renderCloseButton: function () {
 }
 
 })
-
-
-// export default SelectBox

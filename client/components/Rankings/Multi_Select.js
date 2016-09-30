@@ -6,7 +6,10 @@ var div = React.createElement.bind(null,'div')
 var option = React.createElement.bind(null,'option')
 var h1 = React.createElement.bind(null,'h1')
 
-var MultiSelect = React.createFactory(React.createClass({displayName: 'MultiSelect',
+var MultiSelect = React.createFactory(React.createClass(
+  {displayName: 'MultiSelect',
+
+
   getInitialState: function () {
     return {
       Neighborhood: null,
@@ -22,7 +25,7 @@ var MultiSelect = React.createFactory(React.createClass({displayName: 'MultiSele
   render: function () {
     return(
       div({className: "example"},
-        h1(null, "Select Box MultiSelect"),
+        h1(null, "Do you have little furry friends?"),
         SelectBox(
           {
             label: "Favorite Neighborhood",
@@ -37,7 +40,7 @@ var MultiSelect = React.createFactory(React.createClass({displayName: 'MultiSele
           option({value: 'Upper West Side'}, 'Upper West Side'),
           option({value: 'Upper East Side'}, 'Light Upper East Side with')
         ),
-        h1(null, "Multi Select MultiSelect"),
+        h1(null, "Let's pick your fav neighborhoods"),
         SelectBox(
           {
             label: "Favorite Neighborhoods",
