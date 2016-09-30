@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import { fetchAnswers } from '../../actionCreators/rankingActions'
 import { bindActionCreators } from 'redux'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 
 
@@ -13,9 +13,17 @@ class Display extends React.Component {
   }
 
 componentWillMount() {
-    this.props.fetchAnswers()
+  // if (!this.props.isAuth){
+  //   this.context.router.push('/')
+  // }
+  console.log(this.props.user_id);
+    this.props.fetchAnswers(this.props.user_id)
 }
 
+componentDidUpdate(){
+  console.log('ranking updated !!!!!');
+  this.props.fetchAnswers(this.props.user_id)
+}
 
 renderList() {
   const  userRankings = this.props.rankings
@@ -26,10 +34,10 @@ renderList() {
    /*console.log('in HELPER =========***********=>',JSON.stringify(this.props.rankings), '=======',typeof userRankings )*/
 
     <li
-    key={userRankings.id}
+    key={userRankings.amenities}
     className='list-group-item'>
-    {userRankings.rent}
-        <strong>{userRankings.amenities}</strong>
+    Rent Budget {userRankings.rent}
+        <strong>Amenities{userRankings.amenities}</strong>
     </li>
 
 
@@ -40,10 +48,10 @@ renderList() {
 render() {
 return(
 
-  <ul className='list-group col-sm-4'
-  onClick={this.props.fetchAnswers}>
+  <ul className='list-group col-sm-4'>
+
   YOUR RANKINGS:
-   {console.log('in render===*******===>',this.props.rankings)}
+ {/*console.log('in render===*******===>',this.props.rankings)*/}
 
   {this.renderList()}
   </ul>
@@ -55,15 +63,16 @@ return(
 
 
 function mapStateToProps(state) {
-  console.log('in mapstate==*****==>', state.rankings.all, state.auth.user_id)
+  console.log('in mapstate==*****==>',state.auth.user_id)
   return {
     rankings: state.rankings.all,
-    user_id: state.auth.user_id
+    user_id: state.auth.user_id,
+    isAuth: state.auth.authenticated
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchAnswers: fetchAnswers }, dispatch);
+  return bindActionCreators({ fetchAnswers }, dispatch);
 }
 
 

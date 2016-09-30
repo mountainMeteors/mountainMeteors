@@ -19,19 +19,20 @@ export function postRankings({ amenities, commute, extras, neighborhood, pets, r
   })
   return {
     type: POST_RANKINGS,
-    payload: JSON.parse(surveyRankings)
+    payload: surveyRankings
   }
 }
 
 
 
 export function fetchAnswers(user_id) {
-  const request = axios.get('api/rankings');
+  console.log('iddddddd======>',user_id)
+  const request = axios.get("api/rankings/" + user_id);
   console.log('+here in ACTION+++++',request)
 
   return {
     type: FETCH_RANKINGS,
-    payload: request
+    payload:request
   };
 }
 
