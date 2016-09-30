@@ -15,11 +15,45 @@ router.post('/rankings', function (req, res) {
   });
 })
 
-router.get('/rankings', function(req,res) {
+// knex('books')
+// .where('published_date', '<', 2000)
+// .update({
+//   status: 'archived',
+//   thisKeyIsSkipped: undefined
+// })
+
+// insert prefs into current user
+router.post('/rankings/:id', function (req, res) {
+	console.log("prefs", req.body.prefs)
+	console.log("iddddd", req.params.id)
+  // use insert to add item into DB
+	db('users')
+	.where({id: req.params.id})
+	.insert ({
+		prefs: req.body.prefs
+	})
+  .then(function(prefs){
+    res.send(prefs);
+  });
+})
+
+// /*getAllRankings
+router.get('/rankings/', function(req,res) {
   db.select().table('users')
   .then(function(results){
     res.send(results)
   })
+})
+
+router.get('/rankings/:id', function(req,res) {
+	console.log(req.params.id)
+ db('users').where({
+	 id: req.params.id
+ }).select('prefs')
+	.then(function(results){
+		console.log(JSON.parse(results[0].prefs).amenities)
+		res.send(JSON.parse(results[0].prefs));
+	})
 })
 
 module.exports = router
