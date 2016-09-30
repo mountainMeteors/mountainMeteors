@@ -3,10 +3,15 @@ import React from 'react';
 // import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
 import { Link } from 'react-router';
 import css from '../../styles/style.css';
-
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { signUpUser, loginUser, logoutUser } from '../../actionCreators/accountActions'
+import { OverlayTrigger, Button, Popover } from 'react-bootstrap';
+
+import Main from '../Main';
+import SignUpPopover from './SignUpPopover';
+import LoginPopover from './LoginPopover';
+
+import { signUpUser, loginUser, logoutUser } from '../../actionCreators/accountActions';
 
 class Header extends React.Component {
 
@@ -18,32 +23,14 @@ class Header extends React.Component {
       loginEmail: '',
       loginPassword: ''
     }
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.signUpSubmit = this.signUpSubmit.bind(this);
-    this.loginSubmit = this.loginSubmit.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
     this.logoutSubmit = this.logoutSubmit.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log('header props', this.props);
-    console.log('header state', this.state);
-  }
-
   handleInputChange(input) {
-    // console.log('SETTING STATE AT', input.target.name, 'TO', input.target.value);
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
     this.setState(stateObj);
-  }
-
-  signUpSubmit(e) {
-    e.preventDefault();
-    this.props.signUpUser({email: this.state.signUpEmail, password: this.state.signUpPassword});
-  }
-
-  loginSubmit(e) {
-    e.preventDefault();
-    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword, id: this.props.user_id});
   }
 
   logoutSubmit(e) {
@@ -54,27 +41,25 @@ class Header extends React.Component {
   renderLinks(){
     if(this.props.authenticated){
       return <li className="nav-item">
-        <Link className="nav-link" onClick={this.logoutSubmit}>Logout</Link>
+        <Button onClick={this.logoutSubmit}>Logout</Button>
       </li>
     } else {
       return [
       <li className="nav-item" key={1}>
-        <form onSubmit={this.signUpSubmit}>
-          <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-          <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
-          <button type="submit">Signup</button>
-        </form>
+
+        {/* SIGNUP POPOVER */}
+          <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
       </li>,
       <li className="nav-item" key={2}>
-        <form onSubmit={this.loginSubmit}>
-          <input name="loginEmail" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-          <input name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}></input>
-          <button type="submit">Login</button>
-        </form>
+
+        {/* LOGIN POPOVER */}
+        <LoginPopover loginUser={this.props.loginUser} handleInputChange={this.handleInputChange} />
       </li>
+
       ];
     }
   }
+
 
 
  render(){
@@ -104,3 +89,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
+
+// <Popover id="popover-positioned-bottom">
+//   <form onSubmit={this.signUpSubmit}>
+//     <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
+//     <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
+//     <button type="submit">Signup</button>
+//   </form>
+// </Popover>

@@ -10,10 +10,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router()
 
-router.use((req, res, next) => {
-  console.log('routing all requests');
-  next();
-});
+// router.use((req, res, next) => {
+//   console.log('routing all requests');
+//   next();
+// });
 // app.use(webpackMiddleware(compiler))
 
 app.use(bodyParser.json());

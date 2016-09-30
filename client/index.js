@@ -21,7 +21,7 @@ const router = (
         <Route path="surveyForm" component={SurveyForm} />
         <Route path="survey" component={RankingSlider} />
         <Route path="profile" component={RankingDisplay} />
-        <Route path="welcome" component={Welcome}/>
+        <Route path="welcome" component={Welcome} />
       </Route>
     </Router>
   </Provider>

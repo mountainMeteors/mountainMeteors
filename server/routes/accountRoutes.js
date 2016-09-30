@@ -7,17 +7,18 @@ const util = require('../util/authUtil');
 
 // const authUtil = require('../util/authUtil')
 
-// router.use((req, res, next) => {
-//   console.log('Request at /accounts received');
-//   next();
-// });
+router.use((req, res, next) => {
+  console.log('Request at /api received');
+  // console.log('next is', next);
+  next();
+});
 
 router.post('/signup', (req, res) => {
   console.log('server-side signup with', req.body);
-  let email = req.body.email;
-  let password = req.body.password;
+  var email = req.body.email;
+  var password = req.body.password;
 
-  // let salt = bcrypt.genSaltSync(10);
+  // var salt = bcrypt.genSaltSync(10);
   bcrypt.hash(password, null, null, function(err, hash) {
     console.log('hashing', hash);
     return db('users')
@@ -31,10 +32,11 @@ router.post('/signup', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', util.checkToken, (req, res) => {
   console.log('server-side login with', req.body);
-  let email = req.body.email;
-  let password = req.body.password;
+  console.log('headers', req.headers);
+  var email = req.body.email;
+  var password = req.body.password;
 
   return db('users')
     .where({
