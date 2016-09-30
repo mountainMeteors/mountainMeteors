@@ -10,7 +10,7 @@ export const signUpUser = function(user){
   const request = axios.post('/api/signup', {
     email: user.email,
     password: user.password
-  })
+  });
 
     // TODO: ENABLING THIS .THEN MAKES PAYLOAD UNDEFINED, BUT WITHOUT IT THERE'S NO ERROR REPORTING
   // .then(function(res) {
@@ -31,6 +31,11 @@ export const loginUser = function(user){
     email: user.email,
     password: user.password,
     user_id: user.id
+  },
+  {
+    headers: {
+      'x-access-token': window.localStorage.getItem('userToken')
+    }
   })
 
     // TODO: ENABLING THIS .THEN MAKES PAYLOAD UNDEFINED, BUT WITHOUT IT THERE'S NO ERROR REPORTING

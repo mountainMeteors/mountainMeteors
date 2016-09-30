@@ -7,10 +7,11 @@ const util = require('../util/authUtil');
 
 // const authUtil = require('../util/authUtil')
 
-// router.use((req, res, next) => {
-//   console.log('Request at /accounts received');
-//   next();
-// });
+router.use((req, res, next) => {
+  console.log('Request at /api received');
+  // console.log('next is', next);
+  next();
+});
 
 router.post('/signup', (req, res) => {
   console.log('server-side signup with', req.body);
@@ -31,8 +32,9 @@ router.post('/signup', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', util.checkToken, (req, res) => {
   console.log('server-side login with', req.body);
+  console.log('headers', req.headers);
   let email = req.body.email;
   let password = req.body.password;
 
