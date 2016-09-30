@@ -19,6 +19,7 @@ router.get('/listings', (req, res) => {
 });
 
 router.get('/listings/:id', (req, res) => {
+
   console.log('listing req received at :id', req.params.id);
   return db('listings')
   // return select().from('listings')
