@@ -44,7 +44,7 @@ class RankingSlider extends Component {
       commute: this.state.commute,
       extras: this.state.extras
     }
-    console.log("this+++++",this)
+    console.log("this+++++",this.props.user_id)
     console.log(rankings)
     this.props.postRankings(rankings, this.props.user_id)
       // .then (() => {
@@ -155,7 +155,8 @@ class RankingSlider extends Component {
 function mapStateToProps(state) {
   console.log('in mapstate==*****==>', state.auth.user_id)
   return {
-    user_id: state.auth.user_id
+    user_id: state.auth.user_id,
+    isAuth: state.isAuth
   };
 }
 

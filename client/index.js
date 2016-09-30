@@ -4,6 +4,12 @@ import {render} from 'react-dom';
 import App from './components/App';
 import MainView from './components/MainView/MainView';
 import RankingSlider from './components/Rankings/RankingSlider'
+
+/*TEST with Multi-select*/
+import MultiSelect from './components/Rankings/Multi_Select'
+
+
+
 import RankingDisplay from './components/Rankings/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
@@ -20,6 +26,7 @@ const router = (
         <Route path="survey" component={RankingSlider} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
+        <Route path="select" component={MultiSelect}/>
       </Route>
     </Router>
   </Provider>
