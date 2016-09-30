@@ -28,11 +28,12 @@ function interceptEvent(event) {
   }
 }
 
-// module.exports = React.createClass(
-//   {displayName: 'exports',
+module.exports = React.createClass(
+  {displayName: 'exports',
 
-export default class SelectBox extends Component {
+// export default class SelectBox extends Component {
 
+  // var SelectBox = React.createClass({
   getInitialState: function () {
     return {
       id: 'react-select-box-' + (++idInc),
@@ -394,4 +395,7 @@ renderCloseButton: function () {
   }
 }
 
-}
+})
+
+
+// export default SelectBox
