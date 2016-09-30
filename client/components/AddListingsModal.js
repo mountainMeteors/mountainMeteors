@@ -3,12 +3,13 @@ import { render } from 'react-dom';
 import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { signUpUser } from './actionCreators/accountActions'
+import { getListings } from './actionCreators/listingsActions';
 
 class AddListingsModal extends React.Component {
   constructor(){
     super();
     this.state = {
+
       showModal: false
     }
   }
@@ -22,15 +23,29 @@ class AddListingsModal extends React.Component {
     this.setState({ showModal: true });
   }
 
+  handleChange = (criteria, value) => {
+    this.setState({
+      [criteria]: value
+    })
+  }
+
+  onModalSubmit (event) {
+    event.preventDefault();
+    let listings = {
+      location: this.state.location,
+      price: this.state.price,
+      pets: this.state.pets
+    }
+    this.props.getListings(listings, this.props.user_id);
+  }
+
   render() {
     const popover = (
      <Popover id="modal-popover" title="popover">
-       very popover. such engagement
      </Popover>
    );
    const tooltip = (
      <Tooltip id="modal-tooltip">
-       wow.
      </Tooltip>
    );
 
@@ -51,24 +66,30 @@ class AddListingsModal extends React.Component {
          </Modal.Header>
          <Modal.Body>
          <div>
-           <Form onSubmit=''>
+           <Form onSubmit={this.onModalSubmit}>
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
                {' '}
-               <FormControl type="text" placeholder="123 BeaconHill" />
+                <FormControl value={this.state.location}
+                onChange={(value) => this.handleChange("location",value)}
+                type="text" placeholder="123 BeaconHill" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">
                <ControlLabel>Budget</ControlLabel>
                {' '}
-               <FormControl type="price" placeholder="$2000" />
+               <FormControl value={this.state.price}
+               onChange={(value) => this.handleChange("price",value)}
+               type="price" placeholder="$2000" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPets" validationState="success">
                <ControlLabel>Input with success</ControlLabel>
-               <FormControl type="text" />
+               <FormControl value={this.state.pets}
+               onChange={(value) => this.handleChange("pets",value)}
+               type="text" />
              </FormGroup>
-             {'  '}
+             {' '}
              <Button type="submit">
                Send
              </Button>
