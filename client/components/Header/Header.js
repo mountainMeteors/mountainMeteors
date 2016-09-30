@@ -3,10 +3,13 @@ import React from 'react';
 // import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
 import { Link } from 'react-router';
 import css from '../../styles/style.css';
-
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { signUpUser, loginUser, logoutUser } from '../../actionCreators/accountActions'
+import { OverlayTrigger, Button, Popover } from 'react-bootstrap';
+
+import Main from '../Main';
+
+import { signUpUser, loginUser, logoutUser } from '../../actionCreators/accountActions';
 
 class Header extends React.Component {
 
@@ -54,23 +57,39 @@ class Header extends React.Component {
   renderLinks(){
     if(this.props.authenticated){
       return <li className="nav-item">
-        <Link className="nav-link" onClick={this.logoutSubmit}>Logout</Link>
+        <Button onClick={this.logoutSubmit}>Logout</Button>
       </li>
     } else {
       return [
       <li className="nav-item" key={1}>
-        <form onSubmit={this.signUpSubmit}>
-          <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-          <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
-          <button type="submit">Signup</button>
-        </form>
+
+        {/* SIGNUP POPOVER ~~ TODO: MODULARIZE */}
+        <OverlayTrigger trigger="click" placement="bottom" overlay={
+          <Popover id="popover-positioned-bottom">
+            <form onSubmit={this.signUpSubmit}>
+              <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
+              <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
+              <button type="submit">Signup</button>
+            </form>
+          </Popover>
+        }>
+          <Button>Sign Up</Button>
+        </OverlayTrigger>
       </li>,
       <li className="nav-item" key={2}>
-        <form onSubmit={this.loginSubmit}>
-          <input name="loginEmail" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-          <input name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}></input>
-          <button type="submit">Login</button>
-        </form>
+
+        {/* LOGIN POPOVER */}
+        <OverlayTrigger trigger="click" placement="bottom" overlay={
+          <Popover id="popover-positioned-bottom">
+            <form onSubmit={this.loginSubmit}>
+              <input name="loginEmail" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
+              <input name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}></input>
+              <button type="submit">Login</button>
+            </form>
+          </Popover>
+        }>
+          <Button>Log In</Button>
+        </OverlayTrigger>
       </li>
       ];
     }
