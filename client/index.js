@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
+import SurveyForm from './components/Survey/SurveyForm';
 import RankingSlider from './components/Rankings/RankingSlider'
 import RankingDisplay from './components/Rankings/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
@@ -17,6 +18,7 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
+        <Route path="surveyForm" component={SurveyForm} />
         <Route path="survey" component={RankingSlider} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
