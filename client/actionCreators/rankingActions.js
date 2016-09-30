@@ -9,7 +9,7 @@ export const FETCH_RANKINGS = 'FETCH_RANKINGS';
 
 export function postRankings({ amenities, commute, extras, neighborhood, pets, rent }){
   const prefs = JSON.stringify({ amenities, commute, extras, neighborhood, pets, rent })
-  console.log('======>>>>>>>>', "herereeee", typeof prefs)
+  console.log('======>>>>>>>>', "herereeee",  prefs)
 
   const surveyRankings = axios.post('/api/rankings', {
     prefs : prefs
@@ -25,7 +25,7 @@ export function postRankings({ amenities, commute, extras, neighborhood, pets, r
 
 
 
-export function fetchAnswers() {
+export function fetchAnswers(user_id) {
   const request = axios.get('api/rankings');
   console.log('+here in ACTION+++++',request)
 
@@ -34,3 +34,15 @@ export function fetchAnswers() {
     payload: request
   };
 }
+
+/*
+export function fetchAnswers(user_id) {
+  const request = axios.get('api/rankings' + user_id);
+  console.log('+here in ACTION+++++',request)
+
+  return {
+    type: FETCH_RANKINGS,
+    payload: request
+  };
+}
+*/

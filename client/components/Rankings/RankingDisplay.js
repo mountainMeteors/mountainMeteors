@@ -55,8 +55,11 @@ return(
 
 
 function mapStateToProps(state) {
-  console.log('in mapstate====>', state.rankings.all)
-  return { rankings: state.rankings.all };
+  console.log('in mapstate==*****==>', state.rankings.all, state.auth.user_id)
+  return {
+    rankings: state.rankings.all,
+    user_id: state.auth.user_id
+  };
 }
 
 function mapDispatchToProps(dispatch) {

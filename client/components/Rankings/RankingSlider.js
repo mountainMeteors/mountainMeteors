@@ -46,7 +46,7 @@ class RankingSlider extends Component {
     }
     console.log("this+++++",this)
     console.log(rankings)
-    this.props.postRankings(rankings)
+    this.props.postRankings(rankings, this.props.user_id)
       // .then (() => {
       //   this.context.router.push('/');
       // })
@@ -152,9 +152,17 @@ class RankingSlider extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  console.log('in mapstate==*****==>', state.auth.user_id)
+  return {
+    user_id: state.auth.user_id
+  };
+}
+
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ postRankings }, dispatch)
 }
 
 
-export default connect(null, mapDispatchToProps)(RankingSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(RankingSlider);
