@@ -22,10 +22,12 @@ db.schema.hasTable('users').then(function(exists){
   if(!exists){
     return db.schema.createTable('users', function(user) {
       user.increments('id').primary();
+      // foreign key connecting to user tab
       user.string('email', 50).unique();
       user.string('password', 50);
       user.string('firstName', 50);
       user.string('lastName', 50);
+      user.text('prefs', 'longtext');
       user.timestamps();
       console.log('Created users table');
     })
@@ -65,14 +67,14 @@ db.schema.hasTable('listings').then(function(exists){
 
 db.schema.hasTable('Rankings').then(function(exists){
   if(!exists){
-    return db.schema.createTable('Rankings', function(user) {
-      user.increments('id').primary();
-      user.integer('neighborhood');
-      user.integer('rent');
-      user.integer('pets');
-      user.integer('amenities');
-      user.integer('commute');
-      user.integer('extras');
+    return db.schema.createTable('Rankings', function(ranking) {
+      ranking.increments('id').primary();
+      ranking.integer('neighborhood');
+      ranking.integer('rent');
+      ranking.integer('pets');
+      ranking.integer('amenities');
+      ranking.integer('commute');
+      ranking.integer('extras');
       console.log('Created rankings table');
     })
     .catch(function(err){
@@ -82,23 +84,6 @@ db.schema.hasTable('Rankings').then(function(exists){
 });
 
 
-db.schema.hasTable('Rankings').then(function(exists){
-  if(!exists){
-    return db.schema.createTable('Rankings', function(user) {
-      user.increments('id').primary();
-      user.integer('neighborhood');
-      user.integer('rent');
-      user.integer('pets');
-      user.integer('amenities');
-      user.integer('commute');
-      user.integer('extras');
-      console.log('Created rankings table');
-    })
-    .catch(function(err){
-      console.error(err);
-    });
-  }
-});
 
 
 module.exports = db;

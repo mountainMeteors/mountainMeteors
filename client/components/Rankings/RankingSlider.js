@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 const ReactDOM = require('react-dom');
 import Slider from 'react-rangeslider'
 import { postRankings } from '../../actionCreators/rankingActions';
@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 
 class RankingSlider extends Component {
+
   constructor (props, context) {
     super(props, context)
     this.state = {
@@ -19,9 +20,12 @@ class RankingSlider extends Component {
       extras: 5
     }
     this.onFormSubmit = this.onFormSubmit.bind(this);
-
-
   }
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
 // state[criteria] = value
   handleChange = (criteria,value) => {
     console.log('======',criteria, value)
@@ -42,7 +46,10 @@ class RankingSlider extends Component {
     }
     console.log("this+++++",this)
     console.log(rankings)
-    this.props.postRankings(rankings);
+    this.props.postRankings(rankings, this.props.user_id)
+      // .then (() => {
+      //   this.context.router.push('/');
+      // })
   }
 
   render () {
@@ -145,9 +152,17 @@ class RankingSlider extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  console.log('in mapstate==*****==>', state.auth.user_id)
+  return {
+    user_id: state.auth.user_id
+  };
+}
+
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ postRankings }, dispatch)
 }
 
 
-export default connect(null, mapDispatchToProps)(RankingSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(RankingSlider);
