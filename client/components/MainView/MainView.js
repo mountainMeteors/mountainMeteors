@@ -33,7 +33,7 @@ class MainView extends React.Component {
 
   componentDidUpdate() {
     // console.log('main state updated', this.props, this.state);
-    this.props.getListings(this.props.user_id);
+    // this.props.getListings(this.props.user_id);
     if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
