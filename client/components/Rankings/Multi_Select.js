@@ -28,21 +28,21 @@ var MultiSelect = React.createFactory(React.createClass(
 
 
   handleChange: function (Fees, Pets) {
-    this.setState({ Fees: Fees })
-    this.setState({ Pets: Pets })
+    // this.setState({ Fees: Fees })
+    this.setState({ Fees })
   },
 
 
-  handleMultiChange: function (Neighborhoods, Amenities) {
+  handleMultiChange: function (criteria, value) {
     this.setState(
-      {Neighborhoods: Neighborhoods  },
-      {Amenities: Amenities  }
+      { [criteria]: value  }
     )
   },
 
 
 
   render: function () {
+    const { value } = this.state
     return(
 
         /*FEES */
@@ -53,7 +53,7 @@ var MultiSelect = React.createFactory(React.createClass(
             label: "Fees?",
             className: 'my-example-select-box',
             onChange: this.handleChange,
-            value: this.state.Neighborhood
+            value: this.state.Fees
           },
           option({value: 'yes'}, 'yes'),
           option({value: 'no'}, 'no'),
@@ -64,7 +64,7 @@ var MultiSelect = React.createFactory(React.createClass(
         SelectBox(
           {
             label: "Favorite Neighborhoods",
-            onChange: this.handleMultiChange,
+            onChange: this.handleMultiChange("Neighborhoods", value),
             value: this.state.Neighborhoods,
             multiple: true
           },
@@ -80,7 +80,7 @@ var MultiSelect = React.createFactory(React.createClass(
         SelectBox(
           {
             label: "Favorite Amenities",
-            onChange: this.handleMultiChange,
+            onChange: this.handleMultiChange(("Amenities", value)),
             value: this.state.Amenities,
             multiple: true
           },
