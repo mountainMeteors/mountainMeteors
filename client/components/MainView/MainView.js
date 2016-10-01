@@ -27,13 +27,14 @@ class MainView extends React.Component {
 
 
   componentWillMount() {
+    console.log('mounted');
     this.props.getListings(this.props.user_id);
     if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
   componentDidUpdate() {
     // console.log('main state updated', this.props, this.state);
-    this.props.getListings(this.props.user_id);
+    // this.props.getListings(this.props.user_id);
     if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 

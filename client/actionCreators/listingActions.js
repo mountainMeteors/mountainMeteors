@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 export const GET_LISTINGS = 'GETLISTINGS';
+export const POST_LISTINGS = 'POSTLISTINGS';
 
-// export const getListings = function(user_id){
-//   const request = axios.get('/api/listings/' + user_id)
+export const getListings = function(user_id){
+  const request = axios.get('/api/listings/' + user_id)
   // .then(function (response) {
   //   console.log('listings response received', response.data);
   // })
@@ -11,8 +12,15 @@ export const GET_LISTINGS = 'GETLISTINGS';
   //   console.log(error);
   // });
 
-export const getListings = function(preference){
-  const request = axios.get('/api/listings' + user_id, {
+  return {
+    type: GET_LISTINGS,
+    payload: request
+  };
+
+}
+
+export const postListing = function(preference, user_id){
+  const request = axios.post('/api/listings/', {
     location: preference.location,
     price: preference.price,
     pets: preference.pets
@@ -24,9 +32,9 @@ export const getListings = function(preference){
     }
   });
 
-
   return {
-    type: GET_LISTINGS,
+    type: POST_LISTINGS,
     payload: request
-  };
+  }
+
 }
