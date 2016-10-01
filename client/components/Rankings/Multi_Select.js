@@ -9,9 +9,13 @@ const Neighborhoods = [
 	{ label: 'Flatiron', value: 'Flatiron' },
 ];
 
-const WHY_WOULD_YOU = [
-	{ label: 'West Village (are you crazy?)', value: 'chocolate', disabled: true },
-].concat(Neighborhoods.slice(1));
+
+
+const Amenities = [
+	{ label: 'bike', value: 'bike' },
+	{ label: 'garage', value: 'garage' },
+
+];
 
 class MultiSelect extends Component {
 
@@ -26,6 +30,7 @@ class MultiSelect extends Component {
 			disabled: false,
 			crazy: false,
 			options: Neighborhoods,
+      optionsA: Amenities,
 			value: [],
 		};
 	};
@@ -33,38 +38,53 @@ class MultiSelect extends Component {
 
 	handleSelectChange = (value) => {
 		console.log('You\'ve selected:', value);
+		var stateObj = {};
+		// stateObj[criteria] = value;
+		// this.setState(stateObj);
 		this.setState({ value });
 	}
 
-	toggleDisabled = (e) => {
-		this.setState({ disabled: e.target.checked });
-	}
 
-	toggleChocolate = (e) => {
-		let crazy = e.target.checked;
-		this.setState({
-			crazy: crazy,
-			options: crazy ? WHY_WOULD_YOU : Neighborhoods,
-		});
-	}
 
 	render () {
+		const { value } = this.state
 		return (
-			<div className="section">
-				<h3 className="section-heading">{this.props.label}</h3>
-				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange} />
 
-				<div className="checkbox-list">
-					<label className="checkbox">
-						<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
-						<span className="checkbox-label">Disable the control</span>
-					</label>
-					<label className="checkbox">
-						<input type="checkbox" className="checkbox-control" checked={this.state.crazy} onChange={this.toggleChocolate} />
-						<span className="checkbox-label">Something clever here</span>
-					</label>
-				</div>
-			</div>
+      <div>
+				<div className="section">
+					<h3 className="section-heading">{this.props.label}</h3>
+					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange} />
+
+					<div className="checkbox-list">
+						<label className="checkbox">
+							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
+							<span className="checkbox-label">Disable the control</span>
+						</label>
+						<label className="checkbox">
+							<input type="checkbox" className="checkbox-control" checked={this.state.crazy} onChange={this.toggleChocolate} />
+							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
+						</label>
+					</div>
+  			</div>
+
+				<div className="section">
+					<h3 className="section-heading">{this.props.label}</h3>
+					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.optionsA} onChange={this.handleSelectChange} />
+
+					<div className="checkbox-list">
+						<label className="checkbox">
+							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
+							<span className="checkbox-label">Disable the control</span>
+						</label>
+						<label className="checkbox">
+							<input type="checkbox" className="checkbox-control" checked={this.state.crazy} onChange={this.toggleChocolate} />
+							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
+						</label>
+					</div>
+  			</div>
+
+      </div>
+
 		);
 	}
 }
