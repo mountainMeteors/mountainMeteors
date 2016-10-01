@@ -1,7 +1,14 @@
-var React = require('react')
+import React from 'react';
+import { Component, PropTypes } from 'react';
+import Slider from 'react-rangeslider'
+import RankingSlider from './RankingSlider'
+import { postRankings } from '../../actionCreators/rankingActions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 var SelectBox = React.createFactory(require('./SelectBox'))
 
-// import SelectBox from './SelectBox'
+
 var div = React.createElement.bind(null,'div')
 var option = React.createElement.bind(null,'option')
 var h1 = React.createElement.bind(null,'h1')
@@ -9,42 +16,47 @@ var h1 = React.createElement.bind(null,'h1')
 var MultiSelect = React.createFactory(React.createClass(
   {displayName: 'MultiSelect',
 
-
   getInitialState: function () {
     return {
-      Neighborhood: null,
+      Fees: null,
+      Pets: 0,
       Neighborhoods: [],
-      Amenities: []
+      Amenities: [],
     }
   },
 
 
-  handleChange: function (Neighborhood) {
-    this.setState({ Neighborhood: Neighborhood })
+
+  handleChange: function (Fees, Pets) {
+    this.setState({ Fees: Fees })
+    this.setState({ Pets: Pets })
   },
 
 
-  handleMultiChange: function (Neighborhoods) {
-    this.setState({ Neighborhoods })
-    this.setState({ Amenities })
+  handleMultiChange: function (Neighborhoods, Amenities) {
+    this.setState(
+      {Neighborhoods: Neighborhoods  },
+      {Amenities: Amenities  }
+    )
   },
 
 
 
   render: function () {
     return(
+
+        /*FEES */
       div({className: "example"},
-        h1(null, "Do you have little furry friends?"),
+        h1(null, "Fees?"),
         SelectBox(
           {
-            label: "Favorite Neighborhood",
+            label: "Fees?",
             className: 'my-example-select-box',
             onChange: this.handleChange,
             value: this.state.Neighborhood
           },
-          option({key: 'cats', value: 'cats'}, 'cats'),
-          option({value: 'dogs'}, 'dogs'),
-          option({value: 'hamster'}, 'hamster'),
+          option({value: 'yes'}, 'yes'),
+          option({value: 'no'}, 'no'),
         ),
 
 
@@ -75,7 +87,6 @@ var MultiSelect = React.createFactory(React.createClass(
           option({value: 'storage room'}, 'storage room'),
           option({value: 'laundry room'}, 'laundry room'),
           option({value: 'elevator'}, 'elevator'),
-
           option({value: 'bike storage'}, 'bike storage '),
           option({value: 'doorman'}, 'doorman'),
           option({value: 'parking'}, 'parking')
