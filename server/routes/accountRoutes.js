@@ -14,10 +14,10 @@ const util = require('../util/authUtil');
 
 router.post('/signup', (req, res) => {
   console.log('server-side signup with', req.body);
-  let email = req.body.email;
-  let password = req.body.password;
+  var email = req.body.email;
+  var password = req.body.password;
 
-  // let salt = bcrypt.genSaltSync(10);
+  // var salt = bcrypt.genSaltSync(10);
   bcrypt.hash(password, null, null, function(err, hash) {
     console.log('hashing', hash);
     return db('users')
@@ -33,15 +33,15 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res) => {
   console.log('server-side login with', req.body);
-  let email = req.body.email;
-  let password = req.body.password;
+  var email = req.body.email;
+  var password = req.body.password;
 
   return db('users')
     .where({
       email: email
     })
     .then(function(dbRes) {
-      let user = dbRes[0];
+      var user = dbRes[0];
       console.log('user is', user);
       if (user) {
         bcrypt.compare(password, user.password, function(err, match) {
