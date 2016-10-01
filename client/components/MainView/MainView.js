@@ -23,8 +23,10 @@ const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 class MainView extends React.Component {
   constructor(){
     super();
+    // this.state = {
+    //   showArchived = false;
+    // }
   }
-
 
   componentWillMount() {
     this.props.getListings(this.props.user_id);
