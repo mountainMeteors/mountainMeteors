@@ -1,4 +1,4 @@
-const tokenExists = window.localStorage.getItem('userToken') === null
+const tokenExists = window.localStorage.getItem('userToken') !== null;
 
 const auth = function(state = tokenExists, action) {
   let token;
@@ -12,8 +12,10 @@ const auth = function(state = tokenExists, action) {
       console.log('REDUC LOGIN USER', action);
       token = action.payload.data.token ? action.payload.data.token : null;
       window.localStorage.setItem('userToken', token)
+      //TODO: Reducer should not be doing logic checks
       if (token) {
         console.log('LOGGED IN');
+        // return true;
         return Object.assign({}, state, {
           authenticated: true,
           user_id: action.payload.data.user_id
@@ -21,21 +23,27 @@ const auth = function(state = tokenExists, action) {
       } else {
         console.log('ERROR LOGGING IN', token);
         return Object.assign({}, state, {
-          authenticated: false
+          authenticated: false,
+          user_id: null
         })
       }
-      // console.log('login reduc returning', Object.assign({}, state, {authenticated: true}));
-      ;
-      // return !!token;
 
     case 'LOGOUT':
-      window.localStorage.setItem('userToken', null)
-      // console.log('LOGOUT REDUC');
-      // return Object.assign({}, state, {authenticated: true});
-      return false;
+      window.localStorage.removeItem('userToken');
+      return Object.assign({}, state, {
+        authenticated: false,
+        user_id: null
+      });
 
     default:
-      return state;
+      let returning = Object.assign({}, state, {
+        authenticated: state,
+        user_id: null
+      })
+      //TODO: This while loop is so hacky
+      while (typeof returning.authenticated !== 'boolean') returning = returning.authenticated;
+      // console.log('reduc returning', returning);
+      return returning;
   }
 }
 
