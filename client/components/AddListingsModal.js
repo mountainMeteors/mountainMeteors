@@ -6,23 +6,26 @@ import { bindActionCreators } from 'redux';
 import { postListing } from '../actionCreators/listingActions';
 
 class AddListingsModal extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      location: 'abba',
+      location: '',
+      price: '',
+      pets: '',
       showModal: false
     }
-
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
   }
+
 
   close() {
     this.setState({ showModal: false });
   }
 
   open() {
-    console.log('modal', this);
     this.setState({ showModal: true });
   }
 
@@ -44,6 +47,7 @@ class AddListingsModal extends React.Component {
       pets: this.state.pets
     }
     console.log('postListing is', this.props.postListing);
+    console.log('user id', this.props.user_id)
     this.props.postListing(listings, this.props.user_id);
   }
 

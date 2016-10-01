@@ -22,7 +22,6 @@ router.get('/listings/:id', (req, res) => {
 
   console.log('listing req received at :id', req.params.id);
   return db('listings')
-  // return select().from('listings')
   .where({
     user_id: req.params.id
   })
@@ -33,12 +32,13 @@ router.get('/listings/:id', (req, res) => {
 
 router.post('/listings/', (req, res) => {
 
-  console.log('listing req received at :id', req.params.id);
+  console.log('listing req received at :id', req.body.userId);
+  console.log('REQUEST BODY', req.body)
   return db('listings')
-  // return select().from('listings')
   .where({
-    user_id: req.params.id
+    user_id: req.body.userId
   })
+  .insert({user_id: req.body.userId, location: req.body.location, rent: req.body.price, pets: req.body.pets})
   .then(function(listings) {
      res.send(listings);
   });

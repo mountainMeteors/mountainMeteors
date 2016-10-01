@@ -41,8 +41,8 @@ db.schema.hasTable('listings').then(function(exists){
   if(!exists){
     return db.schema.createTable('listings', function(listing) {
       listing.increments('id').primary();
-      listing.integer('user_id').index().references('id').inTable('users');
-        // listing.foreign('user_id').references('users.user_id_in_items')
+      listing.integer('user_id').unsigned();
+      listing.foreign('user_id').references('id').inTable('users');
       listing.string('location', 255).unique();
       listing.string('rent', 50);
       listing.string('pets', 50);
