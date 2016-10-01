@@ -13,15 +13,24 @@ var MultiSelect = React.createFactory(React.createClass(
   getInitialState: function () {
     return {
       Neighborhood: null,
-      Neighborhoods: []
+      Neighborhoods: [],
+      Amenities: []
     }
   },
+
+
   handleChange: function (Neighborhood) {
     this.setState({ Neighborhood: Neighborhood })
   },
+
+
   handleMultiChange: function (Neighborhoods) {
-    this.setState({ Neighborhoods: Neighborhoods })
+    this.setState({ Neighborhoods })
+    this.setState({ Amenities })
   },
+
+
+
   render: function () {
     return(
       div({className: "example"},
@@ -33,14 +42,13 @@ var MultiSelect = React.createFactory(React.createClass(
             onChange: this.handleChange,
             value: this.state.Neighborhood
           },
-          option({key: 'East Village', value: 'East Village'}, 'East Village'),
-          option({value: 'West Village'}, 'West Village'),
-          option({value: 'Midtown West'}, 'Midtown West'),
-          option({value: 'Midtown East'}, 'Midtown East'),
-          option({value: 'Upper West Side'}, 'Upper West Side'),
-          option({value: 'Upper East Side'}, 'Light Upper East Side with')
+          option({key: 'cats', value: 'cats'}, 'cats'),
+          option({value: 'dogs'}, 'dogs'),
+          option({value: 'hamster'}, 'hamster'),
         ),
-        h1(null, "Let's pick your fav neighborhoods"),
+
+
+        h1(null, "Let's pick your fav Neighborhoods"),
         SelectBox(
           {
             label: "Favorite Neighborhoods",
@@ -54,6 +62,23 @@ var MultiSelect = React.createFactory(React.createClass(
           option({value: 'Midtown East'}, 'Midtown East'),
           option({value: 'Upper West Side'}, 'Upper West Side'),
           option({value: 'Upper East Side'}, ' Upper East Side')
+        ),
+
+        h1(null, "What amenities would you like?"),
+        SelectBox(
+          {
+            label: "Favorite Amenities",
+            onChange: this.handleMultiChange,
+            value: this.state.Amenities,
+            multiple: true
+          },
+          option({value: 'storage room'}, 'storage room'),
+          option({value: 'laundry room'}, 'laundry room'),
+          option({value: 'elevator'}, 'elevator'),
+
+          option({value: 'bike storage'}, 'bike storage '),
+          option({value: 'doorman'}, 'doorman'),
+          option({value: 'parking'}, 'parking')
         )
       )
     )
