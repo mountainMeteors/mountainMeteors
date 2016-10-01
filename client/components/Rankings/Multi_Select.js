@@ -1,5 +1,151 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
+import Select from 'react-select';
+
+const Neighborhoods = [
+	{ label: 'West Village', value: 'West Village' },
+	{ label: 'East Village', value: 'East Village' },
+	{ label: 'Midtown', value: 'Midtown' },
+	{ label: 'Flatiron', value: 'Flatiron' },
+];
+
+const WHY_WOULD_YOU = [
+	{ label: 'West Village (are you crazy?)', value: 'chocolate', disabled: true },
+].concat(Neighborhoods.slice(1));
+
+class MultiSelect extends Component {
+
+	// propTypes: {
+	// 	label: React.PropTypes.string,
+	// },
+  //
+  constructor (props, context) {
+    super(props, context)
+
+    this.state = {
+			disabled: false,
+			crazy: false,
+			options: Neighborhoods,
+			value: [],
+		};
+	};
+
+
+	handleSelectChange = (value) => {
+		console.log('You\'ve selected:', value);
+		this.setState({ value });
+	}
+
+	toggleDisabled = (e) => {
+		this.setState({ disabled: e.target.checked });
+	}
+
+	toggleChocolate = (e) => {
+		let crazy = e.target.checked;
+		this.setState({
+			crazy: crazy,
+			options: crazy ? WHY_WOULD_YOU : Neighborhoods,
+		});
+	}
+
+	render () {
+		return (
+			<div className="section">
+				<h3 className="section-heading">{this.props.label}</h3>
+				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange} />
+
+				<div className="checkbox-list">
+					<label className="checkbox">
+						<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
+						<span className="checkbox-label">Disable the control</span>
+					</label>
+					<label className="checkbox">
+						<input type="checkbox" className="checkbox-control" checked={this.state.crazy} onChange={this.toggleChocolate} />
+						<span className="checkbox-label">Something clever here</span>
+					</label>
+				</div>
+			</div>
+		);
+	}
+}
+
+export default MultiSelect;
+
+
+
+
+
+
+
+
+
+
+/*
+import BS from "react-bootstrap"
+import Grid from "react-bootstrap"
+import Multiselect from 'react-bootstrap-multiselect'
+var fileContent = require('./AppContent').content;
+
+
+var MultiSelect = React.createClass({
+  getInitialState: function () {
+    var large = [];
+    for (var i = 0; i < 100; i++) {
+      large.push({value: 'Item ' + i});
+    }
+    return {
+      groups: [
+        {label:'Group One',children:[{value:'1-One'},{value:'1-Two'},{value:'1-Three'},{value:'1-Four',label:'Four Label'}]},
+        {label:'Group Two',children:[{value:'2-One'},{value:'2-Two'},{value:'2-Three'},{value:'2-Four',label:'Four Label'}]},
+        {label:'Group Three',children:[{value:'3-One'},{value:'3-Two'},{value:'3-Three'},{value:'3-Four',label:'Four Label'}]}
+      ],
+      large: large,
+      list: [{value:'One',selected:true},{value:'Two'},{value:'Three'},{value:'Four',label:'Four Label'}]
+    };
+  },
+  render: function () {
+    return (
+      <BS.Grid>
+        <Header />
+        <BS.Row>
+          <BS.Col md={3}>
+            <h2>Demo:</h2>
+            <h4>no optgroups:</h4>
+            <Multiselect data={this.state.list} multiple />
+            <h4>with optgroups:</h4>
+            <Multiselect data={this.state.groups} multiple />
+            <h4>single select:</h4>
+            <Multiselect data={this.state.groups} />
+            <h4>large list (maxHeight/buttonText):</h4>
+            <Multiselect data={this.state.large} multiple
+              maxHeight={200}
+              buttonText={function(options, select) {
+                return 'Long List / Custom Title!';
+              }}
+            />
+            <h4>buttonClass:</h4>
+            <Multiselect buttonClass="btn btn-danger" data={this.state.list} multiple />
+          </BS.Col>
+          <BS.Col md={9}>
+            <h2>Demo Source Code:</h2>
+            <textarea className="form-control" style={{width:'100%',height:'500px'}} readOnly value={fileContent} />
+          </BS.Col>
+        </BS.Row>
+      </BS.Grid>
+    );
+  }
+});
+
+
+
+export default MultiSelect
+
+
+
+
+
+
+/*
 import Slider from 'react-rangeslider'
 import RankingSlider from './RankingSlider'
 import { postRankings } from '../../actionCreators/rankingActions';
@@ -45,7 +191,7 @@ var MultiSelect = React.createFactory(React.createClass(
     const { value } = this.state
     return(
 
-        /*FEES */
+
       div({className: "example"},
         h1(null, "Fees?"),
         SelectBox(
@@ -97,3 +243,5 @@ var MultiSelect = React.createFactory(React.createClass(
 }))
 
 export default MultiSelect
+
+*/
