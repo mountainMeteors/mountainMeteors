@@ -3,15 +3,18 @@ import { render } from 'react-dom';
 import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getListings } from './actionCreators/listingsActions';
+import { postListing } from '../actionCreators/listingActions';
 
 class AddListingsModal extends React.Component {
   constructor(){
     super();
     this.state = {
-
+      location: 'abba',
       showModal: false
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.onModalSubmit = this.onModalSubmit.bind(this);
   }
 
   close() {
@@ -23,10 +26,14 @@ class AddListingsModal extends React.Component {
     this.setState({ showModal: true });
   }
 
-  handleChange = (criteria, value) => {
-    this.setState({
-      [criteria]: value
-    })
+  handleChange = (input) => {
+    // console.log("++++++++++++", criteria, value)
+    var stateObj = {};
+    stateObj[input.target.name] = input.target.value;
+    this.setState(stateObj);
+    // this.setState({
+    //   [criteria]: value
+    // })
   }
 
   onModalSubmit (event) {
@@ -36,7 +43,8 @@ class AddListingsModal extends React.Component {
       price: this.state.price,
       pets: this.state.pets
     }
-    this.props.getListings(listings, this.props.user_id);
+    console.log('postListing is', this.props.postListing);
+    this.props.postListing(listings, this.props.user_id);
   }
 
   render() {
@@ -70,24 +78,24 @@ class AddListingsModal extends React.Component {
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
                {' '}
-                <FormControl value={this.state.location}
-                onChange={(value) => this.handleChange("location",value)}
+                <FormControl name="location" value={this.state.location}
+                onChange={this.handleChange}
                 type="text" placeholder="123 BeaconHill" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">
                <ControlLabel>Budget</ControlLabel>
                {' '}
-               <FormControl value={this.state.price}
-               onChange={(value) => this.handleChange("price",value)}
+               <FormControl name="price" value={this.state.price}
+               onChange={this.handleChange}
                type="price" placeholder="$2000" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPets" validationState="success">
-               <ControlLabel>Input with success</ControlLabel>
-               <FormControl value={this.state.pets}
-               onChange={(value) => this.handleChange("pets",value)}
-               type="text" />
+               <ControlLabel>Pets</ControlLabel>
+               <FormControl name="pets" value={this.state.pets}
+               onChange={this.handleChange}
+               type="text" placeholder="Cats, Dogs, Both, None" />
              </FormGroup>
              {' '}
              <Button type="submit">
@@ -105,4 +113,14 @@ class AddListingsModal extends React.Component {
  }
 };
 
-export default AddListingsModal;
+function mapStateToProps(state){
+  return {
+    user_id: state.auth.user_id
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({postListing}, dispatch)
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(AddListingsModal);

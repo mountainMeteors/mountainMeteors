@@ -43,7 +43,7 @@ router.post('/login', util.checkToken, (req, res) => {
       email: email
     })
     .then(function(dbRes) {
-      let user = dbRes[0];
+      var user = dbRes[0];
       console.log('user is', user);
       if (user) {
         bcrypt.compare(password, user.password, function(err, match) {

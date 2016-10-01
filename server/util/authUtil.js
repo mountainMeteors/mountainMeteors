@@ -2,10 +2,12 @@ const jwt = require('jwt-simple');
 const secret = require('../config.js').jwtsecret;
 
 exports.createToken = function(req, res, user_id){
-  let payload = {'user_id': user_id};
+
   // let secret = 'yabbadabbadoo';
+  var payload = {'user_id': user_id};
+  var secret = 'yabbadabbadoo';
   console.log('secret is', secret);
-  let token = jwt.encode(payload, secret);
+  var token = jwt.encode(payload, secret);
   res.set('token', token).status(201).json({token: token, user_id: user_id});
 };
 
