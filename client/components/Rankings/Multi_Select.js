@@ -3,10 +3,10 @@ import { Component, PropTypes } from 'react';
 import Select from 'react-select';
 
 const Neighborhoods = [
-	{ label: 'West Village', value: 'west village' },
-	{ label: 'East Village', value: 'east village' },
-	{ label: 'Midtown', value: 'midtown' },
-	{ label: 'Flatiron', value: 'flatiron' },
+	{ label: 'West Village', value: 'West Village' },
+	{ label: 'East Village', value: 'East Village' },
+	{ label: 'Midtown', value: 'Midtown' },
+	{ label: 'Flatiron', value: 'Flatiron' },
 ];
 
 
@@ -14,7 +14,14 @@ const Neighborhoods = [
 const Amenities = [
 	{ label: 'bike', value: 'bike' },
 	{ label: 'garage', value: 'garage' },
+];
 
+
+const Pets = [
+	{ label: 'dogs', value: 'dogs' },
+	{ label: 'cats', value: 'cats' },
+	{ label: 'pokemon', value: 'pokemon' },
+	{ label: 'none', value: 'none' },
 ];
 
 class MultiSelect extends Component {
@@ -31,10 +38,13 @@ class MultiSelect extends Component {
 			crazy: false,
 			Neighborhoods: Neighborhoods,
       Amenities: Amenities,
+      Pets: Pets,
 			value: [],
 		}
 		this.handleSelectChange = this.handleSelectChange.bind(this);
+		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
+
 
 
 	handleSelectChange = (value) => {
@@ -46,20 +56,36 @@ class MultiSelect extends Component {
 		this.setState({ value });
 	}
 
-	onFormSubmit (event){
-		var responses = {
-
+	onFormSubmit (event) {              //onSubmit fn
+		event.preventDefault();           //Stops refresh
+		var surveyResponses = {            //Obj holding user details
+			Neighborhoods: this.state.Neighborhoods,
+			Amenities: this.state.Amenities,
+			Pets: this.state.Pets,
+			// amenities: this.state.amenities,
+			// commute: this.state.commute,
+			// extras: this.state.extras
 		}
+		// console.log("this+++++",this.props.user_id)
+		console.log(surveyResponses)
+		// this.props.postRankings(rankings, this.props.user_id)
+			// .then (() => {
+			//   this.context.router.push('/');
+			// })
 	}
+
 
 	render () {
 		const { value } = this.state
 		return (
 
       <div>
+				<form onSubmit={this.onFormSubmit}>
 				<div className="section">
-					<h3 className="section-heading">{this.state.value}</h3>
+					<h3 className="section-heading">{this.props.label}</h3>
 					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={(value) => this.handleSelectChange(value)} />
+
+				</div>
 					/*
 					<div className="checkbox-list">
 						<label className="checkbox">
@@ -72,11 +98,12 @@ class MultiSelect extends Component {
 						</label>
 					</div>
 					*/
-  			</div>
+
 
 				<div className="section">
-					<h3 className="section-heading">{this.state.value}</h3>
+					<h3 className="section-heading">{this.props.label}</h3>
 					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={(value) => this.handleSelectChange(value)} />
+				</div>
 					/*
 					<div className="checkbox-list">
 						<label className="checkbox">
@@ -89,7 +116,13 @@ class MultiSelect extends Component {
 						</label>
 					</div>
 					*/
-  			</div>
+
+					<div className="section">
+						<h3 className="section-heading">{this.props.label}</h3>
+						<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Pets} onChange={(value) => this.handleSelectChange(value)} />
+					</div>
+				<button type="submit" className="btn btn-block btn-primary">Submit</button>
+				</form>
 
       </div>
 
