@@ -104,7 +104,7 @@ module.exports = React.createClass(
       } else {
         this.updatePendingValue(val, cb) || this.props.onChange(val)
         this.handleClose()
-        this.ref.button.getDOMNode().focus()
+        // this.ref.button.getDOMNode().focus()
       }
     }.bind(this)
   },

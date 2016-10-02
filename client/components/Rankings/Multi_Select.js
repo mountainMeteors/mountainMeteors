@@ -135,7 +135,7 @@ export default MultiSelect;
 
 
 */
-
+/*
 import BS from "react-bootstrap";
 import { Grid, Col, Row } from 'react-bootstrap';
 import Multiselect from 'react-bootstrap-multiselect'
@@ -265,11 +265,11 @@ class MultiSelect extends Component {
 export default MultiSelect
 
 
+*/
 
 
 
 
-/*
 import Slider from 'react-rangeslider'
 import RankingSlider from './RankingSlider'
 import { postRankings } from '../../actionCreators/rankingActions';
@@ -279,9 +279,10 @@ import { connect } from 'react-redux'
 var SelectBox = React.createFactory(require('./SelectBox'))
 
 
-var div = React.createElement.bind(null,'div')
-var option = React.createElement.bind(null,'option')
-var h1 = React.createElement.bind(null,'h1')
+// var div = React.createElement.bind(null,'div')
+// var option = React.createElement.bind(null,'option')
+// var h1 = React.createElement.bind(null,'h1')
+// var form = React.createElement.bind(null,'form')
 
 var MultiSelect = React.createFactory(React.createClass(
   {displayName: 'MultiSelect',
@@ -297,75 +298,96 @@ var MultiSelect = React.createFactory(React.createClass(
 
 
 
-  handleChange: function (Fees, Pets) {
-    // this.setState({ Fees: Fees })
-    this.setState({ Fees })
+	handleChange: function (Pets) {
+    this.setState({ Pets: Pets })
+  },
+  handleMultiChange: function (Neighborhoods) {
+    this.setState({ Neighborhoods: Neighborhoods })
   },
 
-
-  handleMultiChange: function (criteria, value) {
-    this.setState(
-      { [criteria]: value  }
-    )
+  handleMultiChangeA: function (Amenities) {
+    this.setState({ Amenities: Amenities })
+		console.log(this.state.Amenities)
   },
 
-
+	onFormSubmit : function (event) {              //onSubmit fn
+		event.preventDefault();           //Stops refresh
+		var rankings = {            //Obj holding user details
+			neighborhood: this.state.Neighborhoods,
+			// rent: this.state.rent,
+			// pets: this.state.pets,
+			amenities: this.state.Pets,
+			// commute: this.state.commute,
+			// extras: this.state.extras
+		}
+		// console.log("this+++++",this.props.user_id)
+		console.log(rankings)
+		// this.props.postRankings(rankings, this.props.user_id)
+			// .then (() => {
+			//   this.context.router.push('/');
+			// })
+	},
 
   render: function () {
     const { value } = this.state
     return(
 
+			<div>
+				<form onSubmit={this.onFormSubmit}>
+					<div className="example">
+						<h1>"Fees?"</h1>
+						<SelectBox >
+							className= 'my-example-select-box'
+							onChange={this.handleChange}
+							value={this.state.Pets}>
+							<option value={"YES"}>"YES"</option>
+							<option value={"NO"}> "NO" 	</option>
+						</SelectBox>
+					</div>
 
-      div({className: "example"},
-        h1(null, "Fees?"),
-        SelectBox(
-          {
-            label: "Fees?",
-            className: 'my-example-select-box',
-            onChange: this.handleChange,
-            value: this.state.Fees
-          },
-          option({value: 'yes'}, 'yes'),
-          option({value: 'no'}, 'no'),
-        ),
+					/*
+					  h1(null, "Let's pick your fav Neighborhoods"),
+					  SelectBox(
+					    {
+					      label: "Favorite Neighborhoods",
+					      onChange: this.handleMultiChange,
+					      value: this.state.Neighborhoods,
+					      multiple: true
+					    },
+					    option({value: 'East Village'}, 'East Village'),
+					    option({value: 'West Village'}, 'West Village'),
+					    option({value: 'Midtown West'}, 'Midtown West'),
+					    option({value: 'Midtown East'}, 'Midtown East'),
+					    option({value: 'Upper West Side'}, 'Upper West Side'),
+					    option({value: 'Upper East Side'}, ' Upper East Side')
+					  ),
+
+					  h1(null, "What amenities would you like?"),
+					  SelectBox(
+					    {
+					      label: "Favorite Amenities",
+					      onChange: this.handleMultiChangeA,
+					      value: this.state.Amenities,
+					      multiple: true
+					    },
+					    option({value: 'storage room'}, 'storage room'),
+					    option({value: 'laundry room'}, 'laundry room'),
+					    option({value: 'elevator'}, 'elevator'),
+					    option({value: 'bike storage'}, 'bike storage '),
+					    option({value: 'doorman'}, 'doorman'),
+					    option({value: 'parking'}, 'parking')
+					  ) */
 
 
-        h1(null, "Let's pick your fav Neighborhoods"),
-        SelectBox(
-          {
-            label: "Favorite Neighborhoods",
-            onChange: this.handleMultiChange("Neighborhoods", value),
-            value: this.state.Neighborhoods,
-            multiple: true
-          },
-          option({value: 'East Village'}, 'East Village'),
-          option({value: 'West Village'}, 'West Village'),
-          option({value: 'Midtown West'}, 'Midtown West'),
-          option({value: 'Midtown East'}, 'Midtown East'),
-          option({value: 'Upper West Side'}, 'Upper West Side'),
-          option({value: 'Upper East Side'}, ' Upper East Side')
-        ),
+					<button type="submit" className="btn btn-block btn-primary">Submit</button>
 
-        h1(null, "What amenities would you like?"),
-        SelectBox(
-          {
-            label: "Favorite Amenities",
-            onChange: this.handleMultiChange(("Amenities", value)),
-            value: this.state.Amenities,
-            multiple: true
-          },
-          option({value: 'storage room'}, 'storage room'),
-          option({value: 'laundry room'}, 'laundry room'),
-          option({value: 'elevator'}, 'elevator'),
-          option({value: 'bike storage'}, 'bike storage '),
-          option({value: 'doorman'}, 'doorman'),
-          option({value: 'parking'}, 'parking')
-        )
-      )
+				</form>
+			</div>
+
+
     )
   }
 }))
 
-export default MultiSelect
 
-*/
+export default MultiSelect
