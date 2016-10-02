@@ -3,8 +3,10 @@ import axios from 'axios';
 export const GET_LISTINGS = 'GETLISTINGS';
 export const POST_LISTINGS = 'POSTLISTINGS';
 
-export const getListings = function(user_id){
-  const request = axios.get('/api/listings/' + user_id)
+export const getListings = function(){
+  const request = axios.get('/api/listings/', {
+    headers: {'x-access-token': window.localStorage.getItem('userToken')}
+  })
   // .then(function (response) {
   //   console.log('listings response received', response.data);
   // })
