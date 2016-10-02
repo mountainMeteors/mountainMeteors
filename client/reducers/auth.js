@@ -15,7 +15,6 @@ const auth = function(state = tokenExists, action) {
       //TODO: Reducer should not be doing logic checks
       if (token) {
         console.log('LOGGED IN');
-        // return true;
         return true;
       } else {
         console.log('ERROR LOGGING IN', token);
