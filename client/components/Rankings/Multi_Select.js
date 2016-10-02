@@ -3,10 +3,10 @@ import { Component, PropTypes } from 'react';
 import Select from 'react-select';
 
 const Neighborhoods = [
-	{ label: 'West Village', value: 'West Village' },
-	{ label: 'East Village', value: 'East Village' },
-	{ label: 'Midtown', value: 'Midtown' },
-	{ label: 'Flatiron', value: 'Flatiron' },
+	{ label: 'West Village', value: 'west village' },
+	{ label: 'East Village', value: 'east village' },
+	{ label: 'Midtown', value: 'midtown' },
+	{ label: 'Flatiron', value: 'flatiron' },
 ];
 
 
@@ -29,11 +29,12 @@ class MultiSelect extends Component {
     this.state = {
 			disabled: false,
 			crazy: false,
-			options: Neighborhoods,
-      optionsA: Amenities,
+			Neighborhoods: Neighborhoods,
+      Amenities: Amenities,
 			value: [],
-		};
-	};
+		}
+		this.handleSelectChange = this.handleSelectChange.bind(this);
+	}
 
 
 	handleSelectChange = (value) => {
@@ -41,10 +42,15 @@ class MultiSelect extends Component {
 		var stateObj = {};
 		// stateObj[criteria] = value;
 		// this.setState(stateObj);
+		// this.setState({[criteria]: value });
 		this.setState({ value });
 	}
 
+	onFormSubmit (event){
+		var responses = {
 
+		}
+	}
 
 	render () {
 		const { value } = this.state
@@ -52,9 +58,9 @@ class MultiSelect extends Component {
 
       <div>
 				<div className="section">
-					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.options} onChange={this.handleSelectChange} />
-
+					<h3 className="section-heading">{this.state.value}</h3>
+					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={(value) => this.handleSelectChange(value)} />
+					/*
 					<div className="checkbox-list">
 						<label className="checkbox">
 							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
@@ -65,12 +71,13 @@ class MultiSelect extends Component {
 							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
 						</label>
 					</div>
+					*/
   			</div>
 
 				<div className="section">
-					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.optionsA} onChange={this.handleSelectChange} />
-
+					<h3 className="section-heading">{this.state.value}</h3>
+					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={(value) => this.handleSelectChange(value)} />
+					/*
 					<div className="checkbox-list">
 						<label className="checkbox">
 							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
@@ -81,6 +88,7 @@ class MultiSelect extends Component {
 							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
 						</label>
 					</div>
+					*/
   			</div>
 
       </div>
