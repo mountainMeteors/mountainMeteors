@@ -51,6 +51,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('washer_dryer');
       listing.boolean('dishwasher');
       listing.boolean('no_fee');
+      listing.boolean('archived');
       listing.timestamps();
       console.log('Created listings table');
     })

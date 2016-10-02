@@ -10,42 +10,42 @@ const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 
 class Listing extends React.Component{
   constructor(props){
-    // console.log('constructor props', props);
     super(props);
 
-    // this.state = {
-    //   showArchived: false, //Remember this might need to be 0/1
-      // listingsFiltered: this.props.listings
-    // }
+    this.state = {
+      showArchived: false,
+      listingsFiltered: props.listings.slice().filter(
+        listing => Boolean(listing.archived) === this.state.showArchived
+      )
+    }
 
-    // this.toggleArchive = this.toggleArchive.bind(this)
-    // this.props.listingsFiltered = this.props.listings;
+    this.filterListings = this.filterListings.bind(this)
+    this.toggleArchive = this.toggleArchive.bind(this)
   }
 
-  // componentWillMount() {
-  //   console.log('this.props.listings', this.props.listings);
-  //   this.setState({listingsFiltered: this.props.listings})
-  // }
-
-  componentDidMount() {
-    console.log('Listing props', this.props);
-
+  //Takes existing props (passed in) and filters them based on 
+  filterListings(props) {
+    let listingsFiltered = props.listings.slice().filter(
+      listing => Boolean(listing.archived) === this.state.showArchived
+    );
+    this.setState({listingsFiltered});
   }
 
-  componentDidUpdate() {
-    console.log('Listing changed', this.props);
-    // this.props.listingsFiltered = this.props.listings;
+  componentWillReceiveProps(props) {
+    this.filterListings(props);
   }
 
-  // toggleArchive() {
-  //   this.setState({showArchived: !this.state.showArchived});
-  // }
+  toggleArchive() {
+    this.setState({showArchived: !this.state.showArchived},
+      () => {this.filterListings(this.props)}
+    );
+  }
 
   render() {
     return (
       <div>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchive}>Archived</Button>
-        <BootstrapTable data={this.props.listings} hover={true} pagination={true}>
+        <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
           <TableHeaderColumn dataField="location" isKey={true} dataSort={true}>
             Address
           </TableHeaderColumn>
