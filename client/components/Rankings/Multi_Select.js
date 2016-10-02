@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
-
+/*
 const Neighborhoods = [
 	{ label: 'West Village', value: 'West Village' },
 	{ label: 'East Village', value: 'East Village' },
@@ -57,7 +58,8 @@ class MultiSelect extends Component {
 	}
 
 	onFormSubmit (event) {              //onSubmit fn
-		event.preventDefault();           //Stops refresh
+		event.preventDefault();
+		console.log(this.state.value)   //Stops refresh
 		var surveyResponses = {            //Obj holding user details
 			Neighborhoods: this.state.Neighborhoods,
 			Amenities: this.state.Amenities,
@@ -83,7 +85,7 @@ class MultiSelect extends Component {
 				<form onSubmit={this.onFormSubmit}>
 				<div className="section">
 					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={(value) => this.handleSelectChange(value)} />
+					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={(value) => this.handleSelectChange} />
 
 				</div>
 					/*
@@ -97,7 +99,6 @@ class MultiSelect extends Component {
 							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
 						</label>
 					</div>
-					*/
 
 
 				<div className="section">
@@ -115,7 +116,7 @@ class MultiSelect extends Component {
 							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
 						</label>
 					</div>
-					*/
+
 
 					<div className="section">
 						<h3 className="section-heading">{this.props.label}</h3>
@@ -133,69 +134,131 @@ class MultiSelect extends Component {
 export default MultiSelect;
 
 
+*/
 
-
-
-
-
-
-
-
-/*
-import BS from "react-bootstrap"
-import Grid from "react-bootstrap"
+import BS from "react-bootstrap";
+import { Grid, Col, Row } from 'react-bootstrap';
 import Multiselect from 'react-bootstrap-multiselect'
-var fileContent = require('./AppContent').content;
+// var fileContent = require('./AppContent').content;
+import { NumberPicker, DropdownList } from "react-widgets"
+
+const Neighborhoods = [
+	{ label: 'West Village', value: 'West Village' },
+	{ label: 'East Village', value: 'East Village' },
+	{ label: 'Midtown', value: 'Midtown' },
+	{ label: 'Flatiron', value: 'Flatiron' },
+];
 
 
-var MultiSelect = React.createClass({
-  getInitialState: function () {
-    var large = [];
-    for (var i = 0; i < 100; i++) {
-      large.push({value: 'Item ' + i});
-    }
-    return {
-      groups: [
-        {label:'Group One',children:[{value:'1-One'},{value:'1-Two'},{value:'1-Three'},{value:'1-Four',label:'Four Label'}]},
-        {label:'Group Two',children:[{value:'2-One'},{value:'2-Two'},{value:'2-Three'},{value:'2-Four',label:'Four Label'}]},
-        {label:'Group Three',children:[{value:'3-One'},{value:'3-Two'},{value:'3-Three'},{value:'3-Four',label:'Four Label'}]}
-      ],
-      large: large,
-      list: [{value:'One',selected:true},{value:'Two'},{value:'Three'},{value:'Four',label:'Four Label'}]
-    };
-  },
-  render: function () {
+
+const Amenities = [
+	{ label: 'bike', value: 'bike' },
+	{ label: 'garage', value: 'garage' },
+];
+
+const Fees = [
+	{ label: 'YES', value: 'YES' },
+	{ label: 'NO', value: 'NO' },
+];
+
+const Pets = [
+	{ label: 'YES', value: 'YES' },
+	{ label: 'NO', value: 'NO' },
+];
+const RentMin = [
+	{ label: '10', value: '10' },
+	{ label: '20', value: '20' },
+];
+const RentMax = [
+	{ label: '1000', value: '1000' },
+	{ label: '2000', value: '2000' },
+];
+
+const colors = ['orange', 'red', 'blue', 'purple'];
+
+class MultiSelect extends Component {
+
+	constructor (props, context) {
+    super(props, context)
+
+    this.state = {
+				Neighborhoods: Neighborhoods,
+				Amenities: Amenities,
+				Fees: Fees,
+				RentMin : RentMin  ,
+				RentMax: RentMax,
+				Pets: Pets
+			};
+		}
+
+		handleChange = (e) => {
+		  // var options = e.target.options;
+			var Amenities = this.state.Amenities
+		  var selectArr = [];
+		  for (var i = 0, l = Amenities.length; i < l; i++) {
+		    if (Amenities[i].selected) {
+		      selectArr.push(Amenities[i].value);
+		    }
+		  }
+			console.log(selectArr)
+		  // this.props.someCallback(value);
+		}
+
+		onFormSubmit   (event) {              //onSubmit fn
+	    event.preventDefault();           //Stops refresh
+	    var rankings = {            //Obj holding user details
+	      neighborhood: this.state.Neighborhoods,
+	      // rent: this.state.rent,
+	      // pets: this.state.pets,
+	      amenities: this.state.Amenities,
+	      // commute: this.state.commute,
+	      // extras: this.state.extras
+	    }
+	    // console.log("this+++++",this.props.user_id)
+	    console.log(rankings)
+	    // this.props.postRankings(rankings, this.props.user_id)
+	      // .then (() => {
+	      //   this.context.router.push('/');
+	      // })
+	  }
+
+
+  render	() {
     return (
-      <BS.Grid>
-        <Header />
-        <BS.Row>
-          <BS.Col md={3}>
-            <h2>Demo:</h2>
-            <h4>no optgroups:</h4>
-            <Multiselect data={this.state.list} multiple />
-            <h4>with optgroups:</h4>
-            <Multiselect data={this.state.groups} multiple />
-            <h4>single select:</h4>
-            <Multiselect data={this.state.groups} />
-            <h4>large list (maxHeight/buttonText):</h4>
-            <Multiselect data={this.state.large} multiple
-              maxHeight={200}
-              buttonText={function(options, select) {
-                return 'Long List / Custom Title!';
-              }}
-            />
-            <h4>buttonClass:</h4>
-            <Multiselect buttonClass="btn btn-danger" data={this.state.list} multiple />
-          </BS.Col>
-          <BS.Col md={9}>
-            <h2>Demo Source Code:</h2>
-            <textarea className="form-control" style={{width:'100%',height:'500px'}} readOnly value={fileContent} />
-          </BS.Col>
-        </BS.Row>
-      </BS.Grid>
+			<div>
+				<form onSubmit={this.onFormSubmit}>
+
+				<Row>
+					<Col  sm={6} md={9}>
+						<h4>Your Rent Budget </h4>
+
+						<Multiselect data={this.state.RentMin} />
+						<Multiselect data={this.state.RentMax} />
+
+						<h4>Let's pick your fav neighborhoods </h4>
+						<Multiselect data={this.state.Amenities}
+							onChange={(value) => this.handleChange()} multiple />
+
+						<h4>What cool amenities would you like?</h4>
+						<Multiselect data={this.state.Neighborhoods} multiple />
+						<h4> FEES ?? </h4>
+						<Multiselect data={this.state.Fees} />
+						<h4> Furry Little Friends ?? </h4>
+						<Multiselect data={this.state.Pets} />
+
+
+					</Col>
+					<Col  sm={6} md={9}>
+					</Col>
+				</Row>
+				<button type="submit" className="btn btn-block btn-primary">Submit</button>
+
+        </form>
+			</div>
+
     );
   }
-});
+}
 
 
 
