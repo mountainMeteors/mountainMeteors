@@ -48,7 +48,8 @@ class AddListingsModal extends React.Component {
     }
     console.log('postListing is', this.props.postListing);
     console.log('user id', this.props.user_id)
-    this.props.postListing(listings, this.props.user_id);
+    this.props.postListing(listings);
+    this.close()
   }
 
   render() {
