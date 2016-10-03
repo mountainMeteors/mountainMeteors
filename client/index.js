@@ -3,8 +3,12 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
-import SurveyForm from './components/Survey/SurveyForm';
-import RankingSlider from './components/Rankings/RankingSlider'
+
+import Survey from './components/Rankings/RankingSlider'
+
+/*TEST with Multi-select*/
+import MultiSelect from './components/Rankings/Multi_Select';
+
 import RankingDisplay from './components/Rankings/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
@@ -18,10 +22,10 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
-        <Route path="surveyForm" component={SurveyForm} />
-        <Route path="survey" component={RankingSlider} />
+        <Route path="survey" component={Survey} />
         <Route path="profile" component={RankingDisplay} />
-        <Route path="welcome" component={Welcome} />
+        <Route path="welcome" component={Welcome}/>
+        <Route path="select" component={MultiSelect}/>
       </Route>
     </Router>
   </Provider>
