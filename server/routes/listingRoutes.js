@@ -22,7 +22,14 @@ router.post('/listings/', (req, res) => {
   .where({
     user_id: req.body.userId
   })
-  .insert({user_id: req.body.userId, location: req.body.location, rent: req.body.price, pets: req.body.pets})
+  .insert({
+    user_id: req.body.userId,
+    location: req.body.location,
+    rent: req.body.price,
+    pets: req.body.pets,
+    lat: req.body.lat,
+    lng: req.body.lng
+  })
   .then(function(listings) {
      res.send(listings);
   });

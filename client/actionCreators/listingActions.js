@@ -28,6 +28,8 @@ export const postListing = function(preference, user_id){
     location: preference.location,
     price: preference.price,
     pets: preference.pets,
+    lat: preference.lat,
+    lng: preference.lng,
     userId: user_id
   }).catch((response) => {
     if(response instanceof Error){
