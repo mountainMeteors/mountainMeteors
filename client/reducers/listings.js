@@ -13,6 +13,9 @@ function listings(state = [], action) {
       return Object.assign([], state, action.payload.data);
       // return action.payload.data; // WORKS BUT NOT REACTY
 
+    case 'PUTLISTING':
+      console.log('reducer heard put listing', action.payload);
+
     default:
       return state;
   }

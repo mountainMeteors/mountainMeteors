@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_LISTINGS = 'GETLISTINGS';
 export const POST_LISTINGS = 'POSTLISTINGS';
-export const PUT_LISTINGS = 'PUTLISTINGS';
+export const PUT_LISTING = 'PUTLISTING';
 
 export const getListings = function(){
   const request = axios.get('/api/listings/', {
@@ -40,11 +40,16 @@ export const postListing = function(preference, user_id){
   }
 }
 
-//TODO: Accommodate (with BE) to be a fully flexible PUT request
-export const putListing = function(listing) {
-  const request = axios.put('/api/listings/', {
-    listing
-  }).catch((response) => {
+export const putListing = function(id, edits) {
+  console.log('put action', id);
+  const request = axios.put('/api/listings/', edits, {
+    headers: {'listing-id': id}
+  })
+  // .then((response) => {
+  //   console.log('thenning', response);
+  //   getListings();
+  // })
+  .catch((response) => {
     if(response instanceof Error){
       console.error('Error sending response', response);
     } else {
@@ -53,7 +58,7 @@ export const putListing = function(listing) {
   });
 
   return {
-    type: PUT_LISTINGS,
+    type: PUT_LISTING,
     payload: request
   }
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { putListing } from '../../actionCreators/listingActions.js';
+import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
 
 //Formatting
 const rentDisplay = cell => '$' + cell;
@@ -52,13 +54,15 @@ class Listing extends React.Component{
     );
   }
 
-  toggleArchiveListing(id) {
-    console.log('toggling', id);
+  toggleArchiveListing(listing) {
+    console.log('toggling', listing.id);
+    let toggledVal = listing.archived === 0 ? 1 : 0;
+    this.props.putListing(listing.id, {archived: toggledVal});
   }
 
-  addrFormat = (cell, row, enumObject, index) => {
+  addrFormat = (cell, listing, enumObject, index) => {
     return (
-      <div onClick={ () => {this.toggleArchiveListing(row.id)} }>{ cell }</div>
+      <div onClick={ () => {this.toggleArchiveListing(listing)} }>{ cell }</div>
     );
   }
 
@@ -85,4 +89,8 @@ class Listing extends React.Component{
   }
 };
 
-export default Listing;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({putListing}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(Listing);

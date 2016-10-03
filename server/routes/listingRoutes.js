@@ -11,7 +11,7 @@ router.get('/listings', util.checkToken, (req, res) => {
     user_id: req.user.id
   })
   .then(function(listings) {
-     res.send(listings);
+    res.send(listings);
   });
 });
 
@@ -26,15 +26,16 @@ router.post('/listings/', (req, res) => {
   });
 });
 
-//TODO: Accommodate (with FE) to be a fully flexible PUT request
 router.put('/listings/', (req, res) => {
-  console.log('server put request', req.body);
+  console.log('server put request', req.headers['listing-id'], req.body);
   return db('listings')
   .where({
-    id: req.params.id
+    id: req.headers['listing-id']
   })
+  .update(req.body) //REPRESENTS OBJECT CONTAINING ANY EDITS
   .then(function(listings) {
-     res.send(listings);
+     console.log('listings', listings);
+     res.send({updated: listings});
   });
 });
 
