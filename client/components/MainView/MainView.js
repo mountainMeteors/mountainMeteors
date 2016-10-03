@@ -6,7 +6,7 @@ import GoogMap from './Map';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
-// import AddListingsModal from '../AddListingsModal';
+import AddListingsModal from '../AddListingsModal';
 import { browserHistory } from 'react-router';
 
 const tempMarkers = [{
@@ -23,21 +23,17 @@ const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 class MainView extends React.Component {
   constructor(){
     super();
-    // this.state = {
-    //   showArchived = false;
-    // }
   }
 
   componentWillMount() {
-    console.log('mounted');
-    this.props.getListings(this.props.user_id);
     if (!this.props.authenticated) browserHistory.push('/welcome');
+    this.props.getListings();
   }
 
   componentDidUpdate() {
-    // console.log('main state updated', this.props, this.state);
-    // this.props.getListings(this.props.user_id);
+    console.log('main state updated', this.props, this.state);
     if (!this.props.authenticated) browserHistory.push('/welcome');
+    // this.props.getListings(this.props.user_id);
   }
 
   render() {
@@ -48,7 +44,7 @@ class MainView extends React.Component {
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
-          {/*<AddListingsModal />*/}
+          <AddListingsModal />
           <Listing listings={this.props.listings}/>
         </Col>
       </div>
@@ -60,8 +56,7 @@ class MainView extends React.Component {
 function mapStateToProps(state) {
   return {
     listings: state.listings,
-    user_id: state.auth.user_id,
-    authenticated: state.auth.authenticated,
+    authenticated: state.auth
   }
 }
 

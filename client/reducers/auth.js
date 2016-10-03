@@ -15,35 +15,18 @@ const auth = function(state = tokenExists, action) {
       //TODO: Reducer should not be doing logic checks
       if (token) {
         console.log('LOGGED IN');
-        // return true;
-        return Object.assign({}, state, {
-          authenticated: true,
-          user_id: action.payload.data.user_id
-        })
+        return true;
       } else {
         console.log('ERROR LOGGING IN', token);
-        return Object.assign({}, state, {
-          authenticated: false,
-          user_id: null
-        })
+        return false;
       }
 
     case 'LOGOUT':
       window.localStorage.removeItem('userToken');
-      return Object.assign({}, state, {
-        authenticated: false,
-        user_id: null
-      });
+      return false;
 
     default:
-      let returning = Object.assign({}, state, {
-        authenticated: state,
-        user_id: null
-      })
-      //TODO: This while loop is so hacky
-      while (typeof returning.authenticated !== 'boolean') returning = returning.authenticated;
-      // console.log('reduc returning', returning);
-      return returning;
+      return state;
   }
 }
 

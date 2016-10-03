@@ -36,8 +36,7 @@ class Welcome extends React.Component {
 function mapStateToProps(state) {
   return {
     listings: state.listings,
-    authenticated: state.auth.authenticated,
-    user_id: state.auth.user_id
+    authenticated: state.auth
   }
 }
 
