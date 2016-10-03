@@ -59,6 +59,7 @@ class RankingSlider extends Component {
     super( context)
     this.state = {
       Neighborhoods: Neighborhoods,
+      NeighborhoodsSelected: [],
         neighborhood: 0,
 
       RentMin : RentMin  ,
@@ -91,11 +92,11 @@ class RankingSlider extends Component {
     })
   }
 
-  onFormSubmit (event) {              //onSubmit fn
+  onFormSubmit = (event)=> {              //onSubmit fn
     event.preventDefault();           //Stops refresh
     var rankings = {            //Obj holding user details
       neighborhood: this.state.neighborhood,
-      Neighborhoods: this.state.Neighborhoods,
+      Neighborhoods: this.state.NeighborhoodsSelected,
       rent: this.state.rent,
       pets: this.state.pets,
       amenities: this.state.amenities,
@@ -118,9 +119,13 @@ class RankingSlider extends Component {
       /*neighborhood*/
           /*SYRVEY*/
       <h4>Let's pick your fav neighborhoods </h4>
-      <Multiselect
-        data={this.state.Neighborhoods}
-       multiple />
+        <Select
+    		    name="form-field-name"
+    		    value={this.state.NeighborhoodsSelected}
+    				multi={true}
+    		    options={Neighborhoods}
+    		    onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
+    		/>
 
       <div className='horizontal-slider'>
       <h4>How important is neighborhood ?</h4>
