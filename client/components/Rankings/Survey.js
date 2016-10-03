@@ -32,7 +32,7 @@ var Survey = React.createClass({
 		return {
 			disabled: false,
 			crazy: false,
-			FLAVOURS: FLAVOURS,
+			FLAVOURS: [],
       Neighborhoods:Neighborhoods,
       valNeighborhoods: [],
 			value: [],
@@ -77,7 +77,7 @@ var Survey = React.createClass({
 	<form onSubmit={this.onFormSubmit}>
 			<div className="section">
 				<h3 className="section-heading">{this.props.label}</h3>
-				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.FLAVOURS} onChange={this.handleSelectChange} />
+				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={FLAVOURS} onChange={this.handleSelectChange} />
 				<div className="checkbox-list">
 				</div>
 			</div>

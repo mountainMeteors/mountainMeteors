@@ -5,6 +5,44 @@ import Slider from 'react-rangeslider'
 import { postRankings } from '../../actionCreators/rankingActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Select from 'react-select';
+import { Grid, Col, Row } from 'react-bootstrap';
+import Multiselect from 'react-bootstrap-multiselect'
+
+
+
+const Neighborhoods = [
+	{ label: 'West Village', value: 'West Village' },
+	{ label: 'East Village', value: 'East Village' },
+	{ label: 'Midtown', value: 'Midtown' },
+	{ label: 'Flatiron', value: 'Flatiron' },
+];
+
+
+
+const Amenities = [
+	{ label: 'bike', value: 'bike' },
+	{ label: 'garage', value: 'garage' },
+];
+
+const Pets = [
+	{ label: 'YES', value: 'YES' },
+	{ label: 'NO', value: 'NO' },
+];
+
+
+const Fees = [
+	{ label: 'YES', value: 'YES' },
+	{ label: 'NO', value: 'NO' },
+];
+const RentMin = [
+	{ label: '10', value: '10' },
+	{ label: '20', value: '20' },
+];
+const RentMax = [
+	{ label: '1000', value: '1000' },
+  { label: '2000', value: '2000' },
+];
 
 
 class RankingSlider extends Component {
@@ -12,12 +50,23 @@ class RankingSlider extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      neighborhood: 5,
-      rent: 5,
-      pets: 5,
-      amenities: 5,
-      commute: 5,
-      extras: 5
+      Neighborhoods: Neighborhoods,
+        neighborhood: 0,
+
+      RentMin : RentMin  ,
+      RentMax: RentMax,
+        rent: 0,
+
+      Pets: Pets,
+        pets: 0,
+
+      Fees: Fees,
+        Fees: 0,
+
+      Amenities: Amenities,
+      amenities: 0,
+
+      extras: 0
     }
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -41,7 +90,7 @@ class RankingSlider extends Component {
       rent: this.state.rent,
       pets: this.state.pets,
       amenities: this.state.amenities,
-      commute: this.state.commute,
+      fees: this.state.fees,
       extras: this.state.extras
     }
     console.log("this+++++",this.props.user_id)
@@ -58,6 +107,10 @@ class RankingSlider extends Component {
       <div>
       <form onSubmit={this.onFormSubmit}>
       /*neighborhood*/
+          /*SYRVEY*/
+      <h4>Let's pick your fav neighborhoods </h4>
+      <Multiselect data={this.state.Neighborhoods}
+       multiple />
       <div className='horizontal-slider'>
       <h4>How important is neighborhood ?</h4>
       <Slider
@@ -74,6 +127,12 @@ class RankingSlider extends Component {
 
 
       /*Rent */
+
+      /*SURVEY*/
+
+      <Multiselect data={this.state.RentMin}/>
+      <Multiselect data={this.state.RentMax} />
+
       <div className='horizontal-slider'>
       <h4>How important is rent budget from 1 to 5?</h4>
       <Slider
@@ -88,6 +147,11 @@ class RankingSlider extends Component {
 
 
       /*Pets*/
+      <div>
+
+      <h4> Furry Little Friends ?? </h4>
+      <Multiselect data={this.state.Pets} />
+
       <div className='horizontal-slider'>
       <h4>How important is having pet accommodation ?</h4>
       <Slider
@@ -99,6 +163,10 @@ class RankingSlider extends Component {
       <div className='value'>Ranking:{this.state.pets}</div>
       <hr />
       </div>
+
+
+    </div>
+
 
       /*amenities*/
       <div className='horizontal-slider'>
@@ -112,22 +180,25 @@ class RankingSlider extends Component {
       <div className='value'>Ranking: {this.state.amenities}</div>
       <hr />
       </div>
+      <h4>Rank importance  </h4>
+      <Multiselect data={this.state.Amenities}
+       multiple />
 
 
       /*amenities*/
+
       <div className='horizontal-slider'>
-      <h4>How important is commute time? </h4>
+      <h4>How important is fees ? </h4>
       <Slider
       min={0}
       max={5}
-      value={this.state.commute}
-    onChange={(value) => this.handleChange("commute", value)}
+      value={this.state.fees}
+    onChange={(value) => this.handleChange("fees", value)}
       />
       <div className='value'>
-      Ranking:{this.state.commute}</div>
+      Ranking:{this.state.fees}</div>
       <hr />
       </div>
-
 
       /*extras*/
       <div className='horizontal-slider'>

@@ -1,7 +1,9 @@
-
+/*
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
+import { Grid, Col, Row } from 'react-bootstrap';
+import Multiselect from 'react-bootstrap-multiselect'
 
 const Neighborhoods = [
 	{ label: 'West Village', value: 'West Village' },
@@ -25,6 +27,15 @@ const Pets = [
 	{ label: 'none', value: 'none' },
 ];
 
+const RentMin = [
+	{ label: '10', value: '10' },
+	{ label: '20', value: '20' },
+];
+const RentMax = [
+	{ label: '1000', value: '1000' },
+	{ label: '2000', value: '2000' },
+];
+
 class MultiSelect extends Component {
 
 	// propTypes: {
@@ -42,20 +53,21 @@ class MultiSelect extends Component {
       Pets: Pets,
 			value: [],
 		}
-		this.handleSelectChange = this.handleSelectChange.bind(this);
+		// this.handleSelectChange = this.handleSelectChange.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
 
-
+/*
 	handleSelectChange = (value) => {
 		console.log('You\'ve selected:',value );
 
 		// stateObj[criteria] = value;
 		// this.setState(stateObj);
 		// this.setState({[criteria]: value });
-		this.setState({ Amenities });
+		this.setState({ value });
 	}
+	
 
 	onFormSubmit (event) {              //onSubmit fn
 		event.preventDefault();
@@ -83,27 +95,21 @@ class MultiSelect extends Component {
 
       <div>
 				<form onSubmit={this.onFormSubmit}>
+
+				<Multiselect data={this.state.RentMin}/>
+				<Multiselect data={this.state.RentMax} />
+
 				<div className="section">
 					<h3 className="section-heading">{this.props.label}</h3>
 					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={this.handleSelectChange} />
 
 				</div>
-/*
-					<div className="checkbox-list">
-						<label className="checkbox">
-							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
-							<span className="checkbox-label">Disable the control</span>
-						</label>
-						<label className="checkbox">
-							<input type="checkbox" className="checkbox-control" checked={this.state.crazy} onChange={this.toggleChocolate} />
-							<span className="checkbox-label">I don't like Chocolate (disabled the option)</span>
-						</label>
-					</div>
+
 
 
 				<div className="section">
 					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={this.handleSelectChange()} />
+					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={this.handleSelectChange} />
 				</div>
 
 					<div className="checkbox-list">
@@ -122,7 +128,7 @@ class MultiSelect extends Component {
 						<h3 className="section-heading">{this.props.label}</h3>
 						<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Pets} onChange={(value) => this.handleSelectChange(value)} />
 					</div>
-					*/
+
 				<button type="submit" className="btn btn-block btn-primary">Submit</button>
 				</form>
 
@@ -135,9 +141,11 @@ class MultiSelect extends Component {
 export default MultiSelect;
 
 
-
 /*
+
 import BS from "react-bootstrap";
+import React from 'react';
+import { Component, PropTypes } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import Multiselect from 'react-bootstrap-multiselect'
 // var fileContent = require('./AppContent').content;
@@ -192,17 +200,9 @@ class MultiSelect extends Component {
 			};
 		}
 
-		handleChange = (e) => {
-		  // var options = e.target.options;
-			var Amenities = this.state.Amenities
-		  var selectArr = [];
-		  for (var i = 0, l = Amenities.length; i < l; i++) {
-		    if (Amenities[i].selected) {
-		      selectArr.push(Amenities[i].value);
-		    }
-		  }
-			console.log(selectArr)
-		  // this.props.someCallback(value);
+		handleSelectChange (value) {
+			console.log('You\'ve selected:', value);
+			this.setState({ value });
 		}
 
 		onFormSubmit   (event) {              //onSubmit fn
@@ -233,15 +233,15 @@ class MultiSelect extends Component {
 					<Col  sm={6} md={9}>
 						<h4>Your Rent Budget </h4>
 
-						<Multiselect data={this.state.RentMin} />
+						<Multiselect data={this.state.RentMin}/>
 						<Multiselect data={this.state.RentMax} />
 
 						<h4>Let's pick your fav neighborhoods </h4>
-						<Multiselect data={this.state.Amenities}
-							onChange={(value) => this.handleChange()} multiple />
+						<Multiselect data={this.state.Neighborhoods}
+							onChange={(value) => this.handleSelectChange()} multiple />
 
 						<h4>What cool amenities would you like?</h4>
-						<Multiselect data={this.state.Neighborhoods} multiple />
+						<Multiselect data={this.state.Amenities} multiple />
 						<h4> FEES ?? </h4>
 						<Multiselect data={this.state.Fees} />
 						<h4> Furry Little Friends ?? </h4>
@@ -262,130 +262,6 @@ class MultiSelect extends Component {
 }
 
 
-
-export default MultiSelect
-
-
-*/
-
-
-/*
-
-import Slider from 'react-rangeslider'
-import RankingSlider from './RankingSlider'
-import { postRankings } from '../../actionCreators/rankingActions';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-var SelectBox = React.createFactory(require('./SelectBox'))
-
-
-
-var div = React.createElement.bind(null,'div')
-var option = React.createElement.bind(null,'option')
-var h1 = React.createElement.bind(null,'h1')
-var form = React.createElement.bind(null,'form')
-var button = React.createElement.bind(null,'form')
-
-
-var MultiSelect = React.createFactory(React.createClass(
-  {displayName: 'MultiSelect',
-
-  getInitialState: function () {
-    return {
-      Fees: null,
-      Pets: 0,
-      Neighborhoods: [],
-      Amenities: [],
-    }
-  },
-
-
-
-	handleChange: function (Pets) {
-    this.setState({ Pets: Pets })
-  },
-  handleMultiChange: function (Neighborhoods) {
-    this.setState({ Neighborhoods: Neighborhoods })
-  },
-
-  handleMultiChangeA: function (Amenities) {
-    this.setState({ Amenities: Amenities })
-		console.log(this.state.Amenities)
-  },
-
-	onFormSubmit : function (event) {              //onSubmit fn
-		event.preventDefault();           //Stops refresh
-		var rankings = {            //Obj holding user details
-			neighborhood: this.state.Neighborhoods,
-			// rent: this.state.rent,
-			// pets: this.state.pets,
-			amenities: this.state.Pets,
-			// commute: this.state.commute,
-			// extras: this.state.extras
-		}
-		// console.log("this+++++",this.props.user_id)
-		console.log(rankings)
-		// this.props.postRankings(rankings, this.props.user_id)
-			// .then (() => {
-			//   this.context.router.push('/');
-			// })
-	},
-
-  render: function () {
-    const { value } = this.state
-    return(
-
-					/*
-					<div className="example">
-
-						<h1>"Fees?"</h1>
-						<SelectBox >
-							className= 'my-example-select-box'
-							onChange={this.handleChange}
-							value={this.state.Pets}>
-							<option value={"YES"}>"YES"</option>
-							<option value={"NO"}> "NO" 	</option>
-						</SelectBox>
-					</div>
-*/
-/*
-div({className: "example"},
-
-					  h1(null, "Let's pick your fav Neighborhoods"),
-					  SelectBox(
-					    {
-					      label: "Favorite Neighborhoods",
-					      onChange: this.handleMultiChange,
-					      value: this.state.Neighborhoods,
-					      multiple: true
-					    },
-					    option({value: 'East Village'}, 'East Village'),
-					    option({value: 'West Village'}, 'West Village'),
-					    option({value: 'Midtown West'}, 'Midtown West'),
-					    option({value: 'Midtown East'}, 'Midtown East'),
-					    option({value: 'Upper West Side'}, 'Upper West Side'),
-					    option({value: 'Upper East Side'}, ' Upper East Side')
-					  ),
-
-					  h1(null, "What amenities would you like?"),
-					  SelectBox(
-					    {
-					      label: "Favorite Amenities",
-					      onChange: this.handleMultiChangeA,
-					      value: this.state.Amenities,
-					      multiple: true
-					    },
-					    option({value: 'storage room'}, 'storage room'),
-					    option({value: 'laundry room'}, 'laundry room'),
-					    option({value: 'elevator'}, 'elevator'),
-					    option({value: 'bike storage'}, 'bike storage '),
-					    option({value: 'doorman'}, 'doorman'),
-					    option({value: 'parking'}, 'parking')
-						)
-		)
-	)
-}
-}))
 
 export default MultiSelect
 */
