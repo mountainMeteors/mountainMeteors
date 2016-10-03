@@ -1,103 +1,291 @@
-
 import React from 'react';
 import { Component, PropTypes } from 'react';
+const ReactDOM = require('react-dom');
+import Slider from 'react-rangeslider'
+import { postRankings } from '../../actionCreators/rankingActions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import Select from 'react-select';
+import { Grid, Col, Row } from 'react-bootstrap';
+import Multiselect from 'react-bootstrap-multiselect'
 
 
-
-
-const FLAVOURS = [
-	{ label: 'Chocolate', value: 'chocolate' },
-	{ label: 'Vanilla', value: 'vanilla' },
-	{ label: 'Strawberry', value: 'strawberry' },
-	{ label: 'Caramel', value: 'caramel' },
-	{ label: 'Cookies and Cream', value: 'cookiescream' },
-	{ label: 'Peppermint', value: 'peppermint' },
-];
 
 const Neighborhoods = [
-	{ label: 'West Village', value: 'West Village' },
-	{ label: 'East Village', value: 'East Village' },
-	{ label: 'Midtown', value: 'Midtown' },
-	{ label: 'Flatiron', value: 'Flatiron' },
+  { label: 'West Village', value: 'West Village' },
+  { label: 'East Village', value: 'East Village' },
+  { label: 'Midtown', value: 'Midtown' },
+  { label: 'Flatiron', value: 'Flatiron' },
 ];
 
 
-var Survey = React.createClass({
-	displayName: 'Survey',
-	propTypes: {
-		label: React.PropTypes.string,
-	},
-	getInitialState () {
-		return {
-			disabled: false,
-			crazy: false,
-			FLAVOURS: [],
-      Neighborhoods:Neighborhoods,
-      valNeighborhoods: [],
-			value: [],
-		};
-	},
-	handleSelectChange (value) {
-		console.log('You\'ve selected:', value);
-		this.setState({ value });
-	},
-	handleSelectChangeA (value) {
-		console.log('You\'ve selected:', value);
-		this.setState({ value });
-	},
+
+const Amenities = [
+  { label: 'bike', value: 'bike' },
+  { label: 'garage', value: 'garage' },
+];
+
+const Pets = [
+  { label: 'Dogs', value: 'Dogs' },
+  { label: 'Cats', value: 'Cats' },
+];
 
 
-  onFormSubmit (event) {              //onSubmit fn
-    event.preventDefault();
-    console.log(this.state.value)   //Stops refresh
-    var surveyResponses = {            //Obj holding user details
-      Neighborhoods: this.state.Neighborhoods,
-      FLAVOURS: this.state.FLAVOURS,
-      // Amenities: this.state.Amenities,
-      // Pets: this.state.Pets,
-      // amenities: this.state.amenities,
-      // commute: this.state.commute,
-      // extras: this.state.extras
+const Fees = [
+  { label: 'YES', value: 'YES' },
+  { label: 'NO', value: 'NO' },
+];
+const RentMin = [
+  { label: '10', value: '10' },
+  { label: '20', value: '20' },
+];
+const RentMax = [
+  { label: '1000', value: '1000' },
+  { label: '2000', value: '2000' },
+];
+const CommuteMin = [
+  { label: '10', value: '10' },
+  { label: '20', value: '20' },
+];
+const CommuteMax = [
+  { label: '1000', value: '1000' },
+  { label: '2000', value: '2000' },
+];
+
+
+class Survey extends Component {
+
+  constructor ( context) {
+    super( context)
+    this.state = {
+      Neighborhoods: Neighborhoods,
+      NeighborhoodsSelected: [],
+      neighborhoodRank: 5,
+
+      Fees: Fees,
+      FeesSelected: null,
+      feeRank: 5,
+
+      Pets: Pets,
+      PetSelected: null,
+      petRank: 5,
+
+      RentMinSelected: null,
+      RentMin : RentMin,
+      RentMaxSelected: null,
+      RentMax: RentMax,
+      rentRank: 5,
+
+      amenitiesRank: 5,
+      amenitiesSelected: [],
+      Amenities: Amenities,
+
+      commute: 5
     }
-    // console.log("this+++++",this.props.user_id)
-    console.log(surveyResponses)
-    // this.props.postRankings(rankings, this.props.user_id)
-      // .then (() => {
-      //   this.context.router.push('/');
-      // })
-  },
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
+  // state[criteria] = value
+  handleChange = (criteria,value) => {
+    console.log('======',criteria, value)
+    this.setState({
+      [criteria]: value
+    })
+  }
 
+  onFormSubmit = (event)=> {              //onSubmit fn
+    event.preventDefault();           //Stops refresh
+    var rankings = {            //Obj holding user details
+      neighborhoodRank: this.state.neighborhoodRank,
+      Neighborhoods: this.state.NeighborhoodsSelected,
 
-	render () {
-		return (
+      rentRank: this.state.rentRank,
+      RentMin: this.state.RentMinSelected,
+      RentMax: this.state.RentMaxSelected,
+
+      petRank: this.state.petRank,
+      Pets: this.state.PetSelected,
+
+      Amenities: this.state.amenitiesSelected,
+      amenitiesRank: this.state.amenitiesRank,
+
+      feeRank: this.state.feeRank,
+      fees: this.state.FeesSelected,
+
+      commute: this.state.commute
+    }
+    console.log("this+++++",this.props.user_id)
+    console.log(rankings)
+    this.props.postRankings(rankings, this.props.user_id)
+    // .then (() => {
+    //   this.context.router.push('/');
+    // })
+  }
+
+  render () {
+    const { value } = this.state
+    return (
       <div>
-	<form onSubmit={this.onFormSubmit}>
-			<div className="section">
-				<h3 className="section-heading">{this.props.label}</h3>
-				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={FLAVOURS} onChange={this.handleSelectChange} />
-				<div className="checkbox-list">
-				</div>
-			</div>
+        <form onSubmit={this.onFormSubmit}>
+          /*neighborhood*/
+          <h4>Let's pick your fav neighborhoods </h4>
+          <Select
+            name="form-field-name"
+            value={this.state.NeighborhoodsSelected}
+            multi={true}
+            options={Neighborhoods}
+            onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
+            />
+
+          <div className='horizontal-slider'>
+            <h4>Rank neighborhoods ?</h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.neighborhoodRank}
+              onChange={(value) => this.handleChange("neighborhoodRank",value)}
+              />
+            <div className='value'>
+              Ranking: {this.state.neighborhoodRank}
+            </div>
+            <hr />
+          </div>
+
+          //FEES
+          <Select
+            name="form-field-name"
+            value={this.state.FeesSelected}
+            options={Fees}
+            onChange={(value) => this.handleChange("FeesSelected", value)}
+            />
+          <div className='horizontal-slider'>
+            <h4>How important is fees ? </h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.feeRank}
+              onChange={(value) => this.handleChange("feeRank", value)}
+              />
+            <div className='value'>
+              Ranking:{this.state.feeRank}</div>
+            <hr />
+          </div>
+
+          /*your rent budget */
+          <Select
+            name="form-field-name"
+            value={this.state.RentMinSelected}
+            options={RentMin}
+            onChange={(value) => this.handleChange("RentMinSelected", value)}
+            />
+            <Select
+              name="form-field-name"
+              value={this.state.RentMaxSelected}
+              options={RentMax}
+              onChange={(value) => this.handleChange("RentMaxSelected", value)}
+              />
+
+          <div className='horizontal-slider'>
+            <h4>How important is rent budget from 1 to 5?</h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.rentRank}
+              onChange={(value) => this.handleChange("rentRank", value)}
+              />
+            <div className='value'>Ranking:{this.state.rentRank}</div>
+            <hr />
+          </div>
 
 
-      <div className="section">
-				<h3 className="section-heading">{this.props.label}</h3>
-				<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={this.handleSelectChangeA} />
-				<div className="checkbox-list">
-				</div>
-			</div>
+          /*Pets*/
+          <div>
+
+            <h4> Furry Little Friends ?? </h4>
+            <Select
+                name="form-field-name"
+                value={this.state.PetSelected}
+                options={Pets}
+                multi={true}
+                onChange={(value) => this.handleChange("PetSelected", value)}
+                />
+
+            <div className='horizontal-slider'>
+              <h4>Rank pet accomo ?</h4>
+              <Slider
+                min={0}
+                max={5}
+                value={this.state.petRank}
+                onChange={(value) => this.handleChange("petRank", value)}
+                />
+              <div className='value'>Ranking:{this.state.petRank}</div>
+              <hr />
+            </div>
 
 
-      <button type="submit" className="btn btn-block btn-primary">Submit</button>
-      </form>
+          </div>
 
-			</div>
 
-		);
-	}
-});
+          /*amenities*/
+          <Select
+            name="form-field-name"
+            value={this.state.amenitiesSelected}
+            multi={true}
+            options={Amenities}
+            onChange={(value) => this.handleChange("amenitiesSelected", value)}
+            />
+          <div className='horizontal-slider'>
+            <h4>How important are amenities ?</h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.amenitiesRank}
+              onChange={(value) => this.handleChange("amenitiesRank", value)}
+              />
+            <div className='value'>Ranking: {this.state.amenitiesRank}</div>
+            <hr />
+          </div>
 
-module.exports = Survey;
+
+          /*commute*/
+          <div className='horizontal-slider'>
+            <h4>How important is short commute ?</h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.commute}
+              onChange={(value) => this.handleChange("commute", value)}
+              />
+            <div className='value'>Ranking: {this.state.commute}</div>
+            <hr />
+          </div>
+
+          <button type="submit" className="btn btn-block btn-primary">Submit</button>
+
+        </form>
+      </div>
+
+
+    )
+  }
+}
+
+function mapStateToProps(state) {
+  console.log('in mapstate==*****==>', state.auth.user_id)
+  return {
+    user_id: state.auth.user_id,
+    isAuth: state.isAuth
+  };
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ postRankings }, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);
