@@ -275,14 +275,16 @@ import RankingSlider from './RankingSlider'
 import { postRankings } from '../../actionCreators/rankingActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
 var SelectBox = React.createFactory(require('./SelectBox'))
 
 
-// var div = React.createElement.bind(null,'div')
-// var option = React.createElement.bind(null,'option')
-// var h1 = React.createElement.bind(null,'h1')
-// var form = React.createElement.bind(null,'form')
+
+var div = React.createElement.bind(null,'div')
+var option = React.createElement.bind(null,'option')
+var h1 = React.createElement.bind(null,'h1')
+var form = React.createElement.bind(null,'form')
+var button = React.createElement.bind(null,'form')
+
 
 var MultiSelect = React.createFactory(React.createClass(
   {displayName: 'MultiSelect',
@@ -332,9 +334,9 @@ var MultiSelect = React.createFactory(React.createClass(
     const { value } = this.state
     return(
 
-			<div>
-				<form onSubmit={this.onFormSubmit}>
+					/*
 					<div className="example">
+
 						<h1>"Fees?"</h1>
 						<SelectBox >
 							className= 'my-example-select-box'
@@ -344,8 +346,10 @@ var MultiSelect = React.createFactory(React.createClass(
 							<option value={"NO"}> "NO" 	</option>
 						</SelectBox>
 					</div>
+*/
 
-					/*
+div({className: "example"},
+
 					  h1(null, "Let's pick your fav Neighborhoods"),
 					  SelectBox(
 					    {
@@ -376,18 +380,10 @@ var MultiSelect = React.createFactory(React.createClass(
 					    option({value: 'bike storage'}, 'bike storage '),
 					    option({value: 'doorman'}, 'doorman'),
 					    option({value: 'parking'}, 'parking')
-					  ) */
-
-
-					<button type="submit" className="btn btn-block btn-primary">Submit</button>
-
-				</form>
-			</div>
-
-
-    )
-  }
+						)
+		)
+	)
+}
 }))
-
 
 export default MultiSelect
