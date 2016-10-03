@@ -32,7 +32,7 @@ router.post('/signup', (req, res) => {
   });
 });
 
-router.post('/login', util.checkToken, (req, res) => {
+router.post('/login', (req, res) => {
   console.log('server-side login with', req.body);
   console.log('headers', req.headers);
   var email = req.body.email;

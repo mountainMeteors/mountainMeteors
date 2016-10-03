@@ -79,8 +79,7 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated,
-    user_id: state.auth.user_id
+    authenticated: state.auth
   }
 }
 

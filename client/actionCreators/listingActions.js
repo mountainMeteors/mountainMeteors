@@ -2,9 +2,13 @@ import axios from 'axios';
 
 export const GET_LISTINGS = 'GETLISTINGS';
 export const POST_LISTINGS = 'POSTLISTINGS';
+export const PUT_LISTING = 'PUTLISTING';
 
-export const getListings = function(user_id){
-  const request = axios.get('/api/listings/' + user_id)
+export const getListings = function(){
+  // Get request w/ header of token
+  const request = axios.get('/api/listings/', {
+    headers: {'x-access-token': window.localStorage.getItem('userToken')}
+  })
   // .then(function (response) {
   //   console.log('listings response received', response.data);
   // })
@@ -16,7 +20,6 @@ export const getListings = function(user_id){
     type: GET_LISTINGS,
     payload: request
   };
-
 }
 
 export const postListing = function(preference, user_id){
@@ -38,5 +41,27 @@ export const postListing = function(preference, user_id){
     type: POST_LISTINGS,
     payload: request
   }
+}
 
+export const putListing = function(id, edits) {;
+  console.log('put action', id, 'changing', edits);
+  const request = axios.put('/api/listings/', edits, {
+    headers: {'listing-id': id}
+  })
+  // .then((response) => {
+  //   console.log('thenning', response);
+  //   getListings();
+  // })
+  .catch((response) => {
+    if(response instanceof Error){
+      console.error('Error sending response', response);
+    } else {
+      console.error('Error from server', response);
+    }
+  });
+
+  return {
+    type: PUT_LISTING,
+    payload: request
+  }
 }
