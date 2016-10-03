@@ -6,7 +6,8 @@ import MainView from './components/MainView/MainView';
 import RankingSlider from './components/Rankings/RankingSlider'
 
 /*TEST with Multi-select*/
-import MultiSelect from './components/Rankings/Multi_Select'
+import MultiSelect from './components/Rankings/Multi_Select';
+import Survey from './components/Rankings/Survey'
 
 
 
@@ -27,6 +28,7 @@ const router = (
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
         <Route path="select" component={MultiSelect}/>
+        <Route path="surveytest" component={Survey}/>
       </Route>
     </Router>
   </Provider>

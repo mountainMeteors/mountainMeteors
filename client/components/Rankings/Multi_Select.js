@@ -2,7 +2,7 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
-/*
+
 const Neighborhoods = [
 	{ label: 'West Village', value: 'West Village' },
 	{ label: 'East Village', value: 'East Village' },
@@ -49,12 +49,12 @@ class MultiSelect extends Component {
 
 
 	handleSelectChange = (value) => {
-		console.log('You\'ve selected:', value);
-		var stateObj = {};
+		console.log('You\'ve selected:',value );
+
 		// stateObj[criteria] = value;
 		// this.setState(stateObj);
 		// this.setState({[criteria]: value });
-		this.setState({ value });
+		this.setState({ Amenities });
 	}
 
 	onFormSubmit (event) {              //onSubmit fn
@@ -62,8 +62,8 @@ class MultiSelect extends Component {
 		console.log(this.state.value)   //Stops refresh
 		var surveyResponses = {            //Obj holding user details
 			Neighborhoods: this.state.Neighborhoods,
-			Amenities: this.state.Amenities,
-			Pets: this.state.Pets,
+			// Amenities: this.state.Amenities,
+			// Pets: this.state.Pets,
 			// amenities: this.state.amenities,
 			// commute: this.state.commute,
 			// extras: this.state.extras
@@ -85,10 +85,10 @@ class MultiSelect extends Component {
 				<form onSubmit={this.onFormSubmit}>
 				<div className="section">
 					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={(value) => this.handleSelectChange} />
+					<Select multi simpleValue disabled={this.state.disabled} name="neighborhood" value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Neighborhoods} onChange={this.handleSelectChange} />
 
 				</div>
-					/*
+/*
 					<div className="checkbox-list">
 						<label className="checkbox">
 							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
@@ -103,9 +103,9 @@ class MultiSelect extends Component {
 
 				<div className="section">
 					<h3 className="section-heading">{this.props.label}</h3>
-					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={(value) => this.handleSelectChange(value)} />
+					<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Amenities} onChange={this.handleSelectChange()} />
 				</div>
-					/*
+
 					<div className="checkbox-list">
 						<label className="checkbox">
 							<input type="checkbox" className="checkbox-control" checked={this.state.disabled} onChange={this.toggleDisabled} />
@@ -122,6 +122,7 @@ class MultiSelect extends Component {
 						<h3 className="section-heading">{this.props.label}</h3>
 						<Select multi simpleValue disabled={this.state.disabled} value={this.state.value} placeholder="Select your favourite(s)" options={this.state.Pets} onChange={(value) => this.handleSelectChange(value)} />
 					</div>
+					*/
 				<button type="submit" className="btn btn-block btn-primary">Submit</button>
 				</form>
 
@@ -134,7 +135,7 @@ class MultiSelect extends Component {
 export default MultiSelect;
 
 
-*/
+
 /*
 import BS from "react-bootstrap";
 import { Grid, Col, Row } from 'react-bootstrap';
@@ -268,7 +269,7 @@ export default MultiSelect
 */
 
 
-
+/*
 
 import Slider from 'react-rangeslider'
 import RankingSlider from './RankingSlider'
@@ -347,7 +348,7 @@ var MultiSelect = React.createFactory(React.createClass(
 						</SelectBox>
 					</div>
 */
-
+/*
 div({className: "example"},
 
 					  h1(null, "Let's pick your fav Neighborhoods"),
@@ -387,3 +388,4 @@ div({className: "example"},
 }))
 
 export default MultiSelect
+*/
