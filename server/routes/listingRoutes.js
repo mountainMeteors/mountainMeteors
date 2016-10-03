@@ -15,7 +15,7 @@ router.get('/listings', util.checkToken, (req, res) => {
   });
 });
 
-router.post('/listings/', (req, res) => {
+router.post('/listings/', util.checkToken, (req, res) => {
   console.log('listing req received at :id', req.body.userId);
   console.log('REQUEST BODY', req.body)
   return db('listings')

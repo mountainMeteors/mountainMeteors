@@ -22,13 +22,14 @@ export const getListings = function(){
   };
 }
 
-export const postListing = function(preference, user_id){
-  console.log("PREF******", preference, user_id)
+export const postListing = function(preference){
+  console.log("PREF******", preference)
   const request = axios.post('/api/listings/', {
     location: preference.location,
     price: preference.price,
     pets: preference.pets,
-    userId: user_id
+  }, {
+    headers: {'x-access-token': window.localStorage.getItem('userToken')}
   }).catch((response) => {
     if(response instanceof Error){
       console.error('Error sending response', response);
