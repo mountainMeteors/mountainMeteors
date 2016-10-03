@@ -43,12 +43,20 @@ const RentMax = [
 	{ label: '1000', value: '1000' },
   { label: '2000', value: '2000' },
 ];
+const CommuteMin = [
+	{ label: '10', value: '10' },
+	{ label: '20', value: '20' },
+];
+const CommuteMax = [
+	{ label: '1000', value: '1000' },
+  { label: '2000', value: '2000' },
+];
 
 
 class RankingSlider extends Component {
 
-  constructor (props, context) {
-    super(props, context)
+  constructor ( context) {
+    super( context)
     this.state = {
       Neighborhoods: Neighborhoods,
         neighborhood: 0,
@@ -66,7 +74,7 @@ class RankingSlider extends Component {
       Amenities: Amenities,
       amenities: 0,
 
-      extras: 0
+      commute: 0
     }
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -87,11 +95,12 @@ class RankingSlider extends Component {
     event.preventDefault();           //Stops refresh
     var rankings = {            //Obj holding user details
       neighborhood: this.state.neighborhood,
+      Neighborhoods: this.state.Neighborhoods,
       rent: this.state.rent,
       pets: this.state.pets,
       amenities: this.state.amenities,
       fees: this.state.fees,
-      extras: this.state.extras
+      commute: this.state.commute
     }
     console.log("this+++++",this.props.user_id)
     console.log(rankings)
@@ -109,8 +118,10 @@ class RankingSlider extends Component {
       /*neighborhood*/
           /*SYRVEY*/
       <h4>Let's pick your fav neighborhoods </h4>
-      <Multiselect data={this.state.Neighborhoods}
+      <Multiselect
+        data={this.state.Neighborhoods}
        multiple />
+
       <div className='horizontal-slider'>
       <h4>How important is neighborhood ?</h4>
       <Slider
@@ -200,16 +211,16 @@ class RankingSlider extends Component {
       <hr />
       </div>
 
-      /*extras*/
+      /*commute*/
       <div className='horizontal-slider'>
-      <h4>How important is having extras ?</h4>
+      <h4>How important is having commute ?</h4>
       <Slider
       min={0}
       max={5}
-      value={this.state.extras}
-          onChange={(value) => this.handleChange("extras", value)}
+      value={this.state.commute}
+          onChange={(value) => this.handleChange("commute", value)}
       />
-      <div className='value'>Ranking: {this.state.extras}</div>
+    <div className='value'>Ranking: {this.state.commute}</div>
       <hr />
         </div>
 

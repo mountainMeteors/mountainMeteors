@@ -1,10 +1,10 @@
-/*
+
 import React from 'react';
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
 import { Grid, Col, Row } from 'react-bootstrap';
 import Multiselect from 'react-bootstrap-multiselect'
-
+/*
 const Neighborhoods = [
 	{ label: 'West Village', value: 'West Village' },
 	{ label: 'East Village', value: 'East Village' },
@@ -67,7 +67,7 @@ class MultiSelect extends Component {
 		// this.setState({[criteria]: value });
 		this.setState({ value });
 	}
-	
+
 
 	onFormSubmit (event) {              //onSubmit fn
 		event.preventDefault();
@@ -260,8 +260,93 @@ class MultiSelect extends Component {
     );
   }
 }
+*/
+
+const options = [
+    { value: 'one', label: 'One' },
+    { value: 'two', label: 'Two' },
+    { value: 'three', label: 'three' }
+];
+const option2 = [
+    { value: 'dogs', label: 'Dogs' },
+    { value: 'cats', label: 'Cats' },
+    { value: 'pokemon', label: 'Pokemon' }
+];
+class MultiSelect extends Component {
+
+	constructor ( props) {
+    super( props)
+	this.state ={
+		value: [],
+		options: options,
+		value2: [],
+		option2: option2
+	}
+	this.logChange = this.logChange.bind(this)
+	this.logChange2 = this.logChange2.bind(this)
+	this.onFormSubmit = this.onFormSubmit.bind(this);
+}
 
 
+ logChange = (value)=> {
+	 console.log(value)
+    console.log("options: " + value);
+		this.setState(
+			{value: value}
+		)
+}
+ logChange2 = (val)=> {
+	 console.log(val)
+    console.log("options2: " + val);
+		this.setState(
+			{value2: val}
+		)
+}
+
+
+onFormSubmit = (event)=> {
+	event.preventDefault();
+	var rankings = {
+		options: this.state.value,
+		option2: this.state.value2,
+
+	}
+	// console.log("this+++++",this.props.user_id)
+	console.log(rankings)
+	// this.props.postRankings(rankings, this.props.user_id)
+		// .then (() => {
+		//   this.context.router.push('/');
+		// })
+}
+
+render () {
+	const { value } = this.state
+
+	return (
+		<div>
+			  <form onSubmit={this.onFormSubmit}>
+		<Select
+		    name="form-field-name"
+		    value={this.state.value}
+				multi={true}
+		    options={options}
+		    onChange={this.logChange}
+		/>
+		<Select
+		    name="form-field-name"
+		    value={this.state.value2}
+				multi={true}
+		    options={option2}
+		    onChange={this.logChange2}
+		/>
+
+	<button type="submit" className="btn btn-block btn-primary">Submit</button>
+	</form>
+
+		</div>
+	)
+}
+
+}
 
 export default MultiSelect
-*/
