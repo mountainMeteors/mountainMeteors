@@ -5,6 +5,7 @@ export const POST_LISTINGS = 'POSTLISTINGS';
 export const PUT_LISTING = 'PUTLISTING';
 
 export const getListings = function(){
+  // Get request w/ header of token
   const request = axios.get('/api/listings/', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
@@ -40,8 +41,8 @@ export const postListing = function(preference, user_id){
   }
 }
 
-export const putListing = function(id, edits) {
-  console.log('put action', id);
+export const putListing = function(id, edits) {;
+  console.log('put action', id, 'changing', edits);
   const request = axios.put('/api/listings/', edits, {
     headers: {'listing-id': id}
   })
