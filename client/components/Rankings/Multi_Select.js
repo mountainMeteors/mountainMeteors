@@ -261,13 +261,17 @@ class MultiSelect extends Component {
   }
 }
 */
+const Amenities = [
+	{ label: 'bike', value: 'bike' },
+	{ label: 'garage', value: 'garage' },
+];
 
 const options = [
     { value: 'one', label: 'One' },
     { value: 'two', label: 'Two' },
     { value: 'three', label: 'three' }
 ];
-const option2 = [
+const Pets = [
     { value: 'dogs', label: 'Dogs' },
     { value: 'cats', label: 'Cats' },
     { value: 'pokemon', label: 'Pokemon' }
@@ -278,37 +282,39 @@ class MultiSelect extends Component {
     super( props)
 	this.state ={
 		value: [],
-		options: options,
+		options: Amenities,
 		value2: [],
-		option2: option2
+		Pets: Pets
 	}
 	this.logChange = this.logChange.bind(this)
-	this.logChange2 = this.logChange2.bind(this)
+	// this.logChange2 = this.logChange2.bind(this)
 	this.onFormSubmit = this.onFormSubmit.bind(this);
 }
 
 
- logChange = (value)=> {
+ logChange = (criteria,value)=> {
 	 console.log(value)
     console.log("options: " + value);
-		this.setState(
-			{value: value}
+		this.setState({
+			[criteria]: value}
 		)
 }
- logChange2 = (val)=> {
-	 console.log(val)
-    console.log("options2: " + val);
-		this.setState(
-			{value2: val}
-		)
-}
+
+
+//  logChange2 = (val)=> {
+// 	 console.log(val)
+//     console.log("options2: " + val);
+// 		this.setState(
+// 			{value2: val}
+// 		)
+// }
 
 
 onFormSubmit = (event)=> {
 	event.preventDefault();
 	var rankings = {
-		options: this.state.value,
-		option2: this.state.value2,
+		Amenities: this.state.value,
+		Pets: this.state.value2,
 
 	}
 	// console.log("this+++++",this.props.user_id)
@@ -329,15 +335,15 @@ render () {
 		    name="form-field-name"
 		    value={this.state.value}
 				multi={true}
-		    options={options}
-		    onChange={this.logChange}
+		    options={Amenities}
+		    onChange={(value) => this.logChange("value", value)}
 		/>
 		<Select
 		    name="form-field-name"
 		    value={this.state.value2}
 				multi={true}
-		    options={option2}
-		    onChange={this.logChange2}
+		    options={Pets}
+				onChange={(value) => this.logChange("value2", value)}
 		/>
 
 	<button type="submit" className="btn btn-block btn-primary">Submit</button>
