@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Table, Glyphicon } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { putListing } from '../../actionCreators/listingActions.js';
+import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
@@ -68,11 +69,7 @@ class Listing extends React.Component{
 
   editFormat (cell, listing) {
     return (
-      <div onClick={ () => {
-        console.log('editing listing', listing)
-      }}>
-        <Glyphicon glyph="pencil" />
-      </div>
+      <div><AddListingsModal listing={listing} modalType="edit" /></div>
     )
   }
 

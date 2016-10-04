@@ -26,7 +26,7 @@ export const postListing = function(preference){
   console.log("PREF******", preference)
   const request = axios.post('/api/listings/', {
     location: preference.location,
-    price: preference.price,
+    rent: preference.rent,
     pets: preference.pets,
     lat: preference.lat,
     lng: preference.lng

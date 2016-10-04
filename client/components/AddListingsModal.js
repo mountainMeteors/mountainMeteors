@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal } from 'react-bootstrap';
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { postListing } from '../actionCreators/listingActions';
+import { postListing, putListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
 
 // import css from '../styles/app.css';
@@ -12,12 +12,14 @@ class AddListingsModal extends React.Component {
   constructor(props){
     super(props);
     console.log('modal type', props.modalType);
-    this.state = {}
-    this.state.location = '';
-    this.state.price = '';
-    this.state.pets = '';
-    this.state.lat = 0;
-    this.state.lng = 0;
+    console.log('this.props ALM', props.listing);
+    this.state = {};
+    this.state.listingId = props.listing ? props.listing.id : null
+    this.state.location = props.listing ? props.listing.location : '';
+    this.state.rent = props.listing ? props.listing.rent : '';
+    this.state.pets = props.listing ? props.listing.pets : '';
+    this.state.lat = props.listing ? props.listing.lat : 0;
+    this.state.lng = props.listing ? props.listing.lng : 0;
     this.state.showModal = false;
 
     this.close = this.close.bind(this);
@@ -28,11 +30,18 @@ class AddListingsModal extends React.Component {
     this.onGeoSelect = this.onGeoSelect.bind(this);
   }
 
+  componentDidMount() {
+    console.log(this.props.modalType, 'modal loaded with state', this.state);
+    console.log('modal loaded with props', this.props);
+  }
+
   componentWillReceiveProps(props) {
+    console.log('receiving props');
     if (props.listing) {
+      console.log('found listing', props.listing);
       this.setState({
         location : props.listing ? props.listing.location : '',
-        price : props.listing ? props.listing.price : '',
+        rent : props.listing ? props.listing.rent : '',
         pets : props.listing ? props.listing.pets : '',
         lat : props.listing ? props.listing.lat : 0,
         lng : props.listing ? props.listing.lng : 0
@@ -45,6 +54,7 @@ class AddListingsModal extends React.Component {
   }
 
   open() {
+    console.log('modal state', this.state);
     this.setState({ showModal: true });
   }
 
@@ -79,14 +89,16 @@ class AddListingsModal extends React.Component {
     event.preventDefault();
     let listings = {
       location: this.state.location,
-      price: this.state.price,
+      rent: this.state.rent,
       pets: this.state.pets,
       lat: this.state.lat,
       lng: this.state.lng
     }
+    console.log('listing id', this.state.listingId);
     console.log('postListing is', this.props.postListing);
-    console.log('user id', this.props.user_id)
-    this.props.postListing(listings);
+    // console.log('user id', this.props.user_id)
+    if (this.props.modalType === "add") this.props.postListing(listings);
+    else this.props.putListing(this.state.listingId, listings);
     this.close()
   }
 
@@ -103,13 +115,19 @@ class AddListingsModal extends React.Component {
    return (
      <div>
 
-       <Button
-         bsStyle="primary"
-         bsSize="small"
-         onClick={this.open.bind(this)}
-       >
-         Add
-       </Button>
+        {this.props.modalType === 'add' ?
+          <Button
+            bsStyle="primary"
+            bsSize="small"
+            onClick={this.open.bind(this)}
+          >
+            Add
+          </Button>
+        :
+          <div onClick={this.open.bind(this)}>
+            <Glyphicon glyph="pencil" />
+          </div>
+        }
 
        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
          <Modal.Header closeButton>
@@ -123,6 +141,7 @@ class AddListingsModal extends React.Component {
                {' '}
                <Geosuggest
                  location={new google.maps.LatLng(40.7725833, -73.9736894)}
+                 initialValue={this.state.location}
                  radius="20"
                  placeholder="123 BeaconHill"
                  className="geosuggest__suggests-wrapper"
@@ -141,9 +160,9 @@ class AddListingsModal extends React.Component {
              <FormGroup controlId="formPrice">
                <ControlLabel>Budget</ControlLabel>
                {' '}
-               <FormControl name="price" value={this.state.price}
+               <FormControl name="rent" value={this.state.rent}
                onChange={this.handleChange}
-               type="price" placeholder="$2000" />
+               type="rent" placeholder="$2000" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPets" validationState="success">
@@ -175,7 +194,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({postListing}, dispatch)
+  return bindActionCreators({postListing, putListing}, dispatch)
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(AddListingsModal);
