@@ -1,4 +1,3 @@
-// testing with commit
 
 import React from 'react';
 import { Component, PropTypes } from 'react';
