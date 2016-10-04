@@ -8,10 +8,6 @@ import PostPhotos from './components/MainView/PostPhotos';
 
 
 
-
-
-
-
 /*TEST with Multi-select*/
 import MultiSelect from './components/Rankings/Multi_Select';
 
