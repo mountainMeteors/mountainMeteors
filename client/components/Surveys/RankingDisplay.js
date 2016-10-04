@@ -25,22 +25,25 @@ class Display extends React.Component {
     if (!this.props.surveysResponses) {
       return <div>loading</div>
     }
-    return
-    <tr
-  key={this.props.surveysResponses.Pets}>
-  <td>
-  {this.props.surveysResponses.RentMin}
-  </td> </tr>
+    return (
+    <li
+  key={userResponses.feeRank}
+  className="list-group-item">
+  {this.props.surveysResponses.commute}
+  </li>
+)
 }
 
 
   render() {
     return(
+      <div>
       <ul className='list-group col-sm-4'>
         YOUR RANKINGS:
-        {console.log('in render===*******===>',  this.props.surveysResponses)}
+        {console.log('in render===*******===>',  typeof this.props.surveysResponses)}
         {this.renderList()}
       </ul>
+      </div>
     )
   }
 
