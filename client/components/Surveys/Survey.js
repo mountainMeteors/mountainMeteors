@@ -1,13 +1,12 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
-const ReactDOM = require('react-dom');
 import Slider from 'react-rangeslider'
-import { postRankings } from '../../actionCreators/rankingActions';
+import { postSurveyAnswers } from '../../actionCreators/surveysActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import { Grid, Col, Row } from 'react-bootstrap';
-import Multiselect from 'react-bootstrap-multiselect'
+
 
 
 
@@ -99,7 +98,7 @@ class Survey extends Component {
 
   onFormSubmit = (event)=> {              //onSubmit fn
     event.preventDefault();           //Stops refresh
-    var rankings = {            //Obj holding user details
+    var surveyResponses = {            //Obj holding user details
       neighborhoodRank: this.state.neighborhoodRank,
       Neighborhoods: this.state.NeighborhoodsSelected,
 
@@ -119,8 +118,8 @@ class Survey extends Component {
       commute: this.state.commute
     }
     console.log("this+++++",this.props.user_id)
-    console.log(rankings)
-    this.props.postRankings(rankings, this.props.user_id)
+    console.log(surveyResponses)
+    this.props.postSurveyAnswers(surveyResponses, this.props.user_id)
     // .then (() => {
     //   this.context.router.push('/');
     // })
@@ -284,7 +283,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ postRankings }, dispatch)
+  return bindActionCreators({ postSurveyAnswers }, dispatch)
 }
 
 

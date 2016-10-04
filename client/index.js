@@ -3,13 +3,13 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
+import Survey from './components/Surveys/Survey'
 
-import Survey from './components/Survey/SurveyForm' //TEMP UNTIL WEN FIXES
 
 /*TEST with Multi-select*/
-import MultiSelect from './components/Rankings/Multi_Select';
+import MultiSelect from './components/Surveys/Multi_Select';
 
-import RankingDisplay from './components/Rankings/RankingDisplay'
+import RankingDisplay from './components/Surveys/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
 import { Router, Route, IndexRoute, browserHistory} from 'react-router';
