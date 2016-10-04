@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import App from './components/App';
 import MainView from './components/MainView/MainView';
 
-import Survey from './components/Rankings/RankingSlider'
+import Survey from './components/Survey/SurveyForm' //TEMP UNTIL WEN FIXES
 
 /*TEST with Multi-select*/
 import MultiSelect from './components/Rankings/Multi_Select';

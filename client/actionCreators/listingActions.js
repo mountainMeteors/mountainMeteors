@@ -29,8 +29,7 @@ export const postListing = function(preference){
     price: preference.price,
     pets: preference.pets,
     lat: preference.lat,
-    lng: preference.lng,
-    userId: user_id
+    lng: preference.lng
   }, {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   }).catch((response) => {
