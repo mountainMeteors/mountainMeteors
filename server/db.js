@@ -61,6 +61,22 @@ db.schema.hasTable('listings').then(function(exists){
   }
 });
 
+
+db.schema.hasTable('listingPhotos').then(function(exists){
+  if(!exists){
+    return db.schema.createTable('listingPhotos', function(photo) {
+      photo.increments('id').primary();
+      photo.foreign('listing_id').references('id').inTable('listings');
+      photo.string('name', 255).unique();
+      photo.timestamps();
+      console.log('Created listingPhotos table');
+    })
+    .catch(function(err){
+      console.error(err);
+    });
+  }
+});
+
 // 1216 Broadway, Apt 2A
 // 109 Greenwich Ave, Apt 4C
 // 261 Lorimer St, Apt 2B

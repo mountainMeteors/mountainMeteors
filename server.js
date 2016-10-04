@@ -4,6 +4,18 @@ const webpack = require('webpack');
 // const config = require('./webpack.config');
 // const webpackMiddleware = require('webpack-dev-middleware');
 const cors = require('cors');
+const multer  = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+var upload = multer({ storage: storage })
 // const compiler = webpack(config);
 const bodyParser = require('body-parser');
 
@@ -20,6 +32,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(upload.any())
 
 const surveyFormRoutes = require('./server/routes/surveyFormRoutes');
 const accountRoutes = require('./server/routes/accountRoutes');
