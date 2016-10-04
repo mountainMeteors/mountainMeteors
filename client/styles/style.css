@@ -1,7 +1,4 @@
 
-
-
-
 #header {
     background-color: ##FAEBD7 ;
 }
@@ -28,6 +25,12 @@
 }
 
 
+label {
+    display: inline-block;
+    max-width: 100%;
+    float: left;
+    margin-bottom: 5px
+}
 
 
 /*  TITLE TREATMENT  */
@@ -3958,13 +3961,20 @@ input[type=radio] {
     line-height: normal
 }
 
-.form-control,
-output {
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    display: block
+.form-control {
+    width: 37%;
+    height: 34px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
 
 input[type=file] {
     display: block
@@ -3992,7 +4002,7 @@ output {
 }
 
 .form-control {
-    width: 100%;
+    width: 40%;
     height: 34px;
     padding: 6px 12px;
     background-color: #fff;
