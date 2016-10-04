@@ -3,6 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import {connect} from 'react-redux';
 import GoogMap from './Map';
+import Container from './Container';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
@@ -40,7 +41,7 @@ class MainView extends React.Component {
     return (
       <div>
         <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
-          <GoogMap markers={tempMarkers} origin={tempOrigin} />
+          <Container markers = {this.props.listings} />
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
