@@ -30,6 +30,7 @@ class Display extends React.Component {
   key={userResponses.feeRank}
   className="list-group-item">
   {this.props.surveysResponses.commute}
+  {this.props.surveysResponses.feeRank}
   </li>
 )
 }
