@@ -9,6 +9,7 @@ export const getListings = function(){
   const request = axios.get('/api/listings/', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
+
   // .then(function (response) {
   //   console.log('listings response received', response.data);
   // })
