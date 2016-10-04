@@ -3,14 +3,13 @@ import { routerReducer } from 'react-router-redux';
 
 import auth from './auth.js'
 import listings from './listings.js'
-import rankingsReducers from './rankings'
-import surveyReducer from './surveyReducer'
+import surveysResponses from './surveysReducer'
+
 
 
 const rootReducer = combineReducers({
   auth, listings,
-  rankings: rankingsReducers,
-  userSurvey: surveyReducer,
+  surveysResponses: surveysResponses,
   routing: routerReducer
                                 });
 
