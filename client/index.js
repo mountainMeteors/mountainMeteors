@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
+import PostPhotos from './components/MainView/PostPhotos';
 import Survey from './components/Surveys/Survey'
 
 
@@ -23,6 +24,7 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
+        <Route path="photos" component={PostPhotos} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
         <Route path="select" component={MultiSelect}/>
