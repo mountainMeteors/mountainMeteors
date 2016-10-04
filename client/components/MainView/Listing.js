@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button, Table, Glyphicon } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { putListing } from '../../actionCreators/listingActions.js';
 import { bindActionCreators } from 'redux';
@@ -60,10 +60,20 @@ class Listing extends React.Component{
     this.props.putListing(listing.id, {archived: toggledVal});
   }
 
-  addrFormat = (cell, listing, enumObject, index) => {
+  addrFormat(cell, listing, enumObject, index) {
     return (
       <div onClick={ () => {this.toggleArchiveListing(listing)} }>{ cell }</div>
     );
+  }
+
+  editFormat (cell, listing) {
+    return (
+      <div onClick={ () => {
+        console.log('editing listing', listing)
+      }}>
+        <Glyphicon glyph="pencil" />
+      </div>
+    )
   }
 
   render() {
@@ -82,6 +92,9 @@ class Listing extends React.Component{
             </TableHeaderColumn>
             <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
               Gym
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
+              Edit
             </TableHeaderColumn>
           </BootstrapTable>
       </div>

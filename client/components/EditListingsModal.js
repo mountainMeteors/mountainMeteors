@@ -11,15 +11,14 @@ import Geosuggest from 'react-geosuggest';
 class AddListingsModal extends React.Component {
   constructor(props){
     super(props);
-    console.log('modal type', props.modalType);
-    this.state = {}
-    this.state.location = '';
-    this.state.price = '';
-    this.state.pets = '';
-    this.state.lat = 0;
-    this.state.lng = 0;
-    this.state.showModal = false;
-
+    this.state = {
+      location: '',
+      price: '',
+      pets: '',
+      lat: 0,
+      lng: 0,
+      showModal: false
+    }
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -28,17 +27,6 @@ class AddListingsModal extends React.Component {
     this.onGeoSelect = this.onGeoSelect.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    if (props.listing) {
-      this.setState({
-        location : props.listing ? props.listing.location : '',
-        price : props.listing ? props.listing.price : '',
-        pets : props.listing ? props.listing.pets : '',
-        lat : props.listing ? props.listing.lat : 0,
-        lng : props.listing ? props.listing.lng : 0
-      });
-    }
-  }
 
   close() {
     this.setState({ showModal: false });
@@ -66,7 +54,7 @@ class AddListingsModal extends React.Component {
   }
 
   onGeoSelect = (geoObj) => {
-    console.log('geoObj', geoObj);
+    // console.log('geoObj', geoObj);
     this.setState({
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
