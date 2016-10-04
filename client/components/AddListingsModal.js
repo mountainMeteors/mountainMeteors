@@ -4,6 +4,9 @@ import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Toolt
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postListing } from '../actionCreators/listingActions';
+import Geosuggest from 'react-geosuggest';
+
+import css from '../styles/app.css';
 
 class AddListingsModal extends React.Component {
   constructor(props){
@@ -12,12 +15,16 @@ class AddListingsModal extends React.Component {
       location: '',
       price: '',
       pets: '',
+      lat: 0,
+      lng: 0,
       showModal: false
     }
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleGeoChange = this.handleGeoChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
+    this.onGeoSelect = this.onGeoSelect.bind(this);
   }
 
 
@@ -39,12 +46,31 @@ class AddListingsModal extends React.Component {
     // })
   }
 
+  handleGeoChange = (value) => {
+    // console.log('location now', value);
+    this.setState({
+      'location': value
+    });
+  }
+
+  onGeoSelect = (geoObj) => {
+    // console.log('geoObj', geoObj);
+    this.setState({
+      location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
+      lat: geoObj.location.lat,
+      lng: geoObj.location.lng
+    });
+    // console.log('location now', geoObj.label.split(',')[0]);
+  }
+
   onModalSubmit (event) {
     event.preventDefault();
     let listings = {
       location: this.state.location,
       price: this.state.price,
-      pets: this.state.pets
+      pets: this.state.pets,
+      lat: this.state.lat,
+      lng: this.state.lng
     }
     console.log('postListing is', this.props.postListing);
     console.log('user id', this.props.user_id)
@@ -83,9 +109,21 @@ class AddListingsModal extends React.Component {
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
                {' '}
-                <FormControl name="location" value={this.state.location}
+               <Geosuggest
+                 location={new google.maps.LatLng(40.7725833, -73.9736894)}
+                 radius="20"
+                 placeholder="123 BeaconHill"
+                 className="geosuggest__suggests-wrapper"
+                 inputClassName="form-control"
+                 types={['geocode']}
+                 onChange={this.handleGeoChange}
+                 onSuggestSelect={this.onGeoSelect}
+                />
+                {/*
+                  <FormControl name="location" value={this.state.location}
                 onChange={this.handleChange}
                 type="text" placeholder="123 BeaconHill" />
+                */}
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">
