@@ -1,0 +1,55 @@
+const router = require('express').Router()
+const db = require('../db.js')
+
+
+// router.post('/rankings', function (req, res) {
+// 	console.log(req.body)
+// 	console.log(typeof req.body.prefs)
+//   // use insert to add item into DB
+//   db.insert({
+// 		id: req.body.id
+//     prefs:req.body.prefs
+// 	})
+//   .into('users')
+//   .then(function(){
+//     res.send('working');
+//   });
+// })
+
+
+
+// insert prefs into current user
+router.post('/rankings/', function (req, res) {
+	console.log("prefs", req.body.prefs)
+	console.log("iddddd", req.body)
+  // use insert to add item into DB
+	db('users')
+	.where({id: req.body.id})
+	.insert ({
+		prefs: req.body.prefs
+	})
+  .then(function(prefs){
+res.sendStatus(201);
+  });
+})
+
+// /*getAllRankings
+router.get('/rankings/', function(req,res) {
+  db.select().table('users')
+  .then(function(results){
+    res.send(results)
+  })
+})
+
+router.get('/rankings/:id', function(req,res) {
+	console.log(req.params.id)
+ db('users').where({
+	 id: req.params.id
+ }).select('prefs')
+	.then(function(results){
+		console.log(JSON.parse(results[0].prefs))
+		res.send(JSON.parse(results[0].prefs));
+	})
+})
+
+module.exports = router

@@ -24,11 +24,11 @@ app.use(bodyParser.urlencoded({
 const surveyFormRoutes = require('./server/routes/surveyFormRoutes');
 const accountRoutes = require('./server/routes/accountRoutes');
 const listingRoutes = require('./server/routes/listingRoutes');
-const surveyRoutes = require('./server/routes/surveyRoutes');
+const rankingRoutes = require('./server/routes/rankingRoutes');
 
 app.use('/api', accountRoutes);
 app.use('/api', listingRoutes);
-app.use('/api', surveyRoutes);
+app.use('/api', rankingRoutes);
 app.use('/api', surveyFormRoutes);
 
 
