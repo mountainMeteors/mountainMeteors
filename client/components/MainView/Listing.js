@@ -26,6 +26,7 @@ class Listing extends React.Component{
 
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
+    this.addrFormat = this.addrFormat.bind(this);
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -63,7 +64,9 @@ class Listing extends React.Component{
 
   addrFormat(cell, listing, enumObject, index) {
     return (
-      <div onClick={ () => {this.toggleArchiveListing(listing)} }>{ cell }</div>
+      <div onClick={ () => {
+          this.toggleArchiveListing(listing)}
+      }>{ cell }</div>
     );
   }
 

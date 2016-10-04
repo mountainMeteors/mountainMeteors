@@ -15,6 +15,20 @@ function listings(state = [], action) {
 
     case 'PUTLISTING':
       console.log('reducer heard put listing', action.payload);
+      let listingId = action.payload.id;
+      let edits = action.payload.edits;
+      state = state.slice();
+      state.map(listing => {
+        if (listing.id === listingId) {
+          for (let key in edits) {
+            // console.log('setting', listing[key], 'to', edits[key]);
+            listing[key] = edits[key];
+          }
+          // TODO: break out of map early if we find it
+        }
+      })
+      // console.log('returning state', state);
+      return state;
 
     default:
       return state;
