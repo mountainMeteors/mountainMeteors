@@ -17,7 +17,7 @@ function listings(state = [], action) {
       console.log('reducer heard put listing', action.payload);
       let listingId = action.payload.id;
       let edits = action.payload.edits;
-      state = state.map(listing => {
+      state = state.slice();state.map(listing => {
         if (listing.id === listingId) {
           for (let key in edits) {
             // console.log('setting', listing[key], 'to', edits[key]);
