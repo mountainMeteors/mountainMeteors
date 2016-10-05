@@ -18,10 +18,17 @@ class Display extends React.Component {
   }
 }
 
+  getValues (){
+    const  Neighbors = this.props.surveysResponses.Neighbors;
+    console.log('wwww===>',Neighbors)
+  }
+
+
 
 renderList() {
   const  userResponses = this.props.surveysResponses;
-  console.log('herererere', userResponses)
+
+  console.log('he***rererere', userResponses)
   if (!this.props.surveysResponses) {
     return <div>loading</div>
   }
@@ -43,15 +50,19 @@ renderList() {
       </tr>
         <tr>
           <td>Neighborhoods</td>
-          <td>{userResponses.neighborhoodRank}</td>
+          <td>{userResponses.rentRank}</td>
+        </tr>  
+         <tr>
+          <td>Commute</td>
+          <td>{userResponses.commuteRank}</td>
         </tr>
         <tr>
           <td>Fees</td>
           <td>{userResponses.feeRank}</td>
         </tr>
         <tr>
-          <td>Commute</td>
-          <td>{userResponses.commute}</td>
+          <td>Apartment Type</td>
+          <td>{userResponses.numberOfRoomsRank}</td>
         </tr>
         <tr>
           <td>Amenities</td>
@@ -62,12 +73,50 @@ renderList() {
           <td>{userResponses.petRank}</td>
         </tr>
 
-
-
-
-
        </tbody>
       </table> 
+
+
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Criteria</th>
+            <th>Your Selections</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Rent Budget</td>
+          <td>${userResponses.RentMin.value} to ${userResponses.RentMax.value} </td>
+        </tr>
+          <tr>
+            <td>Neighborhoods</td>
+            <td>{userResponses.neighborhoodRank}</td>
+          </tr>  
+           <tr>
+            <td>Commute Range</td>
+            <td>{userResponses.CommuteMin.value} to {userResponses.CommuteMax.value} </td>
+          </tr>
+          <tr>
+            <td>Fees</td>
+            <td>{userResponses.fees.value}</td>
+          </tr>
+          <tr>
+            <td>Apartment Type</td>
+            <td>{userResponses.numberOfRoomsRank}</td>
+          </tr>
+          <tr>
+            <td>Amenities</td>
+            <td>{userResponses.amenitiesRank}</td>
+          </tr>        
+          <tr>
+            <td>Pets</td>
+            <td>{userResponses.petRank}</td>
+          </tr>
+         </tbody>
+        </table> 
+
+
       </div>    
       )
 
@@ -80,7 +129,7 @@ renderList() {
       <div>
       <ul className='list-group col-sm-4'>
         YOUR SEARCH CRITTERIA RANKINGS:
-        {console.log('in render===*******===>',   this.props.surveysResponses)}
+        {console.log('in render===*******===>', this.props.surveysResponses)}
         {this.renderList()}
       </ul>
       </div>

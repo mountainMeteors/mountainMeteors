@@ -193,7 +193,7 @@ class Survey extends Component {
             <h4>Rank neighborhoods ?</h4>
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.neighborhoodRank}
               onChange={(value) => this.handleChange("neighborhoodRank",value)}
               />
@@ -217,7 +217,7 @@ class Survey extends Component {
             <h4>Rank Apartment Type ?</h4>
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.numberOfRoomsRank}
               onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
               />
@@ -240,7 +240,7 @@ class Survey extends Component {
             <h4>How important is fees ? </h4>
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.feeRank}
               onChange={(value) => this.handleChange("feeRank", value)}
               />
@@ -266,10 +266,10 @@ class Survey extends Component {
               />
 
           <div className='horizontal-slider'>
-            <h4>How important is rent budget from 1 to 5?</h4>
+            <h4>How important is rent budget from 1 to 7?</h4>
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.rentRank}
               onChange={(value) => this.handleChange("rentRank", value)}
               />
@@ -294,7 +294,7 @@ class Survey extends Component {
               <h4>Rank pet accomo ?</h4>
               <Slider
                 min={0}
-                max={5}
+                max={7}
                 value={this.state.petRank}
                 onChange={(value) => this.handleChange("petRank", value)}
                 />
@@ -318,7 +318,7 @@ class Survey extends Component {
             <h4>How important are amenities ?</h4>
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.amenitiesRank}
               onChange={(value) => this.handleChange("amenitiesRank", value)}
               />
@@ -344,7 +344,7 @@ class Survey extends Component {
            />     
             <Slider
               min={0}
-              max={5}
+              max={7}
               value={this.state.commuteRank}
               onChange={(value) => this.handleChange("commuteRank", value)}
               />
