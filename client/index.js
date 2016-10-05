@@ -4,12 +4,14 @@ import {render} from 'react-dom';
 import App from './components/App';
 import MainView from './components/MainView/MainView';
 
-import Survey from './components/Survey/SurveyForm' //TEMP UNTIL WEN FIXES
+
+import PostPhotos from './components/MainView/PostPhotos';
+import Survey from './components/Surveys/Survey'
 
 /*TEST with Multi-select*/
-import MultiSelect from './components/Rankings/Multi_Select';
+import MultiSelect from './components/Surveys/Multi_Select';
 
-import RankingDisplay from './components/Rankings/RankingDisplay'
+import RankingDisplay from './components/Surveys/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
 import { Router, Route, IndexRoute, browserHistory} from 'react-router';
@@ -23,6 +25,7 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
+        <Route path="photos" component={PostPhotos} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
         <Route path="select" component={MultiSelect}/>
