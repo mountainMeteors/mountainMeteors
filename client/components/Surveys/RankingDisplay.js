@@ -19,22 +19,23 @@ class Display extends React.Component {
 }
 
 
-  renderList() {
-    const  userResponses = this.props.surveysResponses;
-    console.log('herererere', userResponses)
-    if (!this.props.surveysResponses) {
-      return <div>loading</div>
-    }
-    return (
-    <li
-  key={userResponses.feeRank}
-  className="list-group-item">
-  {this.props.surveysResponses.commute}
-  {this.props.surveysResponses.feeRank}
-  </li>
-)
-}
+renderList() {
+  const  userResponses = this.props.surveysResponses;
+  console.log('herererere', userResponses)
+  if (!this.props.surveysResponses) {
+    return <div>loading</div>
+  }
 
+    return (
+      <li
+      key={userResponses.feeRank}
+      className="list-group-item">
+      Commute: {userResponses.commute} 
+      Fees: {userResponses.feeRank}
+      </li>
+      )
+
+}
 
   render() {
     return(
