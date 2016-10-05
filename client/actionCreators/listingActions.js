@@ -9,12 +9,13 @@ export const getListings = function(){
   const request = axios.get('/api/listings/', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
-  // .then(function (response) {
-  //   console.log('listings response received', response.data);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
+  .then(function (response) {
+    // console.log('listings response received', response.data);
+    return response;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
   return {
     type: GET_LISTINGS,
@@ -52,10 +53,10 @@ export const putListing = function(id, edits) {;
   const request = axios.put('/api/listings/', edits, { //TODO: Should be wildcard, not header
     headers: {'listing-id': id}
   })
-  // .then((response) => {
-  //   console.log('thenning', response);
-  //   getListings();
-  // })
+  .then((response) => {
+    console.log('PUT received response', response);
+    return response;
+  })
   .catch((response) => {
     if(response instanceof Error){
       console.error('Error sending response', response);
