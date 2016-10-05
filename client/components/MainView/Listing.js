@@ -30,14 +30,41 @@ class Listing extends React.Component{
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
     this.addrFormat = this.addrFormat.bind(this);
+    this.calcScore = this.calcScore.bind(this);
+  }
 
+  calcScore(listing) {
+    console.log('looking at listing', listing);
+    console.log('using prefs', this.props.prefs);
+    let score = Math.random();
+    return score;
+
+    //TODO: location
+
+    /*
+      For each attr in listing:
+      rent (min/max)
+      pets
+      amenities
+        sub-things?
+      fees
+
+    */
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
-  filterListings(props) {
-    let listingsFiltered = props.listings.slice().filter(
+  filterListings(listings) {
+    console.log('filtering', listings);
+    let listingsFiltered = listings.slice().filter(
       listing => Boolean(listing.archived) === this.state.showArchived
     );
+    listingsFiltered.map(listing => {
+      listing.score = this.calcScore(listing);
+    })
+    .sort((l1,l2) => {
+      console.log('comparing', l1.score, l2.score);
+      return l1.score - l2.score
+    });
     this.setState({listingsFiltered});
   }
 
@@ -50,7 +77,8 @@ class Listing extends React.Component{
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
   componentWillReceiveProps(props) {
-    this.filterListings(props);
+    console.log('listing received props');
+    this.filterListings(props.listings);
   }
 
   //Toggles state.showArchived and then updates listing
@@ -72,7 +100,7 @@ class Listing extends React.Component{
           this.toggleArchiveListing(listing)}
       }>{ cell }
       <br/>
-      
+
       </div>
     );
   }
@@ -82,16 +110,22 @@ class Listing extends React.Component{
       <div><AddListingsModal listing={listing} modalType="edit" /></div>
 
     )
-  }   
+  }
 
   photoFormat (cell, listing) {
     console.log('passing listing', listing)
     return (
       <div><AddPhotosModal listing={listing} /></div>
     )
-  } 
+  }
 
-   
+
+
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
+  }
 
   render() {
     return (
@@ -114,9 +148,11 @@ class Listing extends React.Component{
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
               Edit
             </TableHeaderColumn>
-
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
               Photos
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="score" dataSort={true} >
+              Score
             </TableHeaderColumn>
           </BootstrapTable>
         }
