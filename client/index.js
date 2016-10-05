@@ -4,7 +4,6 @@ import {render} from 'react-dom';
 import App from './components/App';
 import MainView from './components/MainView/MainView';
 
-
 import PostPhotos from './components/MainView/PostPhotos';
 import Survey from './components/Surveys/Survey'
 
