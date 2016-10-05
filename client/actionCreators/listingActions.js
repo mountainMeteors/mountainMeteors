@@ -26,7 +26,7 @@ export const postListing = function(preference){
   console.log("PREF******", preference)
   const request = axios.post('/api/listings/', {
     location: preference.location,
-    price: preference.price,
+    rent: preference.rent,
     pets: preference.pets,
     lat: preference.lat,
     lng: preference.lng
@@ -42,13 +42,13 @@ export const postListing = function(preference){
 
   return {
     type: POST_LISTINGS,
-    payload: request
+    payload: preference //TODO: Somehow listing ID needs to be inserted before this is returned
   }
 }
 
 export const putListing = function(id, edits) {;
   console.log('put action', id, 'changing', edits);
-  const request = axios.put('/api/listings/', edits, {
+  const request = axios.put('/api/listings/', edits, { //TODO: Should be wildcard, not header
     headers: {'listing-id': id}
   })
   // .then((response) => {
@@ -65,6 +65,6 @@ export const putListing = function(id, edits) {;
 
   return {
     type: PUT_LISTING,
-    payload: request
+    payload: {id, edits}
   }
 }
