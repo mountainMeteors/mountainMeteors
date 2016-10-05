@@ -41,7 +41,7 @@ router.post('/listings/', util.checkToken, (req, res) => {
   .insert({
     user_id: req.body.userId,
     location: req.body.location,
-    rent: req.body.price,
+    rent: req.body.rent,
     pets: req.body.pets,
     lat: req.body.lat,
     lng: req.body.lng
