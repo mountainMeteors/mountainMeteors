@@ -27,22 +27,60 @@ renderList() {
   }
 
     return (
-      <li
+      <div>
       key={userResponses.feeRank}
-      className="list-group-item">
-      Commute: {userResponses.commute} 
-      Fees: {userResponses.feeRank}
-      </li>
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Ranking</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Rent Budget</td>
+        <td>{userResponses.rentRank}</td>
+      </tr>
+        <tr>
+          <td>Neighborhoods</td>
+          <td>{userResponses.neighborhoodRank}</td>
+        </tr>
+        <tr>
+          <td>Fees</td>
+          <td>{userResponses.feeRank}</td>
+        </tr>
+        <tr>
+          <td>Commute</td>
+          <td>{userResponses.commute}</td>
+        </tr>
+        <tr>
+          <td>Amenities</td>
+          <td>{userResponses.amenitiesRank}</td>
+        </tr>        
+        <tr>
+          <td>Pets</td>
+          <td>{userResponses.petRank}</td>
+        </tr>
+
+
+
+
+
+       </tbody>
+      </table> 
+      </div>    
       )
 
 }
 
   render() {
+
+    const  userResponses = this.props.surveysResponses;
     return(
       <div>
       <ul className='list-group col-sm-4'>
-        YOUR RANKINGS:
-        {console.log('in render===*******===>',  typeof this.props.surveysResponses)}
+        YOUR SEARCH CRITTERIA RANKINGS:
+        {console.log('in render===*******===>',   this.props.surveysResponses)}
         {this.renderList()}
       </ul>
       </div>

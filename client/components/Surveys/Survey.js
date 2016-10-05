@@ -16,6 +16,22 @@ const Neighborhoods = [
   { label: 'East Village', value: 'East Village' },
   { label: 'Midtown', value: 'Midtown' },
   { label: 'Flatiron', value: 'Flatiron' },
+  { label: 'Upper West Side', value: 'Upper West Side' },
+  { label: 'Upper East Side', value: 'Upper East Side' },
+  { label: 'Financial District', value: 'Financial District' }
+];
+
+const NumberOfRooms = [
+  { label: 'Studio', value: 'Studio' },
+  { label: '1', value: '1' },
+  { label: '2', value: '2' },
+  { label: '3', value: '3' },
+  { label: '4', value: '4' },
+  { label: '5', value: '5' },
+  { label: '6', value: '6' },
+  { label: 'Penthouse', value: 'Penthouse' },
+  { label: 'igloo', value: 'igloo' },
+  { label: 'igloo', value: 'igloo' },
 ];
 
 
@@ -23,11 +39,18 @@ const Neighborhoods = [
 const Amenities = [
   { label: 'bike', value: 'bike' },
   { label: 'garage', value: 'garage' },
+  { label: 'doorman', value: 'doorman' },
+  { label: 'elevator', value: 'elevator' },
+  { label: 'parking', value: 'parking' },
+  { label: 'storage', value: 'storage' },
+  { label: 'rooftop', value: 'rooftop' },
+  { label: 'pool', value: 'pool' },
 ];
 
 const Pets = [
   { label: 'Dogs', value: 'Dogs' },
   { label: 'Cats', value: 'Cats' },
+  { label: 'Pokemon', value: 'Pokemon' },
 ];
 
 
@@ -35,6 +58,8 @@ const Fees = [
   { label: 'YES', value: 'YES' },
   { label: 'NO', value: 'NO' },
 ];
+
+
 const RentMin = [
   { label: '10', value: '10' },
   { label: '20', value: '20' },
@@ -43,14 +68,23 @@ const RentMax = [
   { label: '1000', value: '1000' },
   { label: '2000', value: '2000' },
 ];
+
+
+
 const CommuteMin = [
   { label: '10', value: '10' },
   { label: '20', value: '20' },
+  { label: '30', value: '30' },
+  { label: '40', value: '40' },
 ];
 const CommuteMax = [
-  { label: '1000', value: '1000' },
-  { label: '2000', value: '2000' },
+  { label: '50', value: '50' },
+  { label: '1 hr', value: '1 hr' },
+  { label: '2 hr', value: '2 hr' },
 ];
+
+
+
 
 
 class Survey extends Component {
@@ -61,6 +95,10 @@ class Survey extends Component {
       Neighborhoods: Neighborhoods,
       NeighborhoodsSelected: [],
       neighborhoodRank: 5,
+
+      NumberOfRooms: NumberOfRooms,
+      NumberOfRoomsSelected: null,
+      numberOfRoomsRank: 5,    
 
       Fees: Fees,
       FeesSelected: null,
@@ -76,11 +114,16 @@ class Survey extends Component {
       RentMax: RentMax,
       rentRank: 5,
 
+      CommuteMinSelected: null,
+      CommuteMin : CommuteMin,
+      CommuteMaxSelected: null,
+      CommuteMax: CommuteMax,
+      commuteRank: 5,
+
       amenitiesRank: 5,
       amenitiesSelected: [],
       Amenities: Amenities,
 
-      commute: 5
     }
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -105,7 +148,10 @@ class Survey extends Component {
 
       rentRank: this.state.rentRank,
       RentMin: this.state.RentMinSelected,
-      RentMax: this.state.RentMaxSelected,
+      RentMax: this.state.RentMaxSelected,      
+
+      NumberOfRooms: this.state.NumberOfRoomsSelected,
+      numberOfRoomsRank: this.state.numberOfRoomsRank,
 
       petRank: this.state.petRank,
       Pets: this.state.PetSelected,
@@ -116,7 +162,9 @@ class Survey extends Component {
       feeRank: this.state.feeRank,
       fees: this.state.FeesSelected,
 
-      commute: this.state.commute
+      commuteRank: this.state.commuteRank,
+      CommuteMin: this.state.CommuteMinSelected,
+      CommuteMax: this.state.CommuteMaxSelected,
     }
     console.log("this+++++",this.props.user_id)
     console.log(surveyResponses)
@@ -155,7 +203,33 @@ class Survey extends Component {
             <hr />
           </div>
 
-          //FEES
+
+          ************************************************
+          <h4>Let's pick apartment type </h4>
+          <Select
+            name="form-field-name"
+            value={this.state.NumberOfRoomsSelected}
+            options={NumberOfRooms}
+            onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
+            />
+
+          <div className='horizontal-slider'>
+            <h4>Rank Apartment Type ?</h4>
+            <Slider
+              min={0}
+              max={5}
+              value={this.state.numberOfRoomsRank}
+              onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
+              />
+            <div className='value'>
+              Ranking: {this.state.numberOfRoomsRank}
+            </div>
+            <hr />
+          </div>
+
+
+          ************************************************
+          FEES: YES OR NO
           <Select
             name="form-field-name"
             value={this.state.FeesSelected}
@@ -175,6 +249,8 @@ class Survey extends Component {
             <hr />
           </div>
 
+
+          ************************************************
           /*your rent budget */
           <Select
             name="form-field-name"
@@ -202,7 +278,7 @@ class Survey extends Component {
           </div>
 
 
-          /*Pets*/
+          ************************************************
           <div>
 
             <h4> Furry Little Friends ?? </h4>
@@ -229,8 +305,8 @@ class Survey extends Component {
 
           </div>
 
-
-          /*amenities*/
+        **********************************
+          AMENITIES
           <Select
             name="form-field-name"
             value={this.state.amenitiesSelected}
@@ -250,17 +326,29 @@ class Survey extends Component {
             <hr />
           </div>
 
-
-          /*commute*/
+          **********************************
+        COMMUTE
           <div className='horizontal-slider'>
-            <h4>How important is short commute ?</h4>
+            <h4>Your ideal commute time?</h4>
+       <Select
+         name="form-field-name"
+         value={this.state.CommuteMinSelected}
+         options={CommuteMin}
+         onChange={(value) => this.handleChange("CommuteMinSelected", value)}
+         />
+         <Select
+           name="form-field-name"
+           value={this.state.CommuteMaxSelected}
+           options={CommuteMax}
+           onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
+           />     
             <Slider
               min={0}
               max={5}
-              value={this.state.commute}
-              onChange={(value) => this.handleChange("commute", value)}
+              value={this.state.commuteRank}
+              onChange={(value) => this.handleChange("commuteRank", value)}
               />
-            <div className='value'>Ranking: {this.state.commute}</div>
+            <div className='value'>Ranking: {this.state.commuteRank}</div>
             <hr />
           </div>
 
