@@ -80,8 +80,6 @@ class Listing extends React.Component{
     score = score.toFixed(2);
     console.log('returning score', score);
     return score;
-
-
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -154,6 +152,12 @@ class Listing extends React.Component{
   }
 
 
+
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
+  }
 
   scoreFormat (cell, listing) {
     return (
