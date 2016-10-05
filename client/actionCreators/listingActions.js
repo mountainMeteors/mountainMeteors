@@ -42,7 +42,7 @@ export const postListing = function(preference){
 
   return {
     type: POST_LISTINGS,
-    payload: request
+    payload: preference //TODO: Somehow listing ID needs to be inserted before this is returned
   }
 }
 

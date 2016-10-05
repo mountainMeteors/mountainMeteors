@@ -11,8 +11,6 @@ import Geosuggest from 'react-geosuggest';
 class AddListingsModal extends React.Component {
   constructor(props){
     super(props);
-    console.log('modal type', props.modalType);
-    console.log('this.props ALM', props.listing);
     this.state = {};
     this.state.listingId = props.listing ? props.listing.id : null
     this.state.location = props.listing ? props.listing.location : '';
@@ -30,46 +28,22 @@ class AddListingsModal extends React.Component {
     this.onGeoSelect = this.onGeoSelect.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props.modalType, 'modal loaded with state', this.state);
-    console.log('modal loaded with props', this.props);
-  }
-
-  componentWillReceiveProps(props) {
-    console.log('receiving props');
-    if (props.listing) {
-      console.log('found listing', props.listing);
-      this.setState({
-        location : props.listing ? props.listing.location : '',
-        rent : props.listing ? props.listing.rent : '',
-        pets : props.listing ? props.listing.pets : '',
-        lat : props.listing ? props.listing.lat : 0,
-        lng : props.listing ? props.listing.lng : 0
-      });
-    }
-  }
 
   close() {
     this.setState({ showModal: false });
   }
 
   open() {
-    console.log('modal state', this.state);
     this.setState({ showModal: true });
   }
 
   handleChange = (input) => {
-    // console.log("++++++++++++", criteria, value)
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
     this.setState(stateObj);
-    // this.setState({
-    //   [criteria]: value
-    // })
   }
 
   handleGeoChange = (value) => {
-    // console.log('location now', value);
     this.setState({
       'location': value
     });
@@ -82,7 +56,6 @@ class AddListingsModal extends React.Component {
       lat: geoObj.location.lat,
       lng: geoObj.location.lng
     });
-    // console.log('location now', geoObj.label.split(',')[0]);
   }
 
   onModalSubmit (event) {
