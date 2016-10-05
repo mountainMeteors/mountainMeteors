@@ -9,7 +9,7 @@ export default class photoDrop extends Component{
   constructor(props) {
     super(props); 
     this.state = {
-      images: []
+      photos: []
     };
   }
 
@@ -20,25 +20,26 @@ export default class photoDrop extends Component{
 
 
   render () {
+    console.log('========state====>',this.state.photos)
     const field = this.props;
-    const files = field.input.value;
+    const photos = field.input.value;
 
     return (
-      <div>
+      <div> 
       <Dropzone 
       onDrop={( photos, event )=> {this.setState({
-        images: [...this.state.images, photos]}, function () {
-          field.input.onChange(this.state.images);
+        photos: [...this.state.photos, photos]}, function () {
+          field.input.onChange(this.state.photos);
         });
     }
   }
     >
 
-    <div>Try dropping some files here, or click to select files to upload.</div>
+    <div></div>
     </Dropzone>
-    {this.state.images.length > 0 ? <div>
-      <h2>  Uploading{this.state.images.length} photos...</h2>
-                <div id="imageContainer">{this.state.images.map((file) => <img key={file[0].name} className="imagePreview" src={file[0].preview} /> )}</div>
+    {this.state.photos.length > 0 ? <div>
+      <h2>  Uploading{this.state.photos.length} photos...</h2>
+                <div id="imageContainer">{this.state.photos.map((photo) => <img key={photo[0].name} className="imagePreview" src={photo[0].preview} /> )}</div>
              </div> : null}
           </div>
         );

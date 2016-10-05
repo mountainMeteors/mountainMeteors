@@ -18,13 +18,14 @@ class PostPhotos extends Component{
     };
 
   }
-  onSubmit(props) {
+  onFormSubmit(props) {
 // Action here
+    // this.props.uploadPhotos(props)
   }
 
 
     render(){
-      console.log("postNew props", this.props);
+      console.log("props========>", this.props);
         const { handleSubmit } = this.props;
         return (
           <form id = "dropForm" className="dropzone"  encType="multipart/form-data">
@@ -36,13 +37,7 @@ class PostPhotos extends Component{
               </div>
             </div>
          
-            <div>
-              <label htmlFor="description">Description</label>
-              <Field name="description" component="input" type="text" className="form-control" placeholder="bedroom ...."/>
-              <div className="text-help">
-              </div>
-            </div>
-
+      
             <div>
               <label htmlFor="images">Your future apartment ...</label>
               <Field
@@ -55,16 +50,10 @@ class PostPhotos extends Component{
         )
     }
 }
-// function mapStateToProps(state){
-//     return {
-//       loc: state.loc,
-//      }
-// }
-
 
 
 PostPhotos = reduxForm({
-  form: 'PostsTest'  
+  form: 'uploadPics'  
   // validate
 })(PostPhotos);
 export default connect(null, null)(PostPhotos);

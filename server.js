@@ -11,6 +11,17 @@ const storage = multer.diskStorage({
     cb(null, '/uploads')
   },
   filename: function (req, file, cb) {
+    switch (file.mimetype) {
+      case 'image/jpeg':
+        ext = '.jpeg';
+        break;
+      case 'image/png':
+        ext = '.png';
+        break;
+      case 'image/gif':
+        ext = '.gif';
+        break;
+    }
     cb(null, file.fieldname + '-' + Date.now())
   }
 })

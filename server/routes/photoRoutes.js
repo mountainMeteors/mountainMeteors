@@ -3,29 +3,31 @@ const db = require('../db.js')
 const util = require('../util/authUtil');
 
 // eq.files[0].destination - to be stored in SQL
-router.post('upload', util.checkToken, (req,res) =>{
-  if (req.files.length){
-    for (var i=0; i< req.files.length; i++) {
-    	const photoName = req.files[i].destination + req.files[i].fieldname;
-    	// const timestamp = 
-    }
-	db('listingPhotos')
-	.where ({id: req.listing.id})
-	.insert ({
-    name : photoName
-        : 
-	})
+router.post('/upload', util.checkToken, (req,res) =>{
+	console.log(req.files)
+ //  if (req.files.length){
+ //    for (var i=0; i< req.files.length; i++) {
+ //    	const photoName = req.files[i].destination + req.files[i].fieldname;
+ //    	// const timestamp = 
+ //    }
+	// db('listingPhotos')
+	// .where ({id: req.listing.id})
+	// .insert ({
+ //    name : photoName
+ //        : 
+	// })
 
 
 
 
 
-  else {
-  	res.send('no photos in request')
-  }
+ //  else {
+ //  	res.send('no photos in request')
+ //  }
 
- } 
+ // } 
 
+}
 
 router.post("/upload", function(req, res, next){
 	if (req.files) {
