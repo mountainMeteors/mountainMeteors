@@ -36,6 +36,10 @@ app.use(bodyParser.urlencoded({
 app.use(upload.any())
 
 
+
+
+
+
 const accountRoutes = require('./server/routes/accountRoutes');
 const listingRoutes = require('./server/routes/listingRoutes');
 const surveyRoutes = require('./server/routes/surveyRoutes');
