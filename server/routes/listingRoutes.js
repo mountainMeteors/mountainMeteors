@@ -36,12 +36,12 @@ router.post('/listings/', util.checkToken, (req, res) => {
   console.log('REQUEST BODY', req.body)
   return db('listings')
   .where({
-    user_id: req.body.userId
+    user_id: req.user.id
   })
   .insert({
-    user_id: req.body.userId,
+    user_id: req.user.id,
     location: req.body.location,
-    rent: req.body.price,
+    rent: req.body.rent,
     pets: req.body.pets,
     lat: req.body.lat,
     lng: req.body.lng

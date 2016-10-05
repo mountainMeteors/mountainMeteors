@@ -13,8 +13,29 @@ function listings(state = [], action) {
       return Object.assign([], state, action.payload.data);
       // return action.payload.data; // WORKS BUT NOT REACTY
 
+    case 'POSTLISTINGS':
+      console.log('action.payload', action.payload);
+      state = state.slice();
+      state.push(action.payload);
+      console.log('returning state', state);
+      return state;
+      // state.push(action);
+
     case 'PUTLISTING':
       console.log('reducer heard put listing', action.payload);
+      let listingId = action.payload.id;
+      let edits = action.payload.edits;
+      state = state.slice();
+      state.map(listing => {
+        if (listing.id === listingId) {
+          for (let key in edits) {
+            // console.log('setting', listing[key], 'to', edits[key]);
+            listing[key] = edits[key];
+          }
+        }
+      })
+      // console.log('returning state', state);
+      return state;
 
     default:
       return state;

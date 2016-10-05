@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { putListing } from '../../actionCreators/listingActions.js';
+import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
@@ -25,6 +26,7 @@ class Listing extends React.Component{
 
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
+    this.addrFormat = this.addrFormat.bind(this);
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -60,10 +62,18 @@ class Listing extends React.Component{
     this.props.putListing(listing.id, {archived: toggledVal});
   }
 
-  addrFormat = (cell, listing, enumObject, index) => {
+  addrFormat(cell, listing, enumObject, index) {
     return (
-      <div onClick={ () => {this.toggleArchiveListing(listing)} }>{ cell }</div>
+      <div onClick={ () => {
+          this.toggleArchiveListing(listing)}
+      }>{ cell }</div>
     );
+  }
+
+  editFormat (cell, listing) {
+    return (
+      <div><AddListingsModal listing={listing} modalType="edit" /></div>
+    )
   }
 
   render() {
@@ -82,6 +92,9 @@ class Listing extends React.Component{
             </TableHeaderColumn>
             <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
               Gym
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
+              Edit
             </TableHeaderColumn>
           </BootstrapTable>
       </div>
