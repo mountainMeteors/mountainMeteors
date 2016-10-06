@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { OverlayTrigger, Button, Popover } from 'react-bootstrap';
+import { Form, Col, FieldGroup, FormGroup, FormControl, ControlLabel, OverlayTrigger, Button, Popover } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import { signUpUser } from '../../actionCreators/accountActions'
@@ -31,11 +31,19 @@ class LoginPopover extends React.Component {
       <div>
         <OverlayTrigger trigger="click" placement="bottom" overlay={
           <Popover id="popover-positioned-bottom">
-            <form onSubmit={this.loginSubmit}>
-              <input name="loginEmail" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-              <input name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}></input>
-              <button type="submit">Login</button>
-            </form>
+            <Form onSubmit={this.loginSubmit}>
+              <FormGroup controlId="loginEmail">
+                <FormControl name="loginEmail" type="text" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}/>
+              </FormGroup>
+              <FormGroup controlId="loginPassword">
+                <FormControl name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}/>
+              </FormGroup>
+            <Col smOffset={8} sm={1}>
+              <Button bsStyle="primary" bsSize="small" type="submit">
+              Login
+              </Button>
+            </Col>
+            </Form>
           </Popover>
         }>
           <Button>Login</Button>

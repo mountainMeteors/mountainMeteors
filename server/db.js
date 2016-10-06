@@ -43,6 +43,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.increments('id').primary();
       listing.integer('user_id').unsigned();
       listing.foreign('user_id').references('id').inTable('users');
+      listing.string('url', 900).unique();
       listing.string('location', 255).unique();
       listing.string('rent', 50);
       listing.string('pets', 50);

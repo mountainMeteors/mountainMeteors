@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
+import { scrapeListing } from '../util/listingUtil'
+
+
 
 import css from '../styles/app.css';
 
@@ -25,6 +28,7 @@ class AddListingsModal extends React.Component {
     this.handleGeoChange = this.handleGeoChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
     this.onGeoSelect = this.onGeoSelect.bind(this);
+    this.scrapeListingSubmit = this.scrapeListingSubmit.bind(this);
   }
 
 
@@ -63,6 +67,11 @@ class AddListingsModal extends React.Component {
     // console.log('location now', geoObj.label.split(',')[0]);
   }
 
+  scrapeListingSubmit (event) {
+    console.log("EVENT FOR SCRAPE LISTING", event.target.value)
+    scrapeListing(event.target.value)
+  }
+
   onModalSubmit (event) {
     event.preventDefault();
     let listings = {
@@ -70,7 +79,8 @@ class AddListingsModal extends React.Component {
       price: this.state.price,
       pets: this.state.pets,
       lat: this.state.lat,
-      lng: this.state.lng
+      lng: this.state.lng,
+      url: this.state.url
     }
     console.log('postListing is', this.props.postListing);
     console.log('user id', this.props.user_id)
@@ -87,6 +97,8 @@ class AddListingsModal extends React.Component {
      <Tooltip id="modal-tooltip">
      </Tooltip>
    );
+
+
 
    return (
      <div>
@@ -106,13 +118,20 @@ class AddListingsModal extends React.Component {
          <Modal.Body>
          <div>
            <Form onSubmit={this.onModalSubmit}>
+            <FormGroup controlId="formUrl">
+            <ControlLabel>Url</ControlLabel>
+            {' '}
+            <FormControl name="url" value={this.state.url}
+            onChange={this.scrapeListingSubmit}
+            type="text" placeholder="www.apartments.com" />
+            </FormGroup>
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
                {' '}
                <Geosuggest
                  location={new google.maps.LatLng(40.7725833, -73.9736894)}
                  radius="20"
-                 placeholder="123 BeaconHill"
+                 placeholder="1216 Broadway"
                  className="geosuggest__suggests-wrapper"
                  inputClassName="form-control"
                  types={['geocode']}
@@ -134,7 +153,7 @@ class AddListingsModal extends React.Component {
                type="price" placeholder="$2000" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formPets" validationState="success">
+             <FormGroup controlId="formPets">
                <ControlLabel>Pets</ControlLabel>
                <FormControl name="pets" value={this.state.pets}
                onChange={this.handleChange}
