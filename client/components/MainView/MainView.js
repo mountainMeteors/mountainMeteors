@@ -40,7 +40,7 @@ class MainView extends React.Component {
     return (
       <div>
         <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
-          <GoogMap markers={tempMarkers} origin={tempOrigin} />
+          <GoogMap listings={this.props.listings} origin={tempOrigin} />
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
