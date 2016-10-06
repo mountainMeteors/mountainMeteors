@@ -45,7 +45,7 @@ class AddPhotosModal extends React.Component {
     }
     
     onFormSubmit (event) {
-        console.log('iddddddd=====>', this.props.listing)
+        console.log('iddddddd=====>', this.props.listing.id)
         event.preventDefault();
     var listingPhotos = {
         photos: this.state.photos
@@ -56,19 +56,11 @@ class AddPhotosModal extends React.Component {
     render () {
       return (
         <div>
-        {this.props.modalType === 'add' ?
-          <Button
-            bsStyle="primary"
-            bsSize="small"
-            onClick={this.open.bind(this)}
-          >
-            Add
-          </Button>
-        :
+        
           <div onClick={this.open.bind(this)}>
             <Glyphicon glyph="pencil" />
           </div>
-        }
+        
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
@@ -110,11 +102,17 @@ class AddPhotosModal extends React.Component {
     }
   }
 
+  function mapStateToProps(state){
+    return {
+      user_id: state.auth.user_id
+    }
+  }
+
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({ uploadPhotos }, dispatch)
   }
 
 
-  export default connect(null, mapDispatchToProps) (AddPhotosModal);
+  export default connect(mapStateToProps, mapDispatchToProps) (AddPhotosModal);
 
 
