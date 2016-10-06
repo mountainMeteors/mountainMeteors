@@ -5,6 +5,10 @@ import App from './components/App';
 import MainView from './components/MainView/MainView';
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> resolve merge conflicts
 import PostPhotoTest from './components/MainView/PostPhotosTest';
 import Survey from './components/Surveys/Survey'
 

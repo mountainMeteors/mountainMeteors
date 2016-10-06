@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import {GoogleMapLoader, GoogleMap, Marker, InfoWindow} from "react-google-maps";
 
 class GoogMap extends React.Component {
@@ -46,6 +47,15 @@ class GoogMap extends React.Component {
   }
 
 
+=======
+import {GoogleMapLoader, GoogleMap, Marker} from "react-google-maps";
+
+class GoogMap extends React.Component {
+  constructor(){
+    super();
+  }
+
+>>>>>>> resolve merge conflicts
   render() {
     return (
       <section style={{height: "120%"}}>
@@ -60,11 +70,16 @@ class GoogMap extends React.Component {
           }
           googleMapElement={
             <GoogleMap
+<<<<<<< HEAD
               ref={(map) => console.log('map',map)}
+=======
+              ref={(map) => console.log(map)}
+>>>>>>> resolve merge conflicts
               defaultZoom={15}
               defaultCenter={this.props.origin}
               onClick={this.props.onMapClick}
             >
+<<<<<<< HEAD
               {this.props.listings.map((marker, index) => {
                 const onClick = () => this.handleMarkerClick(marker);
                 const onCloseClick = () => this.handleCloseClick(marker);
@@ -81,6 +96,14 @@ class GoogMap extends React.Component {
                     </Marker>
                   );
                 }
+=======
+              {this.props.markers.map((marker, index) => {
+                return (
+                  <Marker
+                    {...marker}
+                    onRightclick={() => this.props.onMarkerRightclick(index)} />
+                );
+>>>>>>> resolve merge conflicts
               })}
             </GoogleMap>
           }
