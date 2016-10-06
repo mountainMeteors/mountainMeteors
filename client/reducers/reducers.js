@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
+
 
 
 import auth from './auth.js'
@@ -11,7 +11,7 @@ import surveysResponses from './surveysReducer';
 
 
 const rootReducer = combineReducers({
-  auth, listings, formReducer,
+  auth, listings, 
   surveysResponses: surveysResponses,
   routing: routerReducer
                                 });

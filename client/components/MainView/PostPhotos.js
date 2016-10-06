@@ -45,7 +45,7 @@ class PostPhotos extends Component{
                 component={photoDrop}
               />
             </div>
-            <button type="submit" className="btn btn-primary" id="buttonNew">Submit</button>
+              <button type="submit" className="btn btn-primary" id="buttonNew">Submit</button>
           </form>
         )
     }
