@@ -1,6 +1,8 @@
 import axios from 'axios';
 import request from 'superagent';
 
+export const UPLOAD_PHOTOS = 'UPLOAD_PHOTOS';
+
 
 //    headers: {
       // 'x-access-token': window.localStorage.getItem('userToken')
@@ -19,6 +21,11 @@ var  req = request.post('/api/uploads');
     	if (err) console.log(err)
     		else console.log(res)
     })
+  return {
+  	type : UPLOAD_PHOTOS,
+  	payload: { listingPhotos }
+  }
+
 }
 
 

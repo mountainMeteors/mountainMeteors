@@ -5,9 +5,6 @@ import { Field, reduxForm } from 'redux-form';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
-import photoDrop from './photoDrop'
-
-
 
 
 
@@ -51,10 +48,10 @@ this.onFormSubmit = this.onFormSubmit.bind(this);
             <div>
             <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
                 <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
-                    <div> Add photos of your future apartment</div>
+                    <div> Drop photos of your future apartment here</div>
                 </Dropzone>
                 <button type="button" onClick={this.onOpenClick}>
-                    Open Dropzone
+                Upload photos
                 </button>
                 {this.state.photos.length > 0 ? <div>
                 <h2>Uploading {this.state.photos.length} photos...</h2>
