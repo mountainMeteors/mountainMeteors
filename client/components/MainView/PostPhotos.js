@@ -5,11 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 
 
 
 
-class PostPhotoTest extends Component{
+class postPhotos extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +33,7 @@ this.onFormSubmit = this.onFormSubmit.bind(this);
     onOpenClick () {
       this.dropzone.open();
     }
+
 
     onFormSubmit = (event) => {
         event.preventDefault();
@@ -69,5 +71,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(null, mapDispatchToProps)(PostPhotoTest);
+export default connect(null, mapDispatchToProps) (postPhotos);
 

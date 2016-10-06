@@ -58,6 +58,10 @@ app.get('/styles/style.css', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/styles/style.css'));
 });
 
+app.get('/styles/app.css', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/styles/app.css'));
+});
+
 app.get('*', function(req, res) {
   console.log('req.url', req.url);
   res.sendFile(path.join(__dirname, 'client/index.html'));
