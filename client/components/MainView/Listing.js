@@ -59,6 +59,17 @@ class Listing extends React.Component{
         options: 1
       }
     }
+
+    //Calculate amenities
+    prefs.Amenities.forEach(amenity => {
+      criteria[amenity.value] = {
+        percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
+        met = amenity.value ===
+      }
+    });
+
+    console.log('calculating score with criteria', criteria);
+    //Calculate score
     let score = 100;
     for (var crit in criteria) {
       if (!criteria[crit].met) score -= criteria[crit].percent

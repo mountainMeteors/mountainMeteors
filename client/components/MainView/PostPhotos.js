@@ -69,7 +69,7 @@ class PostPhotos extends Component{
               <div className="text-help">
               </div>
             </div>
-         
+
             <div>
               <label htmlFor="description">Description</label>
               <Field name="description" component="input" type="text" className="form-control" placeholder="bedroom ...."/>
@@ -107,7 +107,7 @@ class PostPhotos extends Component{
 
 
 PostPhotos = reduxForm({
-  form: 'PostsTest'  
+  form: 'PostsTest'
   // validate
 })(PostPhotos);
 export default connect(null, null)(PostPhotos);
