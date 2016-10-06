@@ -11,7 +11,8 @@ import surveysResponses from './surveysReducer';
 
 
 const rootReducer = combineReducers({
-  auth, listings, 
+  auth: auth,
+  listings: listings, 
   surveysResponses: surveysResponses,
   routing: routerReducer
                                 });

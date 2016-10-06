@@ -30,8 +30,7 @@ export const postListing = function(preference){
     rent: preference.rent,
     pets: preference.pets,
     lat: preference.lat,
-    lng: preference.lng,
-    userId: user_id
+    lng: preference.lng
   }, {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   }).catch((response) => {

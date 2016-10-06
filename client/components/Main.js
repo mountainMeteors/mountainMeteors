@@ -38,7 +38,7 @@ class Main extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated,
+    authenticated: state.auth,
   }
 }
 
