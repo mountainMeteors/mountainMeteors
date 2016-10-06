@@ -1,3 +1,3 @@
 # mountainMeteors
 Thesis
-<img src="https://travis-ci.org/[your-team-github-name]/[repo-name].svg?branch=dev"/>
+<img src="https://travis-ci.org/mountaMeteors/mountaMeteors.svg?branch=dev"/>
