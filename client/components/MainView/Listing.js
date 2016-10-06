@@ -5,7 +5,6 @@ import { putListing } from '../../actionCreators/listingActions.js';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
-
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
@@ -97,6 +96,8 @@ class Listing extends React.Component{
               Edit
             </TableHeaderColumn>
           </BootstrapTable>
+
+          
       </div>
     )
   }
