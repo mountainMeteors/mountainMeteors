@@ -5,6 +5,9 @@ import { putListing } from '../../actionCreators/listingActions.js';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
+import { postPhotos } from './PostPhotos'
+import { Link } from 'react-router';
+
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
@@ -65,7 +68,10 @@ class Listing extends React.Component{
     return (
       <div onClick={ () => {
           this.toggleArchiveListing(listing)}
-      }>{ cell }</div>
+      }>{ cell }
+      <br/>
+      <Link to="/photo">Add Pics</Link>
+      </div>
     );
   }
 
@@ -73,11 +79,19 @@ class Listing extends React.Component{
     return (
       <div><AddListingsModal listing={listing} modalType="edit" /></div>
     )
-  }
+  }   
+
+  photoFormat (cell, listing) {
+    return (
+      <div><postPhotos /></div>
+    )
+  } 
+
 
   render() {
     return (
       <div>
+              <Link to="/photo">Add Pics</Link>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
           <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
             <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
@@ -95,7 +109,12 @@ class Listing extends React.Component{
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
               Edit
             </TableHeaderColumn>
+
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
+              Photos
+            </TableHeaderColumn>
           </BootstrapTable>
+        }
 
           
       </div>

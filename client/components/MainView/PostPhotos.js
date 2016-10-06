@@ -9,16 +9,16 @@ import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Toolt
 
 
 
-
 class postPhotos extends Component{
   constructor(props) {
+    console.log('postPhotos const')
     super(props);
     this.state = {
       photos: []
     };
-this.onDrop = this.onDrop.bind(this);
-this.onOpenClick = this.onOpenClick.bind(this);
-this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.onOpenClick = this.onOpenClick.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
 
@@ -35,7 +35,7 @@ this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
 
-    onFormSubmit = (event) => {
+    onFormSubmit (event) {
         event.preventDefault();
     var listingPhotos = {
         photos: this.state.photos
