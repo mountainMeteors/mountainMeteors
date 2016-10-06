@@ -29,6 +29,7 @@ class Listing extends React.Component{
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
     this.addrFormat = this.addrFormat.bind(this);
+    this.photoFormat = this.photoFormat.bind(this)
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -70,20 +71,23 @@ class Listing extends React.Component{
           this.toggleArchiveListing(listing)}
       }>{ cell }
       <br/>
-      <Link to="/photo">Add Pics</Link>
+      
       </div>
     );
   }
 
   editFormat (cell, listing) {
     return (
+      <div>
       <div><AddListingsModal listing={listing} modalType="edit" /></div>
+      </div>
     )
   }   
 
   photoFormat (cell, listing) {
+    console.log('passing listing', listing)
     return (
-      <div><postPhotos /></div>
+      <div><postPhotos listing={listing} /></div>
     )
   } 
 
@@ -91,7 +95,7 @@ class Listing extends React.Component{
   render() {
     return (
       <div>
-              <Link to="/photo">Add Pics</Link>
+
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
           <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
             <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
@@ -112,11 +116,11 @@ class Listing extends React.Component{
 
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
               Photos
+              <postPhotos />
+
             </TableHeaderColumn>
           </BootstrapTable>
         }
-
-          
       </div>
     )
   }

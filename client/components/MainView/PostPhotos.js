@@ -36,6 +36,7 @@ class postPhotos extends Component{
 
 
     onFormSubmit (event) {
+        console.log('iddddddd=====>', this.props.listing)
         event.preventDefault();
     var listingPhotos = {
         photos: this.state.photos
@@ -65,6 +66,8 @@ class postPhotos extends Component{
         );
     }
 }
+
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ uploadPhotos }, dispatch)
