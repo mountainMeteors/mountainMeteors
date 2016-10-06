@@ -64,9 +64,9 @@ class Listing extends React.Component{
     }
     let score = 100;
     for (var crit in criteria) {
-      debugger;
       if (!criteria[crit].met) score -= criteria[crit].percent
     }
+    score = score.toFixed(2);
     console.log('returning score', score);
     return score;
 
@@ -107,7 +107,7 @@ class Listing extends React.Component{
   //Toggles state.showArchived and then updates listing
   toggleArchiveView() {
     this.setState({showArchived: !this.state.showArchived},
-      () => {this.filterListings(this.props)}
+      () => {this.filterListings(this.props.listings)}
     );
   }
 
