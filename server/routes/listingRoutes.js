@@ -5,17 +5,17 @@ const Xray = require('x-ray');
 const Promise = require('bluebird');
 
 var xray = Xray({
-  // filters: {
-  //   trim: function(value) {
-  //     return typeof value === 'string' ? value.trim() : value
-  //   },
-  //   reverse: function(value){
-  //     return typeof value === 'string' ? value.split('').reverse().join('') : value
-  //   },
-  //   slice: function(value, start, end){
-  //     return typeof value === 'string' ? value.slice(start, end) : value
-  //   }
-  // }
+  filters: {
+    trim: function(value) {
+      return typeof value === 'string' ? value.trim() : value
+    },
+    reverse: function(value){
+      return typeof value === 'string' ? value.split('').reverse().join('') : value
+    },
+    slice: function(value, start, end){
+      return typeof value === 'string' ? value.slice(start, end) : value
+    }
+  }
 });
 
 router.get('/listings', util.checkToken, (req, res) => {
@@ -52,76 +52,46 @@ router.post('/listings/', util.checkToken, (req, res) => {
   });
 });
 
-router.post('/scrape', function(req, res){
-  var getApartmentInfo = xray(req.body.url,
-
-    //WORKS - UNCOMMENTING WILL RETURN TITLE
-    // 'title'
-
-    //DOESN'T WORK - UNCOMMENTING DOES NOT RETURN ANYTHING
-    {
-      bedInfo: xray('.beds', [{
-        numberOfBedsLong: '.longText | trim',
-        numberOfBedsMedium: '.mediumText | trim',
-        numberOfBedsShort: '.shortText | trim'
-      }]
-    )}
-  ).stream();
-
-  getApartmentInfo.pipe(res);
-});
 
 router.post('/scrape', function(req, res){
   // console.log('xray().stream: ', xray().stream);
-  console.log('REQUEST BODY', req.body.url);
+  // console.log('REQUEST BODY', req.body.url);
   // var targetUrl = 'http://' + req.params.scrapeUrl + '/' + req.params.locationName + '/' + req.params.locationCode || 'http://www.streeteasy.com';
 
   // http://www.apartments.com/3133-31st-st-astoria-ny/5y6jkwq/
-
-  // var getApartmentInfo = Promise.promisify(xray(req.body.url, {
-  //   bedInfo: xray('.beds', [{
-  //     numberOfBedsLong: '.longText | trim',
-  //     numberOfBedsMedium: '.mediumText | trim',
-  //     numberOfBedsShort: '.shortText | trim'
-  //   }]),
-  //   bathInfo: xray('.baths', [{
-  //     numberOfBathsLong: '.longText | trim',
-  //     numberOfBathsMedium: '.medium | trim',
-  //     numberOfBathsShort: '.shortText | trim'
-  //   }]),
-  //   rentInfo: ['.rent | trim'],
-  //   unitInfo: ['.unit | trim'],
-  //   squareFeet: ['.sqft | trim'],
-  //   availability: ['.available | trim'],
-  //   amenities: xray('.descriptionSection', [{
-  //     body: 'p | trim'
-  //   }]),
-  //   petsAllowed: xray('.petPolicy', [{
-  //     petPolicyDetails: ['.petPolicyDetails | trim']
-  //   }])
-  // }).stream()
-  // (function (err, description) {
-  //  if (err) {
-  //    console.log('err', err);
-  //  } else {
-  //
-  //    console.log('\n\n\n\n\n\ndescription\n', description);
-  //    return description
-  //  }
-  // }));
 
   var getApartmentInfo = xray(req.body.url, {
     bedInfo: xray('.beds', [{
       numberOfBedsLong: '.longText | trim',
       numberOfBedsMedium: '.mediumText | trim',
       numberOfBedsShort: '.shortText | trim'
+    }]),
+    bathInfo: xray('.baths', [{
+      numberOfBathsLong: '.longText | trim',
+      numberOfBathsMedium: '.medium | trim',
+      numberOfBathsShort: '.shortText | trim'
+    }]),
+    rentInfo: ['.rent | trim'],
+    unitInfo: ['.unit | trim'],
+    squareFeet: ['.sqft | trim'],
+    availability: ['.available | trim'],
+    amenities: xray('.descriptionSection', [{
+      body: 'p | trim'
+    }]),
+    petsAllowed: xray('.petPolicy', [{
+      petPolicyDetails: ['.petPolicyDetails | trim']
     }])
-  }).stream();
+  }).stream()
 
-  // var getApartmentInfo = xray(req.body.url, 'title').stream()
-  console.log('aptinfo', getApartmentInfo);
-
-  // http://google.com
+  // (function (err, description) {
+  //  if (err) {
+  //    console.log('err', err);
+  //  }
+  // else {
+  //
+  //    console.log('\n\n\n\n\n\ndescription\n', description);
+  //  }
+  // });
 
 // getApartmentInfo().then(function (description) {
 //   console.log('description', description);
