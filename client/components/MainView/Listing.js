@@ -33,23 +33,44 @@ class Listing extends React.Component{
     this.calcScore = this.calcScore.bind(this);
   }
 
-  calcScore(listing) {
+  calcScore(listing, prefTotal) {
+    let prefs = this.props.prefs;
     console.log('looking at listing', listing);
     console.log('using prefs', this.props.prefs);
-    let score = Math.random();
+    let criteria = {
+      // TODO: location: {},
+      rent: {
+        percent: prefs.rentRank / prefTotal * 100,
+        met: parseInt(listing.rent) > prefs.RentMin.value &&
+             parseInt(listing.rent) < prefs.RentMax.value,
+        options: 1
+      },
+      pets: {
+        percent: prefs.petRank / prefTotal * 100,
+        met: listing.pets.toLowerCase() === prefs.Pets[0].label.toLowerCase() ||
+             listing.pets.toLowerCase() === 'none',
+        options: 1
+      },
+      // TODO: amenities: {
+      //   percent: prefs.amenitiesRank / prefTotal,
+      //   met: TK,
+      //   options: prefs.Amenities.length
+      // },
+      no_fee: {
+        percent: prefs.feeRank / prefTotal * 100,
+        met: listing.no_fee === prefs.fees.value.toLowerCase(),
+        options: 1
+      }
+    }
+    let score = 100;
+    for (var crit in criteria) {
+      debugger;
+      if (!criteria[crit].met) score -= criteria[crit].percent
+    }
+    console.log('returning score', score);
     return score;
 
-    //TODO: location
 
-    /*
-      For each attr in listing:
-      rent (min/max)
-      pets
-      amenities
-        sub-things?
-      fees
-
-    */
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -58,13 +79,15 @@ class Listing extends React.Component{
     let listingsFiltered = listings.slice().filter(
       listing => Boolean(listing.archived) === this.state.showArchived
     );
+    let prefs = this.props.prefs;
+    let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
     listingsFiltered.map(listing => {
-      listing.score = this.calcScore(listing);
+      listing.score = this.calcScore(listing, prefTotal);
     })
-    .sort((l1,l2) => {
-      console.log('comparing', l1.score, l2.score);
-      return l1.score - l2.score
-    });
+    // .sort((l1,l2) => {
+    //   console.log('comparing', l1.score, l2.score);
+    //   return l1.score - l2.score
+    // });
     this.setState({listingsFiltered});
   }
 
