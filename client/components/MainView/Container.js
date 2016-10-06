@@ -51,9 +51,10 @@ export class Container extends React.Component {
       return <div>Loading...</div>
     }
     console.log('###props###', this.props)
-    const listMarkers = this.props.markers.map((mark) => {
+    const listMarkers = this.props.markers.map((mark, index) => {
       return (
         <Marker
+            key = {index}
             onClick={ this.onMarkerClick }
             name={ mark.rent }
             position={ {lat: mark.lat, lng: mark.lng} } />

@@ -4,7 +4,6 @@ const util = require('../util/authUtil');
 const Xray = require('x-ray');
 const Promise = require('bluebird');
 
-
 var xray = Xray({
   // filters: {
   //   trim: function(value) {
