@@ -13,7 +13,7 @@ class AddPhotosModal extends React.Component {
     constructor (props) {
       super(props);
       this.state = {};
-  
+
       this.state.photos = [];
       this.state.showModal = false;
 
@@ -22,7 +22,7 @@ class AddPhotosModal extends React.Component {
       this.onDrop = this.onDrop.bind(this);
       this.onOpenClick = this.onOpenClick.bind(this);
       this.onFormSubmit = this.onFormSubmit.bind(this);
-      
+
     }
 
     onDrop (photos) {
@@ -43,7 +43,7 @@ class AddPhotosModal extends React.Component {
     open() {
       this.setState({ showModal: true });
     }
-    
+
     onFormSubmit (event) {
         console.log('iddddddd=====>', this.props.listing.id)
         event.preventDefault();
@@ -56,18 +56,18 @@ class AddPhotosModal extends React.Component {
     render () {
       return (
         <div>
-        
+
           <div onClick={this.open.bind(this)}>
             <Glyphicon glyph="pencil" />
           </div>
-        
+
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Apartment Listings</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            
+
 
           <div>
 
@@ -96,7 +96,7 @@ class AddPhotosModal extends React.Component {
             <Button onClick={this.close.bind(this)}>Close</Button>
           </Modal.Footer>
         </Modal>
-          
+
         </div>
       );
     }
@@ -114,5 +114,3 @@ class AddPhotosModal extends React.Component {
 
 
   export default connect(mapStateToProps, mapDispatchToProps) (AddPhotosModal);
-
-
