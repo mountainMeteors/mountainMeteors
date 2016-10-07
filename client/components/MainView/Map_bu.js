@@ -3,32 +3,14 @@ import {GoogleMapLoader, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 
 class GoogMap extends React.Component {
   constructor(props){
-    console.log('const props', props);
     super(props);
-
-    this.state = {
-      markers: []
-    }
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleCloseClick = this.handleCloseClick.bind(this);
   }
 
   componentWillReceiveProps(props) {
-    // this.setState({markers: props.markers})
-    console.log('received props', props);
-    this.setState({
-      markers: props.listings.map(listing => {
-        return {
-          position: {
-            lat: listing.lat,
-            lng: listing.lng
-          },
-          content: 'hello',
-          showInfo: false
-        }
-      })
-    });
+    this.setState({markers: props.markers})
   }
 
   handleMarkerClick(targetMarker) {
@@ -65,7 +47,6 @@ class GoogMap extends React.Component {
   }
 
   render() {
-    // return (<div>{'hi'}</div>)
     return (
       <section style={{height: "120%"}}>
         <GoogleMapLoader
@@ -83,7 +64,7 @@ class GoogMap extends React.Component {
               defaultZoom={15}
               defaultCenter={this.props.origin}
             >
-              {this.state.markers.map((marker, index) => {
+              {this.props.markers.map((marker, index) => {
                 const onClick = () => this.handleMarkerClick(marker);
                 const onCloseClick = () => this.handleCloseClick(marker);
                 if(!marker.archived){
@@ -91,7 +72,7 @@ class GoogMap extends React.Component {
                     <Marker
                     key={index}
                     onClick={ onClick }
-                    position={marker.position}
+                    position={ {lat: marker.lat, lng: marker.lng}}
                     showInfo={false}
                     >
 
@@ -116,5 +97,10 @@ class GoogMap extends React.Component {
     );
   }
 }
+
+
+                      // <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
+                      //   <div>{marker.rent}</div>
+                      // </InfoWindow>
 
 export default GoogMap;

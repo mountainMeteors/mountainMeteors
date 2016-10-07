@@ -61,12 +61,12 @@ class Listing extends React.Component{
     }
 
     //Calculate amenities
-    prefs.Amenities.forEach(amenity => {
-      criteria[amenity.value] = {
-        percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
-        met = amenity.value ===
-      }
-    });
+    // prefs.Amenities.forEach(amenity => {
+    //   criteria[amenity.value] = {
+    //     percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
+    //     met = amenity.value ===
+    //   }
+    // });
 
     console.log('calculating score with criteria', criteria);
     //Calculate score
@@ -89,9 +89,9 @@ class Listing extends React.Component{
     );
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    listingsFiltered.map(listing => {
-      listing.score = this.calcScore(listing, prefTotal);
-    })
+    // listingsFiltered.map(listing => {
+    //   listing.score = this.calcScore(listing, prefTotal);
+    // })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
@@ -108,7 +108,7 @@ class Listing extends React.Component{
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
   componentWillReceiveProps(props) {
-    console.log('listing received props');
+    console.log('listing received props', props);
     this.filterListings(props.listings);
   }
 
@@ -149,26 +149,26 @@ class Listing extends React.Component{
     return (
       <div>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
-          <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
-            <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
-              Address
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
-              Rent
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="pets" dataSort={true}>
-              Pets
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
-              Gym
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
-              Edit
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="score" dataSort={true} >
-              Score
-            </TableHeaderColumn>
-          </BootstrapTable>
+        <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
+          <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
+            Address
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
+            Rent
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="pets" dataSort={true}>
+            Pets
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
+            Gym
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
+            Edit
+          </TableHeaderColumn>
+          <TableHeaderColumn dataField="score" dataSort={true} >
+            Score
+          </TableHeaderColumn>
+        </BootstrapTable>
       </div>
     )
   }

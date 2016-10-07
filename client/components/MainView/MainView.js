@@ -32,6 +32,21 @@ class MainView extends React.Component {
     this.props.getListings();
   }
 
+  // componentWillReceiveProps(props) {
+  //   this.setState({
+  //     markers: this.props.listings.map(listing => {
+  //       return {
+  //         position: {
+  //           lat: listing.lat,
+  //           lng: listing.lng
+  //         },
+  //         content: 'hello',
+  //         showInfo: false
+  //       }
+  //     }
+  //   });
+  // }
+
   componentDidUpdate() {
     console.log('main state updated', this.props, this.state);
     if (!this.props.authenticated) browserHistory.push('/welcome');
@@ -42,7 +57,7 @@ class MainView extends React.Component {
     return (
       <div>
         <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
-          <GoogMap markers={tempMarkers} origin={tempOrigin} />
+          <GoogMap listings={this.props.listings} origin={tempOrigin} />
         </Col>
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
