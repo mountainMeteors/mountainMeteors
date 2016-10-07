@@ -55,21 +55,5 @@ router.get('/surveys',  util.checkToken,  function(req,res) {
 
 
 
-// insert prefs into current user
-// router.post('/rankings/', function (req, res) {
-// 	console.log("prefs", req.body.prefs)
-// 	console.log("iddddd", req.user.id, 'tokennnnn')
-//   // use insert to add item into DB
-// 	db('users')
-// 	.where({id: req.user.id
-// })
-// 	.update ({
-// 		prefs: req.body.prefs
-// 	})
-//   .then(function(prefs){
-// res.sendStatus(201);
-//   });
-// })
-
 
 module.exports = router
