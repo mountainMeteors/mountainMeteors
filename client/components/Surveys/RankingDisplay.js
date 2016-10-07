@@ -87,7 +87,7 @@ renderList() {
         <tbody>
         <tr>
           <td>Rent Budget</td>
-          <td>${userResponses.RentMin.value} to ${userResponses.RentMax.value} </td>
+          <td>${userResponses.RentMin.value || 'None'} to ${userResponses.RentMax.value} </td>
         </tr>
           <tr>
             <td>Neighborhoods</td>

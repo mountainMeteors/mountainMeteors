@@ -28,6 +28,11 @@ var config = {
         include: path.join(__dirname, 'client'),
         // loader: 'style!css'
         loaders: ["css"]
+      },
+      //photos
+      { 
+        test: /\.(png|jpg)$/, 
+        loader: 'url-loader?limit=8192' 
       }
     ]
   }

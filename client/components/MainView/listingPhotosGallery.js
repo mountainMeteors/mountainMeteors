@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actionCreators/photoActions';
+import { fetchPhotos } from '../../actionCreators/photoActions'
 import ImageGallery from 'react-image-gallery';
-@import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
-const requireContext = require.context("../../uploads", true, /^\.\/.*\.jpg$/);
+
+const requireContext = require.context("../../../uploads", true, /^\.\/.*\.jpg$/);
+
+
+
+
 
 class listingPhotosGallery extends React.Component {
 
@@ -27,6 +31,7 @@ class listingPhotosGallery extends React.Component {
     };
   }
 
+  
   componentDidUpdate(prevProps, prevState) {
     if (this.state.slideInterval !== prevState.slideInterval) {
       // refresh setInterval
@@ -138,32 +143,32 @@ class listingPhotosGallery extends React.Component {
 
   render() {
 
-let imgsTranslate = this.props.props.images.map((file) =>{
-  return `.${file.slice(file.indexOf('/'),file.length)}`
-})
+// let imgsTranslate = this.props.props.images.map((file) =>{
+  // return `.${file.slice(file.indexOf('/'),file.length)}`
+// })
 
-const imagesImport = imgsTranslate.map(requireContext);
+// const imagesImport = imgsTranslate.map(requireContext);
 
-let imageCollection;
-if(imagesImport){
-  imageCollection = imagesImport.map((item) => {
-    return `/../../${item}`
-    })
-}
+// let imageCollection;
+// if(imagesImport){
+//   imageCollection = imagesImport.map((item) => {
+//     return `/../../${item}`
+//     })
+// }
 
-let images = [];
+// let images = [];
 
-imageCollection.forEach((image)=>{
-  images.push({
-    thumbnail: image,
-    original: image
-  })
-})
+// imageCollection.forEach((image)=>{
+//   images.push({
+//     thumbnail: image,
+//     original: image
+//   })
+// })
     return (
       <section className='app'>
         <ImageGallery
           ref={i => this._imageGallery = i}
-          items={images}
+           /*items={images} */
           lazyLoad={false}
           onClick={this._onImageClick.bind(this)}
           onImageLoad={this._onImageLoad}
@@ -189,13 +194,14 @@ imageCollection.forEach((image)=>{
 
 
 function mapStateToProps(state){
+  console.log(state)
   return { 
-    photoFiles: state.photoFiles.all;
+    // photoFiles: state.photoFiles.all
    };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({ fetchPhotos }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(listingPhotosGallery);
