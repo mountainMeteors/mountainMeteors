@@ -59,11 +59,23 @@ class Listing extends React.Component{
         options: 1
       }
     }
+
+    //Calculate amenities
+    // prefs.Amenities.forEach(amenity => {
+    //   criteria[amenity.value] = {
+    //     percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
+    //     met = amenity.value ===
+    //   }
+    // });
+
+    console.log('calculating score with criteria', criteria);
+    //Calculate score
     let score = 100;
     for (var crit in criteria) {
-      debugger;
       if (!criteria[crit].met) score -= criteria[crit].percent
     }
+    score = score.toFixed(2);
+
     console.log('returning score', score);
     return score;
 
@@ -78,9 +90,9 @@ class Listing extends React.Component{
     );
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    listingsFiltered.map(listing => {
-      listing.score = this.calcScore(listing, prefTotal);
-    })
+    // listingsFiltered.map(listing => {
+    //   listing.score = this.calcScore(listing, prefTotal);
+    // })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
@@ -97,14 +109,14 @@ class Listing extends React.Component{
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
   componentWillReceiveProps(props) {
-    console.log('listing received props');
+    console.log('listing received props', props);
     this.filterListings(props.listings);
   }
 
   //Toggles state.showArchived and then updates listing
   toggleArchiveView() {
     this.setState({showArchived: !this.state.showArchived},
-      () => {this.filterListings(this.props)}
+      () => {this.filterListings(this.props.listings)}
     );
   }
 
