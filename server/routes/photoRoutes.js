@@ -29,26 +29,17 @@ console.log('*******',photoName,photoListString)
 
 router.get('/uploads/:id', (req,res) => {
 	console.log('hereeeeee')
-	// console.log(req.files, 'bodyyyy*******', req.body)
-
-	// if (req.files.length){
-		// for (var i=0; i< req.files.length; i++) {
-		// 	var photoName = req.files[i].destination + req.files[i].filename
-  //   	db('listingPhotos')
-  //   	.insert ({
-  //   		name : photoName,
-  //   		listing_id: req.body.listingId
-  //   	}).then(function(results){
-  //   		res.send('heyyyy')
-  //   	})
-  //   }
-// }
+  const photoPaths = [];
  db('listingPhotos').where({
 	 listing_id: req.params.id
  }).select('name')
 	.then(function(results){
-		console.log(results.length, typeof results)
-		res.send(results);
+		console.log(results.length, typeof photoPaths)
+		results.forEach(function(item) {
+        photoPaths.push(item.name)
+		})
+
+		res.send(photoPaths);
 	})
 })
 

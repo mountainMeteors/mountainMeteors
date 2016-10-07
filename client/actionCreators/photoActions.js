@@ -2,6 +2,7 @@ import axios from 'axios';
 import request from 'superagent';
 
 export const UPLOAD_PHOTOS = 'UPLOAD_PHOTOS';
+export const FETCH_PHOTOS = 'FETCH_PHOTOS ';
 
 
 //    headers: {
@@ -31,6 +32,12 @@ var  req = request.post('/api/uploads');
 
 }
 
+export function  fetchPhotos (listingId){
+  const request = axios.get('/uploads/${listingId}')
+  return {
+    type: FETCH_PHOTOS,
+    payload: request
+  }
 
-
+}
 

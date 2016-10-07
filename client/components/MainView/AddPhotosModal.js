@@ -5,8 +5,8 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
 import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Glyphicon, Modal } from 'react-bootstrap';
-import { postPhotos } from './PostPhotos'
-// import { Modal } from 'react-modal'
+import postPhotos  from './PostPhotos'
+
 
 
 class AddPhotosModal extends React.Component {
