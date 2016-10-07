@@ -51,25 +51,34 @@ class Listing extends React.Component{
              listing.pets.toLowerCase() === 'none',
         options: 1
       },
-      // TODO: amenities: {
-      //   percent: prefs.amenitiesRank / prefTotal,
-      //   met: TK,
-      //   options: prefs.Amenities.length
+      // apt_type: {
+      //   percent: prefs.aptType / prefTotal * 100,
+      //   met: listing.aptType === prefs.aptType.value.toLowerCase(),
+      //   options: 1
       // },
-      no_fee: {
-        percent: prefs.feeRank / prefTotal * 100,
-        met: listing.no_fee === prefs.fees.value.toLowerCase(),
+      sq_ft: {
+        percent: prefs.rentRank / prefTotal * 100,
+        met: parseInt(listing.rent) > prefs.sqftMin.value &&
+             parseInt(listing.rent) < prefs.sqftMax.value,
         options: 1
-      }
+      },
+      // no_fee: {
+      //   percent: prefs.feeRank / prefTotal * 100,
+      //   met: listing.no_fee === prefs.fees.value.toLowerCase(),
+      //   options: 1
+      // },
     }
 
     //Calculate amenities
-    // prefs.Amenities.forEach(amenity => {
-    //   criteria[amenity.value] = {
-    //     percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
-    //     met = amenity.value ===
-    //   }
-    // });
+    prefs.Amenities.forEach(amenity => {
+      console.log('pref amenity', amenity.value);
+      console.log('listing value', listing[amenity.value]);
+      criteria[amenity.value] = {
+        percent: (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length,
+        met: Boolean(listing[amenity.value])
+          //criteria['bike'].met should be true if Boolean(listing['bike']) === 0  //  false if === 1
+      }
+    });
 
     console.log('calculating score with criteria', criteria);
     //Calculate score
@@ -90,9 +99,9 @@ class Listing extends React.Component{
     );
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    // listingsFiltered.map(listing => {
-    //   listing.score = this.calcScore(listing, prefTotal);
-    // })
+    listingsFiltered.map(listing => {
+      listing.score = this.calcScore(listing, prefTotal);
+    })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
@@ -148,20 +157,6 @@ class Listing extends React.Component{
     console.log('passing listing', listing)
     return (
       <div><AddPhotosModal listing={listing} /></div>
-    )
-  }
-
-
-
-  scoreFormat (cell, listing) {
-    return (
-      <div>{listing.score}</div>
-    )
-  }
-
-  scoreFormat (cell, listing) {
-    return (
-      <div>{listing.score}</div>
     )
   }
 
