@@ -29,11 +29,13 @@ router.get('/rankings/', function(req,res) {
 
 
 router.get('/surveys',  util.checkToken,  function(req,res) {
+  console.log('user id is', req.user.id);
  db('users').where({
 	 id: req.user.id
  }).select('prefs')
 	.then(function(results){
-		console.log(JSON.parse(results[0].prefs))
+    // console.log('results are', results);
+		// console.log(JSON.parse(results[0].prefs))
 		res.send(JSON.parse(results[0].prefs));
 	})
 })

@@ -61,4 +61,29 @@ router.post('/login', (req, res) => {
     });
 });
 
+// router.get('/prefs', util.checkToken, (req, res) => {
+//   console.log('server heard prefs', req.user.id);
+//   return db('users')
+//     .where({
+//       id: req.user.id
+//     })
+//     .then(function(dbRes) {
+//       var user = dbRes[0];
+//       console.log('user is', user);
+//       if (user) {
+//         bcrypt.compare(password, user.password, function(err, match) {
+//           if (err) console.log('err', err);
+//           // if (match) res.send('user found, pw matches');
+//           if (match) util.createToken(req, res, user.id);
+//           else res.send('user found, no pw match');
+//         })
+//       } else {
+//         res.send('user not found');
+//       }
+//     })
+//     .catch(function(err) {
+//       res.send('error in getting prefs' + err);
+//     });
+// });
+
 module.exports = router;

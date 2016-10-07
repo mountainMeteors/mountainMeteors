@@ -12,7 +12,6 @@ const auth = function(state = tokenExists, action) {
       console.log('REDUC LOGIN USER', action);
       token = action.payload.data.token ? action.payload.data.token : null;
       window.localStorage.setItem('userToken', token)
-      //TODO: Reducer should not be doing logic checks
       if (token) {
         console.log('LOGGED IN');
         return true;

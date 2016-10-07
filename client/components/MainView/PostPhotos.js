@@ -34,7 +34,6 @@ class postPhotos extends Component{
       this.dropzone.open();
     }
 
-
     onFormSubmit (event) {
         console.log('iddddddd=====>', this.props.listing)
         event.preventDefault();
@@ -61,18 +60,14 @@ class postPhotos extends Component{
                 <div>{this.state.photos.map((photo) => <img key={photo[0].name} src={photo[0].preview} /> )}</div>
                 </div> : null}
                 <button type="submit" className="btn btn-primary" id="buttonNew">Submit</button>
-               </form> 
+               </form>
             </div>
         );
     }
 }
 
-
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ uploadPhotos }, dispatch)
 }
 
-
-export default connect(null, mapDispatchToProps) (postPhotos);
-
+export default connect(null, null)(postPhotos);

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import {connect} from 'react-redux';
-import AddListingsModal  from '../AddListingsModal';
 
 import GoogMap from './Map';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
+import { getPrefs } from '../../actionCreators/accountActions.js';
+import AddListingsModal from '../AddListingsModal';
 import { browserHistory } from 'react-router';
 
 const tempMarkers = [{
@@ -28,8 +29,24 @@ class MainView extends React.Component {
 
   componentWillMount() {
     if (!this.props.authenticated) browserHistory.push('/welcome');
+    this.props.getPrefs();
     this.props.getListings();
   }
+
+  // componentWillReceiveProps(props) {
+  //   this.setState({
+  //     markers: this.props.listings.map(listing => {
+  //       return {
+  //         position: {
+  //           lat: listing.lat,
+  //           lng: listing.lng
+  //         },
+  //         content: 'hello',
+  //         showInfo: false
+  //       }
+  //     }
+  //   });
+  // }
 
   componentDidUpdate() {
     console.log('main state updated', this.props, this.state);
@@ -46,7 +63,7 @@ class MainView extends React.Component {
 
         <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
           <AddListingsModal modalType="add" scraper = {this.props.scraper} />
-          <Listing listings={this.props.listings}/>
+          <Listing listings={this.props.listings} prefs={this.props.userPrefs} />
         </Col>
       </div>
     )
@@ -57,12 +74,13 @@ class MainView extends React.Component {
 function mapStateToProps(state) {
   return {
     listings: state.listings,
-    authenticated: state.auth
+    authenticated: state.auth,
+    userPrefs: state.userPrefs
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getListings}, dispatch);
+  return bindActionCreators({getListings, getPrefs}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);
