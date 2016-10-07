@@ -56,17 +56,17 @@ class Listing extends React.Component{
       //   met: listing.aptType === prefs.aptType.value.toLowerCase(),
       //   options: 1
       // },
-      sq_ft: {
-        percent: prefs.rentRank / prefTotal * 100,
-        met: parseInt(listing.rent) > prefs.sqftMin.value &&
-             parseInt(listing.rent) < prefs.sqftMax.value,
-        options: 1
-      },
-      // no_fee: {
-      //   percent: prefs.feeRank / prefTotal * 100,
-      //   met: listing.no_fee === prefs.fees.value.toLowerCase(),
+      // sq_ft: {
+      //   percent: prefs.rentRank / prefTotal * 100,
+      //   met: parseInt(listing.rent) > prefs.sqftMin.value &&
+      //        parseInt(listing.rent) < prefs.sqftMax.value,
       //   options: 1
       // },
+      no_fee: {
+        percent: prefs.feeRank / prefTotal * 100,
+        met: listing.no_fee === prefs.fees.value.toLowerCase(),
+        options: 1
+      },
     }
 
     //Calculate amenities
@@ -99,9 +99,9 @@ class Listing extends React.Component{
     );
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    listingsFiltered.map(listing => {
-      listing.score = this.calcScore(listing, prefTotal);
-    })
+    // listingsFiltered.map(listing => {
+    //   listing.score = this.calcScore(listing, prefTotal);
+    // })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
