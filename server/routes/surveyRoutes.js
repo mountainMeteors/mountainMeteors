@@ -34,8 +34,8 @@ router.get('/surveys',  util.checkToken,  function(req,res) {
 	 id: req.user.id
  }).select('prefs')
 	.then(function(results){
-    console.log('results are', results);
-		console.log(JSON.parse(results[0].prefs))
+    // console.log('results are', results);
+		// console.log(JSON.parse(results[0].prefs))
 		res.send(JSON.parse(results[0].prefs));
 	})
 })

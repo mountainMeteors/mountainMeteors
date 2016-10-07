@@ -34,6 +34,21 @@ class MainView extends React.Component {
     this.props.getListings();
   }
 
+  // componentWillReceiveProps(props) {
+  //   this.setState({
+  //     markers: this.props.listings.map(listing => {
+  //       return {
+  //         position: {
+  //           lat: listing.lat,
+  //           lng: listing.lng
+  //         },
+  //         content: 'hello',
+  //         showInfo: false
+  //       }
+  //     }
+  //   });
+  // }
+
   componentDidUpdate() {
     console.log('main state updated', this.props, this.state);
     if (!this.props.authenticated) browserHistory.push('/welcome');
