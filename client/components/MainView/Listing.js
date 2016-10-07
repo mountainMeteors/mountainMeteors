@@ -193,7 +193,7 @@ class Listing extends React.Component{
               Score
             </TableHeaderColumn>
           </BootstrapTable>
-        }
+
       </div>
     )
   }

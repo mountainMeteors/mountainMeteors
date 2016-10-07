@@ -70,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ uploadPhotos }, dispatch)
 }
 
-export default connect(null, null)(PostPhotos);
+export default connect(null, null)(postPhotos);
