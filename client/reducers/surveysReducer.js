@@ -1,15 +1,14 @@
-import { FETCH_PHOTOS } from '../actionCreators/photoActions';
+import { FETCH_RESPONSES } from '../actionCreators/surveysActions';
 
-const INITIAL_STATE = { all: [], photoPath:null };
+const INITIAL_STATE = { all: [], surveyResponses:null };
 
 export default function(state=[], action){
     console.log('action received!!!!!!')
   switch(action.type) {
-    case 'FETCH_PHOTOS':
+    case 'FETCH_RESPONSES':
     console.log('reducer data', action.payload.data);
- 
+
      return { ...state, all: action.payload.data }
-  
   default:
   return state;
   }

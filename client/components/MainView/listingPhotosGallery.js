@@ -7,7 +7,7 @@ import ImageGallery from 'react-image-gallery';
 
 const requireContext = require.context("../../uploads", true, /^\.\/.*\.jpg$/);
 
-class ImageSlide extends React.Component {
+class listingPhotosGallery extends React.Component {
 
   constructor(props) {
     super();
@@ -190,8 +190,7 @@ imageCollection.forEach((image)=>{
 
 function mapStateToProps(state){
   return { 
-    loc: state.loc,
-    cityName: state.cityName
+    photoFiles: state.photoFiles.all;
    };
 }
 
@@ -199,4 +198,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageSlide);
+export default connect(mapStateToProps, mapDispatchToProps)(listingPhotosGallery);
