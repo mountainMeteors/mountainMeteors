@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/store';
 
 exports.scrapeListing = function(url){
   console.log("URL", url)
@@ -10,28 +11,32 @@ exports.scrapeListing = function(url){
 
       //TODO catch single dwelling edge case,
       //TODO catch undefined edge case (i.e. body)
-      if (description.amenities.length === 'undefined' || description.amenities.length > 0) {
-        description.amenities.dishwasher = description.amenities[0].body.includes('dishwasher');
-        description.amenities.laundry = description.amenities[0].body.includes('laundry');
-        description.amenities.nofee = description.amenities[0].body.toLowerCase().includes('no fee') || description.amenities[0].body.toLowerCase().includes('no-fee');
-        description.amenities.gym = description.amenities[0].body.toLowerCase().includes('gym') || description.amenities[0].body.toLowerCase().includes('fitness');
+      if (description.data.amenities.length === 'undefined' || description.data.amenities.length > 0) {
+        description.data.amenities.dishwasher = description.data.amenities[0].body.includes('dishwasher');
+        description.data.amenities.laundry = description.data.amenities[0].body.includes('laundry');
+        description.data.amenities.nofee = description.data.amenities[0].body.toLowerCase().includes('no fee') || description.data.amenities[0].body.toLowerCase().includes('no-fee');
+        description.data.amenities.gym = description.data.amenities[0].body.toLowerCase().includes('gym') || description.data.amenities[0].body.toLowerCase().includes('fitness');
       }
-      //console.log('description.petsAllowed', description.petsAllowed);
-      //console.log('description.petsAllowed.length', description.petsAllowed.length);
-      if (description.petsAllowed.length === 1 && description.petsAllowed.length > 1) {
-        description.dogsAllowed = description.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('dogs allowed');
-        description.catsAllowed = description.petsAllowed[0].petPolicyDetails[1].toLowerCase().includes('cats allowed');
+
+      console.log('description.data.petsAllowed.length', description.data.petsAllowed.length);
+      if (description.data.petsAllowed.length === 1 && description.data.petsAllowed.length > 1) {
+        description.data.dogsAllowed = description.data.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('dogs allowed');
+        description.data.catsAllowed = description.data.petsAllowed[0].petPolicyDetails[1].toLowerCase().includes('cats allowed');
       }
-      else if (description.petsAllowed[0] !== 'undefined' && description.petsAllowed.length > 0) {
-        //console.log('description.petsAllowed', description.petsAllowed);
-        if (description.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('allowed')) {
-          description.dogsAllowed = description.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('dogs');
-          description.catsAllowed = description.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('cats');
+      else if (description.data.petsAllowed[0] !== 'undefined' && description.data.petsAllowed.length > 0) {
+        //console.log('description.data.petsAllowed', description.data.petsAllowed);
+        if (description.data.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('allowed')) {
+          description.data.dogsAllowed = description.data.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('dogs');
+          description.data.catsAllowed = description.data.petsAllowed[0].petPolicyDetails[0].toLowerCase().includes('cats');
+          console.log('description.data.petsAllowed', description.data.petsAllowed);
         }
       } else {
-        description.dogsAllowed = false;
-        description.catsAllowed = false;
+        description.data.dogsAllowed = false;
+        description.data.catsAllowed = false;
       }
+
+      console.log("DESCRIPTION", description)
+      store.dispatch({type: "SCRAPER_ACTION", payload: description})
 
 
     }).catch(function(err) {

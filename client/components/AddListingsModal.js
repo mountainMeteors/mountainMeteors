@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postListing, putListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
-import { scrapeListing } from '../util/listingUtil'
+import { scrapeListing } from '../util/listingUtil.js'
 
 
 
@@ -32,6 +32,14 @@ class AddListingsModal extends React.Component {
     this.scrapeListingSubmit = this.scrapeListingSubmit.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    console.log("ding ding ding", newProps.scrapeData);
+    if (newProps.scrapeData)
+      this.setState({
+        rent: newProps.scrapeData.rentInfo[0],
+        pets: newProps.scrapeData.pets
+      })
+  }
 
   close() {
     this.setState({ showModal: false });
@@ -179,9 +187,12 @@ class AddListingsModal extends React.Component {
  }
 };
 
+//this.props.user_id = store.reducername
+
 function mapStateToProps(state){
   return {
-    user_id: state.auth.user_id
+    user_id: state.auth.user_id,
+    scrapeData: state.scraper
   }
 }
 
