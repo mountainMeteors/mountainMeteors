@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Listing from './Listing';
 import {connect} from 'react-redux';
+import AddListingsModal  from '../AddListingsModal';
+
 import GoogMap from './Map';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
-import AddListingsModal from '../AddListingsModal';
 import { browserHistory } from 'react-router';
 
 const tempMarkers = [{

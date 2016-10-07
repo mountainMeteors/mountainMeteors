@@ -5,19 +5,20 @@ import { Field, reduxForm } from 'redux-form';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 
 
 
-
-class PostPhotoTest extends Component{
+class postPhotos extends Component{
   constructor(props) {
+    console.log('postPhotos const')
     super(props);
     this.state = {
       photos: []
     };
-this.onDrop = this.onDrop.bind(this);
-this.onOpenClick = this.onOpenClick.bind(this);
-this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.onOpenClick = this.onOpenClick.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
 
@@ -33,7 +34,9 @@ this.onFormSubmit = this.onFormSubmit.bind(this);
       this.dropzone.open();
     }
 
-    onFormSubmit = (event) => {
+
+    onFormSubmit (event) {
+        console.log('iddddddd=====>', this.props.listing)
         event.preventDefault();
     var listingPhotos = {
         photos: this.state.photos
@@ -64,10 +67,12 @@ this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 }
 
+
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ uploadPhotos }, dispatch)
 }
 
 
-export default connect(null, mapDispatchToProps)(PostPhotoTest);
+export default connect(null, mapDispatchToProps) (postPhotos);
 
