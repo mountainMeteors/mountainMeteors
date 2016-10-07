@@ -3,39 +3,18 @@ import {GoogleMapLoader, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 
 class GoogMap extends React.Component {
   constructor(props){
-    console.log('const props', props);
     super(props);
-
-    this.state = {
-      markers: []
-    }
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleCloseClick = this.handleCloseClick.bind(this);
   }
 
   componentWillReceiveProps(props) {
-    // this.setState({markers: props.markers})
-    console.log('received props', props);
-    this.setState({
-      markers: props.listings.map(listing => {
-        return {
-          position: {
-            lat: listing.lat,
-            lng: listing.lng
-          },
-          archived: listing.archived,
-          content: 'hello',
-          location: listing.location,
-          rent: listing.rent,
-          showInfo: false
-        }
-      })
-    });
+    this.setState({markers: props.markers})
   }
 
   handleMarkerClick(targetMarker) {
-    console.log('######TARGET OPEN MARKER#########', targetMarker)
+    console.log('######TARGET MARKER#########', targetMarker)
     this.setState({//this === component
       markers: this.state.markers.map(marker => { //this === component
         if (marker === targetMarker) {
@@ -53,7 +32,6 @@ class GoogMap extends React.Component {
   }
 
   handleCloseClick(targetMarker) {
-    console.log('######TARGET CLOSE MARKER#########', targetMarker)
     this.setState({
       markers: this.state.markers.map(marker => {
         if (marker === targetMarker) {
@@ -68,11 +46,7 @@ class GoogMap extends React.Component {
     });
   }
 
-
-
-
   render() {
-    // return (<div>{'hi'}</div>)
     return (
       <section style={{height: "120%"}}>
         <GoogleMapLoader
@@ -86,36 +60,28 @@ class GoogMap extends React.Component {
           }
           googleMapElement={
             <GoogleMap
-              ref={(map) => console.log('map',map)}
+              ref={(map) => console.log(map)}
               defaultZoom={15}
               defaultCenter={this.props.origin}
             >
-            
-              {this.state.markers.map((marker, index) => {
-                console.log('marker.archived', marker.archived);
-                const onClick = () => {
-                  console.log('running onClick');
-                  return this.handleMarkerClick(marker);
-                }
-                const onCloseClick = () => {
-                  console.log('running onCloseClick');
-                  return this.handleCloseClick(marker);
-                }
+              {this.props.markers.map((marker, index) => {
+                const onClick = () => this.handleMarkerClick(marker);
+                const onCloseClick = () => this.handleCloseClick(marker);
                 if(!marker.archived){
                   return (
                     <Marker
                     key={index}
                     onClick={ onClick }
-                    position={marker.position}
+                    position={ {lat: marker.lat, lng: marker.lng}}
                     showInfo={false}
                     >
 
                     {marker.showInfo && (
-                      <InfoWindow onCloseClick={() => {console.log('GRAAAAAAAA')}}>
+                      <InfoWindow onCloseClick={onCloseClick}>
                         <div>
-                          <strong>{marker.location}</strong>
+                          <strong>{marker.content}</strong>
                           <br />
-                          ${marker.rent}
+                          <em>Display rent</em>
                         </div>
                       </InfoWindow>
                     )}
@@ -131,5 +97,10 @@ class GoogMap extends React.Component {
     );
   }
 }
+
+
+                      // <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
+                      //   <div>{marker.rent}</div>
+                      // </InfoWindow>
 
 export default GoogMap;
