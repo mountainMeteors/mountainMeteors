@@ -87,6 +87,7 @@ class AddListingsModal extends React.Component {
     }
     console.log('listing id', this.state.listingId);
     console.log('postListing is', this.props.postListing);
+    console.log('submitting', listings);
     // console.log('user id', this.props.user_id)
     if (this.props.modalType === "add") this.props.postListing(listings);
     else this.props.putListing(this.state.listingId, listings);
