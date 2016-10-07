@@ -69,6 +69,8 @@ class GoogMap extends React.Component {
   }
 
 
+
+
   render() {
     // return (<div>{'hi'}</div>)
     return (
@@ -88,6 +90,7 @@ class GoogMap extends React.Component {
               defaultZoom={15}
               defaultCenter={this.props.origin}
             >
+            
               {this.state.markers.map((marker, index) => {
                 console.log('marker.archived', marker.archived);
                 const onClick = () => {

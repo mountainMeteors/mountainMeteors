@@ -78,8 +78,16 @@ class Listing extends React.Component{
       if (!criteria[crit].met) score -= criteria[crit].percent
     }
     score = score.toFixed(2);
+<<<<<<< HEAD
     console.log('returning score', score);
     return score;
+=======
+
+    console.log('returning score', score);
+    return score;
+
+
+>>>>>>> 9b7b2fdc09f8352de35cba81067293d3b37f8c79
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -152,6 +160,12 @@ class Listing extends React.Component{
   }
 
 
+
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
+  }
 
   scoreFormat (cell, listing) {
     return (
