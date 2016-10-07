@@ -30,7 +30,7 @@ class listingPhotosGallery extends React.Component {
       showVideo: {},
     };
   }
-    componentWillMount() {
+    componentDidMount() {
       console.log('hererr', this.props.photoFiles)
       // if (!this.props.photoFiles){
       this.props.fetchPhotos(2)
@@ -200,7 +200,7 @@ class listingPhotosGallery extends React.Component {
 
 
 function mapStateToProps(state){
-  console.log('mapppp staeeee******',state.photoFiles.all)
+  console.log('mapppp staeeee******',state.photoFiles)
   return { 
     photoFiles: state.photoFiles.all
    };

@@ -10,7 +10,7 @@ import photoFiles from './photoReducer.js'
 
 const rootReducer = combineReducers({
   auth, listings, 
-photoFiles : photoFiles,
+photoFiles,
   surveysResponses: surveysResponses,
   routing: routerReducer
                                 });
