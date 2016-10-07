@@ -7,7 +7,6 @@ import ImageGallery from 'react-image-gallery';
 
 
 
-
 const requireContext = require.context("../../uploads", true, /^\.\/.*\.jpg$/);
 
 class listingPhotosGallery extends React.Component {

@@ -7,9 +7,7 @@ export default function(state=[], action){
   switch(action.type) {
     case 'FETCH_PHOTOS':
     console.log('reducer data', action.payload.data);
- 
      return { ...state, all: action.payload.data }
-  
   default:
   return state;
   }

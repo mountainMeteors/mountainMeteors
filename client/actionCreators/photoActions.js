@@ -5,9 +5,6 @@ export const UPLOAD_PHOTOS = 'UPLOAD_PHOTOS';
 export const FETCH_PHOTOS = 'FETCH_PHOTOS ';
 
 
-//    headers: {
-      // 'x-access-token': window.localStorage.getItem('userToken')
-    // }
 
 export function uploadPhotos(listingPhotos, listing_Id){
 	console.log('actionnnnnn=======>', listingPhotos, listing_Id)
@@ -33,6 +30,8 @@ var  req = request.post('/api/uploads');
 }
 
 export function  fetchPhotos (listingId){
+  console.log(listingId)
+
   const request = axios.get('/uploads/${listingId}')
   return {
     type: FETCH_PHOTOS,
