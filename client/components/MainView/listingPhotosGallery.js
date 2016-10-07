@@ -8,9 +8,6 @@ import ImageGallery from 'react-image-gallery';
 const requireContext = require.context("../../../uploads", true, /^\.\/.*\.jpg$/);
 
 
-
-
-
 class listingPhotosGallery extends React.Component {
 
   constructor(props) {
@@ -21,7 +18,7 @@ class listingPhotosGallery extends React.Component {
       showBullets: true,
       infinite: true,
       showThumbnails: true,
-      showFullscreenButton: true,
+      showFullscreenBton: true,
       showGalleryFullscreenButton: true,
       showPlayButton: true,
       showGalleryPlayButton: true,
@@ -31,10 +28,10 @@ class listingPhotosGallery extends React.Component {
     };
   }
     componentDidMount() {
-      console.log('hererr', this.props.photoFiles)
-      // if (!this.props.photoFiles){
-      this.props.fetchPhotos(2)
-    // }
+      console.log('herereeeeer', this.props.photoFiles)
+      if (!this.props.photoFiles){
+      this.props.fetchPhotos(16)
+    }
   }
 
   
@@ -45,6 +42,8 @@ class listingPhotosGallery extends React.Component {
       this._imageGallery.play();
     }
   }
+
+
 
   _onImageClick(event) {
     console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
@@ -149,32 +148,37 @@ class listingPhotosGallery extends React.Component {
 
   render() {
 
-// let imgsTranslate = this.props.props.images.map((file) =>{
-  // return `.${file.slice(file.indexOf('/'),file.length)}`
-// })
+    console.log('in renderrereeeeer', this.props.photoFiles)
+    if (!this.props.photoFiles) {
+      return <div>loading</div>
+    }
+    let picsParsePaths = this.props.photoFiles.map((file) =>{
+      return `.${file.slice(file.indexOf('/'),file.length)}`
+    })
 
-// const imagesImport = imgsTranslate.map(requireContext);
+    const downloadedPics = picsParsePaths.map(requireContext);
 
-// let imageCollection;
-// if(imagesImport){
-//   imageCollection = imagesImport.map((item) => {
-//     return `/../../${item}`
-//     })
-// }
+    let listingPhotos;
+    if(downloadedPics){
+      listingPhotos = downloadedPics.map((item) => {
+        return `../../../../uploads/${item}`
+        })
+    }
 
-// let images = [];
+let images = [];
+console.log('images', images, 'downloadedPics', downloadedPics, 'listingPhotos',listingPhotos)
 
-// imageCollection.forEach((image)=>{
-//   images.push({
-//     thumbnail: image,
-//     original: image
-//   })
-// })
+listingPhotos.forEach((image)=>{
+  images.push({
+    thumbnail: image,
+    original: image
+  })
+})
     return (
       <section className='app'>
         <ImageGallery
           ref={i => this._imageGallery = i}
-           /*items={images} */
+          items={images} 
           lazyLoad={false}
           onClick={this._onImageClick.bind(this)}
           onImageLoad={this._onImageLoad}
@@ -192,7 +196,7 @@ class listingPhotosGallery extends React.Component {
           slideInterval={parseInt(this.state.slideInterval)}
           slideOnThumbnailHover={this.state.slideOnThumbnailHover}
         />
-            
+      
       </section>
     );
   }

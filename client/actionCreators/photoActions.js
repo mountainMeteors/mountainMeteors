@@ -11,7 +11,7 @@ export function uploadPhotos(listingPhotos, listing_Id){
   const listingId = listing_Id ||  undefined;
 		var listingImages = listingPhotos.photos;
 	console.log(listingImages);
-var  req = request.post('/api/uploads');
+var  req = request.post('/api/uploads/');
     listingImages.forEach((file) => {
     	req.attach(file[0].name, file[0]);
     });

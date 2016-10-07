@@ -5,7 +5,6 @@ import { putListing } from '../../actionCreators/listingActions.js';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
-import postPhotos from './PostPhotos'
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
 
