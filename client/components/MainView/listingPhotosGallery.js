@@ -5,7 +5,7 @@ import { fetchPhotos } from '../../actionCreators/photoActions'
 import ImageGallery from 'react-image-gallery';
 
 
-const requireContext = require.context("../../../uploads", true, /^\.\/.*\.jpg$/);
+const Context = require.context("../../../uploads", true, /^\.\/.*\.jpg$/);
 
 
 class listingPhotosGallery extends React.Component {
@@ -27,12 +27,6 @@ class listingPhotosGallery extends React.Component {
       showVideo: {},
     };
   }
-    componentDidMount() {
-      console.log('herereeeeer', this.props.photoFiles)
-      if (!this.props.photoFiles){
-      this.props.fetchPhotos(16)
-    }
-  }
 
   
   componentDidUpdate(prevProps, prevState) {
@@ -44,6 +38,12 @@ class listingPhotosGallery extends React.Component {
   }
 
 
+    componentDidMount() {
+      console.log('herereeeeer', this.props.photoFiles)
+      if (!this.props.photoFiles){
+      this.props.fetchPhotos(79)
+    }
+  }
 
   _onImageClick(event) {
     console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
@@ -152,20 +152,20 @@ class listingPhotosGallery extends React.Component {
     if (!this.props.photoFiles) {
       return <div>loading</div>
     }
-    let picsParsePaths = this.props.photoFiles.map((file) =>{
+    var picsParsePaths = this.props.photoFiles.map((file) =>{
       return `.${file.slice(file.indexOf('/'),file.length)}`
     })
 
-    const downloadedPics = picsParsePaths.map(requireContext);
+    const downloadedPics = picsParsePaths.map(Context);
 
-    let listingPhotos;
+    var listingPhotos;
     if(downloadedPics){
       listingPhotos = downloadedPics.map((item) => {
-        return `../../../../uploads/${item}`
+        return `../../../${item}`
         })
     }
 
-let images = [];
+var images = [];
 console.log('images', images, 'downloadedPics', downloadedPics, 'listingPhotos',listingPhotos)
 
 listingPhotos.forEach((image)=>{
