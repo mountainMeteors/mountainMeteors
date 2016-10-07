@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 //Formatting
-const rentDisplay = cell => '$' + cell;
+const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 
 
