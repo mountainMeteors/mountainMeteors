@@ -24,7 +24,10 @@ class GoogMap extends React.Component {
             lat: listing.lat,
             lng: listing.lng
           },
+          archived: listing.archived,
           content: 'hello',
+          location: listing.location,
+          rent: listing.rent,
           showInfo: false
         }
       })
@@ -32,7 +35,7 @@ class GoogMap extends React.Component {
   }
 
   handleMarkerClick(targetMarker) {
-    console.log('######TARGET MARKER#########', targetMarker)
+    console.log('######TARGET OPEN MARKER#########', targetMarker)
     this.setState({//this === component
       markers: this.state.markers.map(marker => { //this === component
         if (marker === targetMarker) {
@@ -50,6 +53,7 @@ class GoogMap extends React.Component {
   }
 
   handleCloseClick(targetMarker) {
+    console.log('######TARGET CLOSE MARKER#########', targetMarker)
     this.setState({
       markers: this.state.markers.map(marker => {
         if (marker === targetMarker) {
@@ -85,8 +89,15 @@ class GoogMap extends React.Component {
               defaultCenter={this.props.origin}
             >
               {this.state.markers.map((marker, index) => {
-                const onClick = () => this.handleMarkerClick(marker);
-                const onCloseClick = () => this.handleCloseClick(marker);
+                console.log('marker.archived', marker.archived);
+                const onClick = () => {
+                  console.log('running onClick');
+                  return this.handleMarkerClick(marker);
+                }
+                const onCloseClick = () => {
+                  console.log('running onCloseClick');
+                  return this.handleCloseClick(marker);
+                }
                 if(!marker.archived){
                   return (
                     <Marker
@@ -97,11 +108,11 @@ class GoogMap extends React.Component {
                     >
 
                     {marker.showInfo && (
-                      <InfoWindow onCloseClick={onCloseClick}>
+                      <InfoWindow onCloseClick={() => {console.log('GRAAAAAAAA')}}>
                         <div>
-                          <strong>{marker.content}</strong>
+                          <strong>{marker.location}</strong>
                           <br />
-                          <em>Display rent</em>
+                          ${marker.rent}
                         </div>
                       </InfoWindow>
                     )}
