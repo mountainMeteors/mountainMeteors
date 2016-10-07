@@ -5,6 +5,9 @@ import { putListing } from '../../actionCreators/listingActions.js';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
+import postPhotos from './PostPhotos'
+import AddPhotosModal from './AddPhotosModal'
+import { Link } from 'react-router';
 
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
@@ -27,6 +30,7 @@ class Listing extends React.Component{
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
     this.addrFormat = this.addrFormat.bind(this);
+
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
@@ -66,19 +70,33 @@ class Listing extends React.Component{
     return (
       <div onClick={ () => {
           this.toggleArchiveListing(listing)}
-      }>{ cell }</div>
+      }>{ cell }
+      <br/>
+      
+      </div>
     );
   }
 
   editFormat (cell, listing) {
     return (
       <div><AddListingsModal listing={listing} modalType="edit" /></div>
+
     )
-  }
+  }   
+
+  photoFormat (cell, listing) {
+    console.log('passing listing', listing)
+    return (
+      <div><AddPhotosModal listing={listing} /></div>
+    )
+  } 
+
+   
 
   render() {
     return (
       <div>
+
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
           <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
             <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
@@ -96,7 +114,12 @@ class Listing extends React.Component{
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
               Edit
             </TableHeaderColumn>
+
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
+              Photos
+            </TableHeaderColumn>
           </BootstrapTable>
+        }
       </div>
     )
   }
