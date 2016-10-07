@@ -30,15 +30,21 @@ class listingPhotosGallery extends React.Component {
       showVideo: {},
     };
   }
+    componentWillMount() {
+      console.log('hererr', this.props.photoFiles)
+      // if (!this.props.photoFiles){
+      this.props.fetchPhotos(2)
+    // }
+  }
 
   
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.slideInterval !== prevState.slideInterval) {
-      // refresh setInterval
-      this._imageGallery.pause();
-      this._imageGallery.play();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.slideInterval !== prevState.slideInterval) {
+  //     // refresh setInterval
+  //     this._imageGallery.pause();
+  //     this._imageGallery.play();
+  //   }
+  // }
 
   _onImageClick(event) {
     console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
@@ -194,9 +200,9 @@ class listingPhotosGallery extends React.Component {
 
 
 function mapStateToProps(state){
-  console.log(state)
+  console.log('mapppp staeeee******',state.photoFiles.all)
   return { 
-    // photoFiles: state.photoFiles.all
+    photoFiles: state.photoFiles.all
    };
 }
 

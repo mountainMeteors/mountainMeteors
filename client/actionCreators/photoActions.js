@@ -24,18 +24,18 @@ var  req = request.post('/api/uploads');
     })
   return {
   	type : UPLOAD_PHOTOS,
-  	payload: { listingPhotos }
+  	payload: req  
   }
 
 }
 
 export function  fetchPhotos (listingId){
-  console.log(listingId)
-  const request = axios.get('/uploads/${listingId}')
+  console.log(listingId, 'acccccction===>')
+  const request = axios.get('api/uploads/' + listingId)
+  console.log('paths=====>',request)
   return {
     type: FETCH_PHOTOS,
-    payload: request
+    payload: request 
   }
-
 }
 

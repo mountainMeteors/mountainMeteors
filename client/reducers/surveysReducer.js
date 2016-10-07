@@ -1,15 +1,21 @@
+
+
+
 import { FETCH_RESPONSES } from '../actionCreators/surveysActions';
 
 const INITIAL_STATE = { all: [], surveyResponses:null };
 
-export default function(state=[], action){
+ function surveysResponses(state=[], action){
     console.log('action received!!!!!!')
   switch(action.type) {
     case 'FETCH_RESPONSES':
-    console.log('reducer data', action.payload.data);
+
 
      return { ...state, all: action.payload.data }
   default:
   return state;
   }
 }
+
+
+export default surveysResponses
