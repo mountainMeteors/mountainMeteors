@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, './uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '.jpg')
+    cb(null, file.fieldname + '-' + Date.now() + '.jpg')
   }
 })
 
@@ -56,6 +56,10 @@ app.get('/public/bundle.js', function(req, res) {
 
 app.get('/styles/style.css', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/styles/style.css'));
+});
+
+app.get('/styles/app.css', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/styles/app.css'));
 });
 
 app.get('*', function(req, res) {

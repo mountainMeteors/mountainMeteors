@@ -3,10 +3,9 @@ import {render} from 'react-dom';
 
 import App from './components/App';
 import MainView from './components/MainView/MainView';
+import AddPhotosModal from './components/MainView/AddPhotosModal';
 
-
-
-import PostPhotoTest from './components/MainView/PostPhotosTest';
+import postPhotos from './components/MainView/PostPhotos';
 import Survey from './components/Surveys/Survey'
 
 /*TEST with Multi-select*/
@@ -26,7 +25,8 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
-        <Route path="photoTest" component={PostPhotoTest} />
+        <Route path="photo" component={postPhotos} />
+        <Route path="addphotos" component={AddPhotosModal} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
         <Route path="select" component={MultiSelect}/>
