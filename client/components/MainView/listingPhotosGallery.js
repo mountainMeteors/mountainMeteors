@@ -38,13 +38,13 @@ class listingPhotosGallery extends React.Component {
   }
 
   
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.slideInterval !== prevState.slideInterval) {
-  //     // refresh setInterval
-  //     this._imageGallery.pause();
-  //     this._imageGallery.play();
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.slideInterval !== prevState.slideInterval) {
+      // refresh setInterval
+      this._imageGallery.pause();
+      this._imageGallery.play();
+    }
+  }
 
   _onImageClick(event) {
     console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
