@@ -8,16 +8,19 @@ export const UPLOAD_PHOTOS = 'UPLOAD_PHOTOS';
       // 'x-access-token': window.localStorage.getItem('userToken')
     // }
 
-export function uploadPhotos(listingPhotos){
-	console.log('actionnnnnn=======>', listingPhotos)
-
+export function uploadPhotos(listingPhotos, listing_Id){
+	console.log('actionnnnnn=======>', listingPhotos, listing_Id)
+  const listingId = listing_Id ||  undefined;
 		var listingImages = listingPhotos.photos;
 	console.log(listingImages);
 var  req = request.post('/api/uploads');
     listingImages.forEach((file) => {
     	req.attach(file[0].name, file[0]);
     });
-    req.end(function(err,res){
+    req
+    .field('listingId', listingId)
+    // .send ({listingId:listingId})
+    .end(function(err,res){
     	if (err) console.log(err)
     		else console.log(res)
     })

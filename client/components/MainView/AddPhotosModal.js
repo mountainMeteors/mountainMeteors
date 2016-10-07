@@ -50,7 +50,7 @@ class AddPhotosModal extends React.Component {
     var listingPhotos = {
         photos: this.state.photos
     }
-    this.props.uploadPhotos(listingPhotos)
+    this.props.uploadPhotos(listingPhotos, this.props.listing.id)
     }
 
     render () {
