@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actionCreators/photoActions';
+import { fetchPhotos } from '../../actionCreators/photoActions';
 import ImageGallery from 'react-image-gallery';
 @import "../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
+
+
+
 const requireContext = require.context("../../uploads", true, /^\.\/.*\.jpg$/);
 
-class ImageSlide extends React.Component {
+class listingPhotosGallery extends React.Component {
 
   constructor(props) {
     super();
@@ -190,8 +193,7 @@ imageCollection.forEach((image)=>{
 
 function mapStateToProps(state){
   return { 
-    loc: state.loc,
-    cityName: state.cityName
+    photoFiles: state.photoFiles.all;
    };
 }
 
@@ -199,4 +201,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageSlide);
+export default connect(mapStateToProps, mapDispatchToProps)(listingPhotosGallery);
