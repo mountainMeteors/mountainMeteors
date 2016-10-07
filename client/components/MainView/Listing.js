@@ -27,13 +27,76 @@ class Listing extends React.Component{
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
     this.addrFormat = this.addrFormat.bind(this);
+    this.calcScore = this.calcScore.bind(this);
+  }
+
+  calcScore(listing, prefTotal) {
+    let prefs = this.props.prefs;
+    console.log('looking at listing', listing);
+    console.log('using prefs', this.props.prefs);
+    let criteria = {
+      // TODO: location: {},
+      rent: {
+        percent: prefs.rentRank / prefTotal * 100,
+        met: parseInt(listing.rent) > prefs.RentMin.value &&
+             parseInt(listing.rent) < prefs.RentMax.value,
+        options: 1
+      },
+      pets: {
+        percent: prefs.petRank / prefTotal * 100,
+        met: listing.pets.toLowerCase() === prefs.Pets[0].label.toLowerCase() ||
+             listing.pets.toLowerCase() === 'none',
+        options: 1
+      },
+      // TODO: amenities: {
+      //   percent: prefs.amenitiesRank / prefTotal,
+      //   met: TK,
+      //   options: prefs.Amenities.length
+      // },
+      no_fee: {
+        percent: prefs.feeRank / prefTotal * 100,
+        met: listing.no_fee === prefs.fees.value.toLowerCase(),
+        options: 1
+      }
+    }
+
+    //Calculate amenities
+    // prefs.Amenities.forEach(amenity => {
+    //   criteria[amenity.value] = {
+    //     percent = (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length;
+    //     met = amenity.value ===
+    //   }
+    // });
+
+    console.log('calculating score with criteria', criteria);
+    //Calculate score
+    let score = 100;
+    for (var crit in criteria) {
+      if (!criteria[crit].met) score -= criteria[crit].percent
+    }
+    score = score.toFixed(2);
+
+    console.log('returning score', score);
+    return score;
+
+
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
-  filterListings(props) {
-    let listingsFiltered = props.listings.slice().filter(
+  filterListings(listings) {
+    console.log('filtering', listings);
+    let listingsFiltered = listings.slice().filter(
       listing => Boolean(listing.archived) === this.state.showArchived
     );
+    let prefs = this.props.prefs;
+    let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
+    // listingsFiltered.map(listing => {
+    //   listing.score = this.calcScore(listing, prefTotal);
+    // })
+    // .sort((l1,l2) => {
+    //   console.log('comparing', l1.score, l2.score);
+    //   return l1.score - l2.score
+    // });
     this.setState({listingsFiltered});
   }
 
@@ -46,13 +109,14 @@ class Listing extends React.Component{
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
   componentWillReceiveProps(props) {
-    this.filterListings(props);
+    console.log('listing received props', props);
+    this.filterListings(props.listings);
   }
 
   //Toggles state.showArchived and then updates listing
   toggleArchiveView() {
     this.setState({showArchived: !this.state.showArchived},
-      () => {this.filterListings(this.props)}
+      () => {this.filterListings(this.props.listings)}
     );
   }
 
@@ -76,6 +140,12 @@ class Listing extends React.Component{
     )
   }
 
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
+  }
+
   render() {
     return (
       <div>
@@ -95,6 +165,9 @@ class Listing extends React.Component{
             </TableHeaderColumn>
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
               Edit
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="score" dataSort={true} >
+              Score
             </TableHeaderColumn>
           </BootstrapTable>
       </div>
