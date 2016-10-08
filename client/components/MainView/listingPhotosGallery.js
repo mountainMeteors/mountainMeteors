@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { fetchPhotos } from '../../actionCreators/photoActions'
 
 import ImageGallery from 'react-image-gallery';
-
+import css from '../../styles/app.css'
 
 
 

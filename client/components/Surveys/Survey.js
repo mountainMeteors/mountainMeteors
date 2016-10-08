@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import { Grid, Col, Row } from 'react-bootstrap';
+import css from '../../styles/app.css'
 
 
 

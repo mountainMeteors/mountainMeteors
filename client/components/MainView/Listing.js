@@ -6,10 +6,11 @@ import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import AddPhotosModal from './AddPhotosModal'
+import listingPhotosGallery from './AddPhotosModal'
 import { Link } from 'react-router';
 
 //Formatting
-const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
+const rentDisplay = cell => '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 
 
@@ -159,6 +160,13 @@ class Listing extends React.Component{
     )
   }
 
+
+  ViewPhotoFormat (cell, listing) {
+    return (
+      <div>listingPhotosGallery listing={listing} /></div>
+    )
+  }
+
   scoreFormat (cell, listing) {
     return (
       <div>{listing.score}</div>
@@ -187,8 +195,10 @@ class Listing extends React.Component{
               Edit
             </TableHeaderColumn>
             <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
-              Photos
-            </TableHeaderColumn>
+              Add Photos
+            </TableHeaderColumn>  
+
+      
             <TableHeaderColumn dataField="score" dataSort={true} >
               Score
             </TableHeaderColumn>
