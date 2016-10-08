@@ -60,6 +60,7 @@
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
+    "request": "^2.75.0",
     "superagent": "^2.3.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
