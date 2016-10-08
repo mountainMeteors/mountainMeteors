@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
+import { Form, FormControl, FormGroup, Checkbox, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postListing, putListing } from '../actionCreators/listingActions';
@@ -15,12 +15,27 @@ class AddListingsModal extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    this.state.listingId = props.listing ? props.listing.id : null
+    this.state.listingId = props.listing ? props.listing.id : null;
     this.state.location = props.listing ? props.listing.location : '';
     this.state.rent = props.listing ? props.listing.rent : '';
     this.state.pets = props.listing ? props.listing.pets : '';
     this.state.lat = props.listing ? props.listing.lat : 0;
     this.state.lng = props.listing ? props.listing.lng : 0;
+    this.state.neighborhood = props.listing ? props.listing.neighborhood : '';
+    this.state.squareFeet = props.listing ? props.listing.squareFeet : '';
+    this.state.bedrooms = props.listing ? props.listing.bedrooms : '';
+    this.state.bathrooms = props.listing ? props.listing.bathrooms : '';
+    this.state.dishwasher = props.listing ? props.listing.dishwasher : '';
+    this.state.gym = props.listing ? props.listing.gym : '';
+    this.state.laundry = props.listing ? props.listing.laundry : null;
+    this.state.doorman = props.listing ? props.listing.doorman : null;
+    this.state.noFee = props.listing ? props.listing.noFee : null;
+    this.state.roof = props.listing ? props.listing.roof : null;
+    this.state.garage = props.listing ? props.listing.garage : null;
+    this.state.pool = props.listing ? props.listing.pool : null;
+    this.state.outdoorSpace = props.listing ? props.listing.outdoorSpace : null;
+    this.state.url = props.listing ? props.listing.url : '';
+
     this.state.showModal = false;
 
     this.close = this.close.bind(this);
@@ -37,7 +52,17 @@ class AddListingsModal extends React.Component {
     if (newProps.scrapeData)
       this.setState({
         rent: newProps.scrapeData.rentInfo[0],
-        pets: newProps.scrapeData.pets
+        location: newProps.scrapeData.location[0],
+        neighborhood: newProps.scrapeData.neighborhood[1],
+        pets: newProps.scrapeData.catsAllowed,
+        squareFeet: newProps.scrapeData.squareFeet[0],
+        bedrooms: newProps.scrapeData.bedInfo[0].numberOfBedsLong,
+        bathrooms: newProps.scrapeData.bathInfo[0].numberOfBathsLong,
+        availability: newProps.scrapeData.availability[0],
+        dishwasher: newProps.scrapeData.amenities[0].dishwasher,
+        gym: newProps.scrapeData.amenities[0].gym,
+        laundry: newProps.scrapeData.amenities[0].laundry,
+        noFee: newProps.scrapeData.amenities[0].nofee
       })
   }
 
@@ -81,6 +106,14 @@ class AddListingsModal extends React.Component {
       location: this.state.location,
       rent: this.state.rent,
       pets: this.state.pets,
+      neighborhood: this.state.neighborhood,
+      squareFeet: this.state.squareFeet,
+      bedrooms: this.state.bedrooms,
+      bathrooms: this.state.bathrooms,
+      dishwasher: this.state.dishwasher,
+      gym: this.state.gym,
+      laundry: this.state.laundry,
+      noFee: this.state.noFee,
       lat: this.state.lat,
       lng: this.state.lng,
       url: this.state.url
@@ -151,28 +184,113 @@ class AddListingsModal extends React.Component {
                  onChange={this.handleGeoChange}
                  onSuggestSelect={this.onGeoSelect}
                 />
-                {/*
-                  <FormControl name="location" value={this.state.location}
-                onChange={this.handleChange}
-                type="text" placeholder="123 BeaconHill" />
-                */}
+             </FormGroup>
+             {' '}
+             <FormGroup controlId="formNeighborhood">
+               <ControlLabel>Neighborhood</ControlLabel>
+               <FormControl name="neighborhood" value={this.state.neighborhood}
+               onChange={this.handleChange}
+               type="text" placeholder="East Village" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">
-               <ControlLabel>Budget</ControlLabel>
-               {' '}
+               <ControlLabel>Rent</ControlLabel>
                <FormControl name="rent" value={this.state.rent}
                onChange={this.handleChange}
-               type="rent" placeholder="$2000" />
+               type="text" placeholder="$2000" />
+             </FormGroup>
+             {' '}
+             <FormGroup controlId="formBedrooms">
+               <ControlLabel>Bedrooms</ControlLabel>
+               <FormControl name="bedrooms" value={this.state.bedrooms}
+               onChange={this.handleChange}
+               type="text" placeholder="3 Bedrooms" />
+             </FormGroup>
+             {' '}
+             <FormGroup controlId="formBathrooms">
+               <ControlLabel>Bathrooms</ControlLabel>
+               <FormControl name="bathrooms" value={this.state.bathrooms}
+               onChange={this.handleChange}
+               type="text" placeholder="2 Bathrooms" />
+             </FormGroup>
+             {' '}
+             <FormGroup controlId="formSquareFeet">
+               <ControlLabel>Square Feet</ControlLabel>
+               <FormControl name="squareFeet" value={this.state.squareFeet}
+               onChange={this.handleChange}
+               type="text" placeholder="1200 sq ft" />
+             </FormGroup>
+             {' '}
+             <FormGroup controlId="formAvailability">
+               <ControlLabel>Availability</ControlLabel>
+               <FormControl name="availability" value={this.state.availability}
+               onChange={this.handleChange}
+               type="text" placeholder="Now" />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPets">
-               <ControlLabel>Pets</ControlLabel>
-               <FormControl name="pets" value={this.state.pets}
-               onChange={this.handleChange}
-               type="text" placeholder="Cats, Dogs, Both, None" />
-             </FormGroup>
+              <ControlLabel>Pets</ControlLabel>
+              <FormControl name="pets" componentClass="select" value={this.state.pets}
+              onChange={this.handleChange} placeholder="None">
+                <option value="select">select</option>
+                <option value="othera">Cats</option>
+                <option value="otherb">Dogs</option>
+                <option value="otherc">Both</option>
+                <option value="otherd">None</option>
+              </FormControl>
+            </FormGroup>
+
+            <FormGroup controlId="formFee">
+             <Checkbox inline>
+               No Fee
+             </Checkbox>
              {' '}
+             </FormGroup>
+
+             <FormGroup controlId="formAmenities">
+             <ControlLabel>Amenities</ControlLabel>
+
+               <Checkbox inline name="gym" value={this.state.gym}
+               onChange={this.handleChange}>
+                 Gym
+               </Checkbox>
+               {' '}
+               <Checkbox inline name="laundry" value={this.state.laundry}
+               onChange={this.handleChange}>
+                 Laundry
+               </Checkbox>
+               {' '}
+               <Checkbox inline name="roof" value={this.state.roof}
+               onChange={this.handleChange}>
+                 Roof
+               </Checkbox>
+               {' '}
+               <Checkbox inline name="dishwasher" value={this.state.dishwasher}
+               onChange={this.handleChange}>
+                 Dishwasher
+               </Checkbox>
+               <Checkbox inline name="outdoorSpace" value={this.state.outdoorSpace}
+               onChange={this.handleChange}>
+                 Outdoor Space
+               </Checkbox>
+               <Checkbox inline name="elevator" value={this.state.elevator}
+               onChange={this.handleChange}>
+                 Elevator
+               </Checkbox>
+               <Checkbox inline name="doorman" value={this.state.doorman}
+               onChange={this.handleChange}>
+                 Doorman
+               </Checkbox >
+               <Checkbox inline name="garage" value={this.state.garage}
+               onChange={this.handleChange}>
+                 Garage
+               </Checkbox>
+               <Checkbox inline name="pool" value={this.state.pool}
+               onChange={this.handleChange}>
+                 Pool
+               </Checkbox>
+             </FormGroup>
+              {' '}
              <Button type="submit">
                Send
              </Button>

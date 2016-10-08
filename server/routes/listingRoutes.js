@@ -80,7 +80,9 @@ router.post('/scrape', function(req, res){
     }]),
     petsAllowed: xray('.petPolicy', [{
       petPolicyDetails: ['.petPolicyDetails | trim']
-    }])
+    }]),
+    neighborhood: ['.neighborhood | trim'],
+    location: ['div.propertyAddress h2 span | trim']
   }).stream()
 
   // (function (err, description) {
@@ -93,9 +95,7 @@ router.post('/scrape', function(req, res){
   //  }
   // });
 
-// getApartmentInfo().then(function (description) {
-//   console.log('description', description);
-// });
+
 
   getApartmentInfo.pipe(res);
 });
