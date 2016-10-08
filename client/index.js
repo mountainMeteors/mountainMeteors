@@ -20,9 +20,9 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
-        <Route path="survey" component={Survey} />
-        <Route path="viewphotos" component={listingPhotosGallery} />
+        <Route path="survey" component={Survey} /> 
         <Route path="addphotos" component={AddPhotosModal} />
+        <Route path="viewphotos" component={listingPhotosGallery} /> 
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
       </Route>

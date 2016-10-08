@@ -7,8 +7,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 import ListingEntry from './ListingEntry';
-import AddPhotosModal from './AddPhotosModal'
-import listingPhotosGallery from './AddPhotosModal'
+import AddPhotosModal from './AddPhotosModal';
 
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
@@ -159,9 +158,54 @@ class Listing extends React.Component{
     this.setState({showArchived: !this.state.showArchived},
       () => {this.filterListings(this.props.listings)}
     );
+
     // this.setState({showArchived: !this.state.showArchived});
     // console.log('state arch after', this.state.showArchived);
 
+  }
+
+  toggleArchiveListing(listing) {
+    console.log('toggling', listing.id);
+    let toggledVal = listing.archived === 0 ? 1 : 0;
+    this.props.putListing(listing.id, {archived: toggledVal});
+  }
+
+  addrFormat(cell, listing, enumObject, index) {
+    return (
+      <div onClick={ () => {
+          this.toggleArchiveListing(listing)}
+      }>{ cell }
+      <br/>
+
+      </div>
+    );
+  }
+
+  editFormat (cell, listing) {
+    return (
+      <div><AddListingsModal listing={listing} modalType="edit" /></div>
+
+    )
+  }
+
+  photoFormat (cell, listing) {
+    console.log('passing listing', listing)
+    return (
+      <div><AddPhotosModal listing={listing} /></div>
+    )
+  }
+
+
+  ViewPhotoFormat (cell, listing) {
+    return (
+      <div>listingPhotosGallery listing={listing} /></div>
+    )
+  }
+
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
   }
 
   toggleArchiveListing(listing) {
@@ -216,6 +260,33 @@ class Listing extends React.Component{
         {this.state.listingsFiltered.map((listing, i) =>
           <ListingEntry key={i} listing={listing} />
         )}
+
+          <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
+            <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
+              Address
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
+              Rent
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="pets" dataSort={true}>
+              Pets
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
+              Gym
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
+              Edit
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
+              Add Photos
+            </TableHeaderColumn>  
+
+      
+            <TableHeaderColumn dataField="score" dataSort={true} >
+              Score
+            </TableHeaderColumn>
+          </BootstrapTable>
+
       </div>
     )
   }

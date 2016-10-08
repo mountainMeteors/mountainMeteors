@@ -217,13 +217,10 @@ class Survey extends Component {
   render () {
     const { value } = this.state
     return (
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
       <div>
       <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
       <div >
       <h4>Lets us get to know a little bit about you!</h4>
-<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
       <p></p>
       </div>
       </Jumbotron>
@@ -322,238 +319,12 @@ class Survey extends Component {
       <div className='horizontal-slider'>
       <h4> *Square Feet**Your ideal apt size?</h4>
       <Select
-=======
-    <div>
-=======
-      <div>
->>>>>>>  card tile added
-      <Jumbotron>
-      <h1>Lets us get to know a little bit about you!</h1>
-=======
->>>>>>> slider edit
-      <p></p>
-      </div>
-      </Jumbotron>
-
-
-      <form onSubmit={this.onFormSubmit}>
-      <div className="main">
-
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
-      <div className='card_Neighborhood'>
-      <h4>Let's pick your fav neighborhoods </h4>
-      <Select
-      name="form-field-name"
-      value={this.state.NeighborhoodsSelected}
-      multi={true}
-      options={Neighborhoods}
-      onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
-      />
-
-      <div className='horizontal-slider'>
-      <h4>Rank neighborhoods ?</h4>
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.neighborhoodRank}
-      onChange={(value) => this.handleChange("neighborhoodRank",value)}
-      />
-      <div className='value'>
-      Ranking: {this.state.neighborhoodRank}
-      </div>
-      <hr />
-      </div>
-      </div>
-      
-
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-          <div >
-          <div>
-          <h4>Let's pick apartment type </h4>
-          <Select 
-            name="form-field-name"
-            value={this.state.NumberOfRoomsSelected}
-            options={NumberOfRooms}
-            onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
-            />
-
-          <div className='horizontal-slider'>
-            <h4>Rank Apartment Type ?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.numberOfRoomsRank}
-              onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
-              />
-            <div className='value'>
-              Ranking: {this.state.numberOfRoomsRank}
-            </div>
-            <hr />
-          </div>
-          </div>
-
-
-
-
-          <Select 
-            name="form-field-name"
-            value={this.state.FeesSelected}
-            options={Fees}
-            onChange={(value) => this.handleChange("FeesSelected", value)}
-            />
-          <div className='horizontal-slider'>
-            <h4>How important is fees ? </h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.feeRank}
-              onChange={(value) => this.handleChange("feeRank", value)}
-              />
-            <div className='value'>
-              Ranking:{this.state.feeRank}</div>
-            <hr />
-          </div>
-
-
-
-          <Select
-            name="form-field-name"
-            value={this.state.RentMinSelected}
-            options={RentMin}
-            onChange={(value) => this.handleChange("RentMinSelected", value)}
-            />
-            <Select
-              name="form-field-name"
-              value={this.state.RentMaxSelected}
-              options={RentMax}
-              onChange={(value) => this.handleChange("RentMaxSelected", value)}
-              />
-
-          <div className='horizontal-slider'>
-            <h4>How important is rent budget from 1 to 7?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.rentRank}
-              onChange={(value) => this.handleChange("rentRank", value)}
-              />
-            <div className='value'>Ranking:{this.state.rentRank}</div>
-            <hr />
-          </div>
-
-
-          *****************Square Feet*****************
-
-
-       <div className='horizontal-slider'>
-         <h4>Your ideal apt size?</h4>
-    <Select
->>>>>>> styling to survey'
-=======
-
-=======
->>>>>>> styling more
-      <div className='card_aptType'>
-      <div className='container'>
-
-      <h4>Let's pick apartment type </h4>
-      <Select 
-      name="form-field-name"
-      value={this.state.NumberOfRoomsSelected}
-      options={NumberOfRooms}
-      onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
-      />
-
-      <div className='horizontal-slider'>
-      <h4>Rank Apartment Type ?</h4>
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.numberOfRoomsRank}
-      onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
-      />
-      <div className='value'>
-      Ranking: {this.state.numberOfRoomsRank}
-      </div>
-      <hr />
-      </div>
-      </div>
-      </div>
-
-
-
-      <div className='card_Fees'>
-      <div className='container'>
-      <Select 
-      name="form-field-name"
-      value={this.state.FeesSelected}
-      options={Fees}
-      onChange={(value) => this.handleChange("FeesSelected", value)}
-      />
-      <div className='horizontal-slider'>
-      <h4>How important is fees ? </h4>
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.feeRank}
-      onChange={(value) => this.handleChange("feeRank", value)}
-      />
-      <div className='value'>
-      Ranking:{this.state.feeRank}</div>
-      <hr />
-      </div>
-      </div>
-      </div>
-
-
-      <div className='card_Fees'>
-      <div className='container'>
-      <Select
-      name="form-field-name"
-      value={this.state.RentMinSelected}
-      options={RentMin}
-      onChange={(value) => this.handleChange("RentMinSelected", value)}
-      />
-      <Select
-      name="form-field-name"
-      value={this.state.RentMaxSelected}
-      options={RentMax}
-      onChange={(value) => this.handleChange("RentMaxSelected", value)}
-      />
-
-      <div className='horizontal-slider'>
-      <h4>How important is rent budget from 1 to 7?</h4>
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.rentRank}
-      onChange={(value) => this.handleChange("rentRank", value)}
-      />
-      <div className='value'>Ranking:{this.state.rentRank}</div>
-      <hr />
-      </div>
-      </div>
-      </div>
-
-
-
-      <div className='card_Fees'>
-      <div style={{'backgroundImage': 'url(http://localhost:2500/uploads/neighborhood-guide.jpg)'}}>
-      <div className='container'>
-      <div className='horizontal-slider'>
-      <h4> *Square Feet**Your ideal apt size?</h4>
-      <Select
->>>>>>>  card tile added
       name="form-field-name"
       value={this.state.Sq_ft_MinSelected}
       options={Sq_ft_Min}
       onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
       />
       <Select
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
-=======
->>>>>>>  card tile added
       name="form-field-name"
       value={this.state.Sq_ft_MaxSelected}
       options={Sq_ft_Max}
@@ -570,10 +341,6 @@ class Survey extends Component {
       </div>
       </div>
       </div>
-<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-=======
->>>>>>> slider edit
       </div>
 
     
@@ -581,14 +348,7 @@ class Survey extends Component {
     <div className='container'>
       <div className='horizontal-slider'>
       <h4>Your ideal commute time?</h4>
-<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       <div className='rangeWrap'>
-=======
->>>>>>> styling more
-=======
-      <div className='rangeWrap'>
->>>>>>> slider edit
       <Select
       name="form-field-name"
       value={this.state.CommuteMinSelected}
@@ -600,17 +360,8 @@ class Survey extends Component {
       value={this.state.CommuteMaxSelected}
       options={CommuteMax}
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       /> 
       </div>    
-=======
-      />     
->>>>>>> styling more
-=======
-      /> 
-      </div>    
->>>>>>> slider edit
       <Slider
       min={0}
       max={7}
@@ -622,12 +373,6 @@ class Survey extends Component {
       </div>
       </div>
       </div>
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
-=======
-
->>>>>>>  card tile added
-=======
->>>>>>> styling more
 
 
       <div className='Sq_ft'>
@@ -656,10 +401,6 @@ class Survey extends Component {
       </div>
 
 
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-=======
->>>>>>> styling more
       
       <div className='card_Neighborhood'>
       <h4>Let's pick your fav neighborhoods </h4>
@@ -670,7 +411,6 @@ class Survey extends Component {
       options={Neighborhoods}
       onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
       />
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 
       <div className='horizontal-slider'>
       <h4>Rank neighborhoods ?</h4>
@@ -687,27 +427,6 @@ class Survey extends Component {
       </div>
       </div>
       
-=======
-
->>>>>>>  card tile added
-=======
-
-      <div className='horizontal-slider'>
-      <h4>Rank neighborhoods ?</h4>
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.neighborhoodRank}
-      onChange={(value) => this.handleChange("neighborhoodRank",value)}
-      />
-      <div className='value'>
-      Ranking: {this.state.neighborhoodRank}
-      </div>
-      <hr />
-      </div>
-      </div>
-      
->>>>>>> styling more
       <div className='Amenities_Card'>
       <div className='container'>
       <Select
@@ -731,17 +450,8 @@ class Survey extends Component {
       </div>
       </div>
 
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
     <div className='Targeded_Location_Card'>
     <div className='container'>
-=======
-
->>>>>>>  card tile added
-=======
-    <div className='Targeded_Location_Card'>
-    <div className='container'>
->>>>>>> styling more
       <FormGroup
       controlId="formBasicText"
       >
@@ -755,8 +465,6 @@ class Survey extends Component {
       <FormControl.Feedback />
       <HelpBlock>Validation is based on valid address.</HelpBlock>
       </FormGroup>
-<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
       </div>
       </div>
 
@@ -768,163 +476,6 @@ class Survey extends Component {
       </div>
       )
 }
-=======
-        name="form-field-name"
-        value={this.state.Sq_ft_MaxSelected}
-        options={Sq_ft_Max}
-        onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
-        />     
-         <Slider
-           min={0}
-           max={7}
-           value={this.state.sq_ft_Rank}
-           onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
-           />
-         <div className='value'>Ranking: {this.state.sq_ft_Rank}</div>
-         <hr />
-       </div>
-
-          *****************PETSSSSS*****************
-          <div>
-
-            <h4> Furry Little Friends ?? </h4>
-            <Select 
-                name="form-field-name"
-                value={this.state.PetSelected}
-                options={Pets}
-                multi={true}
-                onChange={(value) => this.handleChange("PetSelected", value)}
-                />
-
-            <div className='horizontal-slider'>
-              <h4>Rank pet accomo ?</h4>
-              <Slider className='pet-slider'
-                min={0}
-                max={7}
-                value={this.state.petRank}
-                onChange={(value) => this.handleChange("petRank", value)}
-                />
-              <div className='value'>Ranking:{this.state.petRank}</div>
-              <hr />
-            </div>
-
-
-          </div>
-
-
-
-          <Select
-            name="form-field-name"
-            value={this.state.amenitiesSelected}
-            multi={true}
-            options={Amenities}
-            onChange={(value) => this.handleChange("amenitiesSelected", value)}
-            />
-          <div className='horizontal-slider'>
-            <h4>How important are amenities ?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.amenitiesRank}
-              onChange={(value) => this.handleChange("amenitiesRank", value)}
-              />
-            <div className='value'>Ranking: {this.state.amenitiesRank}</div>
-            <hr />
-          </div>
-
-         
-          <FormGroup
-                    controlId="formBasicText"
-                                  >
-                    <ControlLabel></ControlLabel>
-                    <FormControl
-                      type="text"
-                      value={this.state.targetedLocation}
-                      placeholder="1216 Broadway New York NY"
-                      onChange={this.handleChangeLocation}
-                    />
-                    <FormControl.Feedback />
-                    <HelpBlock>Validation is based on valid address.</HelpBlock>
-                  </FormGroup>
-         
-
-
-  ***COMMUTE*****
-        
-          <div className='horizontal-slider'>
-            <h4>Your ideal commute time?</h4>
-       <Select
-         name="form-field-name"
-         value={this.state.CommuteMinSelected}
-         options={CommuteMin}
-         onChange={(value) => this.handleChange("CommuteMinSelected", value)}
-         />
-         <Select
-           name="form-field-name"
-           value={this.state.CommuteMaxSelected}
-           options={CommuteMax}
-           onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-           />     
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.commuteRank}
-              onChange={(value) => this.handleChange("commuteRank", value)}
-              />
-            <div className='value'>Ranking: {this.state.commuteRank}</div>
-            <hr />
-          </div>
-  
-=======
-
-
-
-      ***COMMUTE*****
-
-      <div className='horizontal-slider'>
-      <h4>Your ideal commute time?</h4>
-      <Select
-      name="form-field-name"
-      value={this.state.CommuteMinSelected}
-      options={CommuteMin}
-      onChange={(value) => this.handleChange("CommuteMinSelected", value)}
-      />
-      <Select
-      name="form-field-name"
-      value={this.state.CommuteMaxSelected}
-      options={CommuteMax}
-      onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-      />     
-      <Slider
-      min={0}
-      max={7}
-      value={this.state.commuteRank}
-      onChange={(value) => this.handleChange("commuteRank", value)}
-      />
-      <div className='value'>Ranking: {this.state.commuteRank}</div>
-      <hr />
-      </div>
->>>>>>>  card tile added
-
-=======
-      </div>
->>>>>>> styling more
-      </div>
-
-
-
-      </div>
-      <button type="submit" className="btn btn-block btn-primary">Submit</button>
-      </form>
-      </div>
-<<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
-    )
-  }
->>>>>>> styling to survey'
-=======
-      )
-}
->>>>>>>  card tile added
 }
 
 function mapStateToProps(state) {

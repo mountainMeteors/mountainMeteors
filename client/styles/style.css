@@ -7,18 +7,8 @@ h1.title {
     background-color: ##FAEBD7 ;
 }
 
-<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
 .clickable {
   cursor: pointer;
-=======
-#main {
-    width: 500px;
-    height: 900px;
-    border: 1px solid #c3c3c3;
-    display: -webkit-flex; 
-    display: flex;
-
->>>>>>> styling to survey'
 }
 
 #leftcol {
@@ -1036,9 +1026,7 @@ template {
 }
 
 a {
-    background-color: transparent;
-    color: grey;
-    font: cicle;
+    background-color: transparent
 }
 
 a:active,
