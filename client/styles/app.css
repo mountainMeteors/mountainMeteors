@@ -43,17 +43,6 @@ input, select, button, textarea {
 /**
  * Base
  */
-html {
-  font: 112.5%/1.2 "Roboto", Arial, sans-serif;
-  color: #3d464d;
-  background-color: #fff;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  width: 100%;
-  height: 100%;
-  overflow: hidden-x;
-  text-align: center;
-}
 
 bodyPanel {
   display: -webkit-box;
@@ -316,7 +305,6 @@ label {
   border-color: #d9d9d9 #ccc #b3b3b3;
   border-radius: 4px;
   border: 1px solid #ccc;
-  width: 50%;
   color: #333;
   cursor: default;
   display: table;
@@ -337,6 +325,7 @@ label {
 .is-searchable.is-open > .Select-control {
   cursor: text;
 }
+
 .is-open > .Select-control {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -410,6 +399,12 @@ label {
   /* For IE 8 compatibility */
   -webkit-appearance: none;
 }
+
+.select-name {
+  width: 33%;
+  float: left;
+}
+
 .is-focused .Select-input > input {
   cursor: text;
 }
@@ -524,7 +519,7 @@ label {
   max-height: 200px;
   position: absolute;
   top: 100%;
-  width: 100%;
+  width: 47%;
   z-index: 1;
   -webkit-overflow-scrolling: touch;
 }
@@ -654,14 +649,6 @@ label {
   to {
     -webkit-transform: rotate(1turn);
   }
-}
-body {
-  color: #333;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0;
-  padding: 0;
 }
 
 .container {

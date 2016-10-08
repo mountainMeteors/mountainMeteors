@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn, Grid, Col, Row, Panel } from 'react-bootstrap-table';
 import { putListing } from '../../actionCreators/listingActions.js';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
@@ -203,6 +203,8 @@ class Listing extends React.Component{
               Score
             </TableHeaderColumn>
           </BootstrapTable>
+          
+
 
       </div>
     )
