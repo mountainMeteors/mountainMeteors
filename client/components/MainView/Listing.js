@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+
+import { Button, Table } from 'react-bootstrap';
+import { BootstrapTable, TableHeaderColumn, Grid, Col, Row, Panel } from 'react-bootstrap-table';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';

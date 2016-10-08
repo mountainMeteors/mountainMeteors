@@ -181,7 +181,7 @@ class Survey extends Component {
       Sq_ft_Min : Sq_ft_Min,
       Sq_ft_MaxSelected: null,
       Sq_ft_Max: Sq_ft_Max,
-      Sq_ft_Rank: 1,
+      sq_ft_Rank: 1,
 
 >>>>>>> styling changes to survey.js'
       amenitiesRank: 1,
@@ -298,6 +298,8 @@ class Survey extends Component {
       </div>
 =======
         <form onSubmit={this.onFormSubmit}>
+
+
           /*neighborhood*/
           <h4>Let's pick your fav neighborhoods </h4>
           <Select
@@ -325,7 +327,7 @@ class Survey extends Component {
 
           ************************************************
           <h4>Let's pick apartment type </h4>
-          <Select
+          <Select 
             name="form-field-name"
             value={this.state.NumberOfRoomsSelected}
             options={NumberOfRooms}
@@ -348,7 +350,7 @@ class Survey extends Component {
 
 
           *****************FEES: YES OR NO*************
-          <Select
+          <Select 
             name="form-field-name"
             value={this.state.FeesSelected}
             options={Fees}
@@ -395,6 +397,33 @@ class Survey extends Component {
             <hr />
           </div>
 
+
+          *****************Square Feet*****************
+
+
+       <div className='horizontal-slider'>
+         <h4>Your ideal apt size?</h4>
+    <Select
+      name="form-field-name"
+      value={this.state.Sq_ft_MinSelected}
+      options={Sq_ft_Min}
+      onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
+      />
+      <Select
+        name="form-field-name"
+        value={this.state.Sq_ft_MaxSelected}
+        options={Sq_ft_Max}
+        onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
+        />     
+         <Slider
+           min={0}
+           max={7}
+           value={this.state.sq_ft_Rank}
+           onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
+           />
+         <div className='value'>Ranking: {this.state.sq_ft_Rank}</div>
+         <hr />
+       </div>
 
           *****************PETSSSSS*****************
           <div>
@@ -448,7 +477,7 @@ class Survey extends Component {
           <FormGroup
                     controlId="formBasicText"
                                   >
-                    <ControlLabel>Enter your destination</ControlLabel>
+                    <ControlLabel></ControlLabel>
                     <FormControl
                       type="text"
                       value={this.state.targetedLocation}
@@ -456,7 +485,7 @@ class Survey extends Component {
                       onChange={this.handleChangeLocation}
                     />
                     <FormControl.Feedback />
-                    <HelpBlock>Validation is based on string length.</HelpBlock>
+                    <HelpBlock>Validation is based on valid address.</HelpBlock>
                   </FormGroup>
           ***************COMMUTE*******************
         
@@ -483,6 +512,7 @@ class Survey extends Component {
             <div className='value'>Ranking: {this.state.commuteRank}</div>
             <hr />
           </div>
+  
 
           <button type="submit" className="btn btn-block btn-primary">Submit</button>
 
