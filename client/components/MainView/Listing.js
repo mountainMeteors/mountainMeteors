@@ -22,9 +22,7 @@ class Listing extends React.Component{
     this.state = {
       showArchived: false,
       sortBy: 'location',
-      listingsFiltered: props.listings.slice().filter(
-        listing => Boolean(listing.archived) === this.state.showArchived
-      )
+      listingsFiltered: []
     }
 
     this.filterListings = this.filterListings.bind(this);
@@ -33,10 +31,19 @@ class Listing extends React.Component{
     this.calcScore = this.calcScore.bind(this);
   }
 
+  componentDidMount() {
+    console.log('listing mount props', this.props);
+    this.setState({
+      listingsFiltered : this.props.listings.slice().filter(
+        listing => Boolean(listing.archived) === this.state.showArchived
+      )
+    })
+  }
+
   calcScore(listing, prefTotal) {
     let prefs = this.props.prefs;
-    console.log('looking at listing', listing);
-    console.log('using prefs', this.props.prefs);
+    // console.log('looking at listing', listing);
+    // console.log('using prefs', this.props.prefs);
     let criteria = {
       // TODO: location: {},
       rent: {
@@ -71,8 +78,8 @@ class Listing extends React.Component{
 
     //Calculate amenities
     prefs.Amenities.forEach(amenity => {
-      console.log('pref amenity', amenity.value);
-      console.log('listing value', listing[amenity.value]);
+      // console.log('pref amenity', amenity.value);
+      // console.log('listing value', listing[amenity.value]);
       criteria[amenity.value] = {
         percent: (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length,
         met: Boolean(listing[amenity.value])
@@ -80,28 +87,31 @@ class Listing extends React.Component{
       }
     });
 
-    console.log('calculating score with criteria', criteria);
+    // console.log('calculating score with criteria', criteria);
     //Calculate score
     let score = 100;
     for (var crit in criteria) {
       if (!criteria[crit].met) score -= criteria[crit].percent
     }
     score = score.toFixed(2);
-    console.log('returning score', score);
+    // console.log('returning score', score);
     return score;
   }
 
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
   filterListings(listings) {
-    console.log('filtering', listings);
+    // console.log('filtering', listings);
+    // console.log('using prefs', this.props.prefs);
+    // let listingsFiltered = listings;
     let listingsFiltered = listings.slice().filter(
       listing => Boolean(listing.archived) === this.state.showArchived
     );
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    // listingsFiltered.map(listing => {
-    //   listing.score = this.calcScore(listing, prefTotal);
-    // })
+    listingsFiltered.map(listing => {
+      listing.score = this.calcScore(listing, prefTotal);
+      // console.log('listing score now', listing.score);
+    })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
@@ -154,7 +164,7 @@ class Listing extends React.Component{
   }
 
   photoFormat (cell, listing) {
-    console.log('passing listing', listing)
+    // console.log('passing listing', listing)
     return (
       <div><AddPhotosModal listing={listing} /></div>
     )

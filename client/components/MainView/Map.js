@@ -14,11 +14,10 @@ class GoogMap extends React.Component {
     this.handleCloseClick = this.handleCloseClick.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    // this.setState({markers: props.markers})
-    console.log('received props', props);
+  componentDidMount() {
+    console.log('map mounted props', this.props);
     this.setState({
-      markers: props.listings.map(listing => {
+      markers: this.props.listings.map(listing => {
         return {
           position: {
             lat: listing.lat,
@@ -90,7 +89,7 @@ class GoogMap extends React.Component {
               defaultZoom={15}
               defaultCenter={this.props.origin}
             >
-            
+
               {this.state.markers.map((marker, index) => {
                 console.log('marker.archived', marker.archived);
                 const onClick = () => {

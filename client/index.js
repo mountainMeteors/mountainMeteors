@@ -8,9 +8,6 @@ import AddPhotosModal from './components/MainView/AddPhotosModal';
 import postPhotos from './components/MainView/PostPhotos';
 import Survey from './components/Surveys/Survey'
 
-/*TEST with Multi-select*/
-import MultiSelect from './components/Surveys/Multi_Select';
-
 import RankingDisplay from './components/Surveys/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
@@ -29,7 +26,6 @@ const router = (
         <Route path="addphotos" component={AddPhotosModal} />
         <Route path="profile" component={RankingDisplay} />
         <Route path="welcome" component={Welcome}/>
-        <Route path="select" component={MultiSelect}/>
       </Route>
     </Router>
   </Provider>
