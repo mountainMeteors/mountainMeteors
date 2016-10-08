@@ -6,15 +6,16 @@ export const PUT_LISTING = 'PUTLISTING';
 
 export const getListings = function(){
   // Get request w/ header of token
+  console.log('ACTION GET LISTINGS');
   const request = axios.get('/api/listings/', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
   .then(function (response) {
-    // console.log('listings response received', response.data);
+    console.log('=====> listings response received', response.data);
     return response;
   })
   .catch(function (error) {
-    console.log(error);
+    console.log('=====> getlistings err', error);
   });
 
   return {

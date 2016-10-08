@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
 
 //Components
 import Header from './Header/Header';
@@ -30,10 +29,6 @@ class Main extends React.Component{
 
   componentDidUpdate() {
     console.log('Main updated');
-  }
-
-  componentWillReceiveProps(props) {
-    console.log('MAIN received props', props);
   }
 
   render() {
