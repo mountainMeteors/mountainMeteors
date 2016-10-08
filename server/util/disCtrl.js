@@ -1,4 +1,23 @@
 const request = require ('request');
+const db = require('../db.js');
+
+var homeAddress;
+var targetAddress;
+exports.getDistance = function(req, res, next){
+  db('listings').where({
+    listing_id: req.params.id
+  }).select('location')
+  .then(function(results){
+    homeAddress = results
+  })
+  db('listings').where({
+    listing_id: req.params.id
+  }).select('targetLocation')
+  .then(function(results){
+    targetAddress = results
+  })
+  res.send({'homeAddress': homeAddress, 'TargetAddress': targetAddress})
+}
 
 const parseDist = function(distBody) {
   var distInfo = {};
@@ -18,8 +37,8 @@ exports.findDistance = function(req, res, next){
     qs: {
       key: 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo',
       unit: 'Imperial',
-      origin: '125 St.Marks Place, New York, NY 10009',
-      destination: '1216 Broadway, New York, NY 10001',
+      origin: req.body.origin,
+      destination: req.body.destination,
       travelMode: 'DRIVING' }, //Query string data
       method: 'POST',
     headers: {
@@ -30,8 +49,9 @@ exports.findDistance = function(req, res, next){
       if(error) {
           console.log(error);
       } else {
+        console.log('###RequestBody###', req.body)
         var bodyInfo = parseDist(JSON.parse(body));
-        res.send({'Body': bodyInfo})
+        res.send({'Body': bodyInfo, 'Req': req.body})
           // console.log(response.statusCode, newInfo)
         next();
       }
