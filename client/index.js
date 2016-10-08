@@ -6,9 +6,7 @@ import MainView from './components/MainView/MainView';
 import AddPhotosModal from './components/MainView/AddPhotosModal';
 import listingPhotosGallery from './components/MainView/listingPhotosGallery';
 
-import postPhotos from './components/MainView/PostPhotos';
 import Survey from './components/Surveys/Survey'
-
 import RankingDisplay from './components/Surveys/RankingDisplay'
 import Welcome from './components/Welcome/Welcome';
 
@@ -23,7 +21,6 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
-        <Route path="photo" component={postPhotos} />
         <Route path="viewphotos" component={listingPhotosGallery} />
         <Route path="addphotos" component={AddPhotosModal} />
         <Route path="profile" component={RankingDisplay} />

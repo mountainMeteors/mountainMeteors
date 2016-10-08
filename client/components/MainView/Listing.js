@@ -4,15 +4,16 @@ import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
-
 import ListingEntry from './ListingEntry';
-import AddPhotosModal from './AddPhotosModal';
+import AddPhotosModal from './AddPhotosModal'
+import listingPhotosGallery from './AddPhotosModal'
+
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
 import css from '../../styles/style.css';
 
 //Formatting
-const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
+const rentDisplay = cell => '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 
 
@@ -158,6 +159,51 @@ class Listing extends React.Component{
     );
     // this.setState({showArchived: !this.state.showArchived});
     // console.log('state arch after', this.state.showArchived);
+
+  }
+
+  toggleArchiveListing(listing) {
+    console.log('toggling', listing.id);
+    let toggledVal = listing.archived === 0 ? 1 : 0;
+    this.props.putListing(listing.id, {archived: toggledVal});
+  }
+
+  addrFormat(cell, listing, enumObject, index) {
+    return (
+      <div onClick={ () => {
+          this.toggleArchiveListing(listing)}
+      }>{ cell }
+      <br/>
+
+      </div>
+    );
+  }
+
+  editFormat (cell, listing) {
+    return (
+      <div><AddListingsModal listing={listing} modalType="edit" /></div>
+
+    )
+  }
+
+  photoFormat (cell, listing) {
+    console.log('passing listing', listing)
+    return (
+      <div><AddPhotosModal listing={listing} /></div>
+    )
+  }
+
+
+  ViewPhotoFormat (cell, listing) {
+    return (
+      <div>listingPhotosGallery listing={listing} /></div>
+    )
+  }
+
+  scoreFormat (cell, listing) {
+    return (
+      <div>{listing.score}</div>
+    )
   }
 
   render() {
