@@ -11,7 +11,7 @@ export function uploadPhotos(listingPhotos, listing_Id){
   const listingId = listing_Id ||  undefined;
 		var listingImages = listingPhotos.photos;
 	console.log(listingImages);
-var  req = request.post('/api/uploads');
+var  req = request.post('/api/uploads/');
     listingImages.forEach((file) => {
     	req.attach(file[0].name, file[0]);
     });
@@ -24,19 +24,19 @@ var  req = request.post('/api/uploads');
     })
   return {
   	type : UPLOAD_PHOTOS,
-  	payload: { listingPhotos }
+  	payload: req  
   }
 
 }
 
 export function  fetchPhotos (listingId){
-  console.log(listingId)
+  console.log(listingId, 'acccccction===>')
+  const request = axios.get('api/uploads/' + listingId)
+  console.log('paths=====>',request)
 
-  const request = axios.get('/uploads/${listingId}')
   return {
     type: FETCH_PHOTOS,
-    payload: request
+    payload: request 
   }
-
 }
 

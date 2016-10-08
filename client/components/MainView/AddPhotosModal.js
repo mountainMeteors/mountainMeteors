@@ -58,7 +58,7 @@ class AddPhotosModal extends React.Component {
         <div>
 
           <div onClick={this.open.bind(this)}>
-            <Glyphicon glyph="pencil" />
+            <Glyphicon glyph="camera" />
           </div>
 
 

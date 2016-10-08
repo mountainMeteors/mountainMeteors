@@ -22,7 +22,7 @@ console.log('*******',photoName,photoListString)
     		listing_id: req.body.listingId
     	}).
     	then(function(results){
-        res.sendStatus(201);
+        res.send('successs');
     	})
 })
 
