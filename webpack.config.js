@@ -32,7 +32,7 @@ var config = {
       //photos
       { 
         test: /\.(png|jpg)$/, 
-        loader: 'url-loader?limit=8192' 
+        loader: 'file-loader?name=uploads/[name].[ext]'
       }
     ]
   }
