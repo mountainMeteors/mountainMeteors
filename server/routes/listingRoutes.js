@@ -45,7 +45,20 @@ router.post('/listings/', util.checkToken, (req, res) => {
     pets: req.body.pets,
     lat: req.body.lat,
     lng: req.body.lng,
-    url: req.body.url
+    url: req.body.url,
+    neighborhood: req.body.neighborhood,
+    bedrooms: req.body.bedrooms,
+    bathrooms: req.body.bathrooms,
+    sq_ft: req.body.squareFeet,
+    gym: req.body.gym,
+    laundry: req.body.laundry,
+    doorman: req.body.doorman,
+    dishwasher: req.body.dishwasher,
+    garage: req.body.garage,
+    pool: req.body.pool,
+    elevator: req.body.elevator,
+    outdoor_space: req.body.outdoorSpace,
+    no_fee: req.body.noFee
   })
   .then(function(listings) {
      res.send(listings);

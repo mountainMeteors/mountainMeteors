@@ -25,15 +25,15 @@ class AddListingsModal extends React.Component {
     this.state.squareFeet = props.listing ? props.listing.squareFeet : '';
     this.state.bedrooms = props.listing ? props.listing.bedrooms : '';
     this.state.bathrooms = props.listing ? props.listing.bathrooms : '';
-    this.state.dishwasher = props.listing ? props.listing.dishwasher : '';
-    this.state.gym = props.listing ? props.listing.gym : '';
-    this.state.laundry = props.listing ? props.listing.laundry : null;
-    this.state.doorman = props.listing ? props.listing.doorman : null;
-    this.state.noFee = props.listing ? props.listing.noFee : null;
-    this.state.roof = props.listing ? props.listing.roof : null;
-    this.state.garage = props.listing ? props.listing.garage : null;
-    this.state.pool = props.listing ? props.listing.pool : null;
-    this.state.outdoorSpace = props.listing ? props.listing.outdoorSpace : null;
+    this.state.dishwasher = props.listing ? props.listing.dishwasher : 'off';
+    this.state.gym = props.listing ? props.listing.gym : 'off';
+    this.state.laundry = props.listing ? props.listing.laundry : 'off';
+    this.state.doorman = props.listing ? props.listing.doorman : 'off';
+    this.state.noFee = props.listing ? props.listing.noFee : 'off';
+    this.state.roof = props.listing ? props.listing.roof : 'off';
+    this.state.garage = props.listing ? props.listing.garage : 'off';
+    this.state.pool = props.listing ? props.listing.pool : 'off';
+    this.state.outdoorSpace = props.listing ? props.listing.outdoorSpace : 'off';
     this.state.url = props.listing ? props.listing.url : '';
 
     this.state.showModal = false;
@@ -75,6 +75,7 @@ class AddListingsModal extends React.Component {
   }
 
   handleChange = (input) => {
+    console.log('changed at', input.target.name, input.target.value);
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
     this.setState(stateObj);
@@ -97,6 +98,7 @@ class AddListingsModal extends React.Component {
 
   scrapeListingSubmit (event) {
     console.log("EVENT FOR SCRAPE LISTING", event.target.value)
+    this.setState({url: event.target.value})
     scrapeListing(event.target.value)
   }
 
@@ -113,6 +115,12 @@ class AddListingsModal extends React.Component {
       dishwasher: this.state.dishwasher,
       gym: this.state.gym,
       laundry: this.state.laundry,
+      pool: this.state.pool,
+      roof: this.state.roof,
+      doorman: this.state.doorman,
+      outdoorSpace: this.state.outdoorSpace,
+      elevator: this.state.elevator,
+      garage: this.state.garage,
       noFee: this.state.noFee,
       lat: this.state.lat,
       lng: this.state.lng,
@@ -241,14 +249,14 @@ class AddListingsModal extends React.Component {
             </FormGroup>
 
             <FormGroup controlId="formFee">
-             <Checkbox inline>
-               No Fee
+             <Checkbox>
+               <b>No Fee</b>
              </Checkbox>
-             {' '}
              </FormGroup>
+              <br></br>
 
              <FormGroup controlId="formAmenities">
-             <ControlLabel>Amenities</ControlLabel>
+             <ControlLabel>Amenities &nbsp; </ControlLabel>
 
                <Checkbox inline name="gym" value={this.state.gym}
                onChange={this.handleChange}>

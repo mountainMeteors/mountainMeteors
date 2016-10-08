@@ -58,6 +58,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('dishwasher');
       listing.boolean('garage');
       listing.boolean('pool');
+      listing.boolean('elevator');
       listing.boolean('outdoor_space');
       listing.boolean('no_fee');
       listing.boolean('archived');
