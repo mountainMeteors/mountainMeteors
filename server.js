@@ -43,12 +43,13 @@ const accountRoutes = require('./server/routes/accountRoutes');
 const listingRoutes = require('./server/routes/listingRoutes');
 const surveyRoutes = require('./server/routes/surveyRoutes');
 const photoRoutes = require('./server/routes/photoRoutes');
-
+const distRoutes = require('./server/routes/distRoutes')
 
 app.use('/api', accountRoutes);
 app.use('/api', listingRoutes);
 app.use('/api', surveyRoutes);
 app.use('/api', photoRoutes);
+app.use('/api', distRoutes);
 
 
 

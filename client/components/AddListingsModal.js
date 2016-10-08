@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { postListing, putListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
-import { scrapeListing } from '../util/listingUtil.js'
+import { scrapeListing } from '../util/listingUtil'
+import { getDistance } from '../util/distUtil';
+
 
 
 
@@ -45,6 +47,7 @@ class AddListingsModal extends React.Component {
     this.onModalSubmit = this.onModalSubmit.bind(this);
     this.onGeoSelect = this.onGeoSelect.bind(this);
     this.scrapeListingSubmit = this.scrapeListingSubmit.bind(this);
+    this.getDistanceSubmit = this.getDistanceSubmit.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -99,6 +102,12 @@ class AddListingsModal extends React.Component {
     console.log("EVENT FOR SCRAPE LISTING", event.target.value)
     scrapeListing(event.target.value)
   }
+
+  getDistanceSubmit (event) {
+    console.log('######DISTANCE#####', event.target)
+    getDistance()
+  }
+
 
   onModalSubmit (event) {
     event.preventDefault();
