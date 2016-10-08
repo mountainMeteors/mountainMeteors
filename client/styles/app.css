@@ -1,7 +1,3 @@
-/**
- * Resets
- */
-
 
 
 *, :before, :after {
@@ -17,6 +13,31 @@ input, select, button, textarea {
   -moz-appearance: none;
   font: inherit;
   color: inherit;
+}
+
+
+.btn-block {
+  display: block;
+  width: 20%;
+}
+
+.btn-block + .btn-block {
+  margin-top: 0.5rem;
+}
+
+.form-control {
+  display: block;
+  width: 50%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
 }
 
 /**
@@ -60,15 +81,7 @@ bodyPanel {
   max-width: 34rem;
 }
 
-a {
-  color: #3d464d;
-  -webkit-transition: color 0.2s;
-          transition: color 0.2s;
-}
 
-a:hover, a:focus {
-  color: #267dc0;
-}
 
 h1 {
   font-size: 72px;
@@ -123,187 +136,155 @@ label {
   margin-left: 5px;
 }
 
-.app {
-
-}
-
-.app-header {
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.play-button {
-  cursor: pointer;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  height: 60px;
-  width: 100px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 5px;
-}
-
-.play-button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.play-button:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 16.5px;
-  left: 40px;
-  margin: 0 auto;
-  border-style: solid;
-  border-width: 12.5px 0 12.5px 20px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 1);
-}
-
-.close-video::before {
-  content: '✖';
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 20px;
-  padding: 20px;
-  z-index: 1;
-  line-height: .7;
-  display: block;
-  color: #fff;
-}
-
-.video-wrapper {
-  position: relative;
-  padding: 33.35% 0; /* 16:9 */
-  height: 0;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 
 
-.app .image-gallery,
-.app-sandbox {
-  margin: 0 auto;
-  width: 65%;
-  transition: all 1s ease;
-}
+/* SLIDER -working-DON'T DELETE */
 
-
-@media (max-width: 1320px) {
-  .app-sandbox-content {
-    padding: 0 20px;
-  }
-}
-
-.app-sandbox {
-  margin: 40px auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.app-buttons li {
-  display: table-cell;
-}
-
-.app-buttons li + li {
-  padding-left: 10px;
-}
-
-@media (max-width: 768px) {
-
-  .app-header {
-    font-size: 20px;
-  }
-
-  .app-buttons li {
-    display: block;
-    margin: 10px 0;
-  }
-
-  .app-buttons li + li {
+*,
+:after,
+:before {
+    margin: 0;
     padding: 0;
-  }
+    box-sizing: border-box
+}
 
-  .play-button {
+
+#mount {
+    margin: 20px auto 0;
+    padding: 40px;
+    position: relative
+}
+
+#mount hr {
+    height: 1px;
+    margin: 40px 0;
+    background: #ddd;
+    border: none
+}
+
+#mount h1 {
+    margin: 0 auto 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px
+}
+
+#mount h2 {
+    margin: 0 0 20px;
+    font-weight: 600;
+    font-size: 20px
+}
+
+#mount p {
+    margin-bottom: 40px
+}
+
+#mount a {
+    color: blue
+}
+
+#mount header {
+    text-align: center
+}
+
+#mount section>div {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700
+}
+
+#mount section>div .value {
+    font-size: 16px
+}
+
+#mount footer {
+    margin: 60px auto 40px
+}
+
+#mount footer p {
+    margin: 2px 0 0;
+    text-align: center;
+    font-size: 12px
+}
+
+.rangeslider {
+    margin: 20px 0;
+    position: relative;
+    background: #e6e6e6
+}
+
+.rangeslider .rangeslider__fill,
+.rangeslider .rangeslider__handle {
+    position: absolute
+}
+
+.rangeslider,
+.rangeslider .rangeslider__fill {
+    display: block;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3)
+}
+
+.rangeslider .rangeslider__handle {
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute
+}
+
+.rangeslider .rangeslider__handle:active {
+    background: #999
+}
+
+.rangeslider-horizontal {
+    height: 20px;
+    width: 50%;
+    border-radius: 10px
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+    height: 100%;
+    background: #27ae60;
+    border-radius: 10px;
+    top: 0
+}
+
+.rangeslider-horizontal .rangeslider__handle {
+    width: 40px;
     height: 40px;
-    width: 65px;
-  }
-
-  .play-button:after {
-    top: 11px;
-    left: 27px;
-    border-width: 8.5px 0 8.5px 12px;
-  }
-
-  .close-video::before {
-    font-size: 16px;
-    padding: 15px;
-  }
+    border-radius: 40px;
+    top: -10px
 }
 
-@media (max-width: 1024px) {
-  .app .image-gallery,
-  .app-sandbox {
-    width: 100%;
-  }
+.rangeslider-vertical {
+    margin: 20px auto;
+    height: 150px;
+    max-width: 10px;
+    background: none
 }
 
-.app-interval-input-group {
-  display: table;
+.rangeslider-vertical .rangeslider__fill {
+    width: 50%;
+    background: #27ae60;
+    box-shadow: none;
+    bottom: 0
 }
 
-.app-interval-label {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  color: #555;
-  text-align: center;
-  background-color: #eee;
-  border: 3px solid #ccc;
-  border-right: none;
-  border-radius: 4px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.rangeslider-vertical .rangeslider__handle {
+    width: 30px;
+    height: 10px;
+    left: -10px
 }
 
-.app-interval-input {
-  -webkit-appearance: none;
-  display: table-cell;
-  margin: 0;
-  padding: 9px;
-  border-radius: 5px;
-  font-size: 14px;
-  border: 3px solid #ccc;
-  width: 65px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.rangeslider-vertical .rangeslider__handle:active {
+    box-shadow: none
 }
 
-.app-checkboxes {
-  margin-top: 10px;
+@media screen and (min-width:1200px) {
+    #mount {
+        width: 600px
+    }
 }
-
-.app-checkboxes li {
-  display: block;
-}
-
-
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
@@ -335,6 +316,7 @@ label {
   border-color: #d9d9d9 #ccc #b3b3b3;
   border-radius: 4px;
   border: 1px solid #ccc;
+  width: 50%;
   color: #333;
   cursor: default;
   display: table;
@@ -344,7 +326,7 @@ label {
   outline: none;
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -681,13 +663,7 @@ body {
   margin: 0;
   padding: 0;
 }
-a {
-  color: #007eff;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+
 .container {
   margin-left: auto;
   margin-right: auto;
