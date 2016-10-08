@@ -8,10 +8,10 @@ const multer  = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads')
+    cb(null, 'uploads/')
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+    cb(null,  Date.now() + '.jpg')
   }
 })
 
@@ -33,6 +33,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+
+
 app.use(upload.any())
 
 
@@ -50,6 +52,8 @@ app.use('/api', photoRoutes);
 
 
 
+app.use('/uploads', express.static(__dirname + '/uploads'))
+
 app.get('/public/bundle.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/public/bundle.js'));
 });
@@ -66,6 +70,10 @@ app.get('*', function(req, res) {
   console.log('req.url', req.url);
   res.sendFile(path.join(__dirname, 'client/index.html'));
 });
+
+
+
+// app.use(express.static('./public/uploads'));
 
 app.listen(2500, 'localhost', function(err) {
   if (err) {
