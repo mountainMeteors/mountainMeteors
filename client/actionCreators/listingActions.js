@@ -31,7 +31,23 @@ export const postListing = function(preference){
     rent: preference.rent,
     pets: preference.pets,
     lat: preference.lat,
-    lng: preference.lng
+    lng: preference.lng,
+    neighborhood: preference.neighborhood,
+    squareFeet: preference.squareFeet,
+    bedrooms: preference.bedrooms,
+    bathrooms: preference.bathrooms,
+    dishwasher: preference.dishwasher,
+    gym: preference.gym,
+    laundry: preference.gym,
+    pool: preference.pool,
+    roof: preference.roof,
+    doorman: preference.doorman,
+    outdoorSpace: preference.outdoorSpace,
+    elevator: preference.elevator,
+    garage: preference.garage,
+    noFee: preference.noFee
+
+
   }, {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   }).catch((response) => {
