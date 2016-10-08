@@ -7,17 +7,18 @@ function listings(state = [], action) {
       console.log('listings reducer triggered. listings:', action);
       // console.log('listing reduc returning', Object.assign([], state, action.payload.data));
       // console.log('assigning', Object.assign([], state, action.payload.data));
-      console.log('reducer state', state);
+      // console.log('reducer state', state);
       // return action.payload.data;
       // return {...state, all: action.payload.data};
-      return Object.assign([], state, action.payload.data);
-      // return action.payload.data; // WORKS BUT NOT REACTY
+      return action.payload ?
+        Object.assign([], state, action.payload.data):
+        [];
 
     case 'POSTLISTINGS':
-      console.log('action.payload', action.payload);
+      // console.log('action.payload', action.payload);
       state = state.slice();
       state.push(action.payload);
-      console.log('returning state', state);
+      // console.log('returning state', state);
       return state;
       // state.push(action);
 

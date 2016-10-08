@@ -13,6 +13,8 @@ exports.checkToken = function(req, res, next){
     res.sendStatus(401);
   } else {
     console.log('FOUND TOKEN');
+    // console.log('header', req.headers['x-access-token']);
+    // console.log('secret', secret);
     var decodedToken = jwt.decode(req.headers['x-access-token'], secret);
     req.user = {};
     req.user.id = decodedToken.user_id;

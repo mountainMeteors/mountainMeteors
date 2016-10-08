@@ -23,14 +23,29 @@ const tempMarkers = [{
 const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 
 class MainView extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    console.log('mv props', props);
   }
 
   componentWillMount() {
+    // console.log('mv props', this.props);
+    // console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
+    console.log('checking in mv for auth');
+    console.log('checking for survey', Object.keys(this.props.userPrefs).length);
     if (!this.props.authenticated) browserHistory.push('/welcome');
-    this.props.getPrefs();
-    this.props.getListings();
+    else if (!Object.keys(this.props.userPrefs).length) browserHistory.push('/survey');
+  }
+
+  componentDidMount() {
+    console.log('mv mounted props', this.props);
+    console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+    // else if (!Object.keys(this.props.userPrefs).length) browserHistory.push('/survey');
+  }
+
+  componentWillReceiveProps(props) {
+    console.log('mv received props', props);
   }
 
   // componentWillReceiveProps(props) {
@@ -73,9 +88,9 @@ class MainView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    listings: state.listings,
+    // listings: state.listings,
     authenticated: state.auth,
-    userPrefs: state.userPrefs
+    // userPrefs: state.userPrefs
   }
 }
 

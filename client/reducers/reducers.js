@@ -8,6 +8,7 @@ import scraper from './scraper.js';
 import surveysResponses from './surveysReducer';
 import photoFiles from './photoReducer'
 import userPrefs from './userPrefs'
+import hasUserInfo from './hasUserInfo';
 
 
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   surveysResponses: surveysResponses,
   scraper: scraper,
   userPrefs: userPrefs,
+  hasUserInfo: hasUserInfo,
   routing: routerReducer
 });
 

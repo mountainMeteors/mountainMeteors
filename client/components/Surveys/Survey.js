@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Select from 'react-select';
 import { Grid, Col, Row } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 
 
@@ -99,7 +100,7 @@ class Survey extends Component {
 
       NumberOfRooms: NumberOfRooms,
       NumberOfRoomsSelected: null,
-      numberOfRoomsRank: 5,    
+      numberOfRoomsRank: 5,
 
       Fees: Fees,
       FeesSelected: null,
@@ -149,7 +150,7 @@ class Survey extends Component {
 
       rentRank: this.state.rentRank,
       RentMin: this.state.RentMinSelected,
-      RentMax: this.state.RentMaxSelected,      
+      RentMax: this.state.RentMaxSelected,
 
       NumberOfRooms: this.state.NumberOfRoomsSelected,
       numberOfRoomsRank: this.state.numberOfRoomsRank,
@@ -173,6 +174,14 @@ class Survey extends Component {
     // .then (() => {
     //   this.context.router.push('/');
     // })
+  }
+
+  componentWillMount() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
+
+  componentDidUpdate() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
   render () {
@@ -342,7 +351,7 @@ class Survey extends Component {
            value={this.state.CommuteMaxSelected}
            options={CommuteMax}
            onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-           />     
+           />
             <Slider
               min={0}
               max={7}
@@ -366,8 +375,7 @@ class Survey extends Component {
 function mapStateToProps(state) {
   console.log('in mapstate==*****==>', state.auth.user_id)
   return {
-    user_id: state.auth.user_id,
-    isAuth: state.isAuth
+    authenticated: state.auth
   };
 }
 
