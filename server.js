@@ -74,7 +74,7 @@ app.get('*', function(req, res) {
 
 
 
-// app.use(express.static('./public/uploads'));
+
 
 app.listen(2500, 'localhost', function(err) {
   if (err) {

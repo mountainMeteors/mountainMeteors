@@ -6,10 +6,10 @@ import { postSurveyAnswers } from '../../actionCreators/surveysActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Select from 'react-select';
-import { Grid, Col, Row } from 'react-bootstrap';
+
 import { browserHistory } from 'react-router';
-
-
+import { Grid, Col, Row, FormGroup, ControlLabel, HelpBlock, FormControl } from 'react-bootstrap';
+import css from '../../styles/app.css'
 
 
 
@@ -50,9 +50,11 @@ const Amenities = [
 ];
 
 const Pets = [
+  { label: 'Both', value: 'Both' },
   { label: 'Dogs', value: 'Dogs' },
   { label: 'Cats', value: 'Cats' },
   { label: 'Pokemon', value: 'Pokemon' },
+  { label: 'None', value: 'None' },
 ];
 
 
@@ -87,6 +89,20 @@ const CommuteMax = [
 
 
 
+const Sq_ft_Min = [
+  { label: '10', value: '10' },
+  { label: '20', value: '20' },
+  { label: '30', value: '30' },
+  { label: '40', value: '40' },
+];
+const Sq_ft_Max = [
+  { label: '50', value: '50' },
+  { label: '1', value: '1' },
+  { label: '2', value: '2' },
+];
+
+
+
 
 
 class Survey extends Component {
@@ -96,43 +112,58 @@ class Survey extends Component {
     this.state = {
       Neighborhoods: Neighborhoods,
       NeighborhoodsSelected: [],
-      neighborhoodRank: 5,
+      neighborhoodRank: 1,
 
       NumberOfRooms: NumberOfRooms,
       NumberOfRoomsSelected: null,
-      numberOfRoomsRank: 5,
+      numberOfRoomsRank: 1,    
+      
+      targetedLocation: '',
+
 
       Fees: Fees,
       FeesSelected: null,
-      feeRank: 5,
+      feeRank: 1,
 
       Pets: Pets,
       PetSelected: null,
-      petRank: 5,
+      petRank: 1,
 
       RentMinSelected: null,
       RentMin : RentMin,
       RentMaxSelected: null,
       RentMax: RentMax,
-      rentRank: 5,
+      rentRank: 1,
 
       CommuteMinSelected: null,
       CommuteMin : CommuteMin,
       CommuteMaxSelected: null,
       CommuteMax: CommuteMax,
-      commuteRank: 5,
+      commuteRank: 1,  
 
-      amenitiesRank: 5,
+      Sq_ft_MinSelected: null,
+      Sq_ft_Min : Sq_ft_Min,
+      Sq_ft_MaxSelected: null,
+      Sq_ft_Max: Sq_ft_Max,
+      sq_ft_Rank: 1,
+
+      amenitiesRank: 1,
       amenitiesSelected: [],
       Amenities: Amenities,
 
     }
     this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.handleChangeLocation = this.handleChangeLocation.bind(this);
   }
 
   static contextTypes = {
     router: PropTypes.object
   };
+  
+
+  handleChangeLocation(e) {
+      this.setState({ targetedLocation: e.target.value });
+    }
 
   // state[criteria] = value
   handleChange = (criteria,value) => {
@@ -155,6 +186,8 @@ class Survey extends Component {
       NumberOfRooms: this.state.NumberOfRoomsSelected,
       numberOfRoomsRank: this.state.numberOfRoomsRank,
 
+      targetedLocation: this.state.targetedLocation,
+
       petRank: this.state.petRank,
       Pets: this.state.PetSelected,
 
@@ -164,16 +197,20 @@ class Survey extends Component {
       feeRank: this.state.feeRank,
       fees: this.state.FeesSelected,
 
-      commuteRank: this.state.commuteRank,
-      CommuteMin: this.state.CommuteMinSelected,
-      CommuteMax: this.state.CommuteMaxSelected,
+      sq_ft_Rank: this.state.sq_ft_Rank,
+      Sq_ft_Min: this.state.Sq_ft_MinSelected,
+      Sq_ft_Max: this.state.Sq_ft_MaxSelected,
+
+      Sq_ft_Rank: this.state.Sq_ft_Rank,
+      Sq_ft_Min: this.state.Sq_ft_MinSelected,
+      Sq_ft_Max: this.state.Sq_ft_MaxSelected,
     }
     console.log("this+++++",this.props.user_id)
     console.log(surveyResponses)
     this.props.postSurveyAnswers(surveyResponses, this.props.user_id)
-    // .then (() => {
-    //   this.context.router.push('/');
-    // })
+    .then (() => {
+      this.context.router.push('/');
+    })
   }
 
   componentWillMount() {
@@ -189,6 +226,8 @@ class Survey extends Component {
     return (
       <div>
         <form onSubmit={this.onFormSubmit}>
+
+
           /*neighborhood*/
           <h4>Let's pick your fav neighborhoods </h4>
           <Select
@@ -216,7 +255,7 @@ class Survey extends Component {
 
           ************************************************
           <h4>Let's pick apartment type </h4>
-          <Select
+          <Select 
             name="form-field-name"
             value={this.state.NumberOfRoomsSelected}
             options={NumberOfRooms}
@@ -238,9 +277,8 @@ class Survey extends Component {
           </div>
 
 
-          ************************************************
-          FEES: YES OR NO
-          <Select
+          *****************FEES: YES OR NO*************
+          <Select 
             name="form-field-name"
             value={this.state.FeesSelected}
             options={Fees}
@@ -260,7 +298,7 @@ class Survey extends Component {
           </div>
 
 
-          ************************************************
+          ***********RENT BUDGET********************
           /*your rent budget */
           <Select
             name="form-field-name"
@@ -288,7 +326,34 @@ class Survey extends Component {
           </div>
 
 
-          ************************************************
+          *****************Square Feet*****************
+
+
+       <div className='horizontal-slider'>
+         <h4>Your ideal apt size?</h4>
+    <Select
+      name="form-field-name"
+      value={this.state.Sq_ft_MinSelected}
+      options={Sq_ft_Min}
+      onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
+      />
+      <Select
+        name="form-field-name"
+        value={this.state.Sq_ft_MaxSelected}
+        options={Sq_ft_Max}
+        onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
+        />     
+         <Slider
+           min={0}
+           max={7}
+           value={this.state.sq_ft_Rank}
+           onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
+           />
+         <div className='value'>Ranking: {this.state.sq_ft_Rank}</div>
+         <hr />
+       </div>
+
+          *****************PETSSSSS*****************
           <div>
 
             <h4> Furry Little Friends ?? </h4>
@@ -336,8 +401,22 @@ class Survey extends Component {
             <hr />
           </div>
 
-          **********************************
-        COMMUTE
+          ***************TARGETED LOCATION******************
+          <FormGroup
+                    controlId="formBasicText"
+                                  >
+                    <ControlLabel></ControlLabel>
+                    <FormControl
+                      type="text"
+                      value={this.state.targetedLocation}
+                      placeholder="1216 Broadway New York NY"
+                      onChange={this.handleChangeLocation}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>Validation is based on valid address.</HelpBlock>
+                  </FormGroup>
+          ***************COMMUTE*******************
+        
           <div className='horizontal-slider'>
             <h4>Your ideal commute time?</h4>
        <Select
@@ -361,6 +440,7 @@ class Survey extends Component {
             <div className='value'>Ranking: {this.state.commuteRank}</div>
             <hr />
           </div>
+  
 
           <button type="submit" className="btn btn-block btn-primary">Submit</button>
 
