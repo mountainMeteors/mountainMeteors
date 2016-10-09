@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 
-import AddPhotosModal from './AddPhotosModal'
+import ListingEntry from './ListingEntry';
+import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
 import css from '../../styles/style.css';
@@ -32,13 +33,16 @@ class Listing extends React.Component{
     this.calcScore = this.calcScore.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     console.log('listing mount props', this.props);
-    this.setState({
-      listingsFiltered : this.props.listings.slice().filter(
-        listing => Boolean(listing.archived) === this.state.showArchived
-      )
-    })
+    this.filterListings(this.props.listings)
+    // this.setState({
+    //   listingsFiltered
+      // listingsFiltered : this.props.listings.slice().filter(
+      //   listing => Boolean(listing.archived) === this.state.showArchived
+      // )
+    // })
+    console.log('listing state after', this.state);
   }
 
   calcScore(listing, prefTotal) {
@@ -117,6 +121,18 @@ class Listing extends React.Component{
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
     // });
+    let amenityTypes = ['Gym', 'Laundry', 'Dishwasher', 'Garage', 'Outdoor_Space', 'Roof', 'Pool', 'Elevator', 'Doorman'];
+    //TODO: So bad, so quadratic. Refactor so that amenities are entered into DB as stringified json
+    listingsFiltered.forEach(listing => {
+      listing.amenities = [];
+      console.log('ADDING AMENITIES FOR LISTING', listing);
+      amenityTypes.forEach(amenity => {
+        if (Boolean(listing[amenity.toLowerCase()])) listing.amenities.push(amenity);
+      });
+      listing.amenities = listing.amenities.join(' - ');
+    })
+
+    console.log('setting state to', listingsFiltered);
     this.setState({listingsFiltered});
   }
 
@@ -181,36 +197,9 @@ class Listing extends React.Component{
     return (
       <div>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
-            <div className="listing-container">
-              <div className="listing-info">
-                <div className="listing-addr-rent">
-                  <span className="listing-addr">743 Evergreen Terrace</span>
-                  <span className="listing-rent">$1,750</span>
-                </div>
-                <div className="listing-details">
-                  <span className="listing-bed-bath">2 Bed / 2 Bath / 700 sq. ft</span>
-                  <span className="listing-pets"><strong>Pets:</strong> None</span>
-                </div>
-                <div className="listing-amenities-fee">
-                  <div className="listing-amenities">
-                    Gym - Laundry - Dishwasher - Garage - Roof -
-                    Pool - Elevator - Doorman - Outdoor Space
-                  </div>
-                  <div className="listing-fee">
-                    NO FEE
-                  </div>
-                </div>
-              </div>
-              <div className="listing-icons">
-                <span>S</span>
-                <span>E</span>
-                <span>C</span>
-                <span>A</span>
-              </div>
-              <div className="listing-photo">
-              </div>
-            </div>
-
+        {this.state.listingsFiltered.map((listing, i) =>
+          <ListingEntry key={i} listing={listing} />
+        )}
       </div>
     )
   }

@@ -38,7 +38,8 @@ label {
 
 .listing-container {
   display: flex;
-  border: 1px solid red;
+  background-color: #fff;
+  border-bottom: 1px solid lightgrey;
   width: 100%;
   height: 100px;
 }
@@ -46,12 +47,14 @@ label {
 .listing-info {
   display: flex;
   flex-direction: column;
+  margin-right: 6px;
 }
 
 .listing-icons {
   display: flex;
   flex-direction: column;
-  margin: 0 6px;
+  margin-left: 8px;
+  margin-right: 6px;
 }
 
 .listing-amenities-fee {
@@ -62,7 +65,7 @@ label {
 }
 
 .listing-photo {
-  width: 165px; /* TODO: Set this = height via jquery instead of estimating*/
+  width: 100px;
   float: right;
   background-color: blue;
 }
@@ -77,13 +80,17 @@ label {
   float: right;
 }
 
-.listing-amenities {
-  font-size: 12px;
+.listing-amenities-fee {
   line-height: 1.2;
+  /*vertical-align: bottom;*/
+}
+
+.listing-amenities {
+  width: 100%;
+  font-size: 12px;
 }
 
 .listing-fee {
-  line-height: 1.2;
   text-align: center;
   color: green;
 }
