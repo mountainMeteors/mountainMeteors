@@ -12,10 +12,10 @@ exports.scrapeListing = function(url){
       //TODO catch single dwelling edge case,
       //TODO catch undefined edge case (i.e. body)
       if (description.data.amenities.length === 'undefined' || description.data.amenities.length > 0) {
-        description.data.amenities.dishwasher = description.data.amenities[0].body.includes('dishwasher');
-        description.data.amenities.laundry = description.data.amenities[0].body.includes('laundry');
+        // description.data.amenities.dishwasher = description.data.amenities[0].body.includes('dishwasher');
+        // description.data.amenities.laundry = description.data.amenities[0].body.includes('laundry');
         description.data.amenities.nofee = description.data.amenities[0].body.toLowerCase().includes('no fee') || description.data.amenities[0].body.toLowerCase().includes('no-fee');
-        description.data.amenities.gym = description.data.amenities[0].body.toLowerCase().includes('gym') || description.data.amenities[0].body.toLowerCase().includes('fitness');
+        // description.data.amenities.gym = description.data.amenities[0].body.toLowerCase().includes('gym') || description.data.amenities[0].body.toLowerCase().includes('fitness');
       }
 
       console.log('description.data.petsAllowed.length', description.data.petsAllowed.length);

@@ -23,8 +23,8 @@ class AddListingsModal extends React.Component {
     //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
     let properties = [
-      'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms', 'dishwasher',
-      'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms',
+      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
       'outdoorSpace', 'url'
     ];
     properties.forEach(property => {
@@ -40,6 +40,7 @@ class AddListingsModal extends React.Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleBox = this.toggleBox.bind(this);
     this.handleGeoChange = this.handleGeoChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
     this.onGeoSelect = this.onGeoSelect.bind(this);
@@ -76,9 +77,22 @@ class AddListingsModal extends React.Component {
   }
 
   handleChange = (input) => {
+    console.log('changed input', input);
     console.log('changed at', input.target.name, input.target.value);
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
+    console.log('setting state', stateObj);
+    this.setState(stateObj);
+    console.log('state.gym', this.state.gym);
+  }
+
+  //TODO: Need to allow edit modal to pick up on previous values
+  toggleBox = (input) => {
+    let amenity = input.target.name;
+    console.log('toggled box from', amenity, this.state[amenity]);
+    var stateObj = {};
+    stateObj[amenity] = this.state[amenity] === 1 ? 0 : 1;
+    console.log('setting state', stateObj);
     this.setState(stateObj);
   }
 
@@ -266,42 +280,42 @@ class AddListingsModal extends React.Component {
              <ControlLabel>Amenities &nbsp; </ControlLabel>
 
                <Checkbox inline name="gym" value={this.state.gym}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Gym
                </Checkbox>
                {' '}
                <Checkbox inline name="laundry" value={this.state.laundry}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Laundry
                </Checkbox>
                {' '}
                <Checkbox inline name="roof" value={this.state.roof}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Roof
                </Checkbox>
                {' '}
                <Checkbox inline name="dishwasher" value={this.state.dishwasher}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Dishwasher
                </Checkbox>
                <Checkbox inline name="outdoorSpace" value={this.state.outdoorSpace}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Outdoor Space
                </Checkbox>
                <Checkbox inline name="elevator" value={this.state.elevator}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Elevator
                </Checkbox>
                <Checkbox inline name="doorman" value={this.state.doorman}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Doorman
                </Checkbox >
                <Checkbox inline name="garage" value={this.state.garage}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Garage
                </Checkbox>
                <Checkbox inline name="pool" value={this.state.pool}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Pool
                </Checkbox>
              </FormGroup>
