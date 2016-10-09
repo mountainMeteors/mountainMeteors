@@ -1,3 +1,7 @@
+h1.title {
+  display:inline-block;
+}
+/*TODO: Above is temp fix. Should just create it as a styled span.*/
 
 #header {
     background-color: ##FAEBD7 ;
