@@ -30,12 +30,12 @@ function listings(state = [], action) {
       state.map(listing => {
         if (listing.id === listingId) {
           for (let key in edits) {
-            // console.log('setting', listing[key], 'to', edits[key]);
             listing[key] = edits[key];
           }
         }
+        return listing;
       })
-      // console.log('returning state', state);
+      console.log('returning state', state);
       return state;
 
     default:

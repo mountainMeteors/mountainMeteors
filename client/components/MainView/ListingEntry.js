@@ -17,7 +17,7 @@ const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 
 
 
-class Listing extends React.Component{
+class ListingEntry extends React.Component{
   constructor(props){
     super(props);
 
@@ -30,7 +30,11 @@ class Listing extends React.Component{
   }
 
   componentDidMount() {
-    // console.log('rendered LE', this.props);
+    console.log('rendered LE', this.props);
+  }
+
+  componentWillReceiveProps(props) {
+    console.log('LE received new props', props);
   }
 
   toggleArchiveListing(listing) {
@@ -83,4 +87,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing, fetchPhotos}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(Listing);
+export default connect(null, mapDispatchToProps)(ListingEntry);

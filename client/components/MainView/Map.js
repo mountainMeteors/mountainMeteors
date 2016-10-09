@@ -33,6 +33,10 @@ class GoogMap extends React.Component {
     });
   }
 
+  componentWillReceiveProps(props) {
+    console.log('map received props', props);
+  }
+
   handleMarkerClick(targetMarker) {
     console.log('######TARGET OPEN MARKER#########', targetMarker)
     this.setState({//this === component

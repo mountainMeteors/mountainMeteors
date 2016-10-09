@@ -52,7 +52,7 @@ label {
 .listing-info {
   display: flex;
   flex-direction: column;
-  margin-right: 6px;
+  margin-right: auto;
 }
 
 .listing-icons {
