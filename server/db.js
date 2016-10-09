@@ -89,11 +89,6 @@ db.schema.hasTable('listingPhotos').then(function(exists){
   }
 });
 
-// 1216 Broadway, Apt 2A
-// 109 Greenwich Ave, Apt 4C
-// 261 Lorimer St, Apt 2B
-// 385 Flatbush Ave, Apt 3D
-
 db.schema.hasTable('Rankings').then(function(exists){
   if(!exists){
     return db.schema.createTable('Rankings', function(ranking) {

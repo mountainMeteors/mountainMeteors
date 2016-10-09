@@ -153,7 +153,6 @@ class AddListingsModal extends React.Component {
    );
 
 
-  //  onClick={this.open.bind(this)}
 
    return (
      <div>
@@ -162,7 +161,7 @@ class AddListingsModal extends React.Component {
           <Button
             bsStyle="primary"
             bsSize="small"
-            onClick={() => console.log('editing listing', this.state)}
+            onClick={this.open.bind(this)}
           >
             Add
           </Button>
@@ -321,8 +320,6 @@ class AddListingsModal extends React.Component {
    );
  }
 };
-
-//this.props.user_id = store.reducername
 
 function mapStateToProps(state){
   return {
