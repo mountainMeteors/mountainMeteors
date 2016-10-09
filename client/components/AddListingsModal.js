@@ -15,28 +15,25 @@ import { getDistance } from '../util/distUtil';
 
 class AddListingsModal extends React.Component {
   constructor(props){
+    console.log('modal receiving props', props);
     super(props);
+    if (props.modalType === 'edit' && props.listing.id === 3) console.log('FOUND ID 3');
     this.state = {};
+
+    //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
-    this.state.location = props.listing ? props.listing.location : '';
-    this.state.rent = props.listing ? props.listing.rent : '';
-    this.state.pets = props.listing ? props.listing.pets : '';
-    this.state.lat = props.listing ? props.listing.lat : 0;
-    this.state.lng = props.listing ? props.listing.lng : 0;
-    this.state.neighborhood = props.listing ? props.listing.neighborhood : '';
-    this.state.squareFeet = props.listing ? props.listing.squareFeet : '';
-    this.state.bedrooms = props.listing ? props.listing.bedrooms : '';
-    this.state.bathrooms = props.listing ? props.listing.bathrooms : '';
-    this.state.dishwasher = props.listing ? props.listing.dishwasher : 'off';
-    this.state.gym = props.listing ? props.listing.gym : 'off';
-    this.state.laundry = props.listing ? props.listing.laundry : 'off';
-    this.state.doorman = props.listing ? props.listing.doorman : 'off';
-    this.state.noFee = props.listing ? props.listing.noFee : 'off';
-    this.state.roof = props.listing ? props.listing.roof : 'off';
-    this.state.garage = props.listing ? props.listing.garage : 'off';
-    this.state.pool = props.listing ? props.listing.pool : 'off';
-    this.state.outdoorSpace = props.listing ? props.listing.outdoorSpace : 'off';
-    this.state.url = props.listing ? props.listing.url : '';
+    let properties = [
+      'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms', 'dishwasher',
+      'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'outdoorSpace', 'url'
+    ];
+    properties.forEach(property => {
+      if (props.listing && props.listing[property] !== null) {
+        this.state[property] = props.listing[property];
+      } else {
+        this.state[property] = '';
+      }
+    });
 
     this.state.showModal = false;
 
@@ -49,6 +46,7 @@ class AddListingsModal extends React.Component {
     this.scrapeListingSubmit = this.scrapeListingSubmit.bind(this);
     this.getDistanceSubmit = this.getDistanceSubmit.bind(this);
   }
+
 
   componentWillReceiveProps(newProps) {
     console.log("ding ding ding", newProps.scrapeData);
@@ -155,6 +153,7 @@ class AddListingsModal extends React.Component {
    );
 
 
+  //  onClick={this.open.bind(this)}
 
    return (
      <div>
@@ -163,7 +162,7 @@ class AddListingsModal extends React.Component {
           <Button
             bsStyle="primary"
             bsSize="small"
-            onClick={this.open.bind(this)}
+            onClick={() => console.log('editing listing', this.state)}
           >
             Add
           </Button>
