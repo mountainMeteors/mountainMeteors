@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
-import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 
+import AddListingsModal from '../AddListingsModal'
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
@@ -64,12 +64,14 @@ class Listing extends React.Component{
             </div>
           </div>
           <div className="listing-icons">
-            <span><Glyphicon glyph="star-empty" /></span>
-            <span><Glyphicon glyph="pencil" /></span>
-            <span><Glyphicon glyph="camera" /></span>
-            <span><Glyphicon glyph="trash" /></span>
+            <span className="clickable"><Glyphicon glyph="star-empty" /></span>
+            <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
+            <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span>
+            <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
+              <Glyphicon glyph="trash" />
+            </span>
           </div>
-          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.jpg)'}}>
+          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
           </div>
         </div>
       </div>
