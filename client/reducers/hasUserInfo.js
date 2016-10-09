@@ -5,7 +5,7 @@ const defaultState = {
 }
 
 const hasUserInfo = function(state = defaultState, action) {
-  console.log('====> userinfo default return', state);
+  // console.log('====> userinfo default return', state);
   switch(action.type) {
     case 'GETLISTINGS':
       console.log('setting listings = true');

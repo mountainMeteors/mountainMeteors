@@ -73,7 +73,7 @@ class GoogMap extends React.Component {
   render() {
     // return (<div>{'hi'}</div>)
     return (
-      <section style={{height: "120%"}}>
+      <section style={{height: "100%"}}>
         <GoogleMapLoader
           containerElement={
             <div

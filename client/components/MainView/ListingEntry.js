@@ -30,7 +30,7 @@ class Listing extends React.Component{
   }
 
   componentDidMount() {
-    console.log('rendered LE', this.props);
+    // console.log('rendered LE', this.props);
   }
 
   toggleArchiveListing(listing) {

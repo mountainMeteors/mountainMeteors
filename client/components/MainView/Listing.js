@@ -29,12 +29,11 @@ class Listing extends React.Component{
 
     this.filterListings = this.filterListings.bind(this);
     this.toggleArchiveView = this.toggleArchiveView.bind(this);
-    this.addrFormat = this.addrFormat.bind(this);
     this.calcScore = this.calcScore.bind(this);
   }
 
   componentWillMount() {
-    console.log('listing mount props', this.props);
+    // console.log('listing mount props', this.props);
     this.filterListings(this.props.listings)
     // this.setState({
     //   listingsFiltered
@@ -42,9 +41,10 @@ class Listing extends React.Component{
       //   listing => Boolean(listing.archived) === this.state.showArchived
       // )
     // })
-    console.log('listing state after', this.state);
+    // console.log('listing state after', this.state);
   }
 
+  //TODO: util
   calcScore(listing, prefTotal) {
     let prefs = this.props.prefs;
     // console.log('looking at listing', listing);
@@ -103,9 +103,10 @@ class Listing extends React.Component{
     return score;
   }
 
+  //TODO: util
   //Takes existing props (passed in) and filters them based on this.state.showArchived bool
   filterListings(listings) {
-    // console.log('filtering', listings);
+    console.log('filtering', listings);
     // console.log('using prefs', this.props.prefs);
     // let listingsFiltered = listings;
     let listingsFiltered = listings.slice().filter(
@@ -125,7 +126,7 @@ class Listing extends React.Component{
     //TODO: So bad, so quadratic. Refactor so that amenities are entered into DB as stringified json
     listingsFiltered.forEach(listing => {
       listing.amenities = [];
-      console.log('ADDING AMENITIES FOR LISTING', listing);
+      // console.log('ADDING AMENITIES FOR LISTING', listing);
       amenityTypes.forEach(amenity => {
         if (Boolean(listing[amenity.toLowerCase()])) listing.amenities.push(amenity);
       });
@@ -151,52 +152,19 @@ class Listing extends React.Component{
 
   //Toggles state.showArchived and then updates listing
   toggleArchiveView() {
+    // console.log('toggling arch view. before:', this.state.showArchived);
     this.setState({showArchived: !this.state.showArchived},
       () => {this.filterListings(this.props.listings)}
     );
-  }
-
-  toggleArchiveListing(listing) {
-    console.log('toggling', listing.id);
-    let toggledVal = listing.archived === 0 ? 1 : 0;
-    this.props.putListing(listing.id, {archived: toggledVal});
-  }
-
-  addrFormat(cell, listing, enumObject, index) {
-    return (
-      <div onClick={ () => {
-          this.toggleArchiveListing(listing)}
-      }>{ cell }
-      <br/>
-
-      </div>
-    );
-  }
-
-  editFormat (cell, listing) {
-    return (
-      <div><AddListingsModal listing={listing} modalType="edit" /></div>
-
-    )
-  }
-
-  photoFormat (cell, listing) {
-    // console.log('passing listing', listing)
-    return (
-      <div><AddPhotosModal listing={listing} /></div>
-    )
-  }
-
-  scoreFormat (cell, listing) {
-    return (
-      <div>{listing.score}</div>
-    )
+    // this.setState({showArchived: !this.state.showArchived});
+    // console.log('state arch after', this.state.showArchived);
   }
 
   render() {
     return (
       <div>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
+        <AddListingsModal modalType="add" />
         {this.state.listingsFiltered.map((listing, i) =>
           <ListingEntry key={i} listing={listing} />
         )}

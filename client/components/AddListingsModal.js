@@ -52,7 +52,7 @@ class AddListingsModal extends React.Component {
 
   componentWillReceiveProps(newProps) {
     console.log("ding ding ding", newProps.scrapeData);
-    if (newProps.scrapeData)
+    if (Object.keys(newProps.scrapeData).length)
       this.setState({
         rent: newProps.scrapeData.rentInfo[0],
         location: newProps.scrapeData.location[0],
