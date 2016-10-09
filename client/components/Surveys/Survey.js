@@ -217,6 +217,7 @@ class Survey extends Component {
   render () {
     const { value } = this.state
     return (
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
       <div>
       <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
       <div >
@@ -319,12 +320,133 @@ class Survey extends Component {
       <div className='horizontal-slider'>
       <h4> *Square Feet**Your ideal apt size?</h4>
       <Select
+=======
+    <div>
+      <Jumbotron>
+          <h1>Lets us get to know a little bit about you!</h1>
+          <p></p>
+
+        </Jumbotron>
+
+
+        <form onSubmit={this.onFormSubmit}>
+          <div className="main">
+
+         <div className='card_Neighborhood'>
+          <h4>Let's pick your fav neighborhoods </h4>
+          <Select
+            name="form-field-name"
+            value={this.state.NeighborhoodsSelected}
+            multi={true}
+            options={Neighborhoods}
+            onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
+            />
+
+          <div className='horizontal-slider'>
+            <h4>Rank neighborhoods ?</h4>
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.neighborhoodRank}
+              onChange={(value) => this.handleChange("neighborhoodRank",value)}
+              />
+            <div className='value'>
+              Ranking: {this.state.neighborhoodRank}
+            </div>
+            <hr />
+          </div>
+          </div>
+      
+
+          <div >
+          <div>
+          <h4>Let's pick apartment type </h4>
+          <Select 
+            name="form-field-name"
+            value={this.state.NumberOfRoomsSelected}
+            options={NumberOfRooms}
+            onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
+            />
+
+          <div className='horizontal-slider'>
+            <h4>Rank Apartment Type ?</h4>
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.numberOfRoomsRank}
+              onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
+              />
+            <div className='value'>
+              Ranking: {this.state.numberOfRoomsRank}
+            </div>
+            <hr />
+          </div>
+          </div>
+
+
+
+
+          <Select 
+            name="form-field-name"
+            value={this.state.FeesSelected}
+            options={Fees}
+            onChange={(value) => this.handleChange("FeesSelected", value)}
+            />
+          <div className='horizontal-slider'>
+            <h4>How important is fees ? </h4>
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.feeRank}
+              onChange={(value) => this.handleChange("feeRank", value)}
+              />
+            <div className='value'>
+              Ranking:{this.state.feeRank}</div>
+            <hr />
+          </div>
+
+
+
+          <Select
+            name="form-field-name"
+            value={this.state.RentMinSelected}
+            options={RentMin}
+            onChange={(value) => this.handleChange("RentMinSelected", value)}
+            />
+            <Select
+              name="form-field-name"
+              value={this.state.RentMaxSelected}
+              options={RentMax}
+              onChange={(value) => this.handleChange("RentMaxSelected", value)}
+              />
+
+          <div className='horizontal-slider'>
+            <h4>How important is rent budget from 1 to 7?</h4>
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.rentRank}
+              onChange={(value) => this.handleChange("rentRank", value)}
+              />
+            <div className='value'>Ranking:{this.state.rentRank}</div>
+            <hr />
+          </div>
+
+
+          *****************Square Feet*****************
+
+
+       <div className='horizontal-slider'>
+         <h4>Your ideal apt size?</h4>
+    <Select
+>>>>>>> styling to survey'
       name="form-field-name"
       value={this.state.Sq_ft_MinSelected}
       options={Sq_ft_Min}
       onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
       />
       <Select
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
       name="form-field-name"
       value={this.state.Sq_ft_MaxSelected}
       options={Sq_ft_Max}
@@ -476,6 +598,124 @@ class Survey extends Component {
       </div>
       )
 }
+=======
+        name="form-field-name"
+        value={this.state.Sq_ft_MaxSelected}
+        options={Sq_ft_Max}
+        onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
+        />     
+         <Slider
+           min={0}
+           max={7}
+           value={this.state.sq_ft_Rank}
+           onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
+           />
+         <div className='value'>Ranking: {this.state.sq_ft_Rank}</div>
+         <hr />
+       </div>
+
+          *****************PETSSSSS*****************
+          <div>
+
+            <h4> Furry Little Friends ?? </h4>
+            <Select 
+                name="form-field-name"
+                value={this.state.PetSelected}
+                options={Pets}
+                multi={true}
+                onChange={(value) => this.handleChange("PetSelected", value)}
+                />
+
+            <div className='horizontal-slider'>
+              <h4>Rank pet accomo ?</h4>
+              <Slider className='pet-slider'
+                min={0}
+                max={7}
+                value={this.state.petRank}
+                onChange={(value) => this.handleChange("petRank", value)}
+                />
+              <div className='value'>Ranking:{this.state.petRank}</div>
+              <hr />
+            </div>
+
+
+          </div>
+
+
+
+          <Select
+            name="form-field-name"
+            value={this.state.amenitiesSelected}
+            multi={true}
+            options={Amenities}
+            onChange={(value) => this.handleChange("amenitiesSelected", value)}
+            />
+          <div className='horizontal-slider'>
+            <h4>How important are amenities ?</h4>
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.amenitiesRank}
+              onChange={(value) => this.handleChange("amenitiesRank", value)}
+              />
+            <div className='value'>Ranking: {this.state.amenitiesRank}</div>
+            <hr />
+          </div>
+
+         
+          <FormGroup
+                    controlId="formBasicText"
+                                  >
+                    <ControlLabel></ControlLabel>
+                    <FormControl
+                      type="text"
+                      value={this.state.targetedLocation}
+                      placeholder="1216 Broadway New York NY"
+                      onChange={this.handleChangeLocation}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>Validation is based on valid address.</HelpBlock>
+                  </FormGroup>
+         
+
+
+  ***COMMUTE*****
+        
+          <div className='horizontal-slider'>
+            <h4>Your ideal commute time?</h4>
+       <Select
+         name="form-field-name"
+         value={this.state.CommuteMinSelected}
+         options={CommuteMin}
+         onChange={(value) => this.handleChange("CommuteMinSelected", value)}
+         />
+         <Select
+           name="form-field-name"
+           value={this.state.CommuteMaxSelected}
+           options={CommuteMax}
+           onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
+           />     
+            <Slider
+              min={0}
+              max={7}
+              value={this.state.commuteRank}
+              onChange={(value) => this.handleChange("commuteRank", value)}
+              />
+            <div className='value'>Ranking: {this.state.commuteRank}</div>
+            <hr />
+          </div>
+  
+
+          <button type="submit" className="btn btn-block btn-primary">Submit</button>
+        </div>
+        </div>
+    
+        </form>
+      
+      </div>
+    )
+  }
+>>>>>>> styling to survey'
 }
 
 function mapStateToProps(state) {

@@ -219,8 +219,13 @@ label {
 }
 
 .rangeslider-horizontal {
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     height: 10px;
     width: 90%;
+=======
+    height: 20px;
+    width: 30%;
+>>>>>>> styling to survey'
     border-radius: 10px
 }
 
@@ -232,9 +237,15 @@ label {
 }
 
 .rangeslider-horizontal .rangeslider__handle {
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     width: 15px;
     height: 15px;
     border-radius: 30px;
+=======
+    width: 25x;
+    height: 25px;
+    border-radius: 40px;
+>>>>>>> styling to survey'
     top: -10px
 }
 
@@ -246,7 +257,11 @@ label {
 }
 
 .rangeslider-vertical .rangeslider__fill {
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     width: 90%;
+=======
+    width: 50%;
+>>>>>>> styling to survey'
     background: #00bfff;
     box-shadow: none;
     bottom: 0
@@ -1085,6 +1100,7 @@ h6,
       font-size: .8em;
       padding: 5px 10px; } }
 
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
 /*****Dropzone Container *****/
 .AddphotoBox{
   display: -webkit-flex; /* Safari */
@@ -1118,10 +1134,16 @@ h6,
 
 .card_Neighborhood:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+=======
+.category_title {
+  font-family: 'Raleway', sans-serif;
+
+>>>>>>> styling to survey'
 }
 
 
 
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
 .card_aptType {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -1240,9 +1262,35 @@ h6,
   flex direction: column;
   -webkit-flex-wrap: wrap; /* Safari */
 
+=======
+.card_Neighborhood {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+    height: 20%
+
+}
+
+.card_Neighborhood:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.main {
+  padding: 60px;
+  font-family: GeosansLight.ttf;
+  border: 1px solid #c3c3c3;
+  resize: none;
+  width:100%;
+  -webkit-flex-wrap: wrap; /* Safari */
+   flex-wrap:         wrap;
+>>>>>>> styling to survey'
   font-family: 'Raleway', sans-serif;
   height:100%;
   background-color: #ffffff;
   position:relative;
   box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
+<<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
 }
+=======
+}
+>>>>>>> styling to survey'
