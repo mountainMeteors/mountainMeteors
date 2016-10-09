@@ -28,7 +28,7 @@ export function postSurveyAnswers(surveyResponses, user_id){
 
 
 export function fetchAnswers() {
-  console.log( 'reqqqq========>', request)
+  // console.log( 'reqqqq========>', request)
   const request = axios.get("api/surveys/", {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   });

@@ -52,7 +52,7 @@ class AddListingsModal extends React.Component {
 
   componentWillReceiveProps(newProps) {
     console.log("ding ding ding", newProps.scrapeData);
-    if (newProps.scrapeData)
+    if (Object.keys(newProps.scrapeData).length)
       this.setState({
         rent: newProps.scrapeData.rentInfo[0],
         location: newProps.scrapeData.location[0],
@@ -250,10 +250,10 @@ class AddListingsModal extends React.Component {
               <FormControl name="pets" componentClass="select" value={this.state.pets}
               onChange={this.handleChange} placeholder="None">
                 <option value="select">select</option>
-                <option value="othera">Cats</option>
-                <option value="otherb">Dogs</option>
-                <option value="otherc">Both</option>
-                <option value="otherd">None</option>
+                <option value="cats">Cats</option>
+                <option value="dogs">Dogs</option>
+                <option value="both">Both</option>
+                <option value="none">None</option>
               </FormControl>
             </FormGroup>
 

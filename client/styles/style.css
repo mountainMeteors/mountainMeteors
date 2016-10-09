@@ -3,6 +3,10 @@
     background-color: ##FAEBD7 ;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 #leftcol {
   background-color: #33ccff;
   height: 450px;
@@ -13,7 +17,7 @@
 
 #rightcol {
   background-color: #ffffff;
-  overflowY: 'auto';
+  /*overflowY: 'auto';*/
   padding: 0;
   height: 450px;
   padding-bottom: '50px';
@@ -32,12 +36,73 @@ label {
     margin-bottom: 5px
 }
 
+/*************LISTING FLEXBOX *************/
 
+/* CONTAINERS */
 
+.listing-container {
+  display: flex;
+  background-color: #fff;
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  height: 100px;
+  overflowY: scroll;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.listing-icons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  margin-right: 6px;
+}
+
+.listing-amenities-fee {
+  display: flex;
+  margin-top: auto;
+  /*align-self: flex-end;*/
+  /*align-items: flex-end;*/
+}
+
+.listing-photo {
+  width: 100px;
+  float: right;
+  background-image: url("http://localhost:2500/uploads/apt_placeholder.jpg")
+}
+
+/* TEXT STYLES */
+.listing-addr {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.listing-rent, .listing-pets {
+  float: right;
+}
+
+.listing-amenities-fee {
+  line-height: 1.2;
+  /*vertical-align: bottom;*/
+}
+
+.listing-amenities {
+  width: 100%;
+  font-size: 12px;
+}
+
+.listing-fee {
+  text-align: center;
+  color: green;
+}
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
- 
+
 .Select {
   position: relative;
 }
@@ -844,7 +909,7 @@ td.react-bs-container-body {
 body {
   font-family: sans-serif;
   background-color: #eee;
-  text-align: center;
+  /*text-align: center;*/
   margin-top: 100px;
 }
 
@@ -1422,5 +1487,3 @@ th {
     .image-gallery-index {
       font-size: .8em;
       padding: 5px 10px; } }
-
-

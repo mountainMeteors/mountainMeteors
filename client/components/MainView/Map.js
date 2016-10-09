@@ -33,6 +33,10 @@ class GoogMap extends React.Component {
     });
   }
 
+  componentWillReceiveProps(props) {
+    console.log('map received props', props);
+  }
+
   handleMarkerClick(targetMarker) {
     console.log('######TARGET OPEN MARKER#########', targetMarker)
     this.setState({//this === component
@@ -73,7 +77,7 @@ class GoogMap extends React.Component {
   render() {
     // return (<div>{'hi'}</div>)
     return (
-      <section style={{height: "120%"}}>
+      <section style={{height: "100%"}}>
         <GoogleMapLoader
           containerElement={
             <div
