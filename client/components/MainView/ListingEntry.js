@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
+import { fetchPhotos } from '../../actionCreators/photoActions.js';
 import css from '../../styles/style.css';
 
 //Formatting
@@ -22,6 +23,10 @@ class Listing extends React.Component{
 
     this.state = {
     }
+  }
+
+  componentWillMount() {
+    this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
   }
 
   componentDidMount() {
@@ -64,7 +69,7 @@ class Listing extends React.Component{
             <span><Glyphicon glyph="camera" /></span>
             <span><Glyphicon glyph="trash" /></span>
           </div>
-          <div className="listing-photo">
+          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.jpg)'}}>
           </div>
         </div>
       </div>
@@ -73,7 +78,7 @@ class Listing extends React.Component{
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({putListing}, dispatch);
+  return bindActionCreators({putListing, fetchPhotos}, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Listing);

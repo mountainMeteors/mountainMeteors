@@ -24,7 +24,7 @@ var  req = request.post('/api/uploads/');
     })
   return {
   	type : UPLOAD_PHOTOS,
-  	payload: req  
+  	payload: req
   }
 
 }
@@ -36,7 +36,6 @@ export function  fetchPhotos (listingId){
 
   return {
     type: FETCH_PHOTOS,
-    payload: request 
+    payload: request
   }
 }
-

@@ -27,6 +27,9 @@ router.get('/listings', util.checkToken, (req, res) => {
     user_id: req.user.id
   })
   .then(function(listings) {
+    listings.map(listing => {
+
+    })
     res.send(listings);
   });
 });

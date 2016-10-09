@@ -1,6 +1,7 @@
 const defaultState = {
   hasListings: false,
-  hasPrefs: false
+  hasPrefs: false,
+  hasPhotos: false
 }
 
 const hasUserInfo = function(state = defaultState, action) {
@@ -15,6 +16,11 @@ const hasUserInfo = function(state = defaultState, action) {
     case 'GET_PREFS':
       console.log('setting prefs = true');
       state.hasPrefs = true;
+      return state;
+
+    case 'FETCH_PHOTOS':
+      console.log('setting photos = true');
+      state.hasPhotos = true;
       return state;
 
     default:

@@ -67,7 +67,7 @@ label {
 .listing-photo {
   width: 100px;
   float: right;
-  background-color: blue;
+  background-image: url("http://localhost:2500/uploads/apt_placeholder.jpg")
 }
 
 /* TEXT STYLES */
