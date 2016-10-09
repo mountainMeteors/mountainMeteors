@@ -60,6 +60,8 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('pool');
       listing.boolean('elevator');
       listing.boolean('outdoor_space');
+      listing.decimal('lat', 15, 12);
+      listing.decimal('lng', 15, 12);
       listing.boolean('no_fee');
       listing.boolean('archived');
       listing.timestamps();
