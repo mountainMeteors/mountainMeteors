@@ -336,6 +336,7 @@ class Survey extends Component {
       <form onSubmit={this.onFormSubmit}>
       <div className="main">
 
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       <div className='card_Neighborhood'>
       <h4>Let's pick your fav neighborhoods </h4>
       <Select
@@ -447,6 +448,8 @@ class Survey extends Component {
 >>>>>>> styling to survey'
 =======
 
+=======
+>>>>>>> styling more
       <div className='card_aptType'>
       <div className='container'>
 
@@ -571,7 +574,10 @@ class Survey extends Component {
     <div className='container'>
       <div className='horizontal-slider'>
       <h4>Your ideal commute time?</h4>
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       <div className='rangeWrap'>
+=======
+>>>>>>> styling more
       <Select
       name="form-field-name"
       value={this.state.CommuteMinSelected}
@@ -583,8 +589,12 @@ class Survey extends Component {
       value={this.state.CommuteMaxSelected}
       options={CommuteMax}
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       /> 
       </div>    
+=======
+      />     
+>>>>>>> styling more
       <Slider
       min={0}
       max={7}
@@ -596,9 +606,12 @@ class Survey extends Component {
       </div>
       </div>
       </div>
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 =======
 
 >>>>>>>  card tile added
+=======
+>>>>>>> styling more
 
 
       <div className='Sq_ft'>
@@ -627,7 +640,10 @@ class Survey extends Component {
       </div>
 
 
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 <<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
+=======
+>>>>>>> styling more
       
       <div className='card_Neighborhood'>
       <h4>Let's pick your fav neighborhoods </h4>
@@ -638,6 +654,7 @@ class Survey extends Component {
       options={Neighborhoods}
       onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
       />
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 
       <div className='horizontal-slider'>
       <h4>Rank neighborhoods ?</h4>
@@ -657,6 +674,24 @@ class Survey extends Component {
 =======
 
 >>>>>>>  card tile added
+=======
+
+      <div className='horizontal-slider'>
+      <h4>Rank neighborhoods ?</h4>
+      <Slider
+      min={0}
+      max={7}
+      value={this.state.neighborhoodRank}
+      onChange={(value) => this.handleChange("neighborhoodRank",value)}
+      />
+      <div className='value'>
+      Ranking: {this.state.neighborhoodRank}
+      </div>
+      <hr />
+      </div>
+      </div>
+      
+>>>>>>> styling more
       <div className='Amenities_Card'>
       <div className='container'>
       <Select
@@ -680,12 +715,17 @@ class Survey extends Component {
       </div>
       </div>
 
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 <<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
     <div className='Targeded_Location_Card'>
     <div className='container'>
 =======
 
 >>>>>>>  card tile added
+=======
+    <div className='Targeded_Location_Card'>
+    <div className='container'>
+>>>>>>> styling more
       <FormGroup
       controlId="formBasicText"
       >
@@ -699,6 +739,7 @@ class Survey extends Component {
       <FormControl.Feedback />
       <HelpBlock>Validation is based on valid address.</HelpBlock>
       </FormGroup>
+<<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
 <<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
       </div>
       </div>
@@ -849,13 +890,16 @@ class Survey extends Component {
       </div>
 >>>>>>>  card tile added
 
+=======
+      </div>
+>>>>>>> styling more
       </div>
 
+
+
+      </div>
       <button type="submit" className="btn btn-block btn-primary">Submit</button>
-
-
       </form>
-      
       </div>
 <<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
     )
