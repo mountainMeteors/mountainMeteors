@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
 
+import css from '../../styles/style.css';
+
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
@@ -178,31 +180,36 @@ class Listing extends React.Component{
   render() {
     return (
       <div>
-
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
-          <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
-            <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
-              Address
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
-              Rent
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="pets" dataSort={true}>
-              Pets
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
-              Gym
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
-              Edit
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
-              Photos
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="score" dataSort={true} >
-              Score
-            </TableHeaderColumn>
-          </BootstrapTable>
+            <div className="listing-inner-container">
+              <div className="listing-info">
+                <div className="listing-addr-rent">
+                  <span className="listing-addr">743 Evergreen Terrace</span>
+                  <span className="listing-rent">$1,750</span>
+                </div>
+                <div className="listing-details">
+                  <span className="listing-bed-bath">2 Bed / 2 Bath / 700 sq. ft</span>
+                  <span className="listing-pets"><strong>Pets:</strong> None</span>
+                </div>
+                <div className="listing-amenities-fee">
+                  <div className="listing-amenities">
+                    Gym - Laundry - Dishwasher - Garage - Roof -
+                    Pool - Elevator - Doorman - Outdoor Space
+                  </div>
+                  <div className="listing-fee">
+                    NO FEE
+                  </div>
+                </div>
+              </div>
+              <div className="listing-icons">
+                <span>S</span>
+                <span>E</span>
+                <span>C</span>
+                <span>A</span>
+              </div>
+              <div className="listing-photo">
+              </div>
+            </div>
 
       </div>
     )
@@ -214,3 +221,27 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Listing);
+
+// <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
+//   <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
+//     Address
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
+//     Rent
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="pets" dataSort={true}>
+//     Pets
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
+//     Gym
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
+//     Edit
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
+//     Photos
+//   </TableHeaderColumn>
+//   <TableHeaderColumn dataField="score" dataSort={true} >
+//     Score
+//   </TableHeaderColumn>
+// </BootstrapTable>
