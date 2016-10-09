@@ -8,11 +8,7 @@ import { connect } from 'react-redux'
 import FlipCard from 'react-flipcard';
 
 import Select from 'react-select';
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
 import { Grid, Col, Row, FormGroup, ControlLabel,  Jumbotron, HelpBlock, FormControl } from 'react-bootstrap';
-=======
-import { Grid, Col, Row, FormGroup, ControlLabel, HelpBlock, FormControl } from 'react-bootstrap';
->>>>>>> styling changes to survey.js'
 import css from '../../styles/app.css'
 
 
@@ -56,19 +52,11 @@ const Amenities = [
 ];
 
 const Pets = [
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
 { label: 'Both', value: 'Both' },
 { label: 'Dogs', value: 'Dogs' },
 { label: 'Cats', value: 'Cats' },
 { label: 'Pokemon', value: 'Pokemon' },
 { label: 'None', value: 'None' },
-=======
-  { label: 'Both', value: 'Both' },
-  { label: 'Dogs', value: 'Dogs' },
-  { label: 'Cats', value: 'Cats' },
-  { label: 'Pokemon', value: 'Pokemon' },
-  { label: 'None', value: 'None' },
->>>>>>> styling changes to survey.js'
 ];
 
 
@@ -117,20 +105,6 @@ const Sq_ft_Max = [
 
 
 
-const Sq_ft_Min = [
-  { label: '10', value: '10' },
-  { label: '20', value: '20' },
-  { label: '30', value: '30' },
-  { label: '40', value: '40' },
-];
-const Sq_ft_Max = [
-  { label: '50', value: '50' },
-  { label: '1', value: '1' },
-  { label: '2', value: '2' },
-];
-
-
-
 
 
 class Survey extends Component {
@@ -167,7 +141,6 @@ class Survey extends Component {
       CommuteMaxSelected: null,
       CommuteMax: CommuteMax,
       commuteRank: 1,  
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
 
       Sq_ft_MinSelected: null,
       Sq_ft_Min : Sq_ft_Min,
@@ -175,15 +148,6 @@ class Survey extends Component {
       Sq_ft_Max: Sq_ft_Max,
       sq_ft_Rank: 1,
 
-=======
-
-      Sq_ft_MinSelected: null,
-      Sq_ft_Min : Sq_ft_Min,
-      Sq_ft_MaxSelected: null,
-      Sq_ft_Max: Sq_ft_Max,
-      sq_ft_Rank: 1,
-
->>>>>>> styling changes to survey.js'
       amenitiesRank: 1,
       amenitiesSelected: [],
       Amenities: Amenities,
@@ -199,13 +163,8 @@ class Survey extends Component {
   
 
   handleChangeLocation(e) {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     this.setState({ targetedLocation: e.target.value });
   }
-=======
-      this.setState({ targetedLocation: e.target.value });
-    }
->>>>>>> styling changes to survey.js'
 
   // state[criteria] = value
   handleChange = (criteria,value) => {
@@ -259,7 +218,6 @@ class Survey extends Component {
     const { value } = this.state
     return (
       <div>
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
       <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
       <div >
       <h4>Lets us get to know a little bit about you!</h4>
@@ -296,228 +254,6 @@ class Survey extends Component {
       <hr />
       </div>
       </div>
-=======
-        <form onSubmit={this.onFormSubmit}>
-
-
-          /*neighborhood*/
-          <h4>Let's pick your fav neighborhoods </h4>
-          <Select
-            name="form-field-name"
-            value={this.state.NeighborhoodsSelected}
-            multi={true}
-            options={Neighborhoods}
-            onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
-            />
-
-          <div className='horizontal-slider'>
-            <h4>Rank neighborhoods ?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.neighborhoodRank}
-              onChange={(value) => this.handleChange("neighborhoodRank",value)}
-              />
-            <div className='value'>
-              Ranking: {this.state.neighborhoodRank}
-            </div>
-            <hr />
-          </div>
-
-
-          ************************************************
-          <h4>Let's pick apartment type </h4>
-          <Select 
-            name="form-field-name"
-            value={this.state.NumberOfRoomsSelected}
-            options={NumberOfRooms}
-            onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
-            />
-
-          <div className='horizontal-slider'>
-            <h4>Rank Apartment Type ?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.numberOfRoomsRank}
-              onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
-              />
-            <div className='value'>
-              Ranking: {this.state.numberOfRoomsRank}
-            </div>
-            <hr />
-          </div>
-
-
-          *****************FEES: YES OR NO*************
-          <Select 
-            name="form-field-name"
-            value={this.state.FeesSelected}
-            options={Fees}
-            onChange={(value) => this.handleChange("FeesSelected", value)}
-            />
-          <div className='horizontal-slider'>
-            <h4>How important is fees ? </h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.feeRank}
-              onChange={(value) => this.handleChange("feeRank", value)}
-              />
-            <div className='value'>
-              Ranking:{this.state.feeRank}</div>
-            <hr />
-          </div>
-
-
-          ***********RENT BUDGET********************
-          /*your rent budget */
-          <Select
-            name="form-field-name"
-            value={this.state.RentMinSelected}
-            options={RentMin}
-            onChange={(value) => this.handleChange("RentMinSelected", value)}
-            />
-            <Select
-              name="form-field-name"
-              value={this.state.RentMaxSelected}
-              options={RentMax}
-              onChange={(value) => this.handleChange("RentMaxSelected", value)}
-              />
-
-          <div className='horizontal-slider'>
-            <h4>How important is rent budget from 1 to 7?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.rentRank}
-              onChange={(value) => this.handleChange("rentRank", value)}
-              />
-            <div className='value'>Ranking:{this.state.rentRank}</div>
-            <hr />
-          </div>
-
-
-          *****************Square Feet*****************
-
-
-       <div className='horizontal-slider'>
-         <h4>Your ideal apt size?</h4>
-    <Select
-      name="form-field-name"
-      value={this.state.Sq_ft_MinSelected}
-      options={Sq_ft_Min}
-      onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
-      />
-      <Select
-        name="form-field-name"
-        value={this.state.Sq_ft_MaxSelected}
-        options={Sq_ft_Max}
-        onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
-        />     
-         <Slider
-           min={0}
-           max={7}
-           value={this.state.sq_ft_Rank}
-           onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
-           />
-         <div className='value'>Ranking: {this.state.sq_ft_Rank}</div>
-         <hr />
-       </div>
-
-          *****************PETSSSSS*****************
-          <div>
-
-            <h4> Furry Little Friends ?? </h4>
-            <Select
-                name="form-field-name"
-                value={this.state.PetSelected}
-                options={Pets}
-                multi={true}
-                onChange={(value) => this.handleChange("PetSelected", value)}
-                />
-
-            <div className='horizontal-slider'>
-              <h4>Rank pet accomo ?</h4>
-              <Slider
-                min={0}
-                max={7}
-                value={this.state.petRank}
-                onChange={(value) => this.handleChange("petRank", value)}
-                />
-              <div className='value'>Ranking:{this.state.petRank}</div>
-              <hr />
-            </div>
-
-
-          </div>
-
-        **********************************
-          AMENITIES
-          <Select
-            name="form-field-name"
-            value={this.state.amenitiesSelected}
-            multi={true}
-            options={Amenities}
-            onChange={(value) => this.handleChange("amenitiesSelected", value)}
-            />
-          <div className='horizontal-slider'>
-            <h4>How important are amenities ?</h4>
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.amenitiesRank}
-              onChange={(value) => this.handleChange("amenitiesRank", value)}
-              />
-            <div className='value'>Ranking: {this.state.amenitiesRank}</div>
-            <hr />
-          </div>
-
-          ***************TARGETED LOCATION******************
-          <FormGroup
-                    controlId="formBasicText"
-                                  >
-                    <ControlLabel></ControlLabel>
-                    <FormControl
-                      type="text"
-                      value={this.state.targetedLocation}
-                      placeholder="1216 Broadway New York NY"
-                      onChange={this.handleChangeLocation}
-                    />
-                    <FormControl.Feedback />
-                    <HelpBlock>Validation is based on valid address.</HelpBlock>
-                  </FormGroup>
-          ***************COMMUTE*******************
-        
-          <div className='horizontal-slider'>
-            <h4>Your ideal commute time?</h4>
-       <Select
-         name="form-field-name"
-         value={this.state.CommuteMinSelected}
-         options={CommuteMin}
-         onChange={(value) => this.handleChange("CommuteMinSelected", value)}
-         />
-         <Select
-           name="form-field-name"
-           value={this.state.CommuteMaxSelected}
-           options={CommuteMax}
-           onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-           />     
-            <Slider
-              min={0}
-              max={7}
-              value={this.state.commuteRank}
-              onChange={(value) => this.handleChange("commuteRank", value)}
-              />
-            <div className='value'>Ranking: {this.state.commuteRank}</div>
-            <hr />
-          </div>
-  
-
-          <button type="submit" className="btn btn-block btn-primary">Submit</button>
-
-        </form>
->>>>>>> styling changes to survey.js'
       </div>
 
 

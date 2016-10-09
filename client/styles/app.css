@@ -27,11 +27,7 @@ input, select, button, textarea {
 
 .form-control {
   display: block;
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
   width: 90%;
-=======
-  width: 50%;
->>>>>>> styling changes to survey.js'
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 1.25;
@@ -67,10 +63,7 @@ input, select, button, textarea {
 
 
 
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
 
-=======
->>>>>>> styling changes to survey.js'
 
 h1 {
   font-size: 72px;
@@ -204,11 +197,7 @@ label {
 
 .rangeslider .rangeslider__fill,
 .rangeslider .rangeslider__handle {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     position: absolute;
-=======
-    position: absolute
->>>>>>> styling changes to survey.js'
 }
 
 .rangeslider,
@@ -230,79 +219,46 @@ label {
 }
 
 .rangeslider-horizontal {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     height: 10px;
     width: 90%;
-=======
-    height: 20px;
-    width: 50%;
->>>>>>> styling changes to survey.js'
     border-radius: 10px
 }
 
 .rangeslider-horizontal .rangeslider__fill {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     height: 90%;
     background: #00bfff;
-=======
-    height: 100%;
-    background: #27ae60;
->>>>>>> styling changes to survey.js'
     border-radius: 10px;
     top: 0
 }
 
 .rangeslider-horizontal .rangeslider__handle {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     width: 15px;
     height: 15px;
     border-radius: 30px;
-=======
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
->>>>>>> styling changes to survey.js'
     top: -10px
 }
 
 .rangeslider-vertical {
     margin: 20px auto;
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     height: 50px;
-=======
-    height: 150px;
->>>>>>> styling changes to survey.js'
     max-width: 10px;
     background: none
 }
 
 .rangeslider-vertical .rangeslider__fill {
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     width: 90%;
     background: #00bfff;
-=======
-    width: 50%;
-    background: #27ae60;
->>>>>>> styling changes to survey.js'
     box-shadow: none;
     bottom: 0
 }
 
 .rangeslider-vertical .rangeslider__handle {
     width: 30px;
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
     height: 30px;
     left: -10px
 }
 
 .slider-vertical .rangeslider__handle:active {
-=======
-    height: 10px;
-    left: -10px
-}
-
-.rangeslider-vertical .rangeslider__handle:active {
->>>>>>> styling changes to survey.js'
     box-shadow: none
 }
 
@@ -351,11 +307,7 @@ label {
   outline: none;
   overflow: hidden;
   position: relative;
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
   width: 90%;
-=======
-  width: 50%;
->>>>>>> styling changes to survey.js'
 }
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -559,11 +511,7 @@ label {
   max-height: 200px;
   position: absolute;
   top: 100%;
-<<<<<<< 7ca74bb964dc3ea95374465a95688ca6ed2cba18
   width: 90%;
-=======
-  width: 47%;
->>>>>>> styling changes
   z-index: 1;
   -webkit-overflow-scrolling: touch;
 }
@@ -694,26 +642,11 @@ label {
     -webkit-transform: rotate(1turn);
   }
 }
-<<<<<<< 7ca74bb964dc3ea95374465a95688ca6ed2cba18
-<<<<<<< 0dac43a12e46c2f08a1da700c1b9e458c6da83c6
 
 .pet-slider {
   width: 32%;
   float: left
 }
-=======
-body {
-  color: #333;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0;
-  padding: 0;
-}
-=======
->>>>>>> styling changes
-
->>>>>>> styling changes to survey.js'
 .container {
   margin-left: auto;
   margin-right: auto;

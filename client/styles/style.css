@@ -1026,7 +1026,9 @@ template {
 }
 
 a {
-    background-color: transparent
+    background-color: transparent;
+    color: grey;
+    font: cicle;
 }
 
 a:active,
