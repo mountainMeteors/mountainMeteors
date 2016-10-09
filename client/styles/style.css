@@ -36,7 +36,7 @@ label {
 
 /* CONTAINERS */
 
-.listing-inner-container {
+.listing-container {
   display: flex;
   border: 1px solid red;
   width: 100%;
@@ -79,9 +79,11 @@ label {
 
 .listing-amenities {
   font-size: 12px;
+  line-height: 1.2;
 }
 
 .listing-fee {
+  line-height: 1.2;
   text-align: center;
   color: green;
 }

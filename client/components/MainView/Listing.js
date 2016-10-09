@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import { putListing } from '../../actionCreators/listingActions.js';
+import { Button } from 'react-bootstrap';
 import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
+
+
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
-
+import { putListing } from '../../actionCreators/listingActions.js';
 import css from '../../styles/style.css';
 
 //Formatting
@@ -181,7 +181,7 @@ class Listing extends React.Component{
     return (
       <div>
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
-            <div className="listing-inner-container">
+            <div className="listing-container">
               <div className="listing-info">
                 <div className="listing-addr-rent">
                   <span className="listing-addr">743 Evergreen Terrace</span>
@@ -221,27 +221,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Listing);
-
-// <BootstrapTable data={this.state.listingsFiltered} hover={true} pagination={true}>
-//   <TableHeaderColumn dataField="location" isKey={true} dataSort={true} dataFormat={ this.addrFormat }>
-//     Address
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="rent" dataSort={true} dataFormat={rentDisplay}>
-//     Rent
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="pets" dataSort={true}>
-//     Pets
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="gym" dataSort={true} dataFormat={intToBool}>
-//     Gym
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.editFormat}>
-//     Edit
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="" dataSort={true} dataFormat={this.photoFormat}>
-//     Photos
-//   </TableHeaderColumn>
-//   <TableHeaderColumn dataField="score" dataSort={true} >
-//     Score
-//   </TableHeaderColumn>
-// </BootstrapTable>
