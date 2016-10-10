@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, { Component, PropTypes} from 'react'
 import { fetchAnswers } from '../../actionCreators/surveysActions'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router'
@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 
 
-class Display extends React.Component {
+class Profile extends React.Component {
   static contextTypes= {
     router: PropTypes.object
   }
@@ -152,4 +152,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
