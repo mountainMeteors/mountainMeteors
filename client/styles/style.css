@@ -81,13 +81,11 @@ label {
 #splash-p {
   color: white
 }
-
 .add-modal {
   display: inline-block;
   margin: 6px;
   float: right;
 }
-
 /*************LISTING FLEXBOX *************/
 
 /* CONTAINERS */
