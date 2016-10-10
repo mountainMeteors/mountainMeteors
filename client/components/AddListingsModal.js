@@ -17,8 +17,9 @@ class AddListingsModal extends React.Component {
   constructor(props){
     console.log('modal receiving props', props);
     super(props);
-    if (props.modalType === 'edit' && props.listing.id === 3) console.log('FOUND ID 3');
-    this.state = {};
+    this.state = {
+      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing'
+    };
 
     //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
@@ -187,7 +188,7 @@ class AddListingsModal extends React.Component {
 
        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
          <Modal.Header closeButton>
-           <Modal.Title>Apartment Listings</Modal.Title>
+           <Modal.Title>{this.state.modalTitle}</Modal.Title>
          </Modal.Header>
          <Modal.Body>
          <div>
@@ -320,11 +321,10 @@ class AddListingsModal extends React.Component {
                </Checkbox>
              </FormGroup>
               {' '}
-             <Button type="submit">
-               Send
-             </Button>
+            <Button bsStyle="primary" type="submit">Send</Button>
            </Form>
          </div>
+         <div>&nbsp;</div>
          </Modal.Body>
          <Modal.Footer>
            <Button onClick={this.close.bind(this)}>Close</Button>
