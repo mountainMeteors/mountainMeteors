@@ -1013,13 +1013,16 @@ label {
   @include border-top-radius($card-border-radius-inner);
   width:100%;
   height: 100%;
-
+}
+.card-img-bottom {
+  @include border-bottom-radius($card-border-radius-inner);
 }
 .card-img-bottom {
   @include border-bottom-radius($card-border-radius-inner);
 }
 
 /***cards*****/
+
 
 
 .card_Neighborhood {
@@ -1106,6 +1109,9 @@ label {
     border-width: 5px;
     height: 25%;
     margin: 15px;
+    width: 30%;
+    height: 30%;
+    margin: 13px;
     background-color: $card-bg;
     // border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
@@ -1125,9 +1131,31 @@ label {
 
 }
 
+.card_Fees {
+    position: relative;
+    display: block;
+    width: 30%;
+    border-width: 5px;
+    height: 30%;
+    margin: 13px;
+    background-color: $card-bg;
+    // border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+    border: $card-border-width solid $card-border-color;
+  }
 
 
+.card-block_Fees {
+  @include clearfix;
+  padding: $card-spacer-x;
+}
 
+.card-img-top_Fees {
+  @include border-top-radius($card-border-radius-inner);
+  width:100%;
+  height: 100%;
+
+}
 
 
 
@@ -1175,7 +1203,6 @@ label {
     width: 40%;
     height: 350px;
     margin: 12px;
-
 }
 
 .Amenities_Card:hover {
