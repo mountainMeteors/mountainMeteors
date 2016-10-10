@@ -4,7 +4,7 @@ import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
-
+import listingPhotosGallery from './listingPhotosGallery'
 import ListingEntry from './ListingEntry';
 import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
@@ -172,6 +172,8 @@ class Listing extends React.Component{
     )
   }
 };
+
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing}, dispatch);
