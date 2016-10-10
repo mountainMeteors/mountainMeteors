@@ -71,9 +71,7 @@ class ListingEntry extends React.Component{
           <span className="clickable"><Glyphicon glyph="star-empty" /></span>
           <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
 
-          <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span>  
-
-
+          <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span> 
 
           <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
           <Glyphicon glyph="trash" />
