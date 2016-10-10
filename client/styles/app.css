@@ -219,6 +219,7 @@ label {
 }
 
 .rangeslider-horizontal {
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     height: 10px;
     width: 90%;
@@ -226,6 +227,10 @@ label {
     height: 20px;
     width: 30%;
 >>>>>>> styling to survey'
+=======
+    height: 10px;
+    width: 90%;
+>>>>>>> slider edit
     border-radius: 10px
 }
 
@@ -237,6 +242,7 @@ label {
 }
 
 .rangeslider-horizontal .rangeslider__handle {
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     width: 15px;
     height: 15px;
@@ -246,6 +252,11 @@ label {
     height: 25px;
     border-radius: 40px;
 >>>>>>> styling to survey'
+=======
+    width: 15px;
+    height: 15px;
+    border-radius: 30px;
+>>>>>>> slider edit
     top: -10px
 }
 
@@ -257,11 +268,15 @@ label {
 }
 
 .rangeslider-vertical .rangeslider__fill {
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
     width: 90%;
 =======
     width: 50%;
 >>>>>>> styling to survey'
+=======
+    width: 90%;
+>>>>>>> slider edit
     background: #00bfff;
     box-shadow: none;
     bottom: 0
@@ -1100,7 +1115,10 @@ h6,
       font-size: .8em;
       padding: 5px 10px; } }
 
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< e67f0991b33a535ef69e2a74074f69260e5189ca
+=======
+>>>>>>> slider edit
 /*****Dropzone Container *****/
 .AddphotoBox{
   display: -webkit-flex; /* Safari */
@@ -1111,6 +1129,7 @@ h6,
   align-items:         flex-start;
   -webkit-justify-content: space-around; /* Safari */
   justify-content:         space-around;
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 }
 
 
@@ -1245,8 +1264,16 @@ h6,
 
 .Commute_Card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+=======
+>>>>>>> slider edit
 }
 
+
+.photoSlidePreview {
+  display: inline-block;
+  width: 250px;
+  margin-top: 15px;
+}
 /*****************CARD FOR SURVEY CATEGORIES***********/
 
 .rangeWrap {
@@ -1296,7 +1323,7 @@ h6,
 }
 
 .container {
-    padding: 2px 16px;
+    padding: 4px;
 }
 
 
@@ -1305,16 +1332,13 @@ h6,
     box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 30%;
-    height: 20%;    
+    height: 50%;    
     margin: 7px;
 }
 
 .card_Fees:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
-
-
 
 
 .card_Rent {
@@ -1387,7 +1411,9 @@ h6,
 }
 
 
-
+.rangeWrap {
+  display: flex;
+}
 
 
 .main {

@@ -121,11 +121,10 @@ class listingPhotosGallery extends React.Component {
                 >
                 </a>
                 <iframe
-                  width='560'
-                  height='315'
+                  width='400'
+                  height='255'
                   src={item.embedUrl}
-                  frameBorder='0'
-                  allowFullScreen
+                  frameBorder='5'
                 >
                 </iframe>
             </div>
@@ -159,10 +158,8 @@ class listingPhotosGallery extends React.Component {
       let images = []
    this.props.photoFiles.forEach(function(item){
     images.push({
-      thumnail: item,
-      original: item,
-      originalClass: 'featured-slide',
-      thumbnailClass: 'featured-thumb',
+      thumnail: `/${item}`,
+      original: `/${item}`
       // renderItem: this._renderVideo.bind(this)
     })
 

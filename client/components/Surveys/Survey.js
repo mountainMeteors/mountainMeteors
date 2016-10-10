@@ -223,6 +223,7 @@ class Survey extends Component {
       <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
       <div >
       <h4>Lets us get to know a little bit about you!</h4>
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
       <p></p>
       </div>
       </Jumbotron>
@@ -328,8 +329,10 @@ class Survey extends Component {
 >>>>>>>  card tile added
       <Jumbotron>
       <h1>Lets us get to know a little bit about you!</h1>
+=======
+>>>>>>> slider edit
       <p></p>
-
+      </div>
       </Jumbotron>
 
 
@@ -535,6 +538,7 @@ class Survey extends Component {
 
 
       <div className='card_Fees'>
+      <div style={{'backgroundImage': 'url(http://localhost:2500/uploads/neighborhood-guide.jpg)'}}>
       <div className='container'>
       <div className='horizontal-slider'>
       <h4> *Square Feet**Your ideal apt size?</h4>
@@ -566,7 +570,10 @@ class Survey extends Component {
       </div>
       </div>
       </div>
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< 079dd127a4caa349fad3ecd192f9ae4d35b8b214
+=======
+>>>>>>> slider edit
       </div>
 
     
@@ -574,10 +581,14 @@ class Survey extends Component {
     <div className='container'>
       <div className='horizontal-slider'>
       <h4>Your ideal commute time?</h4>
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       <div className='rangeWrap'>
 =======
 >>>>>>> styling more
+=======
+      <div className='rangeWrap'>
+>>>>>>> slider edit
       <Select
       name="form-field-name"
       value={this.state.CommuteMinSelected}
@@ -589,12 +600,17 @@ class Survey extends Component {
       value={this.state.CommuteMaxSelected}
       options={CommuteMax}
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
+<<<<<<< 2f095a237aba64f5aec63872945b1a053d341636
 <<<<<<< a0cb4c9f00ae912e3817602cc6e1db156d9269b6
       /> 
       </div>    
 =======
       />     
 >>>>>>> styling more
+=======
+      /> 
+      </div>    
+>>>>>>> slider edit
       <Slider
       min={0}
       max={7}
