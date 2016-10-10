@@ -3,18 +3,20 @@ const db = require('../db.js');
 
 var homeAddress;
 var targetAddress;
+// find target Address from DB
+exports.findtargetDist = function(req, res, next){
+  // request({
+  //
+  // })
+
+
+}
 exports.getDistance = function(req, res, next){
   db('listings').where({
     listing_id: req.params.id
-  }).select('location')
+  }).select('targetAddress')
   .then(function(results){
     homeAddress = results
-  })
-  db('listings').where({
-    listing_id: req.params.id
-  }).select('targetLocation')
-  .then(function(results){
-    targetAddress = results
   })
   res.send({'homeAddress': homeAddress, 'TargetAddress': targetAddress})
 }
@@ -57,6 +59,7 @@ exports.findDistance = function(req, res, next){
       }
   });
 }
+
 
 //
 // exports.findDistance = function(req, res){
