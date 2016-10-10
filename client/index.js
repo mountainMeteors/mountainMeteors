@@ -7,7 +7,7 @@ import AddPhotosModal from './components/MainView/AddPhotosModal';
 import listingPhotosGallery from './components/MainView/listingPhotosGallery';
 
 import Survey from './components/Surveys/Survey'
-import RankingDisplay from './components/Surveys/RankingDisplay'
+import Profile from './components/Surveys/Profile'
 import Welcome from './components/Welcome/Welcome';
 
 import { Router, Route, IndexRoute, browserHistory} from 'react-router';
@@ -20,10 +20,10 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
-        <Route path="survey" component={Survey} /> 
+        <Route path="survey" component={Survey} />
+        <Route path="viewphotos" component={listingPhotosGallery} />
         <Route path="addphotos" component={AddPhotosModal} />
-        <Route path="viewphotos" component={listingPhotosGallery} /> 
-        <Route path="profile" component={RankingDisplay} />
+        <Route path="profile" component={Profile} />
         <Route path="welcome" component={Welcome}/>
       </Route>
     </Router>
