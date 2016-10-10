@@ -218,18 +218,20 @@ class Survey extends Component {
     const { value } = this.state
     return (
       <div>
-      <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
-      <div >
-      <h4>Lets us get to know a little bit about you!</h4>
-      <p></p>
-      </div>
-      </Jumbotron>
 
+      <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
+           <div >
+           <h4>Lets us get to know a little bit about you!</h4>
+           <p></p>
+           </div>
+           </Jumbotron>
 
       <form onSubmit={this.onFormSubmit}>
       <div className="main">
 
-      <div className='card_aptType'>
+
+
+      <div className='card_aptType' style={{'backgroundImage': 'url(http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg)'}} >
       <div className='container'>
 
       <h4>Let's pick apartment type </h4>
@@ -237,11 +239,12 @@ class Survey extends Component {
       name="form-field-name"
       value={this.state.NumberOfRoomsSelected}
       options={NumberOfRooms}
+      multi={true}
       onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
       />
 
       <div className='horizontal-slider'>
-      <h4>Rank Apartment Type ?</h4>
+      <h4></h4>
       <Slider
       min={0}
       max={7}
@@ -258,12 +261,13 @@ class Survey extends Component {
 
 
 
-      <div className='card_Fees'>
+      <div className='card_Fees' style={{'backgroundImage': 'url(http://julep.triplemint.com/wp-content/uploads/2016/03/nofee.jpg)'}}>
       <div className='container'>
       <Select 
       name="form-field-name"
       value={this.state.FeesSelected}
       options={Fees}
+      multi={true}
       onChange={(value) => this.handleChange("FeesSelected", value)}
       />
       <div className='horizontal-slider'>
@@ -282,23 +286,28 @@ class Survey extends Component {
       </div>
 
 
-      <div className='card_Fees'>
+      <div className='card_Fees' style={{'backgroundImage': 'url(http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg)'}}>
       <div className='container'>
+      <div className='rangeWrap'>
+
       <Select
       name="form-field-name"
       value={this.state.RentMinSelected}
       options={RentMin}
+      multi={true}
       onChange={(value) => this.handleChange("RentMinSelected", value)}
       />
       <Select
       name="form-field-name"
       value={this.state.RentMaxSelected}
       options={RentMax}
+      multi={true}
       onChange={(value) => this.handleChange("RentMaxSelected", value)}
       />
+      </div>
 
       <div className='horizontal-slider'>
-      <h4>How important is rent budget from 1 to 7?</h4>
+      <h4></h4>
       <Slider
       min={0}
       max={7}
@@ -313,23 +322,28 @@ class Survey extends Component {
 
 
 
-      <div className='card_Fees'>
-      <div style={{'backgroundImage': 'url(http://localhost:2500/uploads/neighborhood-guide.jpg)'}}>
+      <div className='card_Fees' style={{'backgroundImage': 'url(http://localhost:2500/uploads/neighborhood-guide.jpg)'}}>
+      <div>
       <div className='container'>
       <div className='horizontal-slider'>
-      <h4> *Square Feet**Your ideal apt size?</h4>
+      <h4> Your ideal apt size?</h4>
+
+      <div className='rangeWrap'>
       <Select
       name="form-field-name"
       value={this.state.Sq_ft_MinSelected}
       options={Sq_ft_Min}
+      multi={true}
       onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
       />
       <Select
       name="form-field-name"
       value={this.state.Sq_ft_MaxSelected}
       options={Sq_ft_Max}
+      multi={true}
       onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
-      />     
+      />
+      </div>     
       <Slider
       min={0}
       max={7}
@@ -344,24 +358,30 @@ class Survey extends Component {
       </div>
 
     
-    <div className='Commute_Card'>
+    <div className='Commute_Card' style={{'backgroundImage': 'url(http://cdn.makeuseof.com/wp-content/uploads/2013/03/icon3.png?820756)'}}>
     <div className='container'>
-      <div className='horizontal-slider'>
       <h4>Your ideal commute time?</h4>
+
       <div className='rangeWrap'>
       <Select
       name="form-field-name"
       value={this.state.CommuteMinSelected}
       options={CommuteMin}
+      multi={true}
+
       onChange={(value) => this.handleChange("CommuteMinSelected", value)}
       />
       <Select
       name="form-field-name"
       value={this.state.CommuteMaxSelected}
       options={CommuteMax}
+      multi={true}
+
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
       /> 
       </div>    
+      <div className='horizontal-slider'>
+
       <Slider
       min={0}
       max={7}
@@ -370,14 +390,14 @@ class Survey extends Component {
       />
       <div className='value'>Ranking: {this.state.commuteRank}</div>
       <hr />
-      </div>
-      </div>
+          </div>
+          </div>
       </div>
 
 
-      <div className='Sq_ft'>
+      <div className='Sq_ft' style={{'backgroundImage': 'url(http://www.cvranker.com/img/workwithus/petfriendly.png)'}}>
       <div className='container'>
-      <h4>***PETSSSSS**** Furry Little Friends ?? </h4>
+      <h4>Furry Little Friends ?? </h4>
       <Select 
       name="form-field-name"
       value={this.state.PetSelected}
@@ -387,14 +407,14 @@ class Survey extends Component {
       />
 
       <div className='horizontal-slider'>
-      <h4>Rank pet accomo ?</h4>
+      <h4></h4>
       <Slider className='pet-slider'
       min={0}
       max={7}
       value={this.state.petRank}
       onChange={(value) => this.handleChange("petRank", value)}
       />
-      <div className='value'>Ranking:{this.state.petRank}</div>
+
       <hr />
       </div>
       </div>
@@ -402,7 +422,7 @@ class Survey extends Component {
 
 
       
-      <div className='card_Neighborhood'>
+      <div className='card_Neighborhood' style={{'backgroundImage': 'url(http://toeuropeandbeyond.com/wp-content/uploads/2012/10/things-to-do-in-the-west-village.jpg)'}}>
       <h4>Let's pick your fav neighborhoods </h4>
       <Select
       name="form-field-name"
@@ -413,7 +433,7 @@ class Survey extends Component {
       />
 
       <div className='horizontal-slider'>
-      <h4>Rank neighborhoods ?</h4>
+      <h4></h4>
       <Slider
       min={0}
       max={7}
@@ -427,7 +447,9 @@ class Survey extends Component {
       </div>
       </div>
       
-      <div className='Amenities_Card'>
+      <div className='Amenities_Card' style={{'backgroundImage': 'url(http://www.pridegroup.net/wp-content/uploads/2010/03/amenitiesa.jpg)'}}>
+      <div className='containerPic'  >
+
       <div className='container'>
       <Select
       name="form-field-name"
@@ -437,18 +459,23 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("amenitiesSelected", value)}
       />
       <div className='horizontal-slider'>
-      <h4>How important are amenities ?</h4>
+      <h4></h4>
       <Slider
       min={0}
       max={7}
       value={this.state.amenitiesRank}
       onChange={(value) => this.handleChange("amenitiesRank", value)}
       />
-      <div className='value'>Ranking: {this.state.amenitiesRank}</div>
+      <div className='title'>Ranking: {this.state.amenitiesRank}</div>
       <hr />
       </div>
       </div>
       </div>
+      </div>
+
+
+
+
 
     <div className='Targeded_Location_Card'>
     <div className='container'>
