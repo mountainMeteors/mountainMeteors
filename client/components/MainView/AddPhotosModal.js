@@ -64,14 +64,10 @@ class AddPhotosModal extends React.Component {
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>Apartment Listings</Modal.Title>
+            <Modal.Title> Add Listing Photos </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
-
           <div>
-
-
 
           <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
               <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
