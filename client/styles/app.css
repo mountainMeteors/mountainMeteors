@@ -40,84 +40,6 @@ input, select, button, textarea {
   border-radius: 0.25rem;
 }
 
-/**
- * Base
- */
-
-.bodyPanel {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-
-
-
-
-h1 {
-  font-size: 72px;
-  font-size: 4rem;
-  font-weight: 100;
-  margin-bottom: .5em;
-  color: #267dc0;
-}
-
-.subheader {
-  font-weight: 300;
-  margin-bottom: 1.5em;
-}
-
-.hint {
-  color: #ccc;
-  margin: 2em 0;
-}
-
-.footer {
-  font-weight: 300;
-  padding-top: 2em;
-  margin-top: 2em;
-  border-top: 1px solid #ccc;
-}
-
-.ubilabs {
-  vertical-align: middle;
-}
-
-
-.panel {
-    border: 1px solid #dce0e0;
-    padding: 10px;
-    background-color: #fff;
-    width: 40%;
-    border-radius: 0
-}
-
-ul, li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-li {
-  padding: 3px 0;
-  display: inline-block;
-}
-
-label {
-  margin-left: 5px;
-}
-
 
 
 /* SLIDER -working-DON'T DELETE */
@@ -893,7 +815,7 @@ label {
 }
 
 
-.app .image-gallery,
+.app .image-gallery,we
 .app-sandbox {
   margin: 0 auto;
   width: 65%;
@@ -1024,25 +946,96 @@ label {
 }
 /*****************CARD FOR SURVEY CATEGORIES***********/
 
-  
-.bg {
-  background: url('http://localhost:2500/uploads/banner2.jpg') no-repeat center center !important;
-  position: fixed !important;
-  width: 100% !important;
-  height: 300px !important; /*same height as jumbotron */
-  top:0 !important;
-  left:0 !important;
-  z-index: -1 !important;
+  /****bootstrap*********/
+
+.card {
+  position: relative;
+  display: block;
+  width: 30%;
+  height: 30%;
+  margin: 13px;
+  background-color: $card-bg;
+  // border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+  border: $card-border-width solid $card-border-color;
 }
+
+.card-block {
+  @include clearfix;
+  padding: $card-spacer-x;
+}
+
+.card-title {
+  margin-bottom: $card-spacer-y;
+}
+
+.card-subtitle {
+  margin-top: -($card-spacer-y / 2);
+  margin-bottom: 0;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+
+
+.card {
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
+}
+
+
+.card-img {
+  margin: -1.325rem;
+  @include border-radius($card-border-radius-inner);
+}
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $card-img-overlay-padding;
+}
+
+
+.card-img-top {
+  @include border-top-radius($card-border-radius-inner);
+  width:100%;
+  height: 100%;
+
+}
+.card-img-bottom {
+  @include border-bottom-radius($card-border-radius-inner);
+}
+
+/***cards*****/
+
 
 .card_Neighborhood {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
     height: 350px;
-    margin: 7px;
+    margin: 11px;
 }
 
+.image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  transition: 0.1s linear;
+  }
 
 .card_Neighborhood:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -1061,7 +1054,7 @@ label {
     display: flex;
     flex-direction: column;
     height: 45%;
-    margin: 10px;
+    margin: 15px;
 }
 .card_aptType:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -1080,16 +1073,71 @@ label {
 
 
 .card_Fees {
-    box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+    position: relative;
+    display: block;
     width: 30%;
-    height: 50%;    
-    margin: 10px;
+    height: 30%;
+    margin: 13px;
+    background-color: $card-bg;
+    // border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+    border: $card-border-width solid $card-border-color;
+  }
+
+
+.card-block_Fees {
+  @include clearfix;
+  padding: $card-spacer-x;
 }
+
+.card-img-top_Fees {
+  @include border-top-radius($card-border-radius-inner);
+  width:100%;
+  height: 100%;
+
+}
+
+
+
+.card_Fees {
+    position: relative;
+    display: block;
+    width: 30%;
+    border-width: 5px;
+    height: 30%;
+    margin: 13px;
+    background-color: $card-bg;
+    // border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+    border: $card-border-width solid $card-border-color;
+  }
+
+
+.card-block_Fees {
+  @include clearfix;
+  padding: $card-spacer-x;
+}
+
+.card-img-top_Fees {
+  @include border-top-radius($card-border-radius-inner);
+  width:100%;
+  height: 100%;
+
+}
+
+
+
+
+
+
+
+
 
 .card_Fees:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+
 
 
 .card_Rent {
@@ -1097,7 +1145,7 @@ label {
     transition: 0.3s;
     width: 30%;
     height: 20%;
-    margin: 7px;
+    margin: 11px;
 
 
 }
@@ -1114,7 +1162,7 @@ label {
     transition: 0.3s;
     width: 30%;
     height: 20%;
-    margin: 7px;
+    margin: 11px;
 }
 
 .Sq_ft:hover {
@@ -1126,7 +1174,7 @@ label {
     transition: 0.3s;
     width: 40%;
     height: 350px;
-    margin: 7px;
+    margin: 11px;
 
 }
 
@@ -1140,7 +1188,7 @@ label {
     transition: 0.3s;
     width: 30%;
     height: 20%;
-    margin: 7px;
+    margin: 11px;
 
 }
 

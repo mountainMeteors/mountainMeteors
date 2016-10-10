@@ -177,34 +177,34 @@ class Survey extends Component {
   onFormSubmit = (event)=> {              //onSubmit fn
     event.preventDefault();           //Stops refresh
     var surveyResponses = {            //Obj holding user details
-      neighborhoodRank: this.state.neighborhoodRank,
-      Neighborhoods: this.state.NeighborhoodsSelected,
+      neighborhoodRank: this.state.neighborhoodRank || 'None Selected',
+      Neighborhoods: this.state.NeighborhoodsSelected || 'None Selected',
 
-      rentRank: this.state.rentRank,
-      RentMin: this.state.RentMinSelected,
-      RentMax: this.state.RentMaxSelected,      
+      rentRank: this.state.rentRank || 'None Selected',
+      RentMin: this.state.RentMinSelected || 'None Selected',
+      RentMax: this.state.RentMaxSelected || 'None Selected',      
 
-      NumberOfRooms: this.state.NumberOfRoomsSelected,
-      numberOfRoomsRank: this.state.numberOfRoomsRank,
+      NumberOfRooms: this.state.NumberOfRoomsSelected || 'None Selected',
+      numberOfRoomsRank: this.state.numberOfRoomsRank || 'None Selected',
 
       targetedLocation: this.state.targetedLocation,
 
-      petRank: this.state.petRank,
+      petRank: this.state.petRank || 'None Selected',
       Pets: this.state.PetSelected,
 
-      Amenities: this.state.amenitiesSelected,
-      amenitiesRank: this.state.amenitiesRank,
+      Amenities: this.state.amenitiesSelected || 'None Selected',
+      amenitiesRank: this.state.amenitiesRank || 'None Selected',
 
-      feeRank: this.state.feeRank,
-      fees: this.state.FeesSelected,
+      feeRank: this.state.feeRank || 'None Selected',
+      fees: this.state.FeesSelected || 'None Selected',
 
-      sq_ft_Rank: this.state.sq_ft_Rank,
-      Sq_ft_Min: this.state.Sq_ft_MinSelected,
-      Sq_ft_Max: this.state.Sq_ft_MaxSelected,
+      sq_ft_Rank: this.state.sq_ft_Rank || 'None Selected',
+      Sq_ft_Min: this.state.Sq_ft_MinSelected || 'None Selected',
+      Sq_ft_Max: this.state.Sq_ft_MaxSelected || 'None Selected',
 
-      Sq_ft_Rank: this.state.Sq_ft_Rank,
-      Sq_ft_Min: this.state.Sq_ft_MinSelected,
-      Sq_ft_Max: this.state.Sq_ft_MaxSelected,
+      Sq_ft_Rank: this.state.Sq_ft_Rank || 'None Selected',
+      Sq_ft_Min: this.state.Sq_ft_MinSelected || 'None Selected',
+      Sq_ft_Max: this.state.Sq_ft_MaxSelected || 'None Selected',
     }
     console.log("this+++++",this.props.user_id)
     console.log(surveyResponses)
@@ -231,9 +231,10 @@ class Survey extends Component {
 
 
 
-      <div className='card_aptType' style={{'backgroundImage': 'url(http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg)'}} >
-      <div className='container'>
+      <div className='card'> 
+      <img className="card-img-top" src='http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg' />
 
+           <div className='card-block'>
       <h4>Let's pick apartment type </h4>
       <Select 
       name="form-field-name"
@@ -261,8 +262,10 @@ class Survey extends Component {
 
 
 
-      <div className='card_Fees' style={{'backgroundImage': 'url(http://julep.triplemint.com/wp-content/uploads/2016/03/nofee.jpg)'}}>
-      <div className='container'>
+ <div className='card'> 
+ <img className="card-img-top" src='http://www.startyouruprise.com/images/icons/uprise-fees-red.png' />
+
+      <div className='card-block'>
       <Select 
       name="form-field-name"
       value={this.state.FeesSelected}
@@ -286,8 +289,11 @@ class Survey extends Component {
       </div>
 
 
-      <div className='card_Fees' style={{'backgroundImage': 'url(http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg)'}}>
-      <div className='container'>
+
+
+      <div className='card'> 
+      <img className="card-img-top" src='http://www.njrealtyhomes.com/uploads/agent-1/Fee-Icon.png' />
+           <div className='card-block'>
       <div className='rangeWrap'>
 
       <Select
@@ -322,9 +328,11 @@ class Survey extends Component {
 
 
 
-      <div className='card_Fees' style={{'backgroundImage': 'url(http://localhost:2500/uploads/neighborhood-guide.jpg)'}}>
-      <div>
-      <div className='container'>
+      <div className='card'> 
+      <img className="card-img-top" src='http://www.freeiconspng.com/uploads/bedroom-icon-0.png' />
+
+           <div className='card-block'>
+      <div className='rangeWrap'>
       <div className='horizontal-slider'>
       <h4> Your ideal apt size?</h4>
 
@@ -358,10 +366,9 @@ class Survey extends Component {
       </div>
 
     
-    <div className='Commute_Card' style={{'backgroundImage': 'url(http://cdn.makeuseof.com/wp-content/uploads/2013/03/icon3.png?820756)'}}>
-    <div className='container'>
-      <h4>Your ideal commute time?</h4>
-
+      <div className='card_Fees'>
+      <img className="card-img-top_Fees" src='https://d13yacurqjgara.cloudfront.net/users/247655/screenshots/2905410/benharmancommuteicons_1x.jpg' />
+      <div className='card-block_Fees '>
       <div className='rangeWrap'>
       <Select
       name="form-field-name"
@@ -389,15 +396,16 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("commuteRank", value)}
       />
       <div className='value'>Ranking: {this.state.commuteRank}</div>
-      <hr />
-          </div>
-          </div>
-      </div>
+      <hr/>
+           </div>
+           </div>
+           </div>
 
 
-      <div className='Sq_ft' style={{'backgroundImage': 'url(http://www.cvranker.com/img/workwithus/petfriendly.png)'}}>
-      <div className='container'>
-      <h4>Furry Little Friends ?? </h4>
+   <div className='card_Fees' >
+   <img className="card-img-top_Fees" src='http://www.cvranker.com/img/workwithus/petfriendly.png' />
+
+   <div className='card-block_Fees '>
       <Select 
       name="form-field-name"
       value={this.state.PetSelected}
@@ -415,15 +423,17 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("petRank", value)}
       />
 
-      <hr />
-      </div>
-      </div>
-      </div>
-
+     <hr />
+     </div>
+     </div>
+     </div>
 
       
-      <div className='card_Neighborhood' style={{'backgroundImage': 'url(http://toeuropeandbeyond.com/wp-content/uploads/2012/10/things-to-do-in-the-west-village.jpg)'}}>
-      <h4>Let's pick your fav neighborhoods </h4>
+
+      <div className='card_Fees' >
+      <img className="card-img-top_Fees" src='http://toeuropeandbeyond.com/wp-content/uploads/2012/10/things-to-do-in-the-west-village.jpg' />
+
+      <div className='card-block_Fees '>
       <Select
       name="form-field-name"
       value={this.state.NeighborhoodsSelected}
@@ -446,11 +456,14 @@ class Survey extends Component {
       <hr />
       </div>
       </div>
+      </div>
       
-      <div className='Amenities_Card' style={{'backgroundImage': 'url(http://www.pridegroup.net/wp-content/uploads/2010/03/amenitiesa.jpg)'}}>
-      <div className='containerPic'  >
+    
 
-      <div className='container'>
+    <div className='card_Fees' >
+    <img className="card-img-top_Fees" src='http://www.islandcityrentalproperties.com/wp-content/uploads/amenity-icon-fitness.png' />
+
+    <div className='card-block_Fees '>
       <Select
       name="form-field-name"
       value={this.state.amenitiesSelected}
@@ -468,13 +481,10 @@ class Survey extends Component {
       />
       <div className='title'>Ranking: {this.state.amenitiesRank}</div>
       <hr />
-      </div>
-      </div>
-      </div>
-      </div>
-
-
-
+            </div>
+            </div>
+            </div>
+            
 
 
     <div className='Targeded_Location_Card'>
@@ -490,7 +500,7 @@ class Survey extends Component {
       onChange={this.handleChangeLocation}
       />
       <FormControl.Feedback />
-      <HelpBlock>Validation is based on valid address.</HelpBlock>
+      <HelpBlock>Enter the address of your commute destination</HelpBlock>
       </FormGroup>
       </div>
       </div>
