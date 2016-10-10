@@ -26,6 +26,14 @@ class LoginPopover extends React.Component {
     this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword, id: this.props.user_id});
   }
 
+  close() {
+    this.setState({ showPopover: false });
+  }
+
+  open() {
+    this.setState({ showPopover: true });
+  }
+
   render() {
     return (
       <div>
@@ -38,18 +46,18 @@ class LoginPopover extends React.Component {
               <FormGroup controlId="loginPassword">
                 <FormControl name="loginPassword" type="password" value={this.state.loginPassword} placeholder="password" onChange={this.handleInputChange}/>
               </FormGroup>
-            <Col smOffset={8} sm={1}>
-              <Button bsStyle="primary" bsSize="small" type="submit">
-              Login
+
+              <Button className="welcomeButton" bsStyle="primary" bsSize="small" type="submit">
+              Log In
               </Button>
-            </Col>
+
             </Form>
           </Popover>
         }>
-          <Button>Login</Button>
+          <Button placement="right">Log In</Button>
         </OverlayTrigger>
      </div>
-   );
+   )
  }
 };
 

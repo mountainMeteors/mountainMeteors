@@ -72,12 +72,11 @@ class MainView extends React.Component {
   render() {
     return (
       <div>
-        <Col xs={12} sm={8} md={8} lg={7.5} id="leftcol">
+        <Col xs={12} sm={8} md={9} lg={7.5} id="leftcol">
           <GoogMap listings={this.props.listings} origin={tempOrigin} />
         </Col>
 
-        <Col xs={12} sm={4} md={4} lg={4.5} id="rightcol">
-          <AddListingsModal modalType="add" scraper = {this.props.scraper} />
+        <Col xs={12} sm={4} md={3} lg={4.5} id="rightcol">
           <Listing listings={this.props.listings} prefs={this.props.userPrefs} />
         </Col>
       </div>

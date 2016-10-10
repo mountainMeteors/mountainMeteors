@@ -1,6 +1,14 @@
+h1.title {
+  display:inline-block;
+}
+/*TODO: Above is temp fix. Should just create it as a styled span.*/
 
 #header {
     background-color: ##FAEBD7 ;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 #leftcol {
@@ -13,7 +21,7 @@
 
 #rightcol {
   background-color: #ffffff;
-  overflowY: 'auto';
+  /*overflowY: 'auto';*/
   padding: 0;
   height: 450px;
   padding-bottom: '50px';
@@ -32,12 +40,87 @@ label {
     margin-bottom: 5px
 }
 
+/*************LISTING FLEXBOX *************/
 
+/* CONTAINERS */
 
+.listing-block {
+  display: inline-block;
+  width: 100%;
+}
+
+.listing-container {
+  display: flex;
+  background-color: #fff;
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  height: 100px;
+  overflowY: scroll;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /*margin-right: auto;*/
+}
+
+.listing-icons {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  margin-left: 8px;
+  margin-right: 6px;
+}
+
+.listing-amenities-fee {
+  display: flex;
+  margin-top: auto;
+  /*align-self: flex-end;*/
+  /*align-items: flex-end;*/
+}
+
+.listing-photo {
+  width: 135px; /* TODO: Make this dynamically = height instead of estimate*/
+  /*margin-left: auto;*/
+  float: right;
+}
+
+/* TEXT STYLES */
+.listing-addr-rent {
+  display: inline-block;
+  width: 100%;
+}
+
+.listing-addr {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+}
+
+.listing-rent, .listing-pets {
+  display: block;
+  float: right;
+}
+
+.listing-amenities-fee {
+  line-height: 1.2;
+  /*vertical-align: bottom;*/
+}
+
+.listing-amenities {
+  width: 100%;
+  font-size: 12px;
+}
+
+.listing-fee {
+  text-align: center;
+  color: green;
+}
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
- 
+
 .Select {
   position: relative;
 }
@@ -844,7 +927,7 @@ td.react-bs-container-body {
 body {
   font-family: sans-serif;
   background-color: #eee;
-  text-align: center;
+  /*text-align: center;*/
   margin-top: 100px;
 }
 
@@ -1423,4 +1506,6 @@ th {
       font-size: .8em;
       padding: 5px 10px; } }
 
-
+.welcomeButton {
+  float: right;
+  margin-bottom: 10px; }
