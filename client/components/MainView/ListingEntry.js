@@ -68,23 +68,26 @@ class ListingEntry extends React.Component{
             </div>
           </div>
           <div className="listing-icons">
-                      <span className="clickable"><Glyphicon glyph="star-empty" /></span>
-                      <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
-                      <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span> 
+          <span className="clickable"><Glyphicon glyph="star-empty" /></span>
+          <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
+
+          <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span>  
+
+           <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span> 
 
 
-                      <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
-                        <Glyphicon glyph="trash" />
-                      </span>
-                    </div>
-                    <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
-          };
-        
+          <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
+          <Glyphicon glyph="trash" />
+          </span>
+          </div>
+          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
+          </div>
+          </div>
+          </div>
+          )
+  }
+};
+
         function mapStateToProps(state){
           console.log('mapppp staeeee******',state.photoFiles.all)
           return { 
