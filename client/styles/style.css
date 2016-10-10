@@ -61,6 +61,26 @@ label {
     float: left;
     margin-bottom: 5px
 }
+/* ########## Splash Page Stuff #########*/
+#splash {
+  background: url("../../uploads/splash.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+
+  /*-webkit-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);*/
+}
+
+#splash-title {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+#splash-p {
+  color: white
+}
 
 .add-modal {
   display: inline-block;
@@ -1529,4 +1549,3 @@ th {
 .welcomeButton {
   float: right;
   margin-bottom: 10px; }
-
