@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPhotos } from '../../actionCreators/photoActions'
-
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Glyphicon, Modal } from 'react-bootstrap';
 import ImageGallery from 'react-image-gallery';
 import css from '../../styles/app.css'
 
@@ -26,10 +26,21 @@ class listingPhotosGallery extends React.Component {
       showNav: true,
       slideInterval: 2000,
       showVideo: {},
-      requireContext: require.context("../../../uploads", true, /^\.\/.*\.jpg$/)
+      showModal: false,
     };
+
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+
+  }
+ 
+  close() {
+    this.setState({ showModal: false });
   }
 
+  open() {
+    this.setState({ showModal: true });
+  }
   
   componentDidUpdate(prevProps, prevState) {
     if (this.state.slideInterval !== prevState.slideInterval) {
@@ -111,6 +122,7 @@ class listingPhotosGallery extends React.Component {
 
   _renderVideo(item) {
     return (
+      <div>
       <div className='image-gallery-image'>
         {
           this.state.showVideo[item.embedUrl] ?
@@ -139,10 +151,10 @@ class listingPhotosGallery extends React.Component {
                     style={{right: '0', left: 'initial'}}
                   >
                     {item.description}
-                  </span>
-              }
+                  </span> }
             </a>
         }
+      </div>
       </div>
     );
   }
@@ -169,6 +181,16 @@ console.log('imagesssssss', images)
 
     return (
       <div>
+        <div onClick={this.open.bind(this)}>
+          <Glyphicon glyph="film" />
+        </div>
+      <div>
+      <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal.Header closeButton>
+          <Modal.Title> Add Listing Photos </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+      <div>
       <section className='app'>
         <ImageGallery
           ref={i => this._imageGallery = i}
@@ -191,10 +213,16 @@ console.log('imagesssssss', images)
           slideOnThumbnailHover={this.state.slideOnThumbnailHover}
         />
       </section>
-   
-
-
             </div>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button onClick={this.close.bind(this)}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+    </div>
+    </div>
+
     );
   }
 }
