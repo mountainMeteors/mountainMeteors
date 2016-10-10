@@ -10,9 +10,8 @@ import css from '../../styles/app.css'
 
 
 class listingPhotosGallery extends React.Component {
-
-  constructor(props) {
-    super();
+ constructor(props) {
+    super(props);
     this.state = {
       showIndex: false,
       slideOnThumbnailHover: false,
@@ -239,4 +238,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchPhotos }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(listingPhotosGallery);
+
+export default connect(mapStateToProps, mapDispatchToProps) (listingPhotosGallery);

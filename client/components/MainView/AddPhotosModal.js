@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
+import listingPhotosGallery from './listingPhotosGallery'
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
 import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Glyphicon, Modal } from 'react-bootstrap';
@@ -80,7 +81,9 @@ class AddPhotosModal extends React.Component {
               </div> : null}
               <Button type="submit" className="btn btn-primary" id="buttonNew">Submit</Button>
              </form>
-
+    
+    
+    <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span>  
 
           </div>
 
