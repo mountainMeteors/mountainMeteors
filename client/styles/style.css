@@ -1,3 +1,7 @@
+h1.title {
+  display:inline-block;
+}
+/*TODO: Above is temp fix. Should just create it as a styled span.*/
 
 #header {
     background-color: ##FAEBD7 ;
@@ -40,6 +44,11 @@ label {
 
 /* CONTAINERS */
 
+.listing-block {
+  display: inline-block;
+  width: 100%;
+}
+
 .listing-container {
   display: flex;
   background-color: #fff;
@@ -52,12 +61,14 @@ label {
 .listing-info {
   display: flex;
   flex-direction: column;
-  margin-right: auto;
+  width: 100%;
+  /*margin-right: auto;*/
 }
 
 .listing-icons {
   display: flex;
   flex-direction: column;
+  float: right;
   margin-left: 8px;
   margin-right: 6px;
 }
@@ -70,18 +81,25 @@ label {
 }
 
 .listing-photo {
-  width: 100px;
+  width: 135px; /* TODO: Make this dynamically = height instead of estimate*/
+  /*margin-left: auto;*/
   float: right;
-  background-image: url("http://localhost:2500/uploads/apt_placeholder.jpg")
 }
 
 /* TEXT STYLES */
+.listing-addr-rent {
+  display: inline-block;
+  width: 100%;
+}
+
 .listing-addr {
   font-size: 20px;
   font-weight: bold;
+  float: left;
 }
 
 .listing-rent, .listing-pets {
+  display: block;
   float: right;
 }
 

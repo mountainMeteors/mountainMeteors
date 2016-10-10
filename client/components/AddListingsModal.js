@@ -15,40 +15,40 @@ import { getDistance } from '../util/distUtil';
 
 class AddListingsModal extends React.Component {
   constructor(props){
+    console.log('modal receiving props', props);
     super(props);
-    this.state = {};
+    this.state = {
+      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing'
+    };
+
+    //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
-    this.state.location = props.listing ? props.listing.location : '';
-    this.state.rent = props.listing ? props.listing.rent : '';
-    this.state.pets = props.listing ? props.listing.pets : '';
-    this.state.lat = props.listing ? props.listing.lat : 0;
-    this.state.lng = props.listing ? props.listing.lng : 0;
-    this.state.neighborhood = props.listing ? props.listing.neighborhood : '';
-    this.state.squareFeet = props.listing ? props.listing.squareFeet : '';
-    this.state.bedrooms = props.listing ? props.listing.bedrooms : '';
-    this.state.bathrooms = props.listing ? props.listing.bathrooms : '';
-    this.state.dishwasher = props.listing ? props.listing.dishwasher : 'off';
-    this.state.gym = props.listing ? props.listing.gym : 'off';
-    this.state.laundry = props.listing ? props.listing.laundry : 'off';
-    this.state.doorman = props.listing ? props.listing.doorman : 'off';
-    this.state.noFee = props.listing ? props.listing.noFee : 'off';
-    this.state.roof = props.listing ? props.listing.roof : 'off';
-    this.state.garage = props.listing ? props.listing.garage : 'off';
-    this.state.pool = props.listing ? props.listing.pool : 'off';
-    this.state.outdoorSpace = props.listing ? props.listing.outdoorSpace : 'off';
-    this.state.url = props.listing ? props.listing.url : '';
+    let properties = [
+      'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms',
+      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'outdoorSpace', 'url'
+    ];
+    properties.forEach(property => {
+      if (props.listing && props.listing[property] !== null) {
+        this.state[property] = props.listing[property];
+      } else {
+        this.state[property] = '';
+      }
+    });
 
     this.state.showModal = false;
 
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleBox = this.toggleBox.bind(this);
     this.handleGeoChange = this.handleGeoChange.bind(this);
     this.onModalSubmit = this.onModalSubmit.bind(this);
     this.onGeoSelect = this.onGeoSelect.bind(this);
     this.scrapeListingSubmit = this.scrapeListingSubmit.bind(this);
     this.getDistanceSubmit = this.getDistanceSubmit.bind(this);
   }
+
 
   componentWillReceiveProps(newProps) {
     console.log("ding ding ding", newProps.scrapeData);
@@ -78,9 +78,22 @@ class AddListingsModal extends React.Component {
   }
 
   handleChange = (input) => {
+    console.log('changed input', input);
     console.log('changed at', input.target.name, input.target.value);
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
+    console.log('setting state', stateObj);
+    this.setState(stateObj);
+    console.log('state.gym', this.state.gym);
+  }
+
+  //TODO: Need to allow edit modal to pick up on previous values
+  toggleBox = (input) => {
+    let amenity = input.target.name;
+    console.log('toggled box from', amenity, this.state[amenity]);
+    var stateObj = {};
+    stateObj[amenity] = this.state[amenity] === 1 ? 0 : 1;
+    console.log('setting state', stateObj);
     this.setState(stateObj);
   }
 
@@ -175,7 +188,7 @@ class AddListingsModal extends React.Component {
 
        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
          <Modal.Header closeButton>
-           <Modal.Title>Apartment Listings</Modal.Title>
+           <Modal.Title>{this.state.modalTitle}</Modal.Title>
          </Modal.Header>
          <Modal.Body>
          <div>
@@ -268,51 +281,50 @@ class AddListingsModal extends React.Component {
              <ControlLabel>Amenities &nbsp; </ControlLabel>
 
                <Checkbox inline name="gym" value={this.state.gym}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Gym
                </Checkbox>
                {' '}
                <Checkbox inline name="laundry" value={this.state.laundry}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Laundry
                </Checkbox>
                {' '}
                <Checkbox inline name="roof" value={this.state.roof}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Roof
                </Checkbox>
                {' '}
                <Checkbox inline name="dishwasher" value={this.state.dishwasher}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Dishwasher
                </Checkbox>
                <Checkbox inline name="outdoorSpace" value={this.state.outdoorSpace}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Outdoor Space
                </Checkbox>
                <Checkbox inline name="elevator" value={this.state.elevator}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Elevator
                </Checkbox>
                <Checkbox inline name="doorman" value={this.state.doorman}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Doorman
                </Checkbox >
                <Checkbox inline name="garage" value={this.state.garage}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Garage
                </Checkbox>
                <Checkbox inline name="pool" value={this.state.pool}
-               onChange={this.handleChange}>
+               onChange={this.toggleBox}>
                  Pool
                </Checkbox>
              </FormGroup>
               {' '}
-             <Button type="submit">
-               Send
-             </Button>
+            <Button bsStyle="primary" type="submit">Send</Button>
            </Form>
          </div>
+         <div>&nbsp;</div>
          </Modal.Body>
          <Modal.Footer>
            <Button onClick={this.close.bind(this)}>Close</Button>
@@ -322,8 +334,6 @@ class AddListingsModal extends React.Component {
    );
  }
 };
-
-//this.props.user_id = store.reducername
 
 function mapStateToProps(state){
   return {
