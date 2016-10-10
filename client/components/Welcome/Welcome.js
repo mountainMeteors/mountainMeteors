@@ -22,12 +22,11 @@ class Welcome extends React.Component {
   render() {
     return (
       <div>
-        <p>Welcome to seekPad!</p>
-        <p>The days of a stressful apartment search are over. There are so many
-        things to consider in finding the right home for you, and we'll help you
-        cover all the bases.</p>
-        <p>Come log in, and we'll get you started!</p>
-        <img src="https://media2.popsugar-assets.com/files/2011/07/29/1/192/1922441/26997b08161a923a_ApartmentMoving32.jpg"/>
+        <p>seekPad</p>
+
+
+
+
       </div>
     )
   }
