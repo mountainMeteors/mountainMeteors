@@ -166,15 +166,31 @@ class listingPhotosGallery extends React.Component {
     }
 
  
-      let images = []
-   this.props.photoFiles.forEach(function(item){
-    images.push({
-      thumnail: `/${item}`,
-      original: `/${item}`
-      // renderItem: this._renderVideo.bind(this)
-    })
+      // let images = [{
+      // thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg'
 
-   })
+
+      // }]
+
+      let images = [{
+        thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+        original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+      },
+      {thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg',
+      original: `http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg`},
+      {thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg',
+      original: `http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg`},
+       {thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg',
+      original: `http://cdn-img1.streeteasy.com/nyc/image/89/221376389.jpg`},
+      ];
+   // this.props.photoFiles.forEach(function(item){
+   //  images.push({
+   //    thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+   //    original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+   //    // renderItem: this._renderVideo.bind(this)
+   //  })
+
+   // })
 
 console.log('imagesssssss', images)
 

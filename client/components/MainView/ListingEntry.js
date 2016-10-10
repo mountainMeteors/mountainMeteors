@@ -73,7 +73,6 @@ class ListingEntry extends React.Component{
 
           <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span>  
 
-           <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span> 
 
 
           <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
