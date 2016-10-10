@@ -37,7 +37,7 @@ label {
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
- 
+
 .Select {
   position: relative;
 }
@@ -1423,4 +1423,6 @@ th {
       font-size: .8em;
       padding: 5px 10px; } }
 
-
+.welcomeButton {
+  float: right;
+  margin-bottom: 10px; }

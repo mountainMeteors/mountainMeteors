@@ -88,11 +88,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
-
-// <Popover id="popover-positioned-bottom">
-//   <form onSubmit={this.signUpSubmit}>
-//     <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-//     <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
-//     <button type="submit">Signup</button>
-//   </form>
-// </Popover>
