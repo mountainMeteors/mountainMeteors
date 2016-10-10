@@ -3,7 +3,7 @@ import { Button, Glyphicon } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
-
+import listingPhotosGallery from './listingPhotosGallery'
 import AddListingsModal from '../AddListingsModal'
 import AddPhotosModal from './AddPhotosModal'
 import { Link } from 'react-router';
@@ -26,7 +26,7 @@ class ListingEntry extends React.Component{
   }
 
   componentWillMount() {
-    this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
+    this.state.thumbnail = this.props.fetchPhotos(75);
   }
 
   componentDidMount() {
@@ -68,23 +68,32 @@ class ListingEntry extends React.Component{
             </div>
           </div>
           <div className="listing-icons">
-            <span className="clickable"><Glyphicon glyph="star-empty" /></span>
-            <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
-            <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span>
-            <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
-              <Glyphicon glyph="trash" />
-            </span>
-          </div>
-          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
-          </div>
-        </div>
-      </div>
-    )
-  }
-};
+                      <span className="clickable"><Glyphicon glyph="star-empty" /></span>
+                      <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
+                      <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span> 
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({putListing, fetchPhotos}, dispatch);
-}
 
-export default connect(null, mapDispatchToProps)(ListingEntry);
+                      <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
+                        <Glyphicon glyph="trash" />
+                      </span>
+                    </div>
+                    <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          };
+        
+        function mapStateToProps(state){
+          console.log('mapppp staeeee******',state.photoFiles.all)
+          return { 
+            photoFiles: state.photoFiles.all
+           };
+        }
+
+          function mapDispatchToProps(dispatch) {
+            return bindActionCreators({putListing, fetchPhotos}, dispatch);
+          }
+
+          export default connect(mapStateToProps, mapDispatchToProps)(ListingEntry);

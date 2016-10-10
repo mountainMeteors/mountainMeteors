@@ -77,9 +77,7 @@ class AddPhotosModal extends React.Component {
               <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
                   <div> Drop photos of your future apartment here</div>
               </Dropzone>
-              <button type="button" onClick={this.onOpenClick}>
-              Upload photos
-              </button>
+             
               {this.state.photos.length > 0 ? <div>
               <h2>Uploading your {this.state.photos.length} photos...</h2>
               <div className='AddphotoBox'>{this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}</div>
