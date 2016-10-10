@@ -10,15 +10,15 @@ html, body {
   height: 100%;
 }
 
+.no-scroll {
+  overflow-y: hidden;
+}
 
 .scroll {
   /*height: 100%;*/
   overflow-y: scroll;
 }
 
-/*.no-scroll {
-  overflow-y: hidden;
-}*/
 
 h1.title {
   display:inline-block;
@@ -60,6 +60,26 @@ label {
     max-width: 100%;
     float: left;
     margin-bottom: 5px
+}
+/* ########## Splash Page Stuff #########*/
+#splash {
+  background: url("../../uploads/splash.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+
+  /*-webkit-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);*/
+}
+
+#splash-title {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+#splash-p {
+  color: white
 }
 
 .add-modal {
@@ -972,6 +992,10 @@ h1 {
 
 
 
+
+/*************SLIDER *************/
+
+
 .label,
 sub,
 sup {
@@ -1190,6 +1214,15 @@ td,
 th {
     padding: 0
 }
+
+
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+
+
+
+
+
+
 
 
 
@@ -1529,4 +1562,502 @@ th {
 .welcomeButton {
   float: right;
   margin-bottom: 10px; }
+  /*****Wen**********/
+  /*************GALLERY SLIDE *************************/
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+  }
 
+  ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 3px 0;
+    display: inline-block;
+  }
+
+  label {
+    margin-left: 5px;
+  }
+
+  .app {
+    width: 70%;
+    height: 70%;
+    display: flex
+  }
+
+  .app-header {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .play-button {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 60px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+  }
+
+  .play-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 16.5px;
+    left: 40px;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 12.5px 0 12.5px 20px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+  }
+
+  .close-video::before {
+    content: '✖';
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    padding: 20px;
+    z-index: 1;
+    line-height: .7;
+    display: block;
+    color: #fff;
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding: 33.35% 0; /* 16:9 */
+    height: 0;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+  }
+
+
+  .app .image-gallery,we
+  .app-sandbox {
+    margin: 0 auto;
+    width: 65%;
+    transition: all 1s ease;
+  }
+
+
+  @media (max-width: 1320px) {
+    .app-sandbox-content {
+      padding: 0 20px;
+    }
+  }
+
+  .app-sandbox {
+    margin: 40px auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  .app-buttons li {
+    display: table-cell;
+  }
+
+  .app-buttons li + li {
+    padding-left: 10px;
+  }
+
+  @media (max-width: 768px) {
+
+    .app-header {
+      font-size: 20px;
+    }
+
+    .app-buttons li {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .app-buttons li + li {
+      padding: 0;
+    }
+
+    .play-button {
+      height: 40px;
+      width: 65px;
+    }
+
+    .play-button:after {
+      top: 11px;
+      left: 27px;
+      border-width: 8.5px 0 8.5px 12px;
+    }
+
+    .close-video::before {
+      font-size: 16px;
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .app .image-gallery,
+    .app-sandbox {
+      width: 70%;
+    }
+  }
+
+  .app-interval-input-group {
+    display: table;
+  }
+
+  .app-interval-label {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    border: 3px solid #ccc;
+    border-right: none;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .app-interval-input {
+    -webkit-appearance: none;
+    display: table-cell;
+    margin: 0;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 3px solid #ccc;
+    width: 65px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .app-checkboxes {
+    margin-top: 10px;
+  }
+
+  .app-checkboxes li {
+    display: block;
+  }
+
+
+  /*****Dropzone Container *****/
+  .AddphotoBox{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    -webkit-flex-flow: row wrap; /* Safari */
+    flex-flow:         row wrap;
+    -webkit-align-items: flex-start; /* Safari */
+    align-items:         flex-start;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
+  }
+
+
+  .photoSlidePreview {
+    display: inline-block;
+    width: 250px;
+    margin-top: 15px;
+  }
+  /*****************CARD FOR SURVEY CATEGORIES***********/
+
+    /****bootstrap*********/
+  .card {
+    position: relative;
+    display: block;
+    width: 24%;
+    height: 24%;
+    margin: 13px;
+    background-color: $card-bg;
+    // border: $card-border-width solid $card-border-color;
+    @include border-radius($card-border-radius);
+    border: $card-border-width solid $card-border-color;
+  }
+
+  .card-block {
+    @include clearfix;
+    padding: $card-spacer-x;
+  }
+
+  .card-title {
+    margin-bottom: $card-spacer-y;
+  }
+
+  .card-subtitle {
+    margin-top: -($card-spacer-y / 2);
+    margin-bottom: 0;
+  }
+
+  .card-text:last-child {
+    margin-bottom: 0;
+  }
+
+
+
+  .card {
+    > .list-group:first-child {
+      .list-group-item:first-child {
+        @include border-top-radius($card-border-radius);
+      }
+    }
+
+    > .list-group:last-child {
+      .list-group-item:last-child {
+        @include border-bottom-radius($card-border-radius);
+      }
+    }
+  }
+
+
+  .card-img {
+    margin: -1.325rem;
+    @include border-radius($card-border-radius-inner);
+  }
+  .card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: $card-img-overlay-padding;
+  }
+
+
+  .card-img-top {
+    @include border-top-radius($card-border-radius-inner);
+    width:100%;
+    height: 100%;
+
+  }
+  .card-img-bottom {
+    @include border-bottom-radius($card-border-radius-inner);
+  }
+
+  .card_Neighborhood {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 40%;
+      height: 350px;
+      margin: 11px;
+  }
+
+  .image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    transition: 0.1s linear;
+    }
+
+  .card_Neighborhood:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  .title {
+    text-align: center;
+  }
+
+
+  .card_aptType {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      height: 25%;
+      margin: 15px;
+  }
+  .card_aptType:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .containerPic {
+      padding: 4px;
+  }
+
+  .container {
+      padding: 4px;
+      vertical-align : bottom !important;
+      margin-top: auto;
+  }
+
+
+
+
+  .card_Fees {
+      position: relative;
+      display: block;
+      width: 25%;
+      height: 25%;
+      margin: 15px;
+      background-color: $card-bg;
+      // border: $card-border-width solid $card-border-color;
+      @include border-radius($card-border-radius);
+      border: $card-border-width solid $card-border-color;
+    }
+
+
+  .card-block_Fees {
+    @include clearfix;
+    padding: $card-spacer-x;
+  }
+
+  .card-img-top_Fees {
+    @include border-top-radius($card-border-radius-inner);
+    width:100%;
+    height: 100%;
+
+  }
+
+
+
+  .card_Fees {
+      position: relative;
+      display: block;
+      width: 25%;
+      border-width: 5px;
+      height: 25%;
+      margin: 15px;
+      background-color: $card-bg;
+      // border: $card-border-width solid $card-border-color;
+      @include border-radius($card-border-radius);
+      border: $card-border-width solid $card-border-color;
+    }
+
+
+  .card-block_Fees {
+    @include clearfix;
+    padding: $card-spacer-x;
+  }
+
+  .card-img-top_Fees {
+    @include border-top-radius($card-border-radius-inner);
+    width:100%;
+    height: 100%;
+
+  }
+
+
+
+
+  .card_Fees:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+
+
+  .card_Rent {
+      box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 30%;
+      height: 20%;
+      margin: 11px;
+
+
+  }
+
+  .card_Rent:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+
+
+  .Sq_ft {
+      box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 25%;
+      height: 25%;
+      margin: 11px;
+  }
+
+  .Sq_ft:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .Amenities_Card {
+      box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 40%;
+      height: 350px;
+      margin: 12px;
+  }
+
+  .Amenities_Card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  .Targeded_Location_Card {
+      box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 30%;
+      height: 20%;
+      margin: 12px;
+
+  }
+
+  .Targeded_Location_Card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .Commute_Card {
+      box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 30%;
+      height: 20%;
+      margin: 12px;
+
+  }
+
+  .Commute_Card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  .rangeWrap {
+    display: flex;
+    flex direction: column;
+  }
+
+
+  .main {
+    padding: 45px;
+    border: 1px solid #c3c3c3;
+    resize: none;
+    width:100%;
+    display: flex;
+    flex direction: column;
+    -webkit-flex-wrap: wrap; /* Safari */
+
+    font-family: 'Raleway', sans-serif;
+    height:100%;
+    background-color: #ffffff;
+    position:relative;
+    box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
+  }
