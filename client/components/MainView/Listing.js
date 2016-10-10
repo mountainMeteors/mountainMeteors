@@ -176,7 +176,10 @@ class Listing extends React.Component{
 
 
 
+<<<<<<< abeaccc193dfef856182af18db0e1de37e237170
 
+=======
+>>>>>>> listingEntrymapState
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing}, dispatch);
 }
