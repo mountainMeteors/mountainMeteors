@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import { Nav, Navbar, NavItem, Header, Brand } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import css from '../../styles/style.css';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -71,6 +71,18 @@ class Header extends React.Component {
       <h1 className="title">
         <Link to="/">seekPad</Link>
       </h1>
+      {this.props.authenticated ?
+        <Button
+          bsStyle="success"
+          style={{'display':'inline', 'float': 'right'}}
+          onClick={() => {browserHistory.push('/profile')}}
+        >
+          Profile
+        </Button>
+
+        :
+        ''
+      }
     </nav>
   );
  }
@@ -88,11 +100,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
-
-// <Popover id="popover-positioned-bottom">
-//   <form onSubmit={this.signUpSubmit}>
-//     <input name="signUpEmail" value={this.state.signUpEmail} placeholder="e-mail" onChange={this.handleInputChange}></input>
-//     <input name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}></input>
-//     <button type="submit">Signup</button>
-//   </form>
-// </Popover>

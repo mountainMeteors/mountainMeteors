@@ -84,7 +84,7 @@ class AddPhotosModal extends React.Component {
               <h2>Uploading {this.state.photos.length} photos...</h2>
               <div>{this.state.photos.map((photo) => <img key={photo[0].name} src={photo[0].preview} /> )}</div>
               </div> : null}
-              <button type="submit" className="btn btn-primary" id="buttonNew">Submit</button>
+              <Button type="submit" className="btn btn-primary" id="buttonNew">Submit</Button>
              </form>
 
 
