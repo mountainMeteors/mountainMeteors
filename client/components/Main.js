@@ -38,12 +38,12 @@ class Main extends React.Component{
 
   render() {
     return (
-      <div>
-        <Grid fluid={ true }>
+      <div className="fh no-scroll">
+        <Grid fluid={ true } className="fh">
           <Row id="header">
             <Header />
           </Row>
-          <Row className="bodyrow">
+          <Row className="bodyrow fh">
             {
               this.props.hasUserInfo ?
               React.cloneElement({...this.props}.children, {...this.props}) :
