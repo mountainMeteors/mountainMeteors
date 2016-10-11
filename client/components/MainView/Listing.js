@@ -162,7 +162,7 @@ class Listing extends React.Component{
 
   render() {
     return (
-      <div>
+      <div className="scroll">
         <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
         <AddListingsModal modalType="add" />
         {this.state.listingsFiltered.map((listing, i) =>
