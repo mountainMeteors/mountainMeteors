@@ -40,17 +40,13 @@ class SignUpPopover extends React.Component {
               <FormGroup controlId="signUpPassword">
               <FormControl name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}/>
               </FormGroup>
-
               <Button className="welcomeButton" bsStyle="primary" bsSize="small" type="submit">
                 Sign Up
               </Button>
-
             </Form>
           </Popover>
         }>
-
           <Button>Sign Up</Button>
-
         </OverlayTrigger>
      </div>
    );
