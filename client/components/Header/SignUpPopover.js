@@ -31,7 +31,7 @@ class SignUpPopover extends React.Component {
   render() {
     return (
       <div>
-        <OverlayTrigger trigger={["focus", "click"]} placement="bottom" overlay={
+        <OverlayTrigger trigger="click" placement="bottom" overlay={
           <Popover id="popover-positioned-bottom">
             <Form onSubmit={this.signUpSubmit}>
               <FormGroup controlId="signUpEmail">
