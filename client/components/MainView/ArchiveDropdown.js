@@ -1,5 +1,6 @@
 import React from 'react';
-import {Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+// import {Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 import AddListingsModal from '../AddListingsModal';
 
 class ArchiveDropdown extends React.Component{
@@ -19,10 +20,10 @@ class ArchiveDropdown extends React.Component{
   render() {
     return (
       <div style={{"display": "inline-block", "width": "100%"}}>
-        <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect} style={{"display": "inline-block"}} activeKey="false">
-          <NavItem eventKey="false" title="active">Active</NavItem>
-          <NavItem eventKey="true" title="archived">Archived</NavItem>
-        </Nav>
+        <Tabs defaultActiveKey="false" onSelect={this.handleSelect} id="uncontrolled-tab-example" style={{"display": "inline-block"}}>
+          <Tab eventKey="false" title="Active" />
+          <Tab eventKey="true" title="Archived" />
+        </Tabs>
         <AddListingsModal modalType="add" />
       </div>
     );
