@@ -7,13 +7,13 @@
   box-sizing: border-box;
 }*/
 
-input, select, button, textarea {
+/*input, select, button, textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   -moz-appearance: none;
   font: inherit;
   color: inherit;
-}
+}*/
 
 
 .btn-block {
@@ -24,7 +24,7 @@ input, select, button, textarea {
 .btn-block + .btn-block {
   margin-top: 0.5rem;
 }
-
+/*
 .form-control {
   display: block;
   width: 90%;
@@ -38,7 +38,7 @@ input, select, button, textarea {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
-}
+}*/
 
 /**
  * Base
@@ -766,7 +766,7 @@ h6,
     line-height: 28px;
   }
 }
-.checkbox-list {
+/*.checkbox-list {
   margin-top: .5em;
   overflow: hidden;
 }
@@ -779,7 +779,7 @@ h6,
   margin-right: .5em;
   position: relative;
   top: -1px;
-}
+}*/
 .switcher {
   color: #999;
   cursor: default;
