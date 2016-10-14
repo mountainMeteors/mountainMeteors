@@ -14,6 +14,7 @@ import { getDistance } from '../util/distUtil';
 // import css from '../styles/app.css';
 
 class AddListingsModal extends React.Component {
+
   constructor(props){
     console.log('modal receiving props', props);
     super(props);
@@ -170,12 +171,11 @@ class AddListingsModal extends React.Component {
 
 
    return (
-     <div>
+     <div className="add-modal">
 
         {this.props.modalType === 'add' ?
           <Button
             bsStyle="primary"
-            bsSize="small"
             onClick={this.open.bind(this)}
           >
             Add

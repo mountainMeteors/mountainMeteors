@@ -55,12 +55,17 @@ h1.title {
   margin-bottom: 0;
 }
 
-
 label {
     display: inline-block;
     max-width: 100%;
     float: left;
     margin-bottom: 5px
+}
+
+.add-modal {
+  display: inline-block;
+  margin: 6px;
+  float: right;
 }
 
 /*************LISTING FLEXBOX *************/
