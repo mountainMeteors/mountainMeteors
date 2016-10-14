@@ -12,12 +12,23 @@ class GoogMap extends React.Component {
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleCloseClick = this.handleCloseClick.bind(this);
+    this.getMarkers = this.getMarkers.bind(this);
   }
 
   componentDidMount() {
     console.log('map mounted props', this.props);
+    this.getMarkers(this.props.listings);
+  }
+
+  componentWillReceiveProps(props) {
+    console.log('map received props', props);
+    this.getMarkers(props.listings);
+  }
+
+  getMarkers(listings) {
+    console.log('getting markers using', listings);
     this.setState({
-      markers: this.props.listings.map(listing => {
+      markers: listings.map(listing => {
         return {
           position: {
             lat: listing.lat,
@@ -31,10 +42,6 @@ class GoogMap extends React.Component {
         }
       })
     });
-  }
-
-  componentWillReceiveProps(props) {
-    console.log('map received props', props);
   }
 
   handleMarkerClick(targetMarker) {
