@@ -98,7 +98,7 @@ router.post('/scrape', function(req, res){
       petPolicyDetails: ['.petPolicyDetails | trim']
     }]),
     neighborhood: ['.neighborhood | trim'],
-    location: ['div.propertyAddress h2 span | trim']
+    location: ['div.propertyNameRow h1 | trim']
   }).stream()
 
   // (function (err, description) {
