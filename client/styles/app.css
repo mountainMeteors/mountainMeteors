@@ -1,11 +1,11 @@
 
 
-*, :before, :after {
+/**, :before, :after {
   margin: 0;
   padding: 0;
   position: relative;
   box-sizing: border-box;
-}
+}*/
 
 input, select, button, textarea {
   -webkit-appearance: none;
@@ -270,7 +270,7 @@ label {
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
- 
+
 .Select {
   position: relative;
 }
@@ -1146,7 +1146,7 @@ h6,
     box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 30%;
-    height: 50%;    
+    height: 50%;
     margin: 7px;
 }
 
@@ -1243,5 +1243,5 @@ h6,
   height:100%;
   background-color: #ffffff;
   position:relative;
-  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
+  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0;
 }
