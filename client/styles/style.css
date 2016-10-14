@@ -85,6 +85,7 @@ label {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 3px 0 3px 10px;
   /*margin-right: auto;*/
 }
 
