@@ -17,7 +17,7 @@ export const signUpUser = function(user){
   });
 
   return {
-    type: 'SIGNUP',
+    type: 'LOGIN',
     payload: request
   };
 }
@@ -28,8 +28,7 @@ export const loginUser = function(user){
 
   const request = axios.post('/api/login', {
     email: user.email,
-    password: user.password,
-    user_id: user.id
+    password: user.password
   },
   {
     headers: {
