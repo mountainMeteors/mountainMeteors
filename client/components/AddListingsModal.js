@@ -194,7 +194,7 @@ class AddListingsModal extends React.Component {
          <div>
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
-            <ControlLabel>Url</ControlLabel>
+            <ControlLabel>URL</ControlLabel>
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
