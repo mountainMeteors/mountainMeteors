@@ -121,6 +121,10 @@ label {
   float: left;
 }
 
+a.listing-addr {
+  color: black;
+}
+
 .listing-rent, .listing-pets {
   display: block;
   float: right;

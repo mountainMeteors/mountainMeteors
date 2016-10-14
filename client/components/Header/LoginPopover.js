@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 
 class LoginPopover extends React.Component {
   constructor(props){
+    console.log('loginpopover taking', props);
     super(props);
 
     this.state = {
@@ -23,7 +24,7 @@ class LoginPopover extends React.Component {
 
   loginSubmit(e) {
     e.preventDefault();
-    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword, id: this.props.user_id});
+    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword});
   }
 
   close() {

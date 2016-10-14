@@ -23,8 +23,10 @@ router.post('/signup', (req, res) => {
     console.log('hashing', hash);
     return db('users')
       .insert({ email: email, password: hash})
-      .then(function() {
-        res.send('account created');
+      .then(function(dbRes) {
+        // res.send(dbRes);
+        var userId = dbRes[0];
+        util.createToken(req, res, userId);
       })
       .catch(function() {
         res.send('username exists');

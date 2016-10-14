@@ -49,7 +49,7 @@ class ListingEntry extends React.Component{
         <div className="listing-container">
           <div className="listing-info">
             <div className="listing-addr-rent">
-              <span className="listing-addr">{this.props.listing.location}</span>
+              <span className="listing-addr"><a href={this.props.listing.url} target="_blank" className="listing-addr">{this.props.listing.location}</a></span>
               <span className="listing-rent">{this.props.listing.rent}</span>
             </div>
             <div className="listing-details">
