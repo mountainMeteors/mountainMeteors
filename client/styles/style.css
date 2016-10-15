@@ -73,7 +73,6 @@ label {
   filter: blur(5px);*/
 }
 
-<<<<<<< HEAD
 video.fullscreen {
   position: fixed;
   top: 50%;
@@ -105,8 +104,6 @@ video.fullscreen {
   font-style: normal;
   font-weight: 900;
 }
-=======
->>>>>>> changes
 
 #splash-p {
   color: white
