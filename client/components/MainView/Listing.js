@@ -2,8 +2,9 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
+
+
 import ArchiveDropdown from './ArchiveDropdown';
-import listingPhotosGallery from './listingPhotosGallery'
 import ListingEntry from './ListingEntry';
 import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
@@ -169,10 +170,6 @@ class Listing extends React.Component{
     return (
       <div className="scroll">
         <ArchiveDropdown toggleArchiveView={this.toggleArchiveView.bind(this)}/>
-      <div>
-        <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
-        <AddListingsModal modalType="add" />
-        <listingPhotosGallery />
         {this.state.listingsFiltered.map((listing, i) =>
           <ListingEntry key={i} listing={listing} />
         )}
@@ -181,12 +178,6 @@ class Listing extends React.Component{
   }
 };
 
-
-
-<<<<<<< abeaccc193dfef856182af18db0e1de37e237170
-
-=======
->>>>>>> listingEntrymapState
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing}, dispatch);
 }
