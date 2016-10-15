@@ -21,6 +21,7 @@ html, body {
 
 
 h1.title {
+  
   display:inline-block;
 }
 /*TODO: Above is temp fix. Should just create it as a styled span.*/
@@ -72,6 +73,17 @@ label {
   filter: blur(5px);*/
 }
 
+video.fullscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translate(-50%, -50%);
+}
 #splash-title {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
