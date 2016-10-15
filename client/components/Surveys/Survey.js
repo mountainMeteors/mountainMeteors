@@ -190,7 +190,7 @@ class Survey extends Component {
       targetedLocation: this.state.targetedLocation,
 
       petRank: this.state.petRank || 'None Selected',
-      Pets: this.state.PetSelected,
+      Pets: this.state.PetSelected || 'None Selected',
 
       Amenities: this.state.amenitiesSelected || 'None Selected',
       amenitiesRank: this.state.amenitiesRank || 'None Selected',
@@ -227,12 +227,9 @@ class Survey extends Component {
            </Jumbotron>
 
       <form onSubmit={this.onFormSubmit}>
-      <div className="main">
-
-
-
+      <div className="main_card">
       <div className='card'> 
-      <img className="card-img-top" src='http://www.multyshades.com/wp-content/uploads/2010/09/471.jpg' />
+      <img className="card-img-top" src='' />
 
            <div className='card-block'>
       <h4>Let's pick apartment type </h4>
@@ -263,7 +260,7 @@ class Survey extends Component {
 
 
  <div className='card'> 
- <img className="card-img-top" src='http://www.startyouruprise.com/images/icons/uprise-fees-red.png' />
+ <img className="card-img-top" src='' />
 
       <div className='card-block'>
       <Select 
@@ -292,7 +289,7 @@ class Survey extends Component {
 
 
       <div className='card'> 
-      <img className="card-img-top" src='http://www.njrealtyhomes.com/uploads/agent-1/Fee-Icon.png' />
+      <img className="card-img-top" src='' />
            <div className='card-block'>
       <div className='rangeWrap'>
 
@@ -329,7 +326,7 @@ class Survey extends Component {
 
 
       <div className='card'> 
-      <img className="card-img-top" src='http://www.freeiconspng.com/uploads/bedroom-icon-0.png' />
+      <img className="card-img-top" src='' />
 
            <div className='card-block'>
       <div className='rangeWrap'>
@@ -366,8 +363,8 @@ class Survey extends Component {
       </div>
 
     
-      <div className='card_Fees'>
-      <img className="card-img-top_Fees" src='https://d13yacurqjgara.cloudfront.net/users/247655/screenshots/2905410/benharmancommuteicons_1x.jpg' />
+      <div className='card'>
+      <img className="card-img" src='' />
       <div className='card-block_Fees '>
       <div className='rangeWrap'>
       <Select
@@ -402,8 +399,8 @@ class Survey extends Component {
            </div>
 
 
-   <div className='card_Fees' >
-   <img className="card-img-top_Fees" src='http://www.cvranker.com/img/workwithus/petfriendly.png' />
+   <div className='card' >
+   <img className="card-img" src='' />
 
    <div className='card-block_Fees '>
       <Select 
@@ -430,8 +427,8 @@ class Survey extends Component {
 
       
 
-      <div className='card_Fees' >
-      <img className="card-img-top_Fees" src='http://toeuropeandbeyond.com/wp-content/uploads/2012/10/things-to-do-in-the-west-village.jpg' />
+      <div className='card' >
+      <img className="card-img" src='' />
 
       <div className='card-block_Fees '>
       <Select
@@ -460,8 +457,8 @@ class Survey extends Component {
       
     
 
-    <div className='card_Fees' >
-    <img className="card-img-top_Fees" src='http://www.islandcityrentalproperties.com/wp-content/uploads/amenity-icon-fitness.png' />
+    <div className='card' >
+    <img className="card-img" src='' />
 
     <div className='card-block_Fees '>
       <Select
