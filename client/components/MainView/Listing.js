@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import AddListingsModal from '../AddListingsModal';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 
-import ArchiveDropdown from './ArchiveDropdown';
 import ListingEntry from './ListingEntry';
 import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
@@ -135,7 +135,6 @@ class Listing extends React.Component{
 
     console.log('setting state to', listingsFiltered);
     this.setState({listingsFiltered});
-    this.forceUpdate();
   }
 
   componentDidUpdate() {
@@ -152,24 +151,20 @@ class Listing extends React.Component{
   }
 
   //Toggles state.showArchived and then updates listing
-  toggleArchiveView(toggleVal) {
-    console.log('toggling arch view to', toggleVal);
-    console.log('type compare', typeof toggleVal, typeof this.state.showArchived);
-    this.setState({showArchived: toggleVal},
+  toggleArchiveView() {
+    // console.log('toggling arch view. before:', this.state.showArchived);
+    this.setState({showArchived: !this.state.showArchived},
       () => {this.filterListings(this.props.listings)}
     );
-    // this.setState({showArchived: !this.state.showArchived},
-    //   () => {this.filterListings(this.props.listings)}
-    // );
     // this.setState({showArchived: !this.state.showArchived});
     // console.log('state arch after', this.state.showArchived);
   }
 
-  // <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
   render() {
     return (
-      <div className="scroll">
-        <ArchiveDropdown toggleArchiveView={this.toggleArchiveView.bind(this)}/>
+      <div>
+        <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
+        <AddListingsModal modalType="add" />
         {this.state.listingsFiltered.map((listing, i) =>
           <ListingEntry key={i} listing={listing} />
         )}
