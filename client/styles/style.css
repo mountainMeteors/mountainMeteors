@@ -73,7 +73,7 @@ label {
   filter: blur(5px);*/
 }
 
-video.fullscreen {
+#background-video {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -90,21 +90,6 @@ video.fullscreen {
   font-style: normal;
   font-weight: 900;
 }
-#splash-p {
-  color: white
-}
-
-  /*-webkit-filter: blur(5px);
-  -o-filter: blur(5px);
-  filter: blur(5px);*/
-}
-
-#splash-title {
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
-  font-weight: 900;
-}
-
 #splash-p {
   color: white
 }
