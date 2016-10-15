@@ -16,6 +16,9 @@ html, body {
   overflow-y: scroll;
 }
 
+/*.no-scroll {
+  overflow-y: hidden;
+}*/
 
 h1.title {
   display:inline-block;
