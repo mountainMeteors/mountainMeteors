@@ -171,7 +171,7 @@ class AddListingsModal extends React.Component {
 
 
    return (
-     <div className="add-modal">
+     <div className={this.props.modalType === "add" ? "add-modal" : ""}>
 
         {this.props.modalType === 'add' ?
           <Button
@@ -321,7 +321,7 @@ class AddListingsModal extends React.Component {
                </Checkbox>
              </FormGroup>
               {' '}
-            <Button bsStyle="primary" type="submit">Send</Button>
+            <Button bsStyle="primary" type="submit" style={{'float':'right'}}>Send</Button>
            </Form>
          </div>
          <div>&nbsp;</div>
