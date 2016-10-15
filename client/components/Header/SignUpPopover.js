@@ -31,7 +31,7 @@ class SignUpPopover extends React.Component {
   render() {
     return (
       <div>
-        <OverlayTrigger trigger={["focus", "click"]} placement="bottom" overlay={
+        <OverlayTrigger trigger="click" placement="bottom" overlay={
           <Popover id="popover-positioned-bottom">
             <Form onSubmit={this.signUpSubmit}>
               <FormGroup controlId="signUpEmail">
@@ -40,17 +40,13 @@ class SignUpPopover extends React.Component {
               <FormGroup controlId="signUpPassword">
               <FormControl name="signUpPassword" type="password" value={this.state.signUpPassword} placeholder="password" onChange={this.handleInputChange}/>
               </FormGroup>
-
               <Button className="welcomeButton" bsStyle="primary" bsSize="small" type="submit">
                 Sign Up
               </Button>
-
             </Form>
           </Popover>
         }>
-
           <Button>Sign Up</Button>
-
         </OverlayTrigger>
      </div>
    );

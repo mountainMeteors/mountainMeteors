@@ -1,10 +1,32 @@
+#root {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+.fh {
+  height: 100%;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.scroll {
+  /*height: 100%;*/
+  overflow-y: scroll;
+}
+
+
 h1.title {
   display:inline-block;
 }
 /*TODO: Above is temp fix. Should just create it as a styled span.*/
 
 #header {
-    background-color: ##FAEBD7 ;
+    background-color: #FAEBD7 ;
 }
 
 .clickable {
@@ -13,7 +35,7 @@ h1.title {
 
 #leftcol {
   background-color: #33ccff;
-  height: 450px;
+  height: 100%;
   padding: 0;
   margin: 0;
   overflow: 'hidden';
@@ -23,15 +45,15 @@ h1.title {
   background-color: #ffffff;
   /*overflowY: 'auto';*/
   padding: 0;
-  height: 450px;
+  height: 100%;
   padding-bottom: '50px';
+  overflow-y: scroll;
 }
 
 #bodyrow {
   height: 100%;
   margin-bottom: 0;
 }
-
 
 label {
     display: inline-block;
@@ -60,6 +82,13 @@ label {
   color: white
 }
 
+.add-modal {
+  display: inline-block;
+  margin: 6px;
+  float: right;
+}
+
+
 /*************LISTING FLEXBOX *************/
 
 /* CONTAINERS */
@@ -82,6 +111,7 @@ label {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 3px 0 3px 10px;
   /*margin-right: auto;*/
 }
 
@@ -116,6 +146,10 @@ label {
   font-size: 20px;
   font-weight: bold;
   float: left;
+}
+
+a.listing-addr {
+  color: black;
 }
 
 .listing-rent, .listing-pets {
