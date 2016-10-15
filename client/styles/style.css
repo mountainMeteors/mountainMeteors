@@ -72,7 +72,10 @@ label {
   -o-filter: blur(5px);
   filter: blur(5px);*/
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae8bf3ba5e7d386870ccce1598b30592d3644f35
 video.fullscreen {
   position: fixed;
   top: 50%;
@@ -84,7 +87,10 @@ video.fullscreen {
   z-index: -100;
   transform: translate(-50%, -50%);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae8bf3ba5e7d386870ccce1598b30592d3644f35
 #splash-title {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -100,6 +106,11 @@ video.fullscreen {
   margin: 6px;
   float: right;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ae8bf3ba5e7d386870ccce1598b30592d3644f35
 /*************LISTING FLEXBOX *************/
 
 /* CONTAINERS */
@@ -1574,6 +1585,7 @@ th {
 .welcomeButton {
   float: right;
   margin-bottom: 10px; }
+
   /*****Wen**********/
   /*************GALLERY SLIDE *************************/
   body {
