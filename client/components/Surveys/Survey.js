@@ -118,8 +118,8 @@ class Survey extends Component {
 
       NumberOfRooms: NumberOfRooms,
       NumberOfRoomsSelected: null,
-      numberOfRoomsRank: 1,    
-      
+      numberOfRoomsRank: 1,
+
       targetedLocation: '',
 
       Fees: Fees,
@@ -140,7 +140,7 @@ class Survey extends Component {
       CommuteMin : CommuteMin,
       CommuteMaxSelected: null,
       CommuteMax: CommuteMax,
-      commuteRank: 1,  
+      commuteRank: 1,
 
       Sq_ft_MinSelected: null,
       Sq_ft_Min : Sq_ft_Min,
@@ -160,7 +160,7 @@ class Survey extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
-  
+
 
   handleChangeLocation(e) {
     this.setState({ targetedLocation: e.target.value });
@@ -182,7 +182,7 @@ class Survey extends Component {
 
       rentRank: this.state.rentRank,
       RentMin: this.state.RentMinSelected,
-      RentMax: this.state.RentMaxSelected,      
+      RentMax: this.state.RentMaxSelected,
 
       NumberOfRooms: this.state.NumberOfRoomsSelected,
       numberOfRoomsRank: this.state.numberOfRoomsRank,
@@ -233,7 +233,7 @@ class Survey extends Component {
       <div className='container'>
 
       <h4>Let's pick apartment type </h4>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.NumberOfRoomsSelected}
       options={NumberOfRooms}
@@ -260,7 +260,7 @@ class Survey extends Component {
 
       <div className='card_Fees'>
       <div className='container'>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.FeesSelected}
       options={Fees}
@@ -329,7 +329,7 @@ class Survey extends Component {
       value={this.state.Sq_ft_MaxSelected}
       options={Sq_ft_Max}
       onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
-      />     
+      />
       <Slider
       min={0}
       max={7}
@@ -343,7 +343,7 @@ class Survey extends Component {
       </div>
       </div>
 
-    
+
     <div className='Commute_Card'>
     <div className='container'>
       <div className='horizontal-slider'>
@@ -360,8 +360,8 @@ class Survey extends Component {
       value={this.state.CommuteMaxSelected}
       options={CommuteMax}
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-      /> 
-      </div>    
+      />
+      </div>
       <Slider
       min={0}
       max={7}
@@ -378,7 +378,7 @@ class Survey extends Component {
       <div className='Sq_ft'>
       <div className='container'>
       <h4>***PETSSSSS**** Furry Little Friends ?? </h4>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.PetSelected}
       options={Pets}
@@ -401,7 +401,7 @@ class Survey extends Component {
       </div>
 
 
-      
+
       <div className='card_Neighborhood'>
       <h4>Let's pick your fav neighborhoods </h4>
       <Select
@@ -426,7 +426,7 @@ class Survey extends Component {
       <hr />
       </div>
       </div>
-      
+
       <div className='Amenities_Card'>
       <div className='container'>
       <Select

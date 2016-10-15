@@ -19,7 +19,8 @@ class AddListingsModal extends React.Component {
     console.log('modal receiving props', props);
     super(props);
     this.state = {
-      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing'
+      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
+      addressSelect: !!props.listing
     };
 
     //Set defaults
@@ -108,13 +109,14 @@ class AddListingsModal extends React.Component {
     this.setState({
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
-      lng: geoObj.location.lng
+      lng: geoObj.location.lng,
+      addressSelect: true
     });
   }
 
   scrapeListingSubmit (event) {
     console.log("EVENT FOR SCRAPE LISTING", event.target.value)
-    this.setState({url: event.target.value})
+    this.setState({url: event.target.value, addressSelect: false})
     scrapeListing(event.target.value)
   }
 
@@ -126,6 +128,10 @@ class AddListingsModal extends React.Component {
 
   onModalSubmit (event) {
     event.preventDefault();
+    if (!this.state.addressSelect) {
+      alert('Please select an address.');
+      return;
+    }
     let listings = {
       location: this.state.location,
       rent: this.state.rent,
@@ -210,6 +216,7 @@ class AddListingsModal extends React.Component {
                  className="geosuggest__suggests-wrapper"
                  inputClassName="form-control"
                  types={['geocode']}
+                 autoActivateFirstSuggest={true}
                  onChange={this.handleGeoChange}
                  onSuggestSelect={this.onGeoSelect}
                 />
