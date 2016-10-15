@@ -364,8 +364,8 @@ class Survey extends Component {
 
     
       <div className='card'>
-      <img className="card-img" src='' />
-      <div className='card-block_Fees '>
+      <img className="card-img-top" src='' />
+      <div className='card-block'>
       <div className='rangeWrap'>
       <Select
       name="form-field-name"
@@ -400,9 +400,9 @@ class Survey extends Component {
 
 
    <div className='card' >
-   <img className="card-img" src='' />
+   <img className="card-img-top" src='' />
 
-   <div className='card-block_Fees '>
+   <div className='card-block'>
       <Select 
       name="form-field-name"
       value={this.state.PetSelected}
@@ -428,9 +428,9 @@ class Survey extends Component {
       
 
       <div className='card' >
-      <img className="card-img" src='' />
+      <img className="card-img-top" src='' />
 
-      <div className='card-block_Fees '>
+      <div className='card-block'>
       <Select
       name="form-field-name"
       value={this.state.NeighborhoodsSelected}
@@ -458,9 +458,9 @@ class Survey extends Component {
     
 
     <div className='card' >
-    <img className="card-img" src='' />
+    <img className="card-img-top" src='' />
 
-    <div className='card-block_Fees '>
+    <div className='card-block'>
       <Select
       name="form-field-name"
       value={this.state.amenitiesSelected}
