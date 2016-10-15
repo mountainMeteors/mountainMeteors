@@ -959,10 +959,9 @@
 .Targeded_Location_Card {
     box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 30%;
+    width: 40%;
     height: 20%;
-    margin: 12px;
-
+    margin: 0 auto;
 }
 
 .Targeded_Location_Card:hover {
@@ -988,9 +987,11 @@
   flex direction: column;
 }
 
+
 .btn-block {
   display: block;
-  width: 30%;
+  width: 20%;
+  margin: 0 auto;
 }
 
 .btn-block + .btn-block {
@@ -1008,6 +1009,8 @@
   background-color: #ffffff;
   position:relative;
   display: flex;
+  align-items: center;
   flex-direction: row;
+  margin-bottom: 10px;
   box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
 }
