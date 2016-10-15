@@ -118,8 +118,8 @@ class Survey extends Component {
 
       NumberOfRooms: NumberOfRooms,
       NumberOfRoomsSelected: null,
-      numberOfRoomsRank: 1,    
-      
+      numberOfRoomsRank: 1,
+
       targetedLocation: '',
 
       Fees: Fees,
@@ -140,7 +140,7 @@ class Survey extends Component {
       CommuteMin : CommuteMin,
       CommuteMaxSelected: null,
       CommuteMax: CommuteMax,
-      commuteRank: 1,  
+      commuteRank: 1,
 
       Sq_ft_MinSelected: null,
       Sq_ft_Min : Sq_ft_Min,
@@ -160,7 +160,7 @@ class Survey extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
-  
+
 
   handleChangeLocation(e) {
     this.setState({ targetedLocation: e.target.value });
@@ -182,7 +182,7 @@ class Survey extends Component {
 
       rentRank: this.state.rentRank || 'None Selected',
       RentMin: this.state.RentMinSelected || 'None Selected',
-      RentMax: this.state.RentMaxSelected || 'None Selected',      
+      RentMax: this.state.RentMaxSelected || 'None Selected',
 
       NumberOfRooms: this.state.NumberOfRoomsSelected || 'None Selected',
       numberOfRoomsRank: this.state.numberOfRoomsRank || 'None Selected',
@@ -228,12 +228,12 @@ class Survey extends Component {
 
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
-      <div className='card'> 
+      <div className='card'>
       <img className="card-img-top" src='' />
 
            <div className='card-block'>
       <h4>Let's pick apartment type </h4>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.NumberOfRoomsSelected}
       options={NumberOfRooms}
@@ -259,11 +259,12 @@ class Survey extends Component {
 
 
 
- <div className='card'> 
+
+ <div className='card'>
  <img className="card-img-top" src='' />
 
       <div className='card-block'>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.FeesSelected}
       options={Fees}
@@ -288,7 +289,7 @@ class Survey extends Component {
 
 
 
-      <div className='card'> 
+      <div className='card'>
       <img className="card-img-top" src='' />
            <div className='card-block'>
       <div className='rangeWrap'>
@@ -325,7 +326,7 @@ class Survey extends Component {
 
 
 
-      <div className='card'> 
+      <div className='card'>
       <img className="card-img-top" src='' />
 
            <div className='card-block'>
@@ -348,7 +349,7 @@ class Survey extends Component {
       multi={true}
       onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
       />
-      </div>     
+      </div>
       <Slider
       min={0}
       max={7}
@@ -362,10 +363,10 @@ class Survey extends Component {
       </div>
       </div>
 
-    
       <div className='card'>
       <img className="card-img-top" src='' />
       <div className='card-block'>
+
       <div className='rangeWrap'>
       <Select
       name="form-field-name"
@@ -382,8 +383,8 @@ class Survey extends Component {
       multi={true}
 
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-      /> 
-      </div>    
+      />
+      </div>
       <div className='horizontal-slider'>
 
       <Slider
@@ -403,7 +404,7 @@ class Survey extends Component {
    <img className="card-img-top" src='' />
 
    <div className='card-block'>
-      <Select 
+      <Select
       name="form-field-name"
       value={this.state.PetSelected}
       options={Pets}
@@ -425,12 +426,13 @@ class Survey extends Component {
      </div>
      </div>
 
-      
+
 
       <div className='card' >
       <img className="card-img-top" src='' />
 
       <div className='card-block'>
+
       <Select
       name="form-field-name"
       value={this.state.NeighborhoodsSelected}
@@ -454,8 +456,8 @@ class Survey extends Component {
       </div>
       </div>
       </div>
-      
-    
+
+
 
     <div className='card' >
     <img className="card-img-top" src='' />
@@ -481,7 +483,7 @@ class Survey extends Component {
             </div>
             </div>
             </div>
-            
+
 
 
     <div className='Targeded_Location_Card'>

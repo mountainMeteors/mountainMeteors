@@ -355,7 +355,7 @@
 
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
- 
+
 .Select {
   position: relative;
 }
@@ -712,8 +712,6 @@
   }
 }
 
-
-
 .card {
   position: relative;
   display: block;
@@ -814,7 +812,7 @@
 .container {
     padding: 4px;
     vertical-align : bottom !important;
-    margin-top: auto; 
+    margin-top: auto;
 }
 
 
