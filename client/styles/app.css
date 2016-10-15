@@ -869,9 +869,6 @@
 
 .card-img-top_Fees {
   @include border-top-radius($card-border-radius-inner);
-  width:100%;
-  height: 100%;
-
 }
 
 
@@ -912,48 +909,6 @@
 
 
 
-.card_Rent {
-    box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 30%;
-    height: 20%;
-    margin: 11px;
-
-
-}
-
-.card_Rent:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-
-
-
-.Sq_ft {
-    box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 25%;
-    height: 25%;
-    margin: 11px;
-}
-
-.Sq_ft:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.Amenities_Card {
-    box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 40%;
-    height: 350px;
-    margin: 12px;
-}
-
-.Amenities_Card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-
 .Targeded_Location_Card {
     box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -963,19 +918,6 @@
 }
 
 .Targeded_Location_Card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.Commute_Card {
-    box-shadow: 0 9px 12px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 30%;
-    height: 20%;
-    margin: 12px;
-
-}
-
-.Commute_Card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
