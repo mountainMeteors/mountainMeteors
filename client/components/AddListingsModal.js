@@ -19,7 +19,8 @@ class AddListingsModal extends React.Component {
     console.log('modal receiving props', props);
     super(props);
     this.state = {
-      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing'
+      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
+      addressSelect: !!props.listing
     };
 
     //Set defaults
@@ -34,7 +35,11 @@ class AddListingsModal extends React.Component {
         this.state[property] = props.listing[property];
       } else {
         this.state[property] = '';
+        if (property === 'pets') this.state[property] = 'none';
       }
+      // if (property === 'pets') {
+      //   console.log('PETS NOW', this.state[property]);
+      // }
     });
 
     this.state.showModal = false;
@@ -58,15 +63,10 @@ class AddListingsModal extends React.Component {
         rent: newProps.scrapeData.rentInfo[0],
         location: newProps.scrapeData.location[0],
         neighborhood: newProps.scrapeData.neighborhood[1],
-        pets: newProps.scrapeData.catsAllowed,
         squareFeet: newProps.scrapeData.squareFeet[0],
         bedrooms: newProps.scrapeData.bedInfo[0].numberOfBedsLong,
         bathrooms: newProps.scrapeData.bathInfo[0].numberOfBathsLong,
-        availability: newProps.scrapeData.availability[0],
-        dishwasher: newProps.scrapeData.amenities[0].dishwasher,
-        gym: newProps.scrapeData.amenities[0].gym,
-        laundry: newProps.scrapeData.amenities[0].laundry,
-        noFee: newProps.scrapeData.amenities[0].nofee
+        availability: newProps.scrapeData.availability[0]
       })
   }
 
@@ -109,13 +109,14 @@ class AddListingsModal extends React.Component {
     this.setState({
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
-      lng: geoObj.location.lng
+      lng: geoObj.location.lng,
+      addressSelect: true
     });
   }
 
   scrapeListingSubmit (event) {
     console.log("EVENT FOR SCRAPE LISTING", event.target.value)
-    this.setState({url: event.target.value})
+    this.setState({url: event.target.value, addressSelect: false})
     scrapeListing(event.target.value)
   }
 
@@ -127,6 +128,10 @@ class AddListingsModal extends React.Component {
 
   onModalSubmit (event) {
     event.preventDefault();
+    if (!this.state.addressSelect) {
+      alert('Please select an address.');
+      return;
+    }
     let listings = {
       location: this.state.location,
       rent: this.state.rent,
@@ -194,7 +199,7 @@ class AddListingsModal extends React.Component {
          <div>
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
-            <ControlLabel>Url</ControlLabel>
+            <ControlLabel>URL</ControlLabel>
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
@@ -211,6 +216,7 @@ class AddListingsModal extends React.Component {
                  className="geosuggest__suggests-wrapper"
                  inputClassName="form-control"
                  types={['geocode']}
+                 autoActivateFirstSuggest={true}
                  onChange={this.handleGeoChange}
                  onSuggestSelect={this.onGeoSelect}
                 />
@@ -262,11 +268,10 @@ class AddListingsModal extends React.Component {
               <ControlLabel>Pets</ControlLabel>
               <FormControl name="pets" componentClass="select" value={this.state.pets}
               onChange={this.handleChange} placeholder="None">
-                <option value="select">select</option>
+              <option value="none">None</option>
                 <option value="cats">Cats</option>
                 <option value="dogs">Dogs</option>
                 <option value="both">Both</option>
-                <option value="none">None</option>
               </FormControl>
             </FormGroup>
 
