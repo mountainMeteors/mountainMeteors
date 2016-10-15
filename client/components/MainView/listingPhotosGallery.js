@@ -167,7 +167,7 @@ class listingPhotosGallery extends React.Component {
 
 
 
-      let imahes = [];
+      let images = [];
    this.props.photoFiles.forEach(function(item){
     images.push({
       thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
