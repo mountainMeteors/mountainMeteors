@@ -176,6 +176,7 @@ class Listing extends React.Component{
 
 
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing}, dispatch);
 }
