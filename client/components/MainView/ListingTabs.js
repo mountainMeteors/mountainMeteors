@@ -3,7 +3,7 @@ import React from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
 import AddListingsModal from '../AddListingsModal';
 
-class ArchiveDropdown extends React.Component{
+class ListingTabs extends React.Component{
   constructor(props) {
     super(props)
     this.handleSelect = this.handleSelect.bind(this);
@@ -11,18 +11,19 @@ class ArchiveDropdown extends React.Component{
 
   handleSelect(eventKey) {
     event.preventDefault();
-    let toggleVal = `${eventKey}` === 'true';
+    let toggleVal = `${eventKey}`;
     console.log('activeKey', this.activeKey);
     console.log('toggleVal is', toggleVal);
-    this.props.toggleArchiveView(toggleVal)
+    this.props.toggleView(toggleVal)
   }
 
   render() {
     return (
       <div style={{"display": "inline-block", "width": "100%"}}>
-        <Tabs defaultActiveKey="false" onSelect={this.handleSelect} id="uncontrolled-tab-example" style={{"display": "inline-block"}}>
-          <Tab eventKey="false" title="Active" />
-          <Tab eventKey="true" title="Archived" />
+        <Tabs defaultActiveKey="active" onSelect={this.handleSelect} id="uncontrolled-tab-example" style={{"display": "inline-block"}}>
+          <Tab eventKey="active" title="Active" />
+          <Tab eventKey="archived" title="Archived" />
+          <Tab eventKey="favorited" title="Favorites" />
         </Tabs>
         <AddListingsModal modalType="add" />
       </div>
@@ -30,4 +31,4 @@ class ArchiveDropdown extends React.Component{
   }
 };
 
-export default ArchiveDropdown;
+export default ListingTabs;
