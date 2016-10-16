@@ -64,6 +64,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.decimal('lat', 15, 12);
       listing.decimal('lng', 15, 12);
       listing.boolean('no_fee').defaultTo(0);
+      listing.boolean('favorited').defaultTo(0);
       listing.boolean('archived').defaultTo(0);
       listing.timestamps();
       console.log('Created listings table');
