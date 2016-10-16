@@ -33,21 +33,29 @@ h1.title {
   cursor: pointer;
 }
 
+.flex {
+  display: flex;
+}
+
 #leftcol {
   background-color: #33ccff;
   height: 100%;
-  padding: 0;
+  flex: 1;
+  /*padding: 0;
   margin: 0;
+  width: 80%*/
   /*overflow: 'hidden';*/
 }
 
 #rightcol {
   background-color: #ffffff;
+  flex: 0 0 430px;
   /*overflowY: 'auto';*/
-  padding: 0;
+  /*padding: 0;*/
   height: 100%;
   padding-bottom: '50px';
   overflow-y: scroll;
+  /*width: 400px;*/
 }
 
 #bodyrow {
@@ -125,6 +133,10 @@ label {
   font-size: 20px;
   font-weight: bold;
   float: left;
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 a.listing-addr {
