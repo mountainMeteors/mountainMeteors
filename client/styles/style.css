@@ -70,10 +70,22 @@ label {
     margin-bottom: 5px
 }
 
-.add-modal {
+#listing-tabs-container {
   display: inline-block;
-  margin: 6px;
-  float: right;
+  width: 100%;
+  position: relative;
+}
+
+#listing-tabs {
+  display: inline-block;
+  width: 100%;
+  margin-top: 2%;
+}
+
+.add-modal {
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
 /*************LISTING FLEXBOX *************/

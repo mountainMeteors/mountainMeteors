@@ -19,8 +19,8 @@ class ListingTabs extends React.Component{
 
   render() {
     return (
-      <div style={{"display": "inline-block", "width": "100%"}}>
-        <Tabs defaultActiveKey="active" onSelect={this.handleSelect} id="uncontrolled-tab-example" style={{"display": "inline-block"}}>
+      <div id="listing-tabs-container">
+        <Tabs defaultActiveKey="active" onSelect={this.handleSelect} id="listing-tabs">
           <Tab eventKey="active" title="Active" />
           <Tab eventKey="archived" title="Archived" />
           <Tab eventKey="favorited" title="Favorites" />
