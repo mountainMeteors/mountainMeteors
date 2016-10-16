@@ -42,7 +42,6 @@
     "react-bootstrap": "^0.30.3",
     "react-bootstrap-multiselect": "^2.2.0",
     "react-bootstrap-slider": "^1.1.2",
-    "react-bootstrap-table": "^2.5.3",
     "react-dom": "^0.14.8",
     "react-dropzone": "^3.6.0",
     "react-flipcard": "^0.2.1",
@@ -61,12 +60,10 @@
     "redux": "^3.6.0",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.1.0",
     "request": "^2.75.0",
     "superagent": "^2.3.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.8.2",
     "x-ray": "^2.3.0"
   },
   "devDependencies": {
@@ -75,8 +72,6 @@
     "babel-preset-stage-1": "^6.13.0",
     "commitizen": "^2.8.6",
     "cz-conventional-changelog": "^1.2.0",
-    "redux-thunk": "^2.1.0",
-    "webpack-hot-middleware": "^2.12.2"
   },
   "config": {
     "commitizen": {
