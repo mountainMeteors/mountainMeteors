@@ -63,6 +63,10 @@ h1.title {
   margin-bottom: 0;
 }
 
+.welcomeButton {
+  float: right;
+  margin-bottom: 10px; }
+
 label {
     display: inline-block;
     max-width: 100%;
@@ -86,6 +90,16 @@ label {
   position: absolute;
   top: 6px;
   right: 6px;
+}
+
+.popover-error {
+  display: inline-block;
+}
+
+.form-error {
+  /*display: inline-block;
+  color: red;
+  margin-left: 10px;*/
 }
 
 /*************LISTING FLEXBOX *************/
@@ -1549,7 +1563,3 @@ th {
     .image-gallery-index {
       font-size: .8em;
       padding: 5px 10px; } }
-
-.welcomeButton {
-  float: right;
-  margin-bottom: 10px; }
