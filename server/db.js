@@ -59,6 +59,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('garage').defaultTo(0);
       listing.boolean('pool').defaultTo(0);
       listing.boolean('elevator').defaultTo(0);
+      listing.boolean('roof').defaultTo(0);
       listing.boolean('outdoor_space').defaultTo(0);
       listing.decimal('lat', 15, 12);
       listing.decimal('lng', 15, 12);

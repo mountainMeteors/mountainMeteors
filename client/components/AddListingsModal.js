@@ -27,7 +27,7 @@ class AddListingsModal extends React.Component {
     this.state.listingId = props.listing ? props.listing.id : null;
     let properties = [
       'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms',
-      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'elevator', 'roof', 'garage', 'pool',
       'outdoorSpace', 'url'
     ];
     properties.forEach(property => {
@@ -154,10 +154,7 @@ class AddListingsModal extends React.Component {
       lng: this.state.lng,
       url: this.state.url
     }
-    console.log('listing id', this.state.listingId);
-    console.log('postListing is', this.props.postListing);
     console.log('submitting', listings);
-    // console.log('user id', this.props.user_id)
     if (this.props.modalType === "add") this.props.postListing(listings);
     else this.props.putListing(this.state.listingId, listings);
     this.close()
