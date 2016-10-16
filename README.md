@@ -1,7 +1,14 @@
 # SeekPad
 <img src="https://travis-ci.org/mountainMeteors/mountainMeteors.svg?branch=dev"/>
 
+## Description
+An apartment seeking tool which allows the user to keep track of any potential units they are looking into, with an intuitive and elegant UI.
 
+## Live Demo
+Deployment to come soon.
+
+## Motivation
+After each experiencing nightmare stories in our individual apartment searches, our team came together to produce an application to remedy this situation. By allowing users to add the listings they are personally interested in, and sort them according to what is important to them personally, we feel SeekPad is able to greatly facilitate an otherwise painful process.
 
 ## Team
 
@@ -11,9 +18,17 @@
 
 ## Usage
 ### Filling out a survey
+After logging in for the first time, user will be prompted to fill out a survey. This survey is designed to gather information concerning what the user is looking for in an apartment, for use in sorting the user's listings.
+User will always be prompted to fill out a survey if they have not done so previously.
 ### Adding listings
+After logging in, user will see a map of their area. User will have no listings by default, and may add one by clicking the Add button. User may add a listing's information manually, or may paste an Apartments.com link in the URL field, which will attempt to populate most fields. The exceptions to this are the Pets and Amenities fields, which must still be entered manually.
+When populating the fields via an apartments.com link, user must still click on the Address field to select the correction location.
+### Editing listings
+After adding a listing, user may click the pencil icon to edit the listing's details. Fields will auto-populate with the relevant information.
 ### Archiving listings
+If a user feels a listing is no longer relevant to them, they may click the trash can icon to archive it. All archived listings may be viewed by clicking on the appropriate tab, and may be toggled to unarchived as needed.
 ### Adding and viewing photos
+(To come)
 
 ## Requirements
 - axios 0.14.0

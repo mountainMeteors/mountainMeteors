@@ -71,7 +71,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.13.0",
     "commitizen": "^2.8.6",
-    "cz-conventional-changelog": "^1.2.0",
+    "cz-conventional-changelog": "^1.2.0"
   },
   "config": {
     "commitizen": {
