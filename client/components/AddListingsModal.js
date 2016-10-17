@@ -20,7 +20,8 @@ class AddListingsModal extends React.Component {
     super(props);
     this.state = {
       modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
-      addressSelect: !!props.listing
+      addressSelect: !!props.listing,
+      addressError: ''
     };
 
     //Set defaults
@@ -129,7 +130,7 @@ class AddListingsModal extends React.Component {
   onModalSubmit (event) {
     event.preventDefault();
     if (!this.state.addressSelect) {
-      alert('Please select an address.');
+      this.setState({addressError: "Please select an address from the dropdown."});
       return;
     }
     let listings = {
@@ -197,7 +198,7 @@ class AddListingsModal extends React.Component {
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
             <ControlLabel>URL</ControlLabel>
-            <div className="form-error">Hi</div>
+            <div className="form-error">{this.state.addressError}</div>
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}

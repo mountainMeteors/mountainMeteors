@@ -148,11 +148,11 @@ class Listing extends React.Component{
     this.setState({listingsFiltered});
   }
 
-  componentDidUpdate() {
-    this.state.listingsFiltered.sort((listingA, listingB) =>
-      listingA[this.state.sortBy] + listingB[this.state.sortBy]
-    );
-  }
+  // componentDidUpdate() {
+  //   this.state.listingsFiltered.sort((listingA, listingB) =>
+  //     listingA[this.state.sortBy] + listingB[this.state.sortBy]
+  //   );
+  // }
 
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
