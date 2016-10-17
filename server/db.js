@@ -59,10 +59,12 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('garage').defaultTo(0);
       listing.boolean('pool').defaultTo(0);
       listing.boolean('elevator').defaultTo(0);
+      listing.boolean('roof').defaultTo(0);
       listing.boolean('outdoor_space').defaultTo(0);
       listing.decimal('lat', 15, 12);
       listing.decimal('lng', 15, 12);
       listing.boolean('no_fee').defaultTo(0);
+      listing.boolean('favorited').defaultTo(0);
       listing.boolean('archived').defaultTo(0);
       listing.timestamps();
       console.log('Created listings table');

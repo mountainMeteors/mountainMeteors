@@ -20,14 +20,15 @@ class AddListingsModal extends React.Component {
     super(props);
     this.state = {
       modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
-      addressSelect: !!props.listing
+      addressSelect: !!props.listing,
+      addressError: ''
     };
 
     //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
     let properties = [
       'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms',
-      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'elevator', 'roof', 'garage', 'pool',
       'outdoorSpace', 'url'
     ];
     properties.forEach(property => {
@@ -110,6 +111,7 @@ class AddListingsModal extends React.Component {
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
       lng: geoObj.location.lng,
+      addressError: '',
       addressSelect: true
     });
   }
@@ -125,11 +127,15 @@ class AddListingsModal extends React.Component {
     getDistance()
   }
 
+  // getValidationState (val) {
+  //   console.log();
+  // }
+
 
   onModalSubmit (event) {
     event.preventDefault();
     if (!this.state.addressSelect) {
-      alert('Please select an address.');
+      this.setState({addressError: "Please select an address from the dropdown."});
       return;
     }
     let listings = {
@@ -154,10 +160,7 @@ class AddListingsModal extends React.Component {
       lng: this.state.lng,
       url: this.state.url
     }
-    console.log('listing id', this.state.listingId);
-    console.log('postListing is', this.props.postListing);
     console.log('submitting', listings);
-    // console.log('user id', this.props.user_id)
     if (this.props.modalType === "add") this.props.postListing(listings);
     else this.props.putListing(this.state.listingId, listings);
     this.close()
@@ -207,6 +210,7 @@ class AddListingsModal extends React.Component {
             </FormGroup>
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
+               <div className="form-error">{this.state.addressError}</div>
                {' '}
                <Geosuggest
                  location={new google.maps.LatLng(40.7725833, -73.9736894)}
@@ -226,7 +230,8 @@ class AddListingsModal extends React.Component {
                <ControlLabel>Neighborhood</ControlLabel>
                <FormControl name="neighborhood" value={this.state.neighborhood}
                onChange={this.handleChange}
-               type="text" placeholder="East Village" />
+               type="text" placeholder="East Village"
+               />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">

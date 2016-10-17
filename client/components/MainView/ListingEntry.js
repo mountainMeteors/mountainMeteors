@@ -20,9 +20,15 @@ const intToBool = cell  => cell === 0 ? 'yes' : 'no';
 class ListingEntry extends React.Component{
   constructor(props){
     super(props);
+    console.log('LE brought in', props);
 
     this.state = {
+      favorited: props.listing.favorited
     }
+
+    // console.log('faved value', props.listing.favorited);
+
+    this.toggleFavoriteListing = this.toggleFavoriteListing.bind(this);
   }
 
   componentWillMount() {
@@ -40,7 +46,18 @@ class ListingEntry extends React.Component{
   toggleArchiveListing(listing) {
     console.log('toggling', listing.id);
     let toggledVal = listing.archived === 0 ? 1 : 0;
-    this.props.putListing(listing.id, {archived: toggledVal});
+    this.props.putListing(listing.id, {archived: toggledVal, favorited: 0});
+  }
+
+  toggleFavoriteListing(listing) {
+    console.log('toggling', listing.id);
+    let toggledVal = listing.favorited === 0 ? 1 : 0;
+    this.props.putListing(listing.id, {favorited: toggledVal});
+  }
+
+  getFavoriteClass(val) {
+    if (val === 1 || this.props.viewMode === 'favorited') return <Glyphicon glyph="star" />;
+    else return <Glyphicon glyph="star-empty" />;
   }
 
   render() {
@@ -68,9 +85,15 @@ class ListingEntry extends React.Component{
             </div>
           </div>
           <div className="listing-icons">
-            <span className="clickable"><Glyphicon glyph="star-empty" /></span>
-            <span className="clickable"><AddListingsModal listing={this.props.listing} modalType="edit" /></span>
-            <span className="clickable"><AddPhotosModal listing={this.props.listing} /></span>
+            <span className="clickable" onClick={() => {this.toggleFavoriteListing(this.props.listing)}}>
+              {this.getFavoriteClass(this.state.favorited)}
+            </span>
+            <span className="clickable">
+              <AddListingsModal listing={this.props.listing} modalType="edit" />
+            </span>
+            <span className="clickable">
+              <AddPhotosModal listing={this.props.listing} />
+            </span>
             <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
               <Glyphicon glyph="trash" />
             </span>
