@@ -72,8 +72,7 @@ app.get('*', function(req, res) {
 
 
 
-
-app.listen(2500, 'localhost', function(err) {
+app.listen(process.env.PORT || 2500, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
