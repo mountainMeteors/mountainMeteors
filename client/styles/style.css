@@ -10,10 +10,10 @@ html, body {
   height: 100%;
 }
 
-.no-scroll {
+/*.no-scroll {
   overflow-y: hidden;
 }
-
+*/
 .scroll {
   /*height: 100%;*/
   overflow-y: scroll;
@@ -76,7 +76,7 @@ label {
 }
 /* ########## Splash Page Stuff #########*/
 #splash {
-  background: url("../../uploads/splash.jpg");
+  /*background: url("../../uploads/splash.jpg");*/
   background-repeat: no-repeat;
   background-size:cover;
 
