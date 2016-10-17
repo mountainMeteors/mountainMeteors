@@ -1,8 +1,6 @@
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-// const config = require('./webpack.config');
-// const webpackMiddleware = require('webpack-dev-middleware');
 const cors = require('cors');
 const multer  = require('multer');
 
@@ -16,7 +14,6 @@ const storage = multer.diskStorage({
 })
 
 var upload = multer({ storage: storage })
-// const compiler = webpack(config);
 const bodyParser = require('body-parser');
 
 const app = express();

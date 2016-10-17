@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 
 
-import ArchiveDropdown from './ArchiveDropdown';
+import ListingTabs from './ListingTabs';
 import ListingEntry from './ListingEntry';
 import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
@@ -22,26 +22,19 @@ class Listing extends React.Component{
     super(props);
 
     this.state = {
-      showArchived: false,
+      viewMode: 'active',
       sortBy: 'location',
       listingsFiltered: []
     }
 
     this.filterListings = this.filterListings.bind(this);
-    this.toggleArchiveView = this.toggleArchiveView.bind(this);
+    this.toggleView = this.toggleView.bind(this);
     this.calcScore = this.calcScore.bind(this);
   }
 
   componentWillMount() {
     // console.log('listing mount props', this.props);
-    this.filterListings(this.props.listings)
-    // this.setState({
-    //   listingsFiltered
-      // listingsFiltered : this.props.listings.slice().filter(
-      //   listing => Boolean(listing.archived) === this.state.showArchived
-      // )
-    // })
-    // console.log('listing state after', this.state);
+    this.filterListings(this.props.listings);
   }
 
   //TODO: util
@@ -104,14 +97,30 @@ class Listing extends React.Component{
   }
 
   //TODO: util
-  //Takes existing props (passed in) and filters them based on this.state.showArchived bool
   filterListings(listings) {
     console.log('filtering', listings);
     // console.log('using prefs', this.props.prefs);
     // let listingsFiltered = listings;
-    let listingsFiltered = listings.slice().filter(
-      listing => Boolean(listing.archived) === this.state.showArchived
-    );
+
+    //ONLY SHOW LISTINGS OF TYPE X
+    let listingsFiltered = listings.slice();
+    if (this.state.viewMode === 'active') {
+      listingsFiltered = listingsFiltered.filter(
+        listing => !Boolean(listing.archived)
+      );
+    } else {
+      console.log('view mode', this.state.viewMode);
+      listingsFiltered = listingsFiltered.filter(
+        listing => {
+          // console.log('listing is', listing.location);
+          // console.log('listing faved', listing.favorited);
+          // console.log('listing value', listing[this.state.viewMode]);
+          return Boolean(listing[this.state.viewMode])
+        }
+      );
+    }
+
+    //ASSIGN SCORES TO LISTINGS
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
     listingsFiltered.map(listing => {
@@ -122,6 +131,8 @@ class Listing extends React.Component{
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score
     // });
+
+    //ADD AMENITIES TO EACH LISTING
     let amenityTypes = ['Gym', 'Laundry', 'Dishwasher', 'Garage', 'Outdoor_Space', 'Roof', 'Pool', 'Elevator', 'Doorman'];
     //TODO: So bad, so quadratic. Refactor so that amenities are entered into DB as stringified json
     listingsFiltered.forEach(listing => {
@@ -135,14 +146,13 @@ class Listing extends React.Component{
 
     console.log('setting state to', listingsFiltered);
     this.setState({listingsFiltered});
-    this.forceUpdate();
   }
 
-  componentDidUpdate() {
-    this.state.listingsFiltered.sort((listingA, listingB) =>
-      listingA[this.state.sortBy] + listingB[this.state.sortBy]
-    );
-  }
+  // componentDidUpdate() {
+  //   this.state.listingsFiltered.sort((listingA, listingB) =>
+  //     listingA[this.state.sortBy] + listingB[this.state.sortBy]
+  //   );
+  // }
 
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
@@ -151,27 +161,21 @@ class Listing extends React.Component{
     this.filterListings(props.listings);
   }
 
-  //Toggles state.showArchived and then updates listing
-  toggleArchiveView(toggleVal) {
-    console.log('toggling arch view to', toggleVal);
-    console.log('type compare', typeof toggleVal, typeof this.state.showArchived);
-    this.setState({showArchived: toggleVal},
+  //Toggles state.viewMode and then updates listing
+  toggleView(toggleVal) {
+    console.log('toggling view to', toggleVal);
+    console.log('type compare', typeof toggleVal, typeof this.state.viewMode);
+    this.setState({viewMode: toggleVal},
       () => {this.filterListings(this.props.listings)}
     );
-    // this.setState({showArchived: !this.state.showArchived},
-    //   () => {this.filterListings(this.props.listings)}
-    // );
-    // this.setState({showArchived: !this.state.showArchived});
-    // console.log('state arch after', this.state.showArchived);
   }
 
-  // <Button bsStyle="info" bsSize="small" onClick={this.toggleArchiveView}>Archived</Button>
   render() {
     return (
       <div className="scroll">
-        <ArchiveDropdown toggleArchiveView={this.toggleArchiveView.bind(this)}/>
+        <ListingTabs toggleView={this.toggleView.bind(this)}/>
         {this.state.listingsFiltered.map((listing, i) =>
-          <ListingEntry key={i} listing={listing} />
+          <ListingEntry key={i} listing={listing} viewMode={this.state.viewMode} />
         )}
       </div>
     )
