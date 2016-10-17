@@ -68,7 +68,7 @@ class Header extends React.Component {
       <ul className="nav navbar-nav">
         {this.renderLinks()}
       </ul>
-      <h1 className="title">
+      <h1 className="title" >
         <Link to="/">seekPad</Link>
       </h1>
       {this.props.authenticated ?

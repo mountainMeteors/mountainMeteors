@@ -14,18 +14,21 @@ import { getDistance } from '../util/distUtil';
 // import css from '../styles/app.css';
 
 class AddListingsModal extends React.Component {
+
   constructor(props){
     console.log('modal receiving props', props);
     super(props);
     this.state = {
-      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing'
+      modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
+      addressSelect: !!props.listing,
+      addressError: ''
     };
 
     //Set defaults
     this.state.listingId = props.listing ? props.listing.id : null;
     let properties = [
       'location', 'rent', 'pets', 'lat', 'lng', 'neighborhood', 'squareFeet', 'bedrooms', 'bathrooms',
-      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'roof', 'garage', 'pool',
+      'dishwasher', 'gym', 'laundry', 'doorman', 'noFee', 'elevator', 'roof', 'garage', 'pool',
       'outdoorSpace', 'url'
     ];
     properties.forEach(property => {
@@ -33,7 +36,11 @@ class AddListingsModal extends React.Component {
         this.state[property] = props.listing[property];
       } else {
         this.state[property] = '';
+        if (property === 'pets') this.state[property] = 'none';
       }
+      // if (property === 'pets') {
+      //   console.log('PETS NOW', this.state[property]);
+      // }
     });
 
     this.state.showModal = false;
@@ -54,18 +61,13 @@ class AddListingsModal extends React.Component {
     console.log("ding ding ding", newProps.scrapeData);
     if (Object.keys(newProps.scrapeData).length)
       this.setState({
-        rent: newProps.scrapeData.rentInfo[0],
+        rent: newProps.scrapeData.rent[0],
         location: newProps.scrapeData.location[0],
         neighborhood: newProps.scrapeData.neighborhood[1],
-        pets: newProps.scrapeData.catsAllowed,
         squareFeet: newProps.scrapeData.squareFeet[0],
-        bedrooms: newProps.scrapeData.bedInfo[0].numberOfBedsLong,
-        bathrooms: newProps.scrapeData.bathInfo[0].numberOfBathsLong,
-        availability: newProps.scrapeData.availability[0],
-        dishwasher: newProps.scrapeData.amenities[0].dishwasher,
-        gym: newProps.scrapeData.amenities[0].gym,
-        laundry: newProps.scrapeData.amenities[0].laundry,
-        noFee: newProps.scrapeData.amenities[0].nofee
+        bedrooms: newProps.scrapeData.bedrooms[0].numberOfBedsLong,
+        bathrooms: newProps.scrapeData.bathrooms[0].numberOfBathsLong,
+        availability: newProps.scrapeData.availability[0]
       })
   }
 
@@ -108,13 +110,15 @@ class AddListingsModal extends React.Component {
     this.setState({
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
-      lng: geoObj.location.lng
+      lng: geoObj.location.lng,
+      addressError: '',
+      addressSelect: true
     });
   }
 
   scrapeListingSubmit (event) {
     console.log("EVENT FOR SCRAPE LISTING", event.target.value)
-    this.setState({url: event.target.value})
+    this.setState({url: event.target.value, addressSelect: false})
     scrapeListing(event.target.value)
   }
 
@@ -123,9 +127,23 @@ class AddListingsModal extends React.Component {
     getDistance()
   }
 
+  getValidationState (field) {
+    console.log('vstate', field);
+    console.log('vstate props', this.props.scrapeData[field]);
+    if (this.props.scrapeData[field] &&
+        this.props.scrapeData[field].length !== 0) {
+      console.log('RETURNED vstate');
+      return 'success';
+    }
+  }
+
 
   onModalSubmit (event) {
     event.preventDefault();
+    if (!this.state.addressSelect) {
+      this.setState({addressError: "Please select an address from the dropdown."});
+      return;
+    }
     let listings = {
       location: this.state.location,
       rent: this.state.rent,
@@ -148,10 +166,7 @@ class AddListingsModal extends React.Component {
       lng: this.state.lng,
       url: this.state.url
     }
-    console.log('listing id', this.state.listingId);
-    console.log('postListing is', this.props.postListing);
     console.log('submitting', listings);
-    // console.log('user id', this.props.user_id)
     if (this.props.modalType === "add") this.props.postListing(listings);
     else this.props.putListing(this.state.listingId, listings);
     this.close()
@@ -170,12 +185,11 @@ class AddListingsModal extends React.Component {
 
 
    return (
-     <div>
+     <div className={this.props.modalType === "add" ? "add-modal" : ""}>
 
         {this.props.modalType === 'add' ?
           <Button
             bsStyle="primary"
-            bsSize="small"
             onClick={this.open.bind(this)}
           >
             Add
@@ -194,14 +208,15 @@ class AddListingsModal extends React.Component {
          <div>
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
-            <ControlLabel>Url</ControlLabel>
+            <ControlLabel>URL</ControlLabel>
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
             type="text" placeholder="www.apartments.com" />
             </FormGroup>
-             <FormGroup controlId="formAddress">
+             <FormGroup controlId="formAddress" validationState={this.getValidationState('location')}>
                <ControlLabel>Address</ControlLabel>
+               <div className="form-error">{this.state.addressError}</div>
                {' '}
                <Geosuggest
                  location={new google.maps.LatLng(40.7725833, -73.9736894)}
@@ -211,47 +226,48 @@ class AddListingsModal extends React.Component {
                  className="geosuggest__suggests-wrapper"
                  inputClassName="form-control"
                  types={['geocode']}
+                 autoActivateFirstSuggest={true}
                  onChange={this.handleGeoChange}
                  onSuggestSelect={this.onGeoSelect}
                 />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formNeighborhood">
+             <FormGroup controlId="formNeighborhood" validationState={this.getValidationState('neighborhood')}>
                <ControlLabel>Neighborhood</ControlLabel>
                <FormControl name="neighborhood" value={this.state.neighborhood}
                onChange={this.handleChange}
                type="text" placeholder="East Village" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formPrice">
+             <FormGroup controlId="formPrice" validationState={this.getValidationState('rent')}>
                <ControlLabel>Rent</ControlLabel>
                <FormControl name="rent" value={this.state.rent}
                onChange={this.handleChange}
                type="text" placeholder="$2000" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formBedrooms">
+             <FormGroup controlId="formBedrooms" validationState={this.getValidationState('bedrooms')}>
                <ControlLabel>Bedrooms</ControlLabel>
                <FormControl name="bedrooms" value={this.state.bedrooms}
                onChange={this.handleChange}
                type="text" placeholder="3 Bedrooms" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formBathrooms">
+             <FormGroup controlId="formBathrooms" validationState={this.getValidationState('bathrooms')}>
                <ControlLabel>Bathrooms</ControlLabel>
                <FormControl name="bathrooms" value={this.state.bathrooms}
                onChange={this.handleChange}
                type="text" placeholder="2 Bathrooms" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formSquareFeet">
+             <FormGroup controlId="formSquareFeet" validationState={this.getValidationState('squareFeet')}>
                <ControlLabel>Square Feet</ControlLabel>
                <FormControl name="squareFeet" value={this.state.squareFeet}
                onChange={this.handleChange}
                type="text" placeholder="1200 sq ft" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formAvailability">
+             <FormGroup controlId="formAvailability" validationState={this.getValidationState('availability')}>
                <ControlLabel>Availability</ControlLabel>
                <FormControl name="availability" value={this.state.availability}
                onChange={this.handleChange}
@@ -262,11 +278,10 @@ class AddListingsModal extends React.Component {
               <ControlLabel>Pets</ControlLabel>
               <FormControl name="pets" componentClass="select" value={this.state.pets}
               onChange={this.handleChange} placeholder="None">
-                <option value="select">select</option>
+              <option value="none">None</option>
                 <option value="cats">Cats</option>
                 <option value="dogs">Dogs</option>
                 <option value="both">Both</option>
-                <option value="none">None</option>
               </FormControl>
             </FormGroup>
 
@@ -321,7 +336,7 @@ class AddListingsModal extends React.Component {
                </Checkbox>
              </FormGroup>
               {' '}
-            <Button bsStyle="primary" type="submit">Send</Button>
+            <Button bsStyle="primary" type="submit" style={{'float':'right'}}>Send</Button>
            </Form>
          </div>
          <div>&nbsp;</div>

@@ -3,9 +3,9 @@ const tokenExists = window.localStorage.getItem('userToken') !== null;
 const auth = function(state = tokenExists, action) {
   let token;
   switch(action.type){
-    case 'SIGNUP':
-      console.log('REDUC SIGNUP USER', action);
-      return false;
+    // case 'SIGNUP':
+    //   console.log('REDUC SIGNUP USER', action);
+    //   return false;
       //TODO: SIGNUP should probably just log user in
 
     case 'LOGIN':

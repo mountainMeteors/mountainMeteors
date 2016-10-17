@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPhotos } from '../../actionCreators/photoActions'
-
+import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Glyphicon, Modal } from 'react-bootstrap';
 import ImageGallery from 'react-image-gallery';
 import css from '../../styles/app.css'
 
@@ -10,9 +10,8 @@ import css from '../../styles/app.css'
 
 
 class listingPhotosGallery extends React.Component {
-
-  constructor(props) {
-    super();
+ constructor(props) {
+    super(props);
     this.state = {
       showIndex: false,
       slideOnThumbnailHover: false,
@@ -26,10 +25,21 @@ class listingPhotosGallery extends React.Component {
       showNav: true,
       slideInterval: 2000,
       showVideo: {},
-      requireContext: require.context("../../../uploads", true, /^\.\/.*\.jpg$/)
+      showModal: false,
     };
+
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+
+  }
+ 
+  close() {
+    this.setState({ showModal: false });
   }
 
+  open() {
+    this.setState({ showModal: true });
+  }
   
   componentDidUpdate(prevProps, prevState) {
     if (this.state.slideInterval !== prevState.slideInterval) {
@@ -111,6 +121,7 @@ class listingPhotosGallery extends React.Component {
 
   _renderVideo(item) {
     return (
+      <div>
       <div className='image-gallery-image'>
         {
           this.state.showVideo[item.embedUrl] ?
@@ -139,10 +150,10 @@ class listingPhotosGallery extends React.Component {
                     style={{right: '0', left: 'initial'}}
                   >
                     {item.description}
-                  </span>
-              }
+                  </span> }
             </a>
         }
+      </div>
       </div>
     );
   }
@@ -153,21 +164,43 @@ class listingPhotosGallery extends React.Component {
     if (!this.props.photoFiles) {
       return <div>loading</div>
     }
-
- 
-      let images = []
+      let images = [];
    this.props.photoFiles.forEach(function(item){
     images.push({
-      thumnail: `/${item}`,
-      original: `/${item}`
+      thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+      original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
       // renderItem: this._renderVideo.bind(this)
     })
 
    })
 
+ 
+     
+   // this.props.photoFiles.forEach(function(item){
+   //  images.push({
+   //    thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+   //    original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+   //    // renderItem: this._renderVideo.bind(this)
+   //  })
+
+   // })
+
+
+
+
 console.log('imagesssssss', images)
 
     return (
+      <div>
+        <div onClick={this.open.bind(this)}>
+          <Glyphicon glyph="film" />
+        </div>
+      <div>
+      <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal.Header closeButton>
+          <Modal.Title> Add Listing Photos </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
       <div>
       <section className='app'>
         <ImageGallery
@@ -191,10 +224,16 @@ console.log('imagesssssss', images)
           slideOnThumbnailHover={this.state.slideOnThumbnailHover}
         />
       </section>
-   
-
-
             </div>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button onClick={this.close.bind(this)}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+    </div>
+    </div>
+
     );
   }
 }
@@ -211,4 +250,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchPhotos }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(listingPhotosGallery);
+
+export default connect(mapStateToProps, mapDispatchToProps) (listingPhotosGallery);
