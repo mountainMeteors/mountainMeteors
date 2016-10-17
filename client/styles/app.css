@@ -1671,13 +1671,6 @@
 }
 
 
-body {
-  font-family: sans-serif;
-  background-color: #eee;
-  /*text-align: center;*/
-  margin-top: 100px;
-}
-
 h1 {
   font-size: 24px;
   color: #aaa;
@@ -1705,7 +1698,7 @@ h1 {
 .card-block {
   @include clearfix;
   padding: $card-spacer-x;
-  height: 120px
+  height: 140px
 }
 
 .card-title {
@@ -1898,17 +1891,29 @@ h1 {
     vertical-align : bottom !important;
     width: 40%;
     margin-top: 17px;
+    margin-bottom: 17px;
     margin-left: auto;
     margin-right : auto;
-    border: 1px;
+    border: 0.2px;
     border: solid;
     border-color: #DCDCDC ;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .containerHalfSelect{
   width:40%;
-  margin: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 2px;
+}
+
+
+.containerSlider{
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .rangeWrap {
@@ -1916,7 +1921,10 @@ h1 {
   flex-wrap: wrap;
   flex direction: column;
   width: 100%;
-  margin: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1px;
+
 }
 
 
@@ -1924,6 +1932,7 @@ h1 {
   display: block;
   width: 20%;
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .btn-block + .btn-block {
@@ -1932,7 +1941,6 @@ h1 {
 
 .main_card {
   padding: 10px;
-  border: 1px solid #c3c3c3;
   margin:auto;
   width: 98%;
   overflow: scroll;

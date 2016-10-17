@@ -229,10 +229,9 @@ class Survey extends Component {
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
       <div className='card'>
-      <img className="card-img-top" src='https://t3.ftcdn.net/jpg/01/06/77/14/240_F_106771427_TWRtnJRgSh5s5u9ldE0y1ZBGzWZBq7N9.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
 
       <div className='card-block'>
-      <h4>Let's pick apartment type </h4>
       <Select
       name="form-field-name"
       value={this.state.NumberOfRoomsSelected}
@@ -260,7 +259,7 @@ class Survey extends Component {
 
 
       <div className='card'> 
-      <img className="card-img-top" src='http://www.yellowfrog.com.au/features-old/ecommerce/no-commission-icon.png' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
       <div className='card-block'>
       <Select
       name="form-field-name"
@@ -270,7 +269,6 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("FeesSelected", value)}
       />
       <div className='horizontal-slider'>
-      <h4>How important is fees ? </h4>
       <Slider
       min={0}
       max={7}
@@ -330,7 +328,7 @@ class Survey extends Component {
 
 
       <div className='card'>
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
 
       <div className='card-block'>
 
@@ -371,7 +369,7 @@ class Survey extends Component {
       </div>
 
       <div className='card'>
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
       <div className='card-block'>
 
       <div className='rangeWrap'>
@@ -413,7 +411,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
 
       <div className='card-block'>
       <Select
@@ -441,7 +439,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
 
       <div className='card-block'>
 
@@ -472,7 +470,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
 
       <div className='card-block'>
       <Select
