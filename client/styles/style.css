@@ -6,6 +6,10 @@ html, body {
   height: 100%;
 }
 
+a:focus {
+  outline:0;
+}
+
 .fh {
   height: 100%;
 }

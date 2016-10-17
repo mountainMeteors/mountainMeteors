@@ -77,17 +77,17 @@ router.post('/scrape', function(req, res){
   // http://www.apartments.com/3133-31st-st-astoria-ny/5y6jkwq/
 
   var getApartmentInfo = xray(req.body.url, {
-    bedInfo: xray('.beds', [{
+    bedrooms: xray('.beds', [{
       numberOfBedsLong: '.longText | trim',
       numberOfBedsMedium: '.mediumText | trim',
       numberOfBedsShort: '.shortText | trim'
     }]),
-    bathInfo: xray('.baths', [{
+    bathrooms: xray('.baths', [{
       numberOfBathsLong: '.longText | trim',
       numberOfBathsMedium: '.medium | trim',
       numberOfBathsShort: '.shortText | trim'
     }]),
-    rentInfo: ['.rent | trim'],
+    rent: ['.rent | trim'],
     unitInfo: ['.unit | trim'],
     squareFeet: ['.sqft | trim'],
     availability: ['.available | trim'],
