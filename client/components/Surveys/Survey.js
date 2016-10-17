@@ -229,7 +229,7 @@ class Survey extends Component {
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
       <div className='card'>
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='https://t3.ftcdn.net/jpg/01/06/77/14/240_F_106771427_TWRtnJRgSh5s5u9ldE0y1ZBGzWZBq7N9.jpg' />
 
       <div className='card-block'>
       <h4>Let's pick apartment type </h4>
@@ -288,7 +288,7 @@ class Survey extends Component {
 
 
       <div className='card'>
-      <img className="card-img-top" src='' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
       <div className='card-block'>
       <div className='rangeWrap'>
 
@@ -333,11 +333,10 @@ class Survey extends Component {
       <img className="card-img-top" src='' />
 
       <div className='card-block'>
-      <div className='rangeWrap'>
-      <div className='horizontal-slider'>
-      <h4> Your ideal apt size?</h4>
 
       <div className='rangeWrap'>
+
+      <div className='containerHalfSelect'>
       <Select
       name="form-field-name"
       value={this.state.Sq_ft_MinSelected}
@@ -345,6 +344,9 @@ class Survey extends Component {
       multi={true}
       onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
       />
+      </div>
+
+      <div className='containerHalfSelect'>
       <Select
       name="form-field-name"
       value={this.state.Sq_ft_MaxSelected}
@@ -353,6 +355,9 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
       />
       </div>
+      </div>
+
+      <div className='horizontal-slider'>
       <Slider
       min={0}
       max={7}
@@ -364,13 +369,13 @@ class Survey extends Component {
       </div>
       </div>
       </div>
-      </div>
 
       <div className='card'>
       <img className="card-img-top" src='' />
       <div className='card-block'>
 
       <div className='rangeWrap'>
+      <div className='containerHalfSelect'>
       <Select
       name="form-field-name"
       value={this.state.CommuteMinSelected}
@@ -379,6 +384,9 @@ class Survey extends Component {
 
       onChange={(value) => this.handleChange("CommuteMinSelected", value)}
       />
+      </div>
+      <div className='containerHalfSelect'>
+
       <Select
       name="form-field-name"
       value={this.state.CommuteMaxSelected}
@@ -387,6 +395,7 @@ class Survey extends Component {
 
       onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
       />
+      </div>
       </div>
       <div className='horizontal-slider'>
 
@@ -488,13 +497,12 @@ class Survey extends Component {
       </div>
 
 
-
-      <div className='Targeded_Location_Card'>
-      <div className='container'>
+      <div className='container_location'>
       <FormGroup
       controlId="formBasicText"
       >
       <ControlLabel></ControlLabel>
+      <HelpBlock>Enter the address of your commute destination</HelpBlock>
       <FormControl
       type="text"
       value={this.state.targetedLocation}
@@ -502,9 +510,7 @@ class Survey extends Component {
       onChange={this.handleChangeLocation}
       />
       <FormControl.Feedback />
-      <HelpBlock>Enter the address of your commute destination</HelpBlock>
       </FormGroup>
-      </div>
       </div>
 
 
