@@ -111,6 +111,7 @@ class AddListingsModal extends React.Component {
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
       lng: geoObj.location.lng,
+      addressError: '',
       addressSelect: true
     });
   }
@@ -124,6 +125,10 @@ class AddListingsModal extends React.Component {
   getDistanceSubmit (event) {
     console.log('######DISTANCE#####', event.target)
     getDistance()
+  }
+
+  getValidationState (val) {
+
   }
 
 
@@ -198,7 +203,6 @@ class AddListingsModal extends React.Component {
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
             <ControlLabel>URL</ControlLabel>
-            <div className="form-error">{this.state.addressError}</div>
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
@@ -206,6 +210,7 @@ class AddListingsModal extends React.Component {
             </FormGroup>
              <FormGroup controlId="formAddress">
                <ControlLabel>Address</ControlLabel>
+               <div className="form-error">{this.state.addressError}</div>
                {' '}
                <Geosuggest
                  location={new google.maps.LatLng(40.7725833, -73.9736894)}
@@ -225,7 +230,8 @@ class AddListingsModal extends React.Component {
                <ControlLabel>Neighborhood</ControlLabel>
                <FormControl name="neighborhood" value={this.state.neighborhood}
                onChange={this.handleChange}
-               type="text" placeholder="East Village" />
+               type="text" placeholder="East Village"
+               validationState={this.getValidationState('neighborhood')} />
              </FormGroup>
              {' '}
              <FormGroup controlId="formPrice">
