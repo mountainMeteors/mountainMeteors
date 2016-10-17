@@ -127,9 +127,15 @@ class AddListingsModal extends React.Component {
     getDistance()
   }
 
-  // getValidationState (val) {
-  //   console.log();
-  // }
+  getValidationState (field) {
+    console.log('vstate', field);
+    console.log('vstate props', this.props.scrapeData[field]);
+    if (this.props.scrapeData[field] &&
+        this.props.scrapeData[field].length !== 0) {
+      console.log('RETURNED vstate');
+      return 'success';
+    }
+  }
 
 
   onModalSubmit (event) {
@@ -208,7 +214,7 @@ class AddListingsModal extends React.Component {
             onChange={this.scrapeListingSubmit}
             type="text" placeholder="www.apartments.com" />
             </FormGroup>
-             <FormGroup controlId="formAddress">
+             <FormGroup controlId="formAddress" validationState={this.getValidationState('location')}>
                <ControlLabel>Address</ControlLabel>
                <div className="form-error">{this.state.addressError}</div>
                {' '}
@@ -226,43 +232,42 @@ class AddListingsModal extends React.Component {
                 />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formNeighborhood">
+             <FormGroup controlId="formNeighborhood" validationState={this.getValidationState('neighborhood')}>
                <ControlLabel>Neighborhood</ControlLabel>
                <FormControl name="neighborhood" value={this.state.neighborhood}
                onChange={this.handleChange}
-               type="text" placeholder="East Village"
-               />
+               type="text" placeholder="East Village" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formPrice">
+             <FormGroup controlId="formPrice" validationState={this.getValidationState('rent')}>
                <ControlLabel>Rent</ControlLabel>
                <FormControl name="rent" value={this.state.rent}
                onChange={this.handleChange}
                type="text" placeholder="$2000" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formBedrooms">
+             <FormGroup controlId="formBedrooms" validationState={this.getValidationState('bedrooms')}>
                <ControlLabel>Bedrooms</ControlLabel>
                <FormControl name="bedrooms" value={this.state.bedrooms}
                onChange={this.handleChange}
                type="text" placeholder="3 Bedrooms" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formBathrooms">
+             <FormGroup controlId="formBathrooms" validationState={this.getValidationState('bathrooms')}>
                <ControlLabel>Bathrooms</ControlLabel>
                <FormControl name="bathrooms" value={this.state.bathrooms}
                onChange={this.handleChange}
                type="text" placeholder="2 Bathrooms" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formSquareFeet">
+             <FormGroup controlId="formSquareFeet" validationState={this.getValidationState('squareFeet')}>
                <ControlLabel>Square Feet</ControlLabel>
                <FormControl name="squareFeet" value={this.state.squareFeet}
                onChange={this.handleChange}
                type="text" placeholder="1200 sq ft" />
              </FormGroup>
              {' '}
-             <FormGroup controlId="formAvailability">
+             <FormGroup controlId="formAvailability" validationState={this.getValidationState('availability')}>
                <ControlLabel>Availability</ControlLabel>
                <FormControl name="availability" value={this.state.availability}
                onChange={this.handleChange}
