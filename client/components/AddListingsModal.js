@@ -61,12 +61,12 @@ class AddListingsModal extends React.Component {
     console.log("ding ding ding", newProps.scrapeData);
     if (Object.keys(newProps.scrapeData).length)
       this.setState({
-        rent: newProps.scrapeData.rentInfo[0],
+        rent: newProps.scrapeData.rent[0],
         location: newProps.scrapeData.location[0],
         neighborhood: newProps.scrapeData.neighborhood[1],
         squareFeet: newProps.scrapeData.squareFeet[0],
-        bedrooms: newProps.scrapeData.bedInfo[0].numberOfBedsLong,
-        bathrooms: newProps.scrapeData.bathInfo[0].numberOfBathsLong,
+        bedrooms: newProps.scrapeData.bedrooms[0].numberOfBedsLong,
+        bathrooms: newProps.scrapeData.bathrooms[0].numberOfBathsLong,
         availability: newProps.scrapeData.availability[0]
       })
   }
