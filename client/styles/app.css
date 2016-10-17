@@ -1085,7 +1085,7 @@
 
 /*************REACT SELECT FOR DROPDOWN SELECT *************/
 
-.Select {
+/*.Select {
   position: relative;
 }
 .Select,
@@ -1200,9 +1200,7 @@
   margin: 0;
   outline: none;
   line-height: 14px;
-  /* For IE 8 compatibility */
   padding: 8px 0 12px;
-  /* For IE 8 compatibility */
   -webkit-appearance: none;
 }
 .is-focused .Select-input > input {
@@ -1341,13 +1339,13 @@
 }
 .Select-option.is-selected {
   background-color: #f5faff;
-  /* Fallback color for IE 8 */
+
   background-color: rgba(0, 126, 255, 0.04);
   color: #333;
 }
 .Select-option.is-focused {
   background-color: #ebf5ff;
-  /* Fallback color for IE 8 */
+
   background-color: rgba(0, 126, 255, 0.08);
   color: #333;
 }
@@ -1372,11 +1370,9 @@
 }
 .Select--multi .Select-value {
   background-color: #ebf5ff;
-  /* Fallback color for IE 8 */
   background-color: rgba(0, 126, 255, 0.08);
   border-radius: 2px;
   border: 1px solid #c2e0ff;
-  /* Fallback color for IE 8 */
   border: 1px solid rgba(0, 126, 255, 0.24);
   color: #007eff;
   display: inline-block;
@@ -1410,20 +1406,19 @@
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
   border-right: 1px solid #c2e0ff;
-  /* Fallback color for IE 8 */
   border-right: 1px solid rgba(0, 126, 255, 0.24);
   padding: 1px 5px 3px;
 }
 .Select--multi .Select-value-icon:hover,
 .Select--multi .Select-value-icon:focus {
   background-color: #d8eafd;
-  /* Fallback color for IE 8 */
+
   background-color: rgba(0, 113, 230, 0.08);
   color: #0071e6;
 }
 .Select--multi .Select-value-icon:active {
   background-color: #c2e0ff;
-  /* Fallback color for IE 8 */
+
   background-color: rgba(0, 126, 255, 0.24);
 }
 .Select--multi.is-disabled .Select-value {
@@ -1449,7 +1444,10 @@
   to {
     -webkit-transform: rotate(1turn);
   }
-}
+}*/
+
+
+
 /*TEST for Multi-select*/
 .react-select-box-container {
   position: relative;
@@ -1693,8 +1691,8 @@ h1 {
   position: relative;
   display: block;
   width: 20%;
-  height: 20%;
-  margin: 13px;
+  height: 30%;
+  margin: 17px;
   background-color: $card-bg;
   // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
@@ -1704,6 +1702,7 @@ h1 {
 .card-block {
   @include clearfix;
   padding: $card-spacer-x;
+  height: 120px
 }
 
 .card-title {
@@ -1736,7 +1735,7 @@ h1 {
 .card-img-top {
   @include border-top-radius($card-border-radius-inner);
   width:100%;
-  height: 100%;
+  height: 100px;
 
 }
 .card-img-bottom {
@@ -1745,7 +1744,7 @@ h1 {
 
 
 
-.card_Neighborhood {
+/*.card_Neighborhood {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 40%;
@@ -1763,14 +1762,14 @@ h1 {
 .card_Neighborhood:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
+*/
 
 .title {
   text-align: center;
 }
 
 
-.card_aptType {
+/*.card_aptType {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 25%;
@@ -1785,14 +1784,6 @@ h1 {
 .containerPic {
     padding: 4px;
 }
-
-.container {
-    padding: 4px;
-    vertical-align : bottom !important;
-    margin-top: auto;
-}
-
-
 
 
 .card_Fees {
@@ -1896,12 +1887,23 @@ h1 {
 
 .Targeded_Location_Card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}*/
+.container_location {
+    padding: 4px;
+    vertical-align : bottom !important;
+    margin-top: auto;
 }
 
+.containerHalfSelect{
+  width:40%;
+  margin: 10px;
+}
 
 .rangeWrap {
   display: flex;
+  flex-wrap: wrap;
   flex direction: column;
+  width: 100%
 }
 
 

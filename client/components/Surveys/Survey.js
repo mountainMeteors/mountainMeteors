@@ -220,18 +220,18 @@ class Survey extends Component {
       <div>
 
       <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
-           <div >
-           <h4>Lets us get to know a little bit about you!</h4>
-           <p></p>
-           </div>
-           </Jumbotron>
+      <div >
+      <h4>Lets us get to know a little bit about you!</h4>
+      <p></p>
+      </div>
+      </Jumbotron>
 
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
       <div className='card'>
       <img className="card-img-top" src='' />
 
-           <div className='card-block'>
+      <div className='card-block'>
       <h4>Let's pick apartment type </h4>
       <Select
       name="form-field-name"
@@ -259,8 +259,8 @@ class Survey extends Component {
 
 
 
- <div className='card'> 
- <img className="card-img-top" src='http://www.karmicworld.net/images/loan_icon.jpg' />
+      <div className='card'> 
+      <img className="card-img-top" src='http://www.yellowfrog.com.au/features-old/ecommerce/no-commission-icon.png' />
       <div className='card-block'>
       <Select
       name="form-field-name"
@@ -289,9 +289,10 @@ class Survey extends Component {
 
       <div className='card'>
       <img className="card-img-top" src='' />
-           <div className='card-block'>
+      <div className='card-block'>
       <div className='rangeWrap'>
 
+      <div className='containerHalfSelect'>
       <Select
       name="form-field-name"
       value={this.state.RentMinSelected}
@@ -299,6 +300,9 @@ class Survey extends Component {
       multi={true}
       onChange={(value) => this.handleChange("RentMinSelected", value)}
       />
+      </div>
+
+      <div className='containerHalfSelect'>
       <Select
       name="form-field-name"
       value={this.state.RentMaxSelected}
@@ -306,6 +310,7 @@ class Survey extends Component {
       multi={true}
       onChange={(value) => this.handleChange("RentMaxSelected", value)}
       />
+      </div>
       </div>
 
       <div className='horizontal-slider'>
@@ -327,7 +332,7 @@ class Survey extends Component {
       <div className='card'>
       <img className="card-img-top" src='' />
 
-           <div className='card-block'>
+      <div className='card-block'>
       <div className='rangeWrap'>
       <div className='horizontal-slider'>
       <h4> Your ideal apt size?</h4>
@@ -393,15 +398,15 @@ class Survey extends Component {
       />
       <div className='value'>Ranking: {this.state.commuteRank}</div>
       <hr/>
-           </div>
-           </div>
-           </div>
+      </div>
+      </div>
+      </div>
 
 
-   <div className='card' >
-   <img className="card-img-top" src='' />
+      <div className='card' >
+      <img className="card-img-top" src='' />
 
-   <div className='card-block'>
+      <div className='card-block'>
       <Select
       name="form-field-name"
       value={this.state.PetSelected}
@@ -419,10 +424,10 @@ class Survey extends Component {
       onChange={(value) => this.handleChange("petRank", value)}
       />
 
-     <hr />
-     </div>
-     </div>
-     </div>
+      <hr />
+      </div>
+      </div>
+      </div>
 
 
 
@@ -457,10 +462,10 @@ class Survey extends Component {
 
 
 
-    <div className='card' >
-    <img className="card-img-top" src='' />
+      <div className='card' >
+      <img className="card-img-top" src='' />
 
-    <div className='card-block'>
+      <div className='card-block'>
       <Select
       name="form-field-name"
       value={this.state.amenitiesSelected}
@@ -478,14 +483,14 @@ class Survey extends Component {
       />
       <div className='title'>Ranking: {this.state.amenitiesRank}</div>
       <hr />
-            </div>
-            </div>
-            </div>
+      </div>
+      </div>
+      </div>
 
 
 
-    <div className='Targeded_Location_Card'>
-    <div className='container'>
+      <div className='Targeded_Location_Card'>
+      <div className='container'>
       <FormGroup
       controlId="formBasicText"
       >
