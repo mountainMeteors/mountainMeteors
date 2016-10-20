@@ -72,7 +72,4 @@ app.get('*', function(req, res) {
 
 
 
-app.listen(process.env.PORT || 2500)
-
-  console.log('Listening at http://localhost:2500');
-});
+app.listen(process.env.PORT || 2500);
