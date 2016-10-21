@@ -139,6 +139,17 @@ label {
   margin-left: 10px;
 }
 
+.form-demo-url {
+  display: inline-block;
+  color: grey;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.glyph-tooltip {
+  color: blue;
+}
+
 /*************LISTING FLEXBOX *************/
 
 /* CONTAINERS */

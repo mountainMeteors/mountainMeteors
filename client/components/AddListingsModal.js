@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { Form, FormControl, FormGroup, Checkbox, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+import DemoUrl from './MainView/DemoUrl';
 import { postListing, putListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
 import { scrapeListing } from '../util/listingUtil'
@@ -209,6 +211,7 @@ class AddListingsModal extends React.Component {
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
             <ControlLabel>URL</ControlLabel>
+            <DemoUrl />
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
