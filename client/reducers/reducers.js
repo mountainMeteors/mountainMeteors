@@ -9,6 +9,7 @@ import surveysResponses from './surveysReducer';
 import photoFiles from './photoReducer'
 import userPrefs from './userPrefs'
 import hasUserInfo from './hasUserInfo';
+import demo from './demo';
 
 
 
@@ -21,9 +22,9 @@ const rootReducer = combineReducers({
   scraper: scraper,
   userPrefs: userPrefs,
   hasUserInfo: hasUserInfo,
+  demoMode: demo,
   routing: routerReducer
 });
 
 
 export default rootReducer;
-
