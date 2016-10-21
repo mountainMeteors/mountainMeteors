@@ -49,6 +49,11 @@ class Header extends React.Component {
 
         {/* SIGNUP POPOVER */}
           <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
+
+        {/* DEMO
+          <Button disabled>Sign Up</Button>
+        */}
+
       </li>,
       <li className="nav-item" key={2}>
 
