@@ -53,7 +53,7 @@ componentDidUpdate(prevProps, prevState) {
   componentDidMount() {
     console.log('herereeeeer', this.props.photoFiles)
     if (!this.props.photoFiles){
-      this.props.fetchPhotos(this.props.listing.id)
+      this.props.fetchPhotos(75)
     }
   }
 

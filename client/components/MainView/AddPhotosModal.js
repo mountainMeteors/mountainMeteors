@@ -88,7 +88,7 @@ class AddPhotosModal extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={this.close.bind(this)}>Close</Button>
+           
           </Modal.Footer>
         </Modal>
 
