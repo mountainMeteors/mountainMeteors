@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 import AddListingsModal from '../AddListingsModal'
 import AddPhotosModal from './AddPhotosModal'
+import listingPhotosGallery from './listingPhotosGallery'
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
 import { fetchPhotos } from '../../actionCreators/photoActions.js';
@@ -93,6 +94,10 @@ class ListingEntry extends React.Component{
             </span>
             <span className="clickable">
               <AddPhotosModal listing={this.props.listing} />
+            </span>
+
+           <span className="clickable">
+              <listingPhotosGallery listing={this.props.listing} />
             </span>
             <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
               <Glyphicon glyph="trash" />
