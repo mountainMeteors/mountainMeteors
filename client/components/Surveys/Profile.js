@@ -51,7 +51,7 @@ renderList() {
         <tr>
           <td>Neighborhoods</td>
           <td>{userResponses.rentRank}</td>
-        </tr>  
+        </tr>
          <tr>
           <td>Commute</td>
           <td>{userResponses.commuteRank}</td>
@@ -67,14 +67,14 @@ renderList() {
         <tr>
           <td>Amenities</td>
           <td>{userResponses.amenitiesRank}</td>
-        </tr>        
+        </tr>
         <tr>
           <td>Pets</td>
           <td>{userResponses.petRank}</td>
         </tr>
 
        </tbody>
-      </table> 
+      </table>
 
 
       <table className="table">
@@ -92,11 +92,15 @@ renderList() {
           <tr>
             <td>Neighborhoods</td>
             <td>{userResponses.neighborhoodRank}</td>
-          </tr>  
-           <tr>
+          </tr>
+
+
+           {/* COMMUTE NOT CURRENTLY IN SURVEY
+             <tr>
             <td>Commute Range</td>
             <td>{userResponses.CommuteMin.value} to {userResponses.CommuteMax.value} </td>
           </tr>
+          */}
           <tr>
             <td>Fees</td>
             <td>{userResponses.fees.value}</td>
@@ -108,16 +112,16 @@ renderList() {
           <tr>
             <td>Amenities</td>
             <td>{userResponses.amenitiesRank}</td>
-          </tr>        
+          </tr>
           <tr>
             <td>Pets</td>
             <td>{userResponses.petRank}</td>
           </tr>
          </tbody>
-        </table> 
+        </table>
 
 
-      </div>    
+      </div>
       )
 
 }

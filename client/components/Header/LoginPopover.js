@@ -31,7 +31,12 @@ class LoginPopover extends React.Component {
 
   loginSubmit(e) {
     e.preventDefault();
-    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword});
+    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword})
+    .then(() => {
+      console.log('~~~~~~Getting post-login listings');
+      this.props.getListings();
+
+    })
   }
 
   toggle() {

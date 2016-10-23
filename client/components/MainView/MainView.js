@@ -33,7 +33,6 @@ class MainView extends React.Component {
     console.log('checking in mv for auth');
     console.log('checking for survey', Object.keys(this.props.userPrefs).length);
     if (!this.props.authenticated) browserHistory.push('/welcome');
-    else if (!Object.keys(this.props.userPrefs).length) browserHistory.push('/survey');
   }
 
   componentDidMount() {

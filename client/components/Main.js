@@ -21,12 +21,6 @@ class Main extends React.Component{
     super();
   }
 
-  // componentWillMount() {
-  //   if (this.props.demoMode) {
-  //     this.props.logoutUser();
-  //   }
-  // }
-
   componentDidMount() {
     console.log('main mounted props', this.props);
     console.log('truthiness', !!this.props.listings && !!this.props.userPrefs);

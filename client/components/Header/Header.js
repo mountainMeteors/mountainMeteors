@@ -12,6 +12,7 @@ import SignUpPopover from './SignUpPopover';
 import LoginPopover from './LoginPopover';
 
 import { signUpUser, loginUser, logoutUser } from '../../actionCreators/accountActions';
+import { getListings } from '../../actionCreators/listingActions';
 
 class Header extends React.Component {
 
@@ -48,17 +49,13 @@ class Header extends React.Component {
       <li className="nav-item" key={1}>
 
         {/* SIGNUP POPOVER */}
-        {this.props.demoMode ?
-          <Button disabled>Sign Up</Button>
-          :
           <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
-        }
 
       </li>,
       <li className="nav-item" key={2}>
 
         {/* LOGIN POPOVER */}
-        <LoginPopover loginUser={this.props.loginUser} handleInputChange={this.handleInputChange} demoMode={this.props.demoMode}/>
+        <LoginPopover loginUser={this.props.loginUser} getListings={this.props.getListings} handleInputChange={this.handleInputChange} demoMode={this.props.demoMode}/>
       </li>
 
       ];
@@ -77,13 +74,21 @@ class Header extends React.Component {
         <Link to="/">seekPad</Link>
       </h1>
       {this.props.authenticated ?
+        <div style={{'display':'inline', 'float': 'right'}}>
         <Button
           bsStyle="success"
-          style={{'display':'inline', 'float': 'right'}}
+          style= {{'marginRight': '6px'}}
+          onClick={() => {browserHistory.push('/survey')}}
+        >
+          Survey
+        </Button>
+        <Button
+          bsStyle="success"
           onClick={() => {browserHistory.push('/profile')}}
         >
           Profile
         </Button>
+      </div>
 
         :
         ''
@@ -102,7 +107,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ signUpUser, logoutUser, loginUser }, dispatch)
+	return bindActionCreators({ signUpUser, logoutUser, loginUser, getListings }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
