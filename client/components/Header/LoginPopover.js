@@ -22,9 +22,11 @@ class LoginPopover extends React.Component {
     this.toggle = this.toggle.bind(this);
 
       //DEMO
-    this.state.showPopover = true;
-    this.state.loginEmail = 'demo';
-    this.state.loginPassword = 'demoupinhere';
+    if (props.demoMode) {
+      this.state.showPopover = true;
+      this.state.loginEmail = 'demo';
+      this.state.loginPassword = 'demoupinhere';
+    }
   }
 
   loginSubmit(e) {

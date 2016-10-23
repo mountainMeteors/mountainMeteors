@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   scraper: scraper,
   userPrefs: userPrefs,
   hasUserInfo: hasUserInfo,
-  demoMode: demo,
+  demo: demo,
   routing: routerReducer
 });
 

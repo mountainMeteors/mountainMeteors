@@ -1,3 +1,4 @@
+//FLAG CONTROLLING DEMO MODE
 const demoMode = false;
 
 function demo(state = demoMode, action) {

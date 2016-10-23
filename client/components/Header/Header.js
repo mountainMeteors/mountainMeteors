@@ -48,17 +48,17 @@ class Header extends React.Component {
       <li className="nav-item" key={1}>
 
         {/* SIGNUP POPOVER */}
-          <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
-
-        {/* DEMO
+        {this.props.demoMode ?
           <Button disabled>Sign Up</Button>
-        */}
+          :
+          <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
+        }
 
       </li>,
       <li className="nav-item" key={2}>
 
         {/* LOGIN POPOVER */}
-        <LoginPopover loginUser={this.props.loginUser} handleInputChange={this.handleInputChange} />
+        <LoginPopover loginUser={this.props.loginUser} handleInputChange={this.handleInputChange} demoMode={this.props.demoMode}/>
       </li>
 
       ];
@@ -96,7 +96,8 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth
+    authenticated: state.auth,
+    demoMode: state.demo
   }
 }
 
