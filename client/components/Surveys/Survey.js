@@ -229,7 +229,7 @@ class Survey extends Component {
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget-1.jpg' />
 
       <div className='card-block'>
       <Select
@@ -259,7 +259,7 @@ class Survey extends Component {
 
 
       <div className='card'> 
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/budget-1.jpg' />
       <div className='card-block'>
       <Select
       name="form-field-name"
@@ -369,7 +369,7 @@ class Survey extends Component {
       </div>
 
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/commute.jpg' />
       <div className='card-block'>
 
       <div className='rangeWrap'>
@@ -411,7 +411,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/pets2.jpg' />
 
       <div className='card-block'>
       <Select
@@ -439,7 +439,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/neigh.jpg' />
 
       <div className='card-block'>
 
@@ -470,7 +470,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='http://localhost:2500/uploads/Amen.jpg' />
 
       <div className='card-block'>
       <Select
