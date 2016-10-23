@@ -72,25 +72,23 @@ class AddPhotosModal extends React.Component {
 
           <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
               <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
-                  <div> Drop photos of your future apartment here</div>
+                  <div>    Drop photos of your future apartment here</div>
               </Dropzone>
              
               {this.state.photos.length > 0 ? <div>
               <h2>Uploading your {this.state.photos.length} photos...</h2>
               <div className='AddphotoBox'>{this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}</div>
               </div> : null}
-              <Button type="submit" className="btn btn-primary" id="buttonNew">Submit</Button>
+              <Button type="submit" className="btn btn-block btn-primary" id="buttonNew">Submit</Button>
              </form>
     
-    
-    <span className="clickable"><listingPhotosGallery listing={this.props.listing} /></span>  
 
           </div>
 
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={this.close.bind(this)}>Close</Button>
+           
           </Modal.Footer>
         </Modal>
 
