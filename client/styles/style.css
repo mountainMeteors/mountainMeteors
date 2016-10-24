@@ -23,15 +23,38 @@ a:focus {
   overflow-y: scroll;
 }
 
+.title-container {
+  /*position: relative;
+  display: inline;
+  margin: auto;*/
+  /*width: 100%;*/
+  /*text-align: center;*/
+}
 
-h1.title {
-
-  display:inline-block;
+a.title {
+  /*margin-left: 3%;*/
+  /*width: 50%;*/
+  font-family: 'Lobster';
+  font-size: 36px;
+  color: white;
+  /*display: inline-block;*/
 }
 /*TODO: Above is temp fix. Should just create it as a styled span.*/
 
+.navbar {
+  /*position: relative;*/
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+/*.navbar button {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}*/
+
 #header {
-    background-color: #FAEBD7 ;
+  background-color: #2679ff
 }
 
 .clickable {
@@ -736,4 +759,3 @@ th {
 .geosuggest-item--active:focus {
   background: #ccc;
 }
-

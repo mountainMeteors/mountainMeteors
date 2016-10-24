@@ -70,25 +70,25 @@ class Header extends React.Component {
       <ul className="nav navbar-nav">
         {this.renderLinks()}
       </ul>
-      <h1 className="title" >
-        <Link to="/">seekPad</Link>
-      </h1>
+      <span className="title-container">
+        <Link to="/" className="title" >SeekPad</Link>
+      </span>
       {this.props.authenticated ?
         <div style={{'display':'inline', 'float': 'right'}}>
-        <Button
-          bsStyle="success"
-          style= {{'marginRight': '6px'}}
-          onClick={() => {browserHistory.push('/survey')}}
-        >
-          Survey
-        </Button>
-        <Button
-          bsStyle="success"
-          onClick={() => {browserHistory.push('/profile')}}
-        >
-          Profile
-        </Button>
-      </div>
+          <Button
+            bsStyle="success"
+            style= {{'marginRight': '6px'}}
+            onClick={() => {browserHistory.push('/survey')}}
+          >
+            Survey
+          </Button>
+          <Button
+            bsStyle="success"
+            onClick={() => {browserHistory.push('/profile')}}
+          >
+            Profile
+          </Button>
+        </div>
 
         :
         ''
