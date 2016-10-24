@@ -15,6 +15,28 @@ import css from '../../styles/style.css';
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
+const formatBedBath = function(listing) {
+  let formattedStr = '';
+  if (listing.bedrooms) {
+    formattedStr += listing.bedrooms.split(' ')[0];
+    if (formattedStr.length > 0 && formattedStr.toLowerCase() !== 'studio') {
+      formattedStr += ' Bed'
+    }
+  }
+  if (listing.bathrooms) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.bathrooms.split(' ')[0] + ' Bath';
+  }
+
+  if (listing.sq_ft) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.sq_ft + ' Sq. Ft.'
+  }
+
+  console.log('returning', formattedStr);
+  return formattedStr;
+}
+
 
 
 
@@ -72,18 +94,7 @@ class ListingEntry extends React.Component{
             </div>
             <div className="listing-details">
               <span className="listing-bed-bath">
-                {this.props.listing.bedrooms ?
-                  this.props.listing.bedrooms.split(' ')[0]
-                  : '?'
-                } Bed /&nbsp;
-                {this.props.listing.bathrooms ?
-                  this.props.listing.bathrooms.split(' ')[0]
-                  : '?'
-                } Bath
-                {this.props.listing.sq_ft ?
-                  ' / ' + this.props.listing.sq_ft + ' sq. ft'
-                  : ''
-                }
+                {formatBedBath(this.props.listing)}
               </span>
               <span className="listing-pets"><strong>Pets:</strong> {this.props.listing.pets}</span>
             </div>
