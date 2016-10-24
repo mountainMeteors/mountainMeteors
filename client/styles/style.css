@@ -24,14 +24,20 @@ a:focus {
 }
 
 
-h1.title {
-
-  display:inline-block;
+a.title {
+  font-family: 'Lobster';
+  font-size: 36px;
+  color: white;
 }
 /*TODO: Above is temp fix. Should just create it as a styled span.*/
 
+.navbar {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
 #header {
-    background-color: #FAEBD7 ;
+  background-color: #2679ff
 }
 
 .clickable {
@@ -736,4 +742,3 @@ th {
 .geosuggest-item--active:focus {
   background: #ccc;
 }
-

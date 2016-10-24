@@ -164,7 +164,7 @@
   left: 0;
   position: absolute;
   top: 0;
-  width: 70%; 
+  width: 70%;
   max-height: 600px;
 }
   .image-gallery-slide.center {
@@ -268,7 +268,7 @@
       padding: 5px 10px; } }
 
 
-   
+
 
 
  .AddphotoBox{
@@ -286,7 +286,7 @@
    display: inline-block;
    width: 250px;
    margin-top: 15px;
- }     
+ }
 
 .welcomeButton {
   float: right;
@@ -2245,5 +2245,3 @@ h1 {
   margin-bottom: 10px;
   box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
 }
-
-
