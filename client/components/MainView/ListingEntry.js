@@ -71,7 +71,20 @@ class ListingEntry extends React.Component{
               <span className="listing-rent">{this.props.listing.rent}</span>
             </div>
             <div className="listing-details">
-              <span className="listing-bed-bath">2 Bed / 2 Bath {this.props.listing.sq_ft ? ' / ' + this.props.listing.sq_ft + ' sq. ft' : '' }</span>
+              <span className="listing-bed-bath">
+                {this.props.listing.bedrooms ?
+                  this.props.listing.bedrooms.split(' ')[0]
+                  : '?'
+                } Bed /&nbsp;
+                {this.props.listing.bathrooms ?
+                  this.props.listing.bathrooms.split(' ')[0]
+                  : '?'
+                } Bath
+                {this.props.listing.sq_ft ?
+                  ' / ' + this.props.listing.sq_ft + ' sq. ft'
+                  : ''
+                }
+              </span>
               <span className="listing-pets"><strong>Pets:</strong> {this.props.listing.pets}</span>
             </div>
             <div className="listing-amenities-fee">
@@ -81,7 +94,10 @@ class ListingEntry extends React.Component{
                 {this.props.listing.amenities}
               </div>
               <div className="listing-fee">
-                NO FEE
+                {this.props.listing.no_fee ?
+                  'NO FEE'
+                  : ''
+                }
               </div>
             </div>
           </div>

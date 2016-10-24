@@ -88,7 +88,6 @@ class AddListingsModal extends React.Component {
     stateObj[input.target.name] = input.target.value;
     console.log('setting state', stateObj);
     this.setState(stateObj);
-    console.log('state.gym', this.state.gym);
   }
 
   //TODO: Need to allow edit modal to pick up on previous values
@@ -289,7 +288,8 @@ class AddListingsModal extends React.Component {
             </FormGroup>
 
             <FormGroup controlId="formFee">
-             <Checkbox>
+             <Checkbox name="noFee" value={this.state.noFee}
+             onChange={this.toggleBox}>
                <b>No Fee</b>
              </Checkbox>
              </FormGroup>
