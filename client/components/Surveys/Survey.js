@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import Slider from 'react-rangeslider'
 import { postSurveyAnswers } from '../../actionCreators/surveysActions';
 import { bindActionCreators } from 'redux'
@@ -157,6 +158,14 @@ class Survey extends Component {
     this.handleChangeLocation = this.handleChangeLocation.bind(this);
   }
 
+  componentWillMount() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
+
+  componentDidUpdate() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
+
   static contextTypes = {
     router: PropTypes.object
   };
@@ -209,7 +218,9 @@ class Survey extends Component {
     console.log("this+++++",this.props.user_id)
     console.log(surveyResponses)
     this.props.postSurveyAnswers(surveyResponses, this.props.user_id)
+    // browserHistory.push('/');
     .then (() => {
+      console.log('survey then hit');
       this.context.router.push('/');
     })
   }
@@ -258,7 +269,7 @@ class Survey extends Component {
 
 
 
-      <div className='card'> 
+      <div className='card'>
       <img className="card-img-top" src='http://localhost:2500/uploads/budget-1.jpg' />
       <div className='card-block'>
       <Select
@@ -522,10 +533,8 @@ class Survey extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('in mapstate==*****==>', state.auth.user_id)
   return {
-    user_id: state.auth.user_id,
-    isAuth: state.isAuth
+    authenticated: state.auth
   };
 }
 

@@ -1,8 +1,8 @@
 //NOT CURRENTLY USED, BUT SHOULD BE MODULARIZED
 
 import React from 'react';
-import { render } from 'react-dom';
-import { Form, Col, FieldGroup, FormGroup, FormControl, ControlLabel, OverlayTrigger, Button, Popover } from 'react-bootstrap';
+import { findDOMNode, render } from 'react-dom';
+import { Form, Col, FieldGroup, FormGroup, FormControl, ControlLabel, Overlay, OverlayTrigger, Tooltip, Button, Popover } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import { signUpUser } from '../../actionCreators/accountActions'
@@ -10,7 +10,6 @@ import { bindActionCreators } from 'redux';
 
 class LoginPopover extends React.Component {
   constructor(props){
-    console.log('loginpopover taking', props);
     super(props);
 
     this.state = {
@@ -20,26 +19,43 @@ class LoginPopover extends React.Component {
 
     this.handleInputChange = this.props.handleInputChange.bind(this);
     this.loginSubmit = this.loginSubmit.bind(this);
+    this.toggle = this.toggle.bind(this);
+
+      //DEMO
+    if (props.demoMode) {
+      this.state.showPopover = true;
+      this.state.loginEmail = 'demo';
+      this.state.loginPassword = 'demoupinhere';
+    }
   }
 
   loginSubmit(e) {
     e.preventDefault();
-    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword});
+    this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword})
+    .then(() => {
+      this.props.getListings();
+    })
   }
 
-  close() {
-    this.setState({ showPopover: false });
+  toggle() {
+    this.setState({ showPopover: !this.state.showPopover })
   }
 
-  open() {
-    this.setState({ showPopover: true });
-  }
+
+
 
   render() {
+    const sharedProps = {
+      show: this.state.showPopover,
+      container: this,
+      target: () => findDOMNode(this.refs.target)
+    };
+
     return (
       <div>
-        <OverlayTrigger trigger="click" placement="bottom" overlay={
-          <Popover id="popover-positioned-bottom">
+        <Button ref="target" onClick={this.toggle}>Log In</Button>
+        <Overlay {...sharedProps} placement="bottom">
+          <Popover id="popover-positioned-bottom" style={{'width': '250px'}}>
             <Form onSubmit={this.loginSubmit}>
               <FormGroup controlId="loginEmail">
                 <FormControl name="loginEmail" type="text" value={this.state.loginEmail} placeholder="e-mail" onChange={this.handleInputChange}/>
@@ -54,12 +70,11 @@ class LoginPopover extends React.Component {
 
             </Form>
           </Popover>
-        }>
-          <Button placement="right">Log In</Button>
-        </OverlayTrigger>
+        </Overlay>
      </div>
    )
  }
 };
+
 
 export default LoginPopover;

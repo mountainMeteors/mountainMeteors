@@ -11,7 +11,7 @@ import Header from './Header/Header';
 
 //Actions
 import { getListings } from '../actionCreators/listingActions.js';
-import { getPrefs } from '../actionCreators/accountActions.js';
+import { getPrefs, logoutUser } from '../actionCreators/accountActions.js';
 
 //CSS
 // import css from '../styles/style.css';
@@ -61,12 +61,13 @@ function mapStateToProps(state) {
     authenticated: state.auth,
     listings: state.listings,
     userPrefs: state.userPrefs,
-    hasUserInfo: state.hasUserInfo.hasListings && state.hasUserInfo.hasPrefs
+    hasUserInfo: state.hasUserInfo.hasListings && state.hasUserInfo.hasPrefs,
+    demoMode: state.demo
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({getListings, getPrefs}, dispatch);
+  return bindActionCreators({getListings, getPrefs, logoutUser}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

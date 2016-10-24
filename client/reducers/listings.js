@@ -14,6 +14,9 @@ function listings(state = [], action) {
         Object.assign([], state, action.payload.data):
         [];
 
+    case 'LOGOUT':
+      return [];
+
     case 'POSTLISTINGS':
       // console.log('action.payload', action.payload);
       state = state.slice();
