@@ -30,15 +30,15 @@ class MainView extends React.Component {
   componentWillMount() {
     // console.log('mv props', this.props);
     // console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
-    console.log('checking in mv for auth');
-    console.log('checking for survey', Object.keys(this.props.userPrefs).length);
+    // console.log('checking in mv for auth');
+    // console.log('checking for survey', Object.keys(this.props.userPrefs).length);
     if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
   componentDidMount() {
     console.log('mv mounted props', this.props);
-    console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
-    if (!this.props.authenticated) browserHistory.push('/welcome');
+    // console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
+    // if (!this.props.authenticated) browserHistory.push('/welcome');
     // else if (!Object.keys(this.props.userPrefs).length) browserHistory.push('/survey');
   }
 
@@ -62,9 +62,9 @@ class MainView extends React.Component {
   // }
 
   componentDidUpdate() {
-    console.log('main state updated', this.props, this.state);
+    // console.log('main state updated', this.props, this.state);
+    //TODO (global throughout project): This redirect should really probably happen in a reduce to keep it WET across all protected pages
     if (!this.props.authenticated) browserHistory.push('/welcome');
-    // this.props.getListings(this.props.user_id);
   }
 
   render() {

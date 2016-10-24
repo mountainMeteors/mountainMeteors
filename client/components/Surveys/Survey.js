@@ -158,6 +158,14 @@ class Survey extends Component {
     this.handleChangeLocation = this.handleChangeLocation.bind(this);
   }
 
+  componentWillMount() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
+
+  componentDidUpdate() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
+
   static contextTypes = {
     router: PropTypes.object
   };
@@ -525,10 +533,8 @@ class Survey extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('in mapstate==*****==>', state.auth.user_id)
   return {
-    user_id: state.auth.user_id,
-    isAuth: state.isAuth
+    authenticated: state.auth
   };
 }
 

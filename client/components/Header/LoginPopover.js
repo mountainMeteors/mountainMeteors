@@ -33,9 +33,7 @@ class LoginPopover extends React.Component {
     e.preventDefault();
     this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword})
     .then(() => {
-      console.log('~~~~~~Getting post-login listings');
       this.props.getListings();
-
     })
   }
 
