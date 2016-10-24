@@ -1,5 +1,3 @@
-//NOT CURRENTLY USED, BUT SHOULD BE MODULARIZED
-
 import React from 'react';
 import { findDOMNode, render } from 'react-dom';
 import { Form, Col, FieldGroup, FormGroup, FormControl, ControlLabel, Overlay, OverlayTrigger, Tooltip, Button, Popover } from 'react-bootstrap';
@@ -23,7 +21,7 @@ class LoginPopover extends React.Component {
 
       //DEMO
     if (props.demoMode) {
-      this.state.showPopover = true;
+      this.state.showLogin = true;
       this.state.loginEmail = 'demo';
       this.state.loginPassword = 'demoupinhere';
     }
@@ -38,7 +36,8 @@ class LoginPopover extends React.Component {
   }
 
   toggle() {
-    this.setState({ showPopover: !this.state.showPopover })
+    // this.setState({ showPopover: !this.state.showPopover })
+    this.props.togglePopover('login');
   }
 
 
@@ -46,7 +45,7 @@ class LoginPopover extends React.Component {
 
   render() {
     const sharedProps = {
-      show: this.state.showPopover,
+      show: this.props.showLogin,
       container: this,
       target: () => findDOMNode(this.refs.target)
     };

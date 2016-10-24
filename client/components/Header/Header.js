@@ -16,16 +16,35 @@ import { getListings } from '../../actionCreators/listingActions';
 
 class Header extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       signUpEmail: '',
       signUpPassword: '',
       loginEmail: '',
-      loginPassword: ''
+      loginPassword: '',
+      showLogin: false,
+      showSignup: false
     }
     // this.handleInputChange = this.handleInputChange.bind(this);
     this.logoutSubmit = this.logoutSubmit.bind(this);
+    this.togglePopover = this.togglePopover.bind(this);
+
+    if (props.demoMode) this.state.showLogin = true;
+  }
+
+  togglePopover(type) {
+    if (type === 'login') {
+      this.setState({
+        showLogin: !this.state.showLogin,
+        showSignup: false
+      });
+    } else if (type === 'signup') {
+      this.setState({
+        showSignup: !this.state.showSignup,
+        showLogin: false
+      });
+    }
   }
 
   handleInputChange(input) {
@@ -49,13 +68,25 @@ class Header extends React.Component {
       <li className="nav-item" key={1}>
 
         {/* SIGNUP POPOVER */}
-          <SignUpPopover signUpUser={this.props.signUpUser} handleInputChange={this.handleInputChange} />
+        <SignUpPopover
+          signUpUser={this.props.signUpUser}
+          handleInputChange={this.handleInputChange}
+          togglePopover = {this.togglePopover}
+          showSignup = {this.state.showSignup}
+        />
 
       </li>,
       <li className="nav-item" key={2}>
 
         {/* LOGIN POPOVER */}
-        <LoginPopover loginUser={this.props.loginUser} getListings={this.props.getListings} handleInputChange={this.handleInputChange} demoMode={this.props.demoMode}/>
+        <LoginPopover
+          loginUser={this.props.loginUser}
+          getListings={this.props.getListings}
+          handleInputChange={this.handleInputChange}
+          togglePopover = {this.togglePopover}
+          demoMode={this.props.demoMode}
+          showLogin = {this.state.showLogin}
+        />
       </li>
 
       ];
