@@ -25,7 +25,10 @@ class SignUpPopover extends React.Component {
 
   signUpSubmit(e) {
     e.preventDefault();
-    this.props.signUpUser({email: this.state.signUpEmail, password: this.state.signUpPassword});
+    this.props.signUpUser({email: this.state.signUpEmail, password: this.state.signUpPassword})
+    .then(() => { //TODO: This doesn't seem to wait like the login's promise does
+      this.props.togglePopover('signup', false);
+    });
   }
 
   toggle() {

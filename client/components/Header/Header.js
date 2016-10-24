@@ -33,15 +33,15 @@ class Header extends React.Component {
     if (props.demoMode) this.state.showLogin = true;
   }
 
-  togglePopover(type) {
+  togglePopover(type, val) {
     if (type === 'login') {
       this.setState({
-        showLogin: !this.state.showLogin,
+        showLogin: val || !this.state.showLogin,
         showSignup: false
       });
     } else if (type === 'signup') {
       this.setState({
-        showSignup: !this.state.showSignup,
+        showSignup: val || !this.state.showSignup,
         showLogin: false
       });
     }
