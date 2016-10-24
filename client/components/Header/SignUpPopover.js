@@ -1,5 +1,3 @@
-//NOT CURRENTLY USED, BUT SHOULD BE MODULARIZED
-
 import React from 'react';
 import { findDOMNode, render } from 'react-dom';
 import {  Form, Col, FieldGroup, FormGroup, FormControl, ControlLabel, Overlay, OverlayTrigger, Button, Popover } from 'react-bootstrap';
@@ -31,12 +29,13 @@ class SignUpPopover extends React.Component {
   }
 
   toggle() {
-    this.setState({ showPopover: !this.state.showPopover })
+    // this.setState({ showPopover: !this.state.showPopover })
+    this.props.togglePopover('signup');
   }
 
   render() {
     const sharedProps = {
-      show: this.state.showPopover,
+      show: this.props.showSignup,
       container: this,
       target: () => findDOMNode(this.refs.target)
     };
