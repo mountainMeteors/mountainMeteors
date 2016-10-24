@@ -21,7 +21,6 @@ class LoginPopover extends React.Component {
 
       //DEMO
     if (props.demoMode) {
-      this.state.showLogin = true;
       this.state.loginEmail = 'demo';
       this.state.loginPassword = 'demoupinhere';
     }
@@ -31,6 +30,7 @@ class LoginPopover extends React.Component {
     e.preventDefault();
     this.props.loginUser({email: this.state.loginEmail, password: this.state.loginPassword})
     .then(() => {
+      this.props.togglePopover('login', false);
       this.props.getListings();
     })
   }

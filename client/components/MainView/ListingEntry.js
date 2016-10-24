@@ -15,6 +15,28 @@ import css from '../../styles/style.css';
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
+const formatBedBath = function(listing) {
+  let formattedStr = '';
+  if (listing.bedrooms) {
+    formattedStr += listing.bedrooms.split(' ')[0];
+    if (formattedStr.length > 0 && formattedStr.toLowerCase() !== 'studio') {
+      formattedStr += ' Bed'
+    }
+  }
+  if (listing.bathrooms) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.bathrooms.split(' ')[0] + ' Bath';
+  }
+
+  if (listing.sq_ft) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.sq_ft + ' Sq. Ft.'
+  }
+
+  console.log('returning', formattedStr);
+  return formattedStr;
+}
+
 
 
 
@@ -71,7 +93,9 @@ class ListingEntry extends React.Component{
               <span className="listing-rent">{this.props.listing.rent}</span>
             </div>
             <div className="listing-details">
-              <span className="listing-bed-bath">2 Bed / 2 Bath {this.props.listing.sq_ft ? ' / ' + this.props.listing.sq_ft + ' sq. ft' : '' }</span>
+              <span className="listing-bed-bath">
+                {formatBedBath(this.props.listing)}
+              </span>
               <span className="listing-pets"><strong>Pets:</strong> {this.props.listing.pets}</span>
             </div>
             <div className="listing-amenities-fee">
@@ -81,7 +105,10 @@ class ListingEntry extends React.Component{
                 {this.props.listing.amenities}
               </div>
               <div className="listing-fee">
-                NO FEE
+                {this.props.listing.no_fee ?
+                  'NO FEE'
+                  : ''
+                }
               </div>
             </div>
           </div>
