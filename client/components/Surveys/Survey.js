@@ -230,7 +230,7 @@ class Survey extends Component {
     return (
       <div>
 
-      <Jumbotron style={{'backgroundImage': 'url(http://localhost:2500/uploads/banner1.jpg)'}}>
+      <Jumbotron style={{'backgroundImage': 'url(assets/survey/banner1.jpg)'}}>
       <div >
       <h4>Lets us get to know a little bit about you!</h4>
       <p></p>
@@ -240,7 +240,7 @@ class Survey extends Component {
       <form onSubmit={this.onFormSubmit}>
       <div className="main_card">
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget-1.jpg' />
+      <img className="card-img-top" src='assets/survey/rooms.jpg' />
 
       <div className='card-block'>
       <Select
@@ -270,7 +270,7 @@ class Survey extends Component {
 
 
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget-1.jpg' />
+      <img className="card-img-top" src='assets/survey/fees.jpg' />
       <div className='card-block'>
       <Select
       name="form-field-name"
@@ -297,7 +297,7 @@ class Survey extends Component {
 
 
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='assets/survey/budget.jpg' />
       <div className='card-block'>
       <div className='rangeWrap'>
 
@@ -339,7 +339,7 @@ class Survey extends Component {
 
 
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/budget.jpg' />
+      <img className="card-img-top" src='assets/survey/sqft.jpg' />
 
       <div className='card-block'>
 
@@ -380,7 +380,7 @@ class Survey extends Component {
       </div>
 
       <div className='card'>
-      <img className="card-img-top" src='http://localhost:2500/uploads/commute.jpg' />
+      <img className="card-img-top" src='assets/survey/commute.jpg' />
       <div className='card-block'>
 
       <div className='rangeWrap'>
@@ -422,7 +422,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/pets2.jpg' />
+      <img className="card-img-top" src='assets/survey/pets.jpg' />
 
       <div className='card-block'>
       <Select
@@ -450,7 +450,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/neigh.jpg' />
+      <img className="card-img-top" src='assets/survey/neighborhood.jpg' />
 
       <div className='card-block'>
 
@@ -481,7 +481,7 @@ class Survey extends Component {
 
 
       <div className='card' >
-      <img className="card-img-top" src='http://localhost:2500/uploads/Amen.jpg' />
+      <img className="card-img-top" src='assets/amenities.jpg' />
 
       <div className='card-block'>
       <Select
