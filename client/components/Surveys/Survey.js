@@ -26,17 +26,22 @@ const Neighborhoods = [
   { label: 'Financial District', value: 'Financial District' }
 ];
 
-const NumberOfRooms = [
+const Bedrooms = [
   { label: 'Studio', value: 'Studio' },
   { label: '1', value: '1' },
   { label: '2', value: '2' },
   { label: '3', value: '3' },
   { label: '4', value: '4' },
   { label: '5', value: '5' },
-  { label: '6', value: '6' },
-  { label: 'Penthouse', value: 'Penthouse' },
-  { label: 'igloo', value: 'igloo' },
-  { label: 'igloo', value: 'igloo' },
+  { label: '6', value: '6' }
+];
+
+const Bathrooms = [
+  { label: '1', value: '1' },
+  { label: '2', value: '2' },
+  { label: '3', value: '3' },
+  { label: '4', value: '4' },
+  { label: '5', value: '5' }
 ];
 
 const Amenities = [
@@ -108,9 +113,13 @@ class Survey extends Component {
       NeighborhoodsSelected: [],
       neighborhoodRank: 1,
 
-      NumberOfRooms: NumberOfRooms,
-      NumberOfRoomsSelected: null,
-      numberOfRoomsRank: 1,
+      Bedrooms: Bedrooms,
+      BedroomsSelected: null,
+      bedroomsRank: 1,
+
+      Bathrooms: Bathrooms,
+      BathroomsSelected: null,
+      bathroomsRank: 1,
 
       targetedLocation: '',
 
@@ -184,8 +193,11 @@ class Survey extends Component {
       RentMin: this.state.RentMinSelected || 'None Selected',
       RentMax: this.state.RentMaxSelected || 'None Selected',
 
-      NumberOfRooms: this.state.NumberOfRoomsSelected || 'None Selected',
-      numberOfRoomsRank: this.state.numberOfRoomsRank || 'None Selected',
+      Bedrooms: this.state.BedroomsSelected || 'None Selected',
+      bedroomsRank: this.state.bedroomsRank || 'None Selected',
+
+      Bathrooms: this.state.BathroomsSelected || 'None Selected',
+      bathroomsRank: this.state.bathroomsRank || 'None Selected',
 
       targetedLocation: this.state.targetedLocation,
 
@@ -198,13 +210,11 @@ class Survey extends Component {
       feeRank: this.state.feeRank || 'None Selected',
       fees: this.state.FeesSelected || 'None Selected',
 
-      sq_ft_Rank: this.state.sq_ft_Rank || 'None Selected',
-      Sq_ft_Min: this.state.Sq_ft_MinSelected || 'None Selected',
-      Sq_ft_Max: this.state.Sq_ft_MaxSelected || 'None Selected',
 
-      Sq_ft_Rank: this.state.Sq_ft_Rank || 'None Selected',
       Sq_ft_Min: this.state.Sq_ft_MinSelected || 'None Selected',
       Sq_ft_Max: this.state.Sq_ft_MaxSelected || 'None Selected',
+      sq_ft_Rank: this.state.sq_ft_Rank || 'None Selected',
+
     }
 
     console.log("this+++++",this.props.user_id)
@@ -224,7 +234,11 @@ class Survey extends Component {
 
         <Jumbotron style={{'backgroundImage': 'url(assets/survey/banner1.jpg)'}}>
         <div >
-          <h4>Lets us get to know a little bit about you!</h4>
+          <h2>What's important to you in a home?</h2>
+          <h4>
+            By telling us a bit more about yourself, we can sort your listings
+            according to how much of your criteria each listing meets!
+          </h4>
           <p></p>
         </div>
         </Jumbotron>
@@ -240,10 +254,10 @@ class Survey extends Component {
 
                 <Select
                 name="form-field-name"
-                value={this.state.NumberOfRoomsSelected}
-                options={NumberOfRooms}
+                value={this.state.BedroomsSelected}
+                options={Bedrooms}
                 multi={true}
-                onChange={(value) => this.handleChange("NumberOfRoomsSelected", value)}
+                onChange={(value) => this.handleChange("BedroomsSelected", value)}
                 />
 
                 <div className='horizontal-slider'>
@@ -251,11 +265,11 @@ class Survey extends Component {
                   <Slider
                   min={0}
                   max={7}
-                  value={this.state.numberOfRoomsRank}
-                  onChange={(value) => this.handleChange("numberOfRoomsRank",value)}
+                  value={this.state.bedroomsRank}
+                  onChange={(value) => this.handleChange("bedroomsRank",value)}
                   />
                   <div className='value'>
-                    Ranking: {this.state.numberOfRoomsRank}
+                    Ranking: {this.state.bedroomsRank}
                   </div>
                   <hr />
                 </div>
@@ -263,6 +277,37 @@ class Survey extends Component {
               </div>
             </div>
 
+
+
+            {/* BATHROOMS */}
+            <div className='card'>
+              <img className="card-img-top" src='assets/survey/bathrooms.jpg' />
+              <div className='card-block'>
+
+                <Select
+                name="form-field-name"
+                value={this.state.BathroomsSelected}
+                options={Bathrooms}
+                multi={true}
+                onChange={(value) => this.handleChange("BathroomsSelected", value)}
+                />
+
+                <div className='horizontal-slider'>
+                  <h4></h4>
+                  <Slider
+                  min={0}
+                  max={7}
+                  value={this.state.bathroomsRank}
+                  onChange={(value) => this.handleChange("bathroomsRank",value)}
+                  />
+                  <div className='value'>
+                    Ranking: {this.state.bathroomsRank}
+                  </div>
+                  <hr />
+                </div>
+
+              </div>
+            </div>
 
 
             {/* FEES */}
@@ -374,7 +419,7 @@ class Survey extends Component {
                   min={0}
                   max={7}
                   value={this.state.sq_ft_Rank}
-                  onChange={(value) => this.handleChange("Sq_ft_Rank", value)}
+                  onChange={(value) => this.handleChange("sq_ft_Rank", value)}
                   />
                   <div className='value'>
                     Ranking: {this.state.sq_ft_Rank}
@@ -382,50 +427,6 @@ class Survey extends Component {
                   <hr/>
                 </div>
 
-              </div>
-            </div>
-
-
-
-            {/* COMMUTE */}
-            <div className='card'>
-              <img className="card-img-top" src='assets/survey/commute.jpg' />
-              <div className='card-block'>
-
-                <div className='rangeWrap'>
-                  <div className='containerHalfSelect'>
-                    <Select
-                    name="form-field-name"
-                    value={this.state.CommuteMinSelected}
-                    options={CommuteMin}
-                    multi={true}
-
-                    onChange={(value) => this.handleChange("CommuteMinSelected", value)}
-                    />
-                  </div>
-
-                  <div className='containerHalfSelect'>
-                    <Select
-                    name="form-field-name"
-                    value={this.state.CommuteMaxSelected}
-                    options={CommuteMax}
-                    multi={true}
-
-                    onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
-                    />
-                  </div>
-                </div>
-
-                <div className='horizontal-slider'>
-                  <Slider
-                  min={0}
-                  max={7}
-                  value={this.state.commuteRank}
-                  onChange={(value) => this.handleChange("commuteRank", value)}
-                  />
-                  <div className='value'>Ranking: {this.state.commuteRank}</div>
-                  <hr/>
-                </div>
               </div>
             </div>
 
@@ -522,22 +523,6 @@ class Survey extends Component {
 
 
 
-            {/* COMMUTE LOCATION */}
-            <div className='container_location'>
-              <FormGroup controlId="formBasicText">
-                <ControlLabel />
-                <HelpBlock>
-                  Enter the address of your commute destination
-                </HelpBlock>
-                <FormControl
-                type="text"
-                value={this.state.targetedLocation}
-                placeholder="1216 Broadway New York NY"
-                onChange={this.handleChangeLocation}
-                />
-                <FormControl.Feedback />
-              </FormGroup>
-            </div>
 
         </div>
         <button type="submit" className="btn btn-block btn-primary">Submit</button>
@@ -560,3 +545,62 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Survey);
+
+// {/* COMMUTE */}
+// <div className='card'>
+//   <img className="card-img-top" src='assets/survey/commute.jpg' />
+//   <div className='card-block'>
+//
+//     <div className='rangeWrap'>
+//       <div className='containerHalfSelect'>
+//         <Select
+//         name="form-field-name"
+//         value={this.state.CommuteMinSelected}
+//         options={CommuteMin}
+//         multi={true}
+//
+//         onChange={(value) => this.handleChange("CommuteMinSelected", value)}
+//         />
+//       </div>
+//
+//       <div className='containerHalfSelect'>
+//         <Select
+//         name="form-field-name"
+//         value={this.state.CommuteMaxSelected}
+//         options={CommuteMax}
+//         multi={true}
+//
+//         onChange={(value) => this.handleChange("CommuteMaxSelected", value)}
+//         />
+//       </div>
+//     </div>
+//
+//     <div className='horizontal-slider'>
+//       <Slider
+//       min={0}
+//       max={7}
+//       value={this.state.commuteRank}
+//       onChange={(value) => this.handleChange("commuteRank", value)}
+//       />
+//       <div className='value'>Ranking: {this.state.commuteRank}</div>
+//       <hr/>
+//     </div>
+//   </div>
+// </div>
+
+// {/* COMMUTE LOCATION */}
+// <div className='container_location'>
+//   <FormGroup controlId="formBasicText">
+//     <ControlLabel />
+//     <HelpBlock>
+//       Enter the address of your commute destination
+//     </HelpBlock>
+//     <FormControl
+//     type="text"
+//     value={this.state.targetedLocation}
+//     placeholder="1216 Broadway New York NY"
+//     onChange={this.handleChangeLocation}
+//     />
+//     <FormControl.Feedback />
+//   </FormGroup>
+// </div>
