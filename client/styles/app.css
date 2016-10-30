@@ -299,7 +299,7 @@
 .rangeslider {
     margin: 20px 0;
     position: relative;
-    background: #e6e6e6
+    background: #e6e6e6;
 }
 
 .rangeslider .rangeslider__fill,
@@ -327,6 +327,8 @@
 
 .rangeslider-horizontal {
     height: 10px;
+    margin-left: auto;
+    margin-right: auto;
     width: 90%;
     border-radius: 10px
 }
@@ -2087,7 +2089,7 @@ h1 {
 .card-block {
   @include clearfix;
   padding: $card-spacer-x;
-  height: 140px
+  height: 170px;
 }
 
 .card-title {
@@ -2127,6 +2129,12 @@ h1 {
 }
 .card-img-bottom {
   @include border-bottom-radius($card-border-radius-inner);
+}
+
+.survey-question {
+  width: 100%;
+  margin-bottom: 7px;
+  text-align: center;
 }
 
 
@@ -2180,6 +2188,11 @@ h1 {
     border: solid;
     border-color: #DCDCDC ;
     border-radius: 10px;
+}
+
+.containerHalfSelect-outer {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .containerHalfSelect{

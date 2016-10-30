@@ -252,6 +252,8 @@ class Survey extends Component {
               <img className="card-img-top" src='assets/survey/bedrooms.jpg' />
               <div className='card-block'>
 
+                <div className="survey-question">How many bedrooms would you like?</div>
+
                 <Select
                 name="form-field-name"
                 value={this.state.BedroomsSelected}
@@ -284,6 +286,8 @@ class Survey extends Component {
               <img className="card-img-top" src='assets/survey/bathrooms.jpg' />
               <div className='card-block'>
 
+                <div className="survey-question">How many bathrooms would you like?</div>
+
                 <Select
                 name="form-field-name"
                 value={this.state.BathroomsSelected}
@@ -314,6 +318,8 @@ class Survey extends Component {
             <div className='card'>
               <img className="card-img-top" src='assets/survey/fees.jpg' />
               <div className='card-block'>
+
+                <div className="survey-question">TEXT</div>
 
                 <Select
                 name="form-field-name"
@@ -346,6 +352,8 @@ class Survey extends Component {
               <img className="card-img-top" src='assets/survey/budget.jpg' />
               <div className='card-block'>
                 <div className='rangeWrap'>
+
+                  <div className="survey-question">What is your desired price range?</div>
 
                   <div className='containerHalfSelect'>
                     <Select
@@ -393,6 +401,8 @@ class Survey extends Component {
               <div className='card-block'>
                 <div className='rangeWrap'>
 
+                  <div className="survey-question">How large is your ideal apartment (sq. ft)?</div>
+
                   <div className='containerHalfSelect'>
                     <Select
                     name="form-field-name"
@@ -437,6 +447,8 @@ class Survey extends Component {
               <img className="card-img-top" src='assets/survey/pets.jpg' />
               <div className='card-block'>
 
+                <div className="survey-question">How large is your ideal apartment (in sq. ft)?</div>
+
                 <Select
                 name="form-field-name"
                 value={this.state.PetSelected}
@@ -465,6 +477,8 @@ class Survey extends Component {
             <div className='card' >
               <img className="card-img-top" src='assets/survey/neighborhood.jpg' />
               <div className='card-block'>
+
+                <div className="survey-question">Where would you like to live?</div>
 
                 <Select
                 name="form-field-name"
@@ -497,6 +511,8 @@ class Survey extends Component {
             <div className='card' >
               <img className="card-img-top" src='assets/survey/amenities.jpg' />
               <div className='card-block'>
+
+                <div className="survey-question">What amenities would you like?</div>
                 <Select
                 name="form-field-name"
                 value={this.state.amenitiesSelected}
