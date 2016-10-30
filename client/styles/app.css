@@ -341,10 +341,10 @@
 }
 
 .rangeslider-horizontal .rangeslider__handle {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 30px;
-    top: -10px
+    top: -5px;
 }
 
 .rangeslider-vertical {
