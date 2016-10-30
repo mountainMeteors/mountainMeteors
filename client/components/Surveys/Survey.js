@@ -4,6 +4,7 @@ import { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import Slider from 'react-rangeslider'
 import { postSurveyAnswers } from '../../actionCreators/surveysActions';
+import { getPrefs } from '../../actionCreators/accountActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import FlipCard from 'react-flipcard';
@@ -209,7 +210,7 @@ class Survey extends Component {
   onFormSubmit = (event)=> {              //onSubmit fn
     event.preventDefault();           //Stops refresh
     var surveyResponses = {            //Obj holding user details
-      neighborhoodRank: String(this.state.neighborhoodRank) || 'None Selected',
+      neighborhoodRank: this.state.neighborhoodRank || 'None Selected',
       Neighborhoods: this.state.NeighborhoodsSelected || 'None Selected',
 
       rentRank: this.state.rentRank || 'None Selected',
@@ -246,6 +247,7 @@ class Survey extends Component {
     // browserHistory.push('/');
     .then (() => {
       console.log('survey then hit');
+      this.props.getPrefs();
       this.context.router.push('/');
     })
   }
@@ -637,7 +639,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ postSurveyAnswers }, dispatch)
+  return bindActionCreators({ postSurveyAnswers, getPrefs }, dispatch)
 }
 
 
