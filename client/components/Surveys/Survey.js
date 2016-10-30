@@ -368,20 +368,11 @@ class Survey extends Component {
                       value={this.state.RentMinSelected}
                       options={RentMin}
                       multi={false}
+                      clearable={false}
                       onChange={(value) => this.handleChange("RentMinSelected", value)}
                       placeholder="Min"
                       promptTextCreator={(input) => input}
                     />
-                    {/*
-                    <Select
-                    name="form-field-name"
-                    value={this.state.RentMinSelected}
-                    options={RentMin}
-                    multi={true}
-                    onChange={(value) => this.handleChange("RentMinSelected", value)}
-                    placeholder="Min"
-                    />
-                    */}
                   </div>
 
                   <div className='containerHalfSelect'>
@@ -390,6 +381,7 @@ class Survey extends Component {
                     value={this.state.RentMaxSelected}
                     options={RentMax}
                     multi={false}
+                    clearable={false}
                     onChange={(value) => this.handleChange("RentMaxSelected", value)}
                     placeholder="Max"
                     promptTextCreator={(input) => input}
@@ -467,6 +459,7 @@ class Survey extends Component {
                     value={this.state.Sq_ft_MinSelected}
                     options={Sq_ft_Min}
                     multi={false}
+                    clearable={false}
                     onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
                     placeholder="Min"
                     promptTextCreator={(input) => input}
@@ -479,6 +472,7 @@ class Survey extends Component {
                     value={this.state.Sq_ft_MaxSelected}
                     options={Sq_ft_Max}
                     multi={false}
+                    clearable={false}
                     onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
                     placeholder="Max"
                     promptTextCreator={(input) => input}
@@ -521,6 +515,7 @@ class Survey extends Component {
                 value={this.state.PetSelected}
                 options={Pets}
                 multi={false}
+                clearable={false}
                 onChange={(value) => this.handleChange("PetSelected", value)}
                 placeholder="(Select One)"
                 />
