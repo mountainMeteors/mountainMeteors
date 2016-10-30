@@ -4,6 +4,7 @@ import { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import Slider from 'react-rangeslider'
 import { postSurveyAnswers } from '../../actionCreators/surveysActions';
+import { getPrefs } from '../../actionCreators/accountActions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import FlipCard from 'react-flipcard';
@@ -12,15 +13,12 @@ import Select, { Creatable } from 'react-select';
 import { Grid, Col, Row, FormGroup, ControlLabel,  Jumbotron, HelpBlock, FormControl } from 'react-bootstrap';
 import css from '../../styles/app.css'
 
-
-
-
 const rankingText = {
-  0: 'None',
-  1: 'Low',
-  2: 'Moderate',
-  3: 'High',
-  4: 'Required'
+  1: 'None',
+  2: 'Low',
+  3: 'Moderate',
+  4: 'High',
+  5: 'Required'
 }
 
 const Neighborhoods = [
@@ -136,48 +134,48 @@ class Survey extends Component {
     super( context)
     this.state = {
       Neighborhoods: Neighborhoods,
-      NeighborhoodsSelected: [],
-      neighborhoodRank: 2,
+      NeighborhoodsSelected: this.props.userPrefs.Neighborhoods || [],
+      neighborhoodRank: this.props.userPrefs.neighborhoodRank || 2,
 
       Bedrooms: Bedrooms,
-      BedroomsSelected: null,
-      bedroomsRank: 2,
+      BedroomsSelected: this.props.userPrefs.Bedrooms || null,
+      bedroomsRank: this.props.userPrefs.bedroomsRank || 2,
 
       Bathrooms: Bathrooms,
-      BathroomsSelected: null,
-      bathroomsRank: 2,
+      BathroomsSelected: this.props.userPrefs.Bathrooms || null,
+      bathroomsRank: this.props.userPrefs.bathroomsRank || 2,
 
-      targetedLocation: '',
+      targetedLocation: this.props.userPrefs.targetedLocation || '',
 
       Fees: Fees,
-      FeesSelected: null,
-      feeRank: 2,
+      FeesSelected: this.props.userPrefs.fees || null,
+      feeRank: this.props.userPrefs.feeRank || 2,
 
       Pets: Pets,
-      PetSelected: null,
-      petRank: 2,
+      PetSelected: this.props.userPrefs.Pets || null,
+      petRank: this.props.userPrefs.petRank || 2,
 
-      RentMinSelected: null,
       RentMin : RentMin,
-      RentMaxSelected: null,
+      RentMinSelected: this.props.userPrefs.RentMin || null,
       RentMax: RentMax,
+      RentMaxSelected: this.props.userPrefs.RentMin || null,
       rentRank: 2,
 
-      CommuteMinSelected: null,
       CommuteMin : CommuteMin,
-      CommuteMaxSelected: null,
+      CommuteMinSelected: this.props.userPrefs.CommuteMinSelected || null,
       CommuteMax: CommuteMax,
-      commuteRank: 2,
+      CommuteMaxSelected: this.props.userPrefs.CommuteMaxSelected || null,
+      commuteRank: this.props.userPrefs.commuteRank || 2,
 
-      Sq_ft_MinSelected: null,
       Sq_ft_Min : Sq_ft_Min,
-      Sq_ft_MaxSelected: null,
+      Sq_ft_MinSelected: this.props.userPrefs.Sq_ft_Min || null,
       Sq_ft_Max: Sq_ft_Max,
-      sq_ft_Rank: 2,
+      Sq_ft_MaxSelected: this.props.userPrefs.Sq_ft_Max || null,
+      sq_ft_Rank: this.props.userPrefs.sq_ft_Rank || 2,
 
-      amenitiesRank: 2,
-      amenitiesSelected: [],
       Amenities: Amenities,
+      amenitiesSelected: this.props.userPrefs.Amenities || [],
+      amenitiesRank: this.props.userPrefs.amenitiesRank || 2,
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -249,6 +247,7 @@ class Survey extends Component {
     // browserHistory.push('/');
     .then (() => {
       console.log('survey then hit');
+      this.props.getPrefs();
       this.context.router.push('/');
     })
   }
@@ -292,8 +291,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.bedroomsRank}
                   onChange={(value) => this.handleChange("bedroomsRank",value)}
                   />
@@ -332,8 +331,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.bathroomsRank}
                   onChange={(value) => this.handleChange("bathroomsRank",value)}
                   />
@@ -392,8 +391,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.rentRank}
                   onChange={(value) => this.handleChange("rentRank", value)}
                   />
@@ -424,8 +423,8 @@ class Survey extends Component {
 
                 <div className='horizontal-slider'>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.feeRank}
                   onChange={(value) => this.handleChange("feeRank", value)}
                   />
@@ -482,8 +481,8 @@ class Survey extends Component {
 
                 <div className='horizontal-slider'>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.sq_ft_Rank}
                   onChange={(value) => this.handleChange("sq_ft_Rank", value)}
                   />
@@ -523,8 +522,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider className='pet-slider'
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.petRank}
                   onChange={(value) => this.handleChange("petRank", value)}
                   />
@@ -563,8 +562,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.neighborhoodRank}
                   onChange={(value) => this.handleChange("neighborhoodRank",value)}
                   />
@@ -602,8 +601,8 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <h4></h4>
                   <Slider
-                  min={0}
-                  max={4}
+                  min={1}
+                  max={5}
                   value={this.state.amenitiesRank}
                   onChange={(value) => this.handleChange("amenitiesRank", value)}
                   />
@@ -633,13 +632,14 @@ class Survey extends Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth
+    authenticated: state.auth,
+    userPrefs: state.userPrefs
   };
 }
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ postSurveyAnswers }, dispatch)
+  return bindActionCreators({ postSurveyAnswers, getPrefs }, dispatch)
 }
 
 
@@ -676,8 +676,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Survey);
 //
 //     <div className='horizontal-slider'>
 //       <Slider
-//       min={0}
-//       max={4}
+//       min={1}
+//       max={5}
 //       value={this.state.commuteRank}
 //       onChange={(value) => this.handleChange("commuteRank", value)}
 //       />
