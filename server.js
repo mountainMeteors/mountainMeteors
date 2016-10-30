@@ -52,9 +52,15 @@ app.use('/api', distRoutes);
 
 app.use('/uploads', express.static(__dirname + '/uploads'))
 
+app.use('/assets', express.static(__dirname + '/client/assets'))
+
 app.get('/public/bundle.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/public/bundle.js'));
 });
+
+// app.get('/assets/amenities.jpg', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'client/assets/amenities.jpg'));
+// });
 
 app.get('/styles/style.css', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/styles/style.css'));
