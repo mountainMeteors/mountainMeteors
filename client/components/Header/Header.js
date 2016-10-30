@@ -113,12 +113,6 @@ class Header extends React.Component {
           >
             Survey
           </Button>
-          <Button
-            bsStyle="success"
-            onClick={() => {browserHistory.push('/profile')}}
-          >
-            Profile
-          </Button>
         </div>
 
         :
