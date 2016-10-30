@@ -15,6 +15,7 @@ An apartment seeking tool which allows the user to keep track of any potential u
 
 ## Live Demo
 Deployment to come soon.
+Best viewed at 67%
 
 ## Motivation
 After each experiencing nightmare stories in our individual apartment searches, our team came together to produce an application to remedy this situation. By allowing users to add the listings they are personally interested in, and sort them according to what is important to them personally, we feel SeekPad is able to greatly facilitate an otherwise painful process.

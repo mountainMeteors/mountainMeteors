@@ -64,7 +64,7 @@ class AddListingsModal extends React.Component {
     if (Object.keys(newProps.scrapeData).length)
       this.setState({
         rent: newProps.scrapeData.rent[0],
-        location: newProps.scrapeData.location[0],
+        location: newProps.scrapeData.location[0].split(/ ([Uu]nit|[Aa]pt|[Aa]partment)/)[0],
         neighborhood: newProps.scrapeData.neighborhood[1],
         squareFeet: newProps.scrapeData.squareFeet[0],
         bedrooms: newProps.scrapeData.bedrooms[0].numberOfBedsLong,
