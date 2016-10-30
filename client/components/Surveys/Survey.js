@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import FlipCard from 'react-flipcard';
 
-import Select from 'react-select';
+import Select, { Creatable } from 'react-select';
 import { Grid, Col, Row, FormGroup, ControlLabel,  Jumbotron, HelpBlock, FormControl } from 'react-bootstrap';
 import css from '../../styles/app.css'
 
@@ -74,13 +74,29 @@ const Fees = [
 ];
 
 const RentMin = [
-  { label: '10', value: '10' },
-  { label: '20', value: '20' },
+  { label: '1000', value: '1000' },
+  { label: '1250', value: '1250' },
+  { label: '1500', value: '1500' },
+  { label: '1750', value: '1750' },
+  { label: '2000', value: '2000' },
+  { label: '2250', value: '2250' },
+  { label: '2500', value: '2500' },
+  { label: '2750', value: '2750' },
+  { label: '3000', value: '3000' },
 ];
 
 const RentMax = [
-  { label: '1000', value: '1000' },
+  { label: '1500', value: '1500' },
+  { label: '1750', value: '1750' },
   { label: '2000', value: '2000' },
+  { label: '2250', value: '2250' },
+  { label: '2500', value: '2500' },
+  { label: '2750', value: '2750' },
+  { label: '3000', value: '3000' },
+  { label: '3250', value: '3250' },
+  { label: '3500', value: '3500' },
+  { label: '3750', value: '3750' },
+  { label: '4000', value: '4000' },
 ];
 
 const CommuteMin = [
@@ -91,22 +107,27 @@ const CommuteMin = [
 ];
 
 const CommuteMax = [
-{ label: '50', value: '50' },
-{ label: '1 hr', value: '1 hr' },
-{ label: '2 hr', value: '2 hr' },
+  { label: '50', value: '50' },
+  { label: '1 hr', value: '1 hr' },
+  { label: '2 hr', value: '2 hr' },
 ];
 
 const Sq_ft_Min = [
-{ label: '10', value: '10' },
-{ label: '20', value: '20' },
-{ label: '30', value: '30' },
-{ label: '40', value: '40' },
+  { label: '250', value: '250' },
+  { label: '500', value: '500' },
+  { label: '750', value: '750' },
+  { label: '1000', value: '1000' },
+  { label: '1250', value: '1250' },
+  { label: '1500', value: '1500' },
 ];
 
 const Sq_ft_Max = [
-{ label: '50', value: '50' },
-{ label: '1', value: '1' },
-{ label: '2', value: '2' },
+  { label: '500', value: '500' },
+  { label: '750', value: '750' },
+  { label: '1000', value: '1000' },
+  { label: '1250', value: '1250' },
+  { label: '1500', value: '1500' },
+  { label: '1750', value: '1750' },
 ];
 
 
@@ -341,6 +362,17 @@ class Survey extends Component {
                   <div className="survey-question">What is your desired price range?</div>
 
                   <div className='containerHalfSelect'>
+
+                    <Creatable
+                      name="form-field-name"
+                      value={this.state.RentMinSelected}
+                      options={RentMin}
+                      multi={false}
+                      onChange={(value) => this.handleChange("RentMinSelected", value)}
+                      placeholder="Min"
+                      promptTextCreator={(input) => input}
+                    />
+                    {/*
                     <Select
                     name="form-field-name"
                     value={this.state.RentMinSelected}
@@ -349,16 +381,18 @@ class Survey extends Component {
                     onChange={(value) => this.handleChange("RentMinSelected", value)}
                     placeholder="Min"
                     />
+                    */}
                   </div>
 
                   <div className='containerHalfSelect'>
-                    <Select
+                    <Creatable
                     name="form-field-name"
                     value={this.state.RentMaxSelected}
                     options={RentMax}
-                    multi={true}
+                    multi={false}
                     onChange={(value) => this.handleChange("RentMaxSelected", value)}
                     placeholder="Max"
+                    promptTextCreator={(input) => input}
                     />
                   </div>
                 </div>
@@ -428,24 +462,26 @@ class Survey extends Component {
                   <div className="survey-question">How large is your ideal apartment (sq. ft)?</div>
 
                   <div className='containerHalfSelect'>
-                    <Select
+                    <Creatable
                     name="form-field-name"
                     value={this.state.Sq_ft_MinSelected}
                     options={Sq_ft_Min}
-                    multi={true}
+                    multi={false}
                     onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
                     placeholder="Min"
+                    promptTextCreator={(input) => input}
                     />
                   </div>
 
                   <div className='containerHalfSelect'>
-                    <Select
+                    <Creatable
                     name="form-field-name"
                     value={this.state.Sq_ft_MaxSelected}
                     options={Sq_ft_Max}
-                    multi={true}
+                    multi={false}
                     onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
                     placeholder="Max"
+                    promptTextCreator={(input) => input}
                     />
                   </div>
                 </div>
