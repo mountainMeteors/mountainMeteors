@@ -38,9 +38,7 @@ const Bedrooms = [
   { label: '1', value: '1' },
   { label: '2', value: '2' },
   { label: '3', value: '3' },
-  { label: '4', value: '4' },
-  { label: '5', value: '5' },
-  { label: '6', value: '6' }
+  { label: '4', value: '4' }
 ];
 
 const Bathrooms = [
@@ -52,22 +50,22 @@ const Bathrooms = [
 ];
 
 const Amenities = [
-  { label: 'bike', value: 'bike' },
-  { label: 'garage', value: 'garage' },
-  { label: 'doorman', value: 'doorman' },
-  { label: 'elevator', value: 'elevator' },
-  { label: 'parking', value: 'parking' },
-  { label: 'storage', value: 'storage' },
-  { label: 'rooftop', value: 'rooftop' },
-  { label: 'pool', value: 'pool' },
+  { label: 'Bike', value: 'bike' },
+  { label: 'Garage', value: 'garage' },
+  { label: 'Doorman', value: 'doorman' },
+  { label: 'Elevator', value: 'elevator' },
+  { label: 'Parking', value: 'parking' },
+  { label: 'Storage', value: 'storage' },
+  { label: 'Rooftop', value: 'rooftop' },
+  { label: 'Pool', value: 'pool' },
 ];
 
 const Pets = [
-  { label: 'Both', value: 'Both' },
-  { label: 'Dogs', value: 'Dogs' },
-  { label: 'Cats', value: 'Cats' },
-  { label: 'Pokemon', value: 'Pokemon' },
   { label: 'None', value: 'None' },
+  { label: 'Cats', value: 'Cats' },
+  { label: 'Dogs', value: 'Dogs' },
+  { label: 'Both', value: 'Both' },
+  { label: 'Pokemon', value: 'Pokemon' },
 ];
 
 const Fees = [
@@ -267,6 +265,7 @@ class Survey extends Component {
                 options={Bedrooms}
                 multi={true}
                 onChange={(value) => this.handleChange("BedroomsSelected", value)}
+                placeholder="(Select Multiple)"
                 />
 
                 <div className='horizontal-slider'>
@@ -278,7 +277,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("bedroomsRank",value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.bedroomsRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.bedroomsRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -301,6 +305,7 @@ class Survey extends Component {
                 options={Bathrooms}
                 multi={true}
                 onChange={(value) => this.handleChange("BathroomsSelected", value)}
+                placeholder="(Select Multiple)"
                 />
 
                 <div className='horizontal-slider'>
@@ -312,7 +317,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("bathroomsRank",value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.bathroomsRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.bathroomsRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -337,6 +347,7 @@ class Survey extends Component {
                     options={RentMin}
                     multi={true}
                     onChange={(value) => this.handleChange("RentMinSelected", value)}
+                    placeholder="Min"
                     />
                   </div>
 
@@ -347,6 +358,7 @@ class Survey extends Component {
                     options={RentMax}
                     multi={true}
                     onChange={(value) => this.handleChange("RentMaxSelected", value)}
+                    placeholder="Max"
                     />
                   </div>
                 </div>
@@ -360,7 +372,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("rentRank", value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.rentRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.rentRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -387,7 +404,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("feeRank", value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.feeRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.feeRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -412,6 +434,7 @@ class Survey extends Component {
                     options={Sq_ft_Min}
                     multi={true}
                     onChange={(value) => this.handleChange("Sq_ft_MinSelected", value)}
+                    placeholder="Min"
                     />
                   </div>
 
@@ -422,6 +445,7 @@ class Survey extends Component {
                     options={Sq_ft_Max}
                     multi={true}
                     onChange={(value) => this.handleChange("Sq_ft_MaxSelected", value)}
+                    placeholder="Max"
                     />
                   </div>
                 </div>
@@ -434,7 +458,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("sq_ft_Rank", value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.sq_ft_Rank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.sq_ft_Rank]}
+                    </div>
                   </div>
                   <hr/>
                 </div>
@@ -449,14 +478,15 @@ class Survey extends Component {
               <img className="card-img-top" src='assets/survey/pets.jpg' />
               <div className='card-block'>
 
-                <div className="survey-question">How large is your ideal apartment (in sq. ft)?</div>
+                <div className="survey-question">What type of pets should be allowed?</div>
 
                 <Select
                 name="form-field-name"
                 value={this.state.PetSelected}
                 options={Pets}
-                multi={true}
+                multi={false}
                 onChange={(value) => this.handleChange("PetSelected", value)}
+                placeholder="(Select One)"
                 />
 
                 <div className='horizontal-slider'>
@@ -468,7 +498,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("petRank", value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.petRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.petRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -491,6 +526,7 @@ class Survey extends Component {
                 multi={true}
                 options={Neighborhoods}
                 onChange={(value) => this.handleChange("NeighborhoodsSelected", value)}
+                placeholder="(Select Multiple)"
                 />
 
                 <div className='horizontal-slider'>
@@ -502,7 +538,12 @@ class Survey extends Component {
                   onChange={(value) => this.handleChange("neighborhoodRank",value)}
                   />
                   <div className='value'>
-                    Importance: {rankingText[this.state.neighborhoodRank]}
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.neighborhoodRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>
@@ -524,6 +565,7 @@ class Survey extends Component {
                 multi={true}
                 options={Amenities}
                 onChange={(value) => this.handleChange("amenitiesSelected", value)}
+                placeholder="(Select Multiple)"
                 />
 
                 <div className='horizontal-slider'>
@@ -534,8 +576,13 @@ class Survey extends Component {
                   value={this.state.amenitiesRank}
                   onChange={(value) => this.handleChange("amenitiesRank", value)}
                   />
-                  <div className='title'>
-                    Importance: {rankingText[this.state.amenitiesRank]}
+                  <div className='value'>
+                    <div className='importance-left'>
+                      Importance:&nbsp;
+                    </div>
+                    <div className='importance-right'>
+                      {rankingText[this.state.amenitiesRank]}
+                    </div>
                   </div>
                   <hr />
                 </div>

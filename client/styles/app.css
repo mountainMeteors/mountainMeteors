@@ -2137,6 +2137,18 @@ h1 {
   text-align: center;
 }
 
+.importance-left {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
+.importance-right {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+
 
 
 /*.card_Neighborhood {
