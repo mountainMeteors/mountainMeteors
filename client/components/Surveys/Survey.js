@@ -15,6 +15,13 @@ import css from '../../styles/app.css'
 
 
 
+const rankingText = {
+  0: 'None',
+  1: 'Low',
+  2: 'Moderate',
+  3: 'High',
+  4: 'Required'
+}
 
 const Neighborhoods = [
   { label: 'West Village', value: 'West Village' },
@@ -111,45 +118,45 @@ class Survey extends Component {
     this.state = {
       Neighborhoods: Neighborhoods,
       NeighborhoodsSelected: [],
-      neighborhoodRank: 1,
+      neighborhoodRank: 2,
 
       Bedrooms: Bedrooms,
       BedroomsSelected: null,
-      bedroomsRank: 1,
+      bedroomsRank: 2,
 
       Bathrooms: Bathrooms,
       BathroomsSelected: null,
-      bathroomsRank: 1,
+      bathroomsRank: 2,
 
       targetedLocation: '',
 
       Fees: Fees,
       FeesSelected: null,
-      feeRank: 1,
+      feeRank: 2,
 
       Pets: Pets,
       PetSelected: null,
-      petRank: 1,
+      petRank: 2,
 
       RentMinSelected: null,
       RentMin : RentMin,
       RentMaxSelected: null,
       RentMax: RentMax,
-      rentRank: 1,
+      rentRank: 2,
 
       CommuteMinSelected: null,
       CommuteMin : CommuteMin,
       CommuteMaxSelected: null,
       CommuteMax: CommuteMax,
-      commuteRank: 1,
+      commuteRank: 2,
 
       Sq_ft_MinSelected: null,
       Sq_ft_Min : Sq_ft_Min,
       Sq_ft_MaxSelected: null,
       Sq_ft_Max: Sq_ft_Max,
-      sq_ft_Rank: 1,
+      sq_ft_Rank: 2,
 
-      amenitiesRank: 1,
+      amenitiesRank: 2,
       amenitiesSelected: [],
       Amenities: Amenities,
     }
@@ -266,12 +273,12 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.bedroomsRank}
                   onChange={(value) => this.handleChange("bedroomsRank",value)}
                   />
                   <div className='value'>
-                    Ranking: {this.state.bedroomsRank}
+                    Importance: {rankingText[this.state.bedroomsRank]}
                   </div>
                   <hr />
                 </div>
@@ -300,44 +307,12 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.bathroomsRank}
                   onChange={(value) => this.handleChange("bathroomsRank",value)}
                   />
                   <div className='value'>
-                    Ranking: {this.state.bathroomsRank}
-                  </div>
-                  <hr />
-                </div>
-
-              </div>
-            </div>
-
-
-            {/* FEES */}
-            <div className='card'>
-              <img className="card-img-top" src='assets/survey/fees.jpg' />
-              <div className='card-block'>
-
-                <div className="survey-question">TEXT</div>
-
-                <Select
-                name="form-field-name"
-                value={this.state.FeesSelected}
-                options={Fees}
-                multi={true}
-                onChange={(value) => this.handleChange("FeesSelected", value)}
-                />
-
-                <div className='horizontal-slider'>
-                  <Slider
-                  min={0}
-                  max={7}
-                  value={this.state.feeRank}
-                  onChange={(value) => this.handleChange("feeRank", value)}
-                  />
-                  <div className='value'>
-                    Ranking:{this.state.feeRank}
+                    Importance: {rankingText[this.state.bathroomsRank]}
                   </div>
                   <hr />
                 </div>
@@ -380,12 +355,39 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.rentRank}
                   onChange={(value) => this.handleChange("rentRank", value)}
                   />
                   <div className='value'>
-                    Ranking:{this.state.rentRank}
+                    Importance: {rankingText[this.state.rentRank]}
+                  </div>
+                  <hr />
+                </div>
+
+              </div>
+            </div>
+
+
+            {/* FEES */}
+            <div className='card'>
+              <img className="card-img-top" src='assets/survey/fees.jpg' />
+              <div className='card-block'>
+
+                <div className="survey-question" style={{'marginBottom': '45px'}}>
+                  How important is it that there is <br/>
+                  no additional broker's fee?
+                </div>
+
+                <div className='horizontal-slider'>
+                  <Slider
+                  min={0}
+                  max={4}
+                  value={this.state.feeRank}
+                  onChange={(value) => this.handleChange("feeRank", value)}
+                  />
+                  <div className='value'>
+                    Importance: {rankingText[this.state.feeRank]}
                   </div>
                   <hr />
                 </div>
@@ -427,12 +429,12 @@ class Survey extends Component {
                 <div className='horizontal-slider'>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.sq_ft_Rank}
                   onChange={(value) => this.handleChange("sq_ft_Rank", value)}
                   />
                   <div className='value'>
-                    Ranking: {this.state.sq_ft_Rank}
+                    Importance: {rankingText[this.state.sq_ft_Rank]}
                   </div>
                   <hr/>
                 </div>
@@ -461,10 +463,13 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider className='pet-slider'
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.petRank}
                   onChange={(value) => this.handleChange("petRank", value)}
                   />
+                  <div className='value'>
+                    Importance: {rankingText[this.state.petRank]}
+                  </div>
                   <hr />
                 </div>
 
@@ -492,12 +497,12 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.neighborhoodRank}
                   onChange={(value) => this.handleChange("neighborhoodRank",value)}
                   />
                   <div className='value'>
-                    Ranking: {this.state.neighborhoodRank}
+                    Importance: {rankingText[this.state.neighborhoodRank]}
                   </div>
                   <hr />
                 </div>
@@ -525,12 +530,12 @@ class Survey extends Component {
                   <h4></h4>
                   <Slider
                   min={0}
-                  max={7}
+                  max={4}
                   value={this.state.amenitiesRank}
                   onChange={(value) => this.handleChange("amenitiesRank", value)}
                   />
                   <div className='title'>
-                    Ranking: {this.state.amenitiesRank}
+                    Importance: {rankingText[this.state.amenitiesRank]}
                   </div>
                   <hr />
                 </div>
@@ -594,11 +599,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(Survey);
 //     <div className='horizontal-slider'>
 //       <Slider
 //       min={0}
-//       max={7}
+//       max={4}
 //       value={this.state.commuteRank}
 //       onChange={(value) => this.handleChange("commuteRank", value)}
 //       />
-//       <div className='value'>Ranking: {this.state.commuteRank}</div>
+//       <div className='value'>Importance: {rankingText[this.state.commuteRank]}</div>
 //       <hr/>
 //     </div>
 //   </div>
