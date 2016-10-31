@@ -11,101 +11,96 @@ import postPhotos  from './PostPhotos'
 
 
 class AddPhotosModal extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = {};
+  constructor (props) {
+    super(props);
+    this.state = {};
 
-      this.state.photos = [];
-      this.state.showModal = false;
+    this.state.photos = [];
+    this.state.showModal = false;
 
-      this.close = this.close.bind(this);
-      this.open = this.open.bind(this);
-      this.onDrop = this.onDrop.bind(this);
-      this.onOpenClick = this.onOpenClick.bind(this);
-      this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+    this.onDrop = this.onDrop.bind(this);
+    this.onOpenClick = this.onOpenClick.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
 
-    }
+  }
 
-    onDrop (photos) {
-      this.setState({
-        photos: [...this.state.photos, photos]
-      });
-    }
+  onDrop (photos) {
+    this.setState({
+      photos: [...this.state.photos, photos]
+    });
+  }
 
+  onOpenClick () {
+    this.dropzone.open();
+  }
 
-    onOpenClick () {
-      this.dropzone.open();
-    }
+  close() {
+    this.setState({ showModal: false });
+  }
 
-    close() {
-      this.setState({ showModal: false });
-    }
+  open() {
+    this.setState({ showModal: true });
+  }
 
-    open() {
-      this.setState({ showModal: true });
-    }
-
-    onFormSubmit (event) {
-        console.log('iddddddd=====>', this.props.listing.id)
-        event.preventDefault();
+  onFormSubmit (event) {
+    console.log('iddddddd=====>', this.props.listing.id)
+    event.preventDefault();
     var listingPhotos = {
-        photos: this.state.photos
+      photos: this.state.photos
     }
     this.props.uploadPhotos(listingPhotos, this.props.listing.id)
-    }
+  }
 
-    render () {
-      return (
-        <div>
-
-          <div onClick={this.open.bind(this)}>
-            <Glyphicon glyph="camera" />
-          </div>
-
+  render () {
+    return (
+      <div>
+        <div onClick={this.open.bind(this)}>
+          <Glyphicon glyph="camera" />
+        </div>
 
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title> Add Listing Photos </Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
-          <div>
+            <div>
+              <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
+                <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
+                    <div>    Drop photos of your future apartment here</div>
+                </Dropzone>
 
-          <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
-              <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
-                  <div>    Drop photos of your future apartment here</div>
-              </Dropzone>
+                {
+                  this.state.photos.length > 0 ?
+                  <div>
+                    <h2>Uploading your {this.state.photos.length} photos...</h2>
+                    <div className='AddphotoBox'>
+                      {this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}
+                    </div>
+                  </div>
+                  :
+                  null
+                }
 
-              {this.state.photos.length > 0 ? <div>
-              <h2>Uploading your {this.state.photos.length} photos...</h2>
-              <div className='AddphotoBox'>{this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}</div>
-              </div> : null}
-              <Button type="submit" className="btn btn-block btn-primary" id="buttonNew">Submit</Button>
-             </form>
-
-
-          </div>
-
+                <Button type="submit" className="btn btn-block btn-primary" id="buttonNew">
+                  Submit
+                </Button>
+              </form>
+            </div>
           </Modal.Body>
 
-          <Modal.Footer>
-
-          </Modal.Footer>
+          <Modal.Footer />
         </Modal>
 
-        </div>
-      );
-    }
+      </div>
+    );
   }
+}
 
-  function mapStateToProps(state){
-    return {
-      user_id: state.auth.user_id
-    }
-  }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ uploadPhotos }, dispatch)
+}
 
-  function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ uploadPhotos }, dispatch)
-  }
-
-
-  export default connect(mapStateToProps, mapDispatchToProps) (AddPhotosModal);
+export default connect(null, mapDispatchToProps) (AddPhotosModal);
