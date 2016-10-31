@@ -68,8 +68,11 @@ class AddPhotosModal extends React.Component {
           <Modal.Body>
             <div>
               <form onSubmit= {this.onFormSubmit} className="dropzone"  encType="multipart/form-data">
-                <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
-                    <div>    Drop photos of your future apartment here</div>
+                <Dropzone className="dropzone-area" ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
+                  <div className="dropzone-text">
+                    Drop photos of your <br/>
+                    future apartment here
+                  </div>
                 </Dropzone>
 
                 {

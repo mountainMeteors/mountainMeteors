@@ -1,3 +1,18 @@
+.dropzone-area {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border-width: 2px;
+  border-color: #666;
+  border-style: dashed;
+  border-radius: 5px;
+}
+
+.dropzone-text {
+  margin-top: 35%;
+  text-align: center;
+}
+
 /*********** IMAGE SLIDE ************/
 @font-face {
   font-family: "Ionicons";
