@@ -26,7 +26,7 @@ class GoogMap extends React.Component {
   }
 
   getMarkers(listings) {
-    console.log('getting markers using', listings);
+    // console.log('getting markers using', listings);
     this.setState({
       markers: listings.map(listing => {
         return {
@@ -102,7 +102,7 @@ class GoogMap extends React.Component {
             >
 
               {this.state.markers.map((marker, index) => {
-                console.log('marker.archived', marker.archived);
+                // console.log('marker.archived', marker.archived);
                 const onClick = () => {
                   console.log('running onClick');
                   return this.handleMarkerClick(marker);

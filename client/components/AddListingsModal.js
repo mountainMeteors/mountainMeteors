@@ -18,7 +18,7 @@ import { getDistance } from '../util/distUtil';
 class AddListingsModal extends React.Component {
 
   constructor(props){
-    console.log('modal receiving props', props);
+    // console.log('modal receiving props', props);
     super(props);
     this.state = {
       modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
@@ -129,8 +129,6 @@ class AddListingsModal extends React.Component {
   }
 
   getValidationState (field) {
-    console.log('vstate', field);
-    console.log('vstate props', this.props.scrapeData[field]);
     if (this.props.scrapeData[field] &&
         this.props.scrapeData[field].length !== 0) {
       console.log('RETURNED vstate');

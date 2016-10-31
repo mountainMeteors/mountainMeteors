@@ -5,9 +5,8 @@ import { browserHistory } from 'react-router';
 import Slider from 'react-rangeslider'
 import { postSurveyAnswers } from '../../actionCreators/surveysActions';
 import { getPrefs } from '../../actionCreators/accountActions';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import FlipCard from 'react-flipcard';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import Select, { Creatable } from 'react-select';
 import { Grid, Col, Row, FormGroup, ControlLabel,  Jumbotron, HelpBlock, FormControl } from 'react-bootstrap';
