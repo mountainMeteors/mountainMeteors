@@ -74,21 +74,21 @@ class AddPhotosModal extends React.Component {
               <Dropzone ref={(node) => { this.dropzone = node; }} onDrop={this.onDrop}>
                   <div>    Drop photos of your future apartment here</div>
               </Dropzone>
-             
+
               {this.state.photos.length > 0 ? <div>
               <h2>Uploading your {this.state.photos.length} photos...</h2>
               <div className='AddphotoBox'>{this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}</div>
               </div> : null}
               <Button type="submit" className="btn btn-block btn-primary" id="buttonNew">Submit</Button>
              </form>
-    
+
 
           </div>
 
           </Modal.Body>
 
           <Modal.Footer>
-           
+
           </Modal.Footer>
         </Modal>
 
