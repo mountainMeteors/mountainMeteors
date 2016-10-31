@@ -43,7 +43,7 @@ const formatBedBath = function(listing) {
 class ListingEntry extends React.Component{
   constructor(props){
     super(props);
-    console.log('LE brought in', props);
+    // console.log('LE brought in', props);
 
     this.state = {
       favorited: props.listing.favorited
@@ -59,11 +59,11 @@ class ListingEntry extends React.Component{
   }
 
   componentDidMount() {
-    console.log('rendered LE', this.props);
+    // console.log('rendered LE', this.props);
   }
 
   componentWillReceiveProps(props) {
-    console.log('LE received new props', props);
+    // console.log('LE received new props', props);
   }
 
   toggleArchiveListing(listing) {

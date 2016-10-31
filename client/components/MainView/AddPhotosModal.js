@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
-import listingPhotosGallery from './listingPhotosGallery'
 import request from 'superagent';
 import { uploadPhotos } from '../../actionCreators/photoActions';
 import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Tooltip, Glyphicon, Modal } from 'react-bootstrap';
@@ -21,7 +20,7 @@ class AddPhotosModal extends React.Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.onDrop = this.onDrop.bind(this);
-    this.onOpenClick = this.onOpenClick.bind(this);
+    // this.onOpenClick = this.onOpenClick.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
 
   }
@@ -32,9 +31,9 @@ class AddPhotosModal extends React.Component {
     });
   }
 
-  onOpenClick () {
-    this.dropzone.open();
-  }
+  // onOpenClick () {
+  //   this.dropzone.open();
+  // }
 
   close() {
     this.setState({ showModal: false });
@@ -45,7 +44,7 @@ class AddPhotosModal extends React.Component {
   }
 
   onFormSubmit (event) {
-    console.log('iddddddd=====>', this.props.listing.id)
+    console.log('adding photo for listing id=====>', this.props.listing.id)
     event.preventDefault();
     var listingPhotos = {
       photos: this.state.photos
@@ -78,10 +77,20 @@ class AddPhotosModal extends React.Component {
                 {
                   this.state.photos.length > 0 ?
                   <div>
-                    <h2>Uploading your {this.state.photos.length} photos...</h2>
+                    <hr/>
+                    <h2 style={{"textAlign":"center"}}>
+                      {this.state.photos.length} photo(s) ready for upload!
+                    </h2>
+
                     <div className='AddphotoBox'>
-                      {this.state.photos.map((photo) => <img key={photo[0].name} className='photoSlidePreview' src={photo[0].preview} /> )}
+                      {this.state.photos.map((photo) =>
+                        <img key={photo[0].name}
+                          className='photoSlidePreview'
+                          src={photo[0].preview}
+                        />
+                      )}
                     </div>
+
                   </div>
                   :
                   null

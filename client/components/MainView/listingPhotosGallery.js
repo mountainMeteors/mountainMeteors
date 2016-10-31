@@ -51,7 +51,7 @@ class ListingPhotosGallery extends React.Component {
 
 
   componentDidMount() {
-    console.log('herereeeeer', this.props.photoFiles)
+    // console.log('herereeeeer', this.props.photoFiles)
     if (!this.props.photoFiles){
       this.props.fetchPhotos(75)
     }
@@ -158,7 +158,7 @@ class ListingPhotosGallery extends React.Component {
 
   render() {
 
-    console.log('in renderrereeeeer', this.props.photoFiles)
+    // console.log('in renderrereeeeer', this.props.photoFiles)
     if (!this.props.photoFiles) {
       return <div>loading</div>
     }
@@ -171,7 +171,7 @@ class ListingPhotosGallery extends React.Component {
       })
     })
 
-    console.log('imagesssssss', images)
+    // console.log('imagesssssss', images)
 
     return (
       <div>
@@ -224,7 +224,7 @@ class ListingPhotosGallery extends React.Component {
 
 
 function mapStateToProps(state){
-  console.log('mapppp staeeee******',state.photoFiles)
+  // console.log('mapppp staeeee******',state.photoFiles)
   return {
     photoFiles: state.photoFiles.all
   };
