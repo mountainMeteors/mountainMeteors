@@ -14,14 +14,13 @@ class ListingPhotosGallery extends React.Component {
     super(props);
     console.log('lpg props', props);
     this.state = {
-      showIndex: false,
       slideOnThumbnailHover: false,
       showBullets: true,
       infinite: true,
+      showFullscreenButton: false,
       showGalleryFullscreenButton: true,
-      showPlayButton: true,
+      showPlayButton: false,
       showGalleryPlayButton: true,
-      showNav: true,
       slideInterval: 2000,
       showVideo: {},
       showModal: false,
@@ -182,11 +181,11 @@ class ListingPhotosGallery extends React.Component {
                 onScreenChange={this._onScreenChange.bind(this)}
                 onPlay={this._onPlay.bind(this)}
                 infinite={this.state.infinite}
-                showBullets={true}
-                showFullscreenButton={false}
-                showPlayButton={false}
+                showBullets={this.state.showBullets}
+                showFullscreenButton={this.state.showFullscreenButton}
+                showPlayButton={this.state.showPlayButton}
                 showThumbnails={true}
-                showIndex={true}
+                showIndex={false}
                 showNav={true}
                 slideInterval={parseInt(this.state.slideInterval)}
                 slideOnThumbnailHover={this.state.slideOnThumbnailHover}
