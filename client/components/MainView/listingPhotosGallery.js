@@ -18,8 +18,6 @@ class ListingPhotosGallery extends React.Component {
       slideOnThumbnailHover: false,
       showBullets: true,
       infinite: true,
-      showThumbnails: true,
-      showFullscreenBton: true,
       showGalleryFullscreenButton: true,
       showPlayButton: true,
       showGalleryPlayButton: true,
@@ -121,56 +119,44 @@ class ListingPhotosGallery extends React.Component {
     }
   }
 
-  // _renderVideo(item) {
-  //   return (
-  //     <div>
-  //       <div className='image-gallery-image'>
-  //       {
-  //         this.state.showVideo[item.embedUrl] ?
-  //         <div className='video-wrapper'>
-  //           <a
-  //           className='close-video'
-  //           onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
-  //           />
-  //           <iframe
-  //           width='400'
-  //           height='255'
-  //           src={item.embedUrl}
-  //           frameBorder='5'
-  //           />
-  //         </div>
-  //         :
-  //         <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
-  //         <div className='play-button'/>
-  //           <img src={item.original}/>
-  //           {
-  //             item.description &&
-  //             <span
-  //             className='image-gallery-description'
-  //             style={{right: '0', left: 'initial'}}
-  //             >
-  //               {item.description}
-  //             </span> }
-  //             </a>
-  //       }
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  _renderVideo(item) {
+    return (
+      <div>
+        <div className='image-gallery-image'>
+        {
+          this.state.showVideo[item.embedUrl] ?
+          <div className='video-wrapper'>
+            <a
+            className='close-video'
+            onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
+            />
+            <iframe
+            width='400'
+            height='255'
+            src={item.embedUrl}
+            frameBorder='5'
+            />
+          </div>
+          :
+          <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
+          <div className='play-button'/>
+            <img src={item.original}/>
+            {
+              item.description &&
+              <span
+              className='image-gallery-description'
+              style={{right: '0', left: 'initial'}}
+              >
+                {item.description}
+              </span> }
+              </a>
+        }
+        </div>
+      </div>
+    );
+  }
 
   render() {
-
-    // console.log('in renderrereeeeer', this.props.photoFiles)
-    let images = [];
-    // this.props.photos.forEach(function(item){
-    //   images.push({
-    //     thumbnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
-    //     original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
-    //   // renderItem: this._renderVideo.bind(this)
-    //   })
-    // })
-
-    // console.log('imagesssssss', images)
 
     return (
       <div>
@@ -196,12 +182,12 @@ class ListingPhotosGallery extends React.Component {
                 onScreenChange={this._onScreenChange.bind(this)}
                 onPlay={this._onPlay.bind(this)}
                 infinite={this.state.infinite}
-                showBullets={this.state.showBullets}
-                showFullscreenButton={this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
-                showPlayButton={this.state.showPlayButton && this.state.showGalleryPlayButton}
-                showThumbnails={this.state.showThumbnails}
-                showIndex={this.state.showIndex}
-                showNav={this.state.showNav}
+                showBullets={true}
+                showFullscreenButton={false}
+                showPlayButton={false}
+                showThumbnails={true}
+                showIndex={true}
+                showNav={true}
                 slideInterval={parseInt(this.state.slideInterval)}
                 slideOnThumbnailHover={this.state.slideOnThumbnailHover}
                 />
@@ -219,14 +205,6 @@ class ListingPhotosGallery extends React.Component {
       </div>
     );
   }
-}
-
-
-function mapStateToProps(state){
-  // console.log('mapppp staeeee******',state.photoFiles)
-  // return {
-  //   photoFiles: state.photoFiles
-  // };
 }
 
 function mapDispatchToProps(dispatch) {

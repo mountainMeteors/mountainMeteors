@@ -10,7 +10,7 @@ export function uploadPhotos(listingPhotos, listingId){
 	// console.log('actionnnnnn=======>', listingPhotos, listingId)
   // const listingId = listingId || undefined;
 	var listingImages = listingPhotos.photos;
-	console.log(listingImages);
+	// console.log(listingImages);
   var req = request.post('/api/uploads/');
 
   listingImages.forEach((file) => {
