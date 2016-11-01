@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { Form, FormControl, FormGroup, Checkbox, Col, Button, ControlLabel, Popover, Tooltip, Modal, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+import DemoUrl from './MainView/DemoUrl';
 import { postListing, putListing } from '../actionCreators/listingActions';
 import Geosuggest from 'react-geosuggest';
 import { scrapeListing } from '../util/listingUtil'
@@ -16,7 +18,7 @@ import { getDistance } from '../util/distUtil';
 class AddListingsModal extends React.Component {
 
   constructor(props){
-    console.log('modal receiving props', props);
+    // console.log('modal receiving props', props);
     super(props);
     this.state = {
       modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
@@ -62,7 +64,7 @@ class AddListingsModal extends React.Component {
     if (Object.keys(newProps.scrapeData).length)
       this.setState({
         rent: newProps.scrapeData.rent[0],
-        location: newProps.scrapeData.location[0],
+        location: newProps.scrapeData.location[0].split(/ ([Uu]nit|[Aa]pt|[Aa]partment)/)[0],
         neighborhood: newProps.scrapeData.neighborhood[1],
         squareFeet: newProps.scrapeData.squareFeet[0],
         bedrooms: newProps.scrapeData.bedrooms[0].numberOfBedsLong,
@@ -86,7 +88,6 @@ class AddListingsModal extends React.Component {
     stateObj[input.target.name] = input.target.value;
     console.log('setting state', stateObj);
     this.setState(stateObj);
-    console.log('state.gym', this.state.gym);
   }
 
   //TODO: Need to allow edit modal to pick up on previous values
@@ -128,8 +129,6 @@ class AddListingsModal extends React.Component {
   }
 
   getValidationState (field) {
-    console.log('vstate', field);
-    console.log('vstate props', this.props.scrapeData[field]);
     if (this.props.scrapeData[field] &&
         this.props.scrapeData[field].length !== 0) {
       console.log('RETURNED vstate');
@@ -209,6 +208,7 @@ class AddListingsModal extends React.Component {
            <Form onSubmit={this.onModalSubmit}>
             <FormGroup controlId="formUrl">
             <ControlLabel>URL</ControlLabel>
+            <DemoUrl />
             {' '}
             <FormControl name="url" value={this.state.url}
             onChange={this.scrapeListingSubmit}
@@ -286,7 +286,8 @@ class AddListingsModal extends React.Component {
             </FormGroup>
 
             <FormGroup controlId="formFee">
-             <Checkbox>
+             <Checkbox name="noFee" value={this.state.noFee}
+             onChange={this.toggleBox}>
                <b>No Fee</b>
              </Checkbox>
              </FormGroup>

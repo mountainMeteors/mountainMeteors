@@ -9,37 +9,45 @@ router.post('/uploads', (req,res) => {
 	console.log(req.files, 'bodyyyy*******', req.body)
   const photoList = [];
   var photoListString;
-	// if (req.files.length){
-		for (var i=0; i< req.files.length; i++) {
-			var photoName = req.files[i].destination + req.files[i].filename
-      photoList.push(photoName);
-      photoListString= JSON.stringify(photoList);
-    }
-console.log('*******',photoName,photoListString)
-    	db('listingPhotos')
-    	.insert ({
-    		name : photoName,
-    		listing_id: req.body.listingId
-    	}).
-    	then(function(results){
-        res.send('successs');
-    	})
+
+	for (var i = 0; i < req.files.length; i++) {
+		var photoName = req.files[i].destination + req.files[i].filename
+    photoList.push(photoName);
+    photoListString= JSON.stringify(photoList);
+  }
+
+  console.log('*******',photoName,photoListString)
+
+	db('listingPhotos')
+	.insert ({
+		name : photoName,
+		listing_id: req.body.listingId
+	})
+	.then(function(results){
+    res.send('successs ' + results);
+	})
 })
 
 
 router.get('/uploads/:id', (req,res) => {
-	console.log('hereeeeee')
-  const photoPaths = [];
- db('listingPhotos').where({
-	 listing_id: req.params.id
- }).select('name')
+	console.log('getting photos for listing', req.params.id)
+  const listingPhotos = {
+    listingId: req.params.id,
+    photoPaths: []
+  }
+  db('listingPhotos').where({
+ 	 listing_id: req.params.id
+  }).select('name')
 	.then(function(results){
-		console.log(results.length, typeof photoPaths)
 		results.forEach(function(item) {
-        photoPaths.push(item.name)
+      listingPhotos.photoPaths.push({
+        original: item.name,
+        thumbnail: item.name
+      })
 		})
 
-		res.send(photoPaths);
+    console.log(req.params.id, 'sending', results.length, 'photos, ex.', results[0]);
+		res.send(listingPhotos);
 	})
 })
 

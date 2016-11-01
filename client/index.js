@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import App from './components/App';
 import MainView from './components/MainView/MainView';
 import AddPhotosModal from './components/MainView/AddPhotosModal';
-import listingPhotosGallery from './components/MainView/listingPhotosGallery';
+import ListingPhotosGallery from './components/MainView/ListingPhotosGallery';
 
 import Survey from './components/Surveys/Survey'
 import Profile from './components/Surveys/Profile'
@@ -21,7 +21,7 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
-        <Route path="viewphotos" component={listingPhotosGallery} />
+        <Route path="viewphotos" component={ListingPhotosGallery} />
         <Route path="addphotos" component={AddPhotosModal} />
         <Route path="profile" component={Profile} />
         <Route path="welcome" component={Welcome}/>

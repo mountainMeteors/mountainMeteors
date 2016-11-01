@@ -15,21 +15,22 @@ An apartment seeking tool which allows the user to keep track of any potential u
 
 ## Live Demo
 Deployment to come soon.
+Best viewed at 67%
 
 ## Motivation
 After each experiencing nightmare stories in our individual apartment searches, our team came together to produce an application to remedy this situation. By allowing users to add the listings they are personally interested in, and sort them according to what is important to them personally, we feel SeekPad is able to greatly facilitate an otherwise painful process.
 
 ## Tech Stack
-MySQL
-Express
-React + Redux
-Node.js
+MySQL  
+Express  
+React + Redux  
+Node.js  
 
 ## Team
 
-  - __Product Owner__: Jack Sappertein
-  - __Scrum Master__: Yueh Chou
-  - __Development Team Members__: Jack Sapperstein, Samantha Gowda, Wen Tran, Yueh Chou
+  - __Product Owner__: [Jack Sapperstein](http://github.com/jacksappo)
+  - __Scrum Master__: [Yueh Chou](http://github.com/yuehkchou)
+  - __Development Team Members__: [Jack Sapperstein](http://github.com/jacksappo), [Samantha Gowda](http://github.com/samgowda), [Wen Tran](http://github.com/wentran), [Yueh Chou](http://github.com/yuehkchou)
 
 ## Usage
 ### Filling out a survey

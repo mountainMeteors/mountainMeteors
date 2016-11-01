@@ -6,6 +6,9 @@ const userPrefs = function(state = {}, action) {
         Object.assign({}, state, action.payload.data):
         {};
 
+    case 'LOGOUT':
+      return {};
+
     default:
       return state;
   }

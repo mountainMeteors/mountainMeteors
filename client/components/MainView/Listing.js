@@ -123,10 +123,10 @@ class Listing extends React.Component{
     //ASSIGN SCORES TO LISTINGS
     let prefs = this.props.prefs;
     let prefTotal = prefs.feeRank + prefs.rentRank + prefs.petRank;
-    listingsFiltered.map(listing => {
-      listing.score = this.calcScore(listing, prefTotal);
+    // listingsFiltered.map(listing => {
+    //   listing.score = this.calcScore(listing, prefTotal);
       // console.log('listing score now', listing.score);
-    })
+    // })
     // .sort((l1,l2) => {
     //   console.log('comparing', l1.score, l2.score);
     //   return l1.score - l2.score

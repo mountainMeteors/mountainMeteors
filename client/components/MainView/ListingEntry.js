@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 import AddListingsModal from '../AddListingsModal'
 import AddPhotosModal from './AddPhotosModal'
+import ListingPhotosGallery from './ListingPhotosGallery'
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
 import { fetchPhotos } from '../../actionCreators/photoActions.js';
@@ -14,6 +15,28 @@ import css from '../../styles/style.css';
 //Formatting
 const rentDisplay = cell => cell[0] === '$' ? cell : '$' + cell;
 const intToBool = cell  => cell === 0 ? 'yes' : 'no';
+const formatBedBath = function(listing) {
+  let formattedStr = '';
+  if (listing.bedrooms) {
+    formattedStr += listing.bedrooms.split(' ')[0];
+    if (formattedStr.length > 0 && formattedStr.toLowerCase() !== 'studio') {
+      formattedStr += ' Bed'
+    }
+  }
+  if (listing.bathrooms) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.bathrooms.split(' ')[0] + ' Bath';
+  }
+
+  if (listing.sq_ft) {
+    if (formattedStr.length) formattedStr += ' / ';
+    formattedStr += listing.sq_ft + ' Sq. Ft.'
+  }
+
+  console.log('returning', formattedStr);
+  return formattedStr;
+}
+
 
 
 
@@ -21,9 +44,13 @@ class ListingEntry extends React.Component{
   constructor(props){
     super(props);
     console.log('LE brought in', props);
+    console.log('LE finding photos', props.photosAll, props.listing.id);
+    console.log('LE photos will be', props.photosAll[props.listing.id]);
 
     this.state = {
-      favorited: props.listing.favorited
+      favorited: props.listing.favorited,
+      photos: props.photosAll[props.listing.id] || {},
+      photosLoaded: false
     }
 
     // console.log('faved value', props.listing.favorited);
@@ -32,15 +59,24 @@ class ListingEntry extends React.Component{
   }
 
   componentWillMount() {
-    this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
+    // this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
   }
 
   componentDidMount() {
-    console.log('rendered LE', this.props);
-  }
+    // console.log('rendered LE', this.props);
+    this.props.fetchPhotos(this.props.listing.id)
+    .then(() => {
+      console.log('LE promised photos are', this.props.photosAll);
+      this.setState({
+        photos: this.props.photosAll[this.props.listing.id],
+        photosLoaded: true
+      });
+    });
 
-  componentWillReceiveProps(props) {
-    console.log('LE received new props', props);
+    //Might work, but 2-way business
+    // .then((photos) => {
+      // console.log('LE promised photos are', photos);
+    // });
   }
 
   toggleArchiveListing(listing) {
@@ -70,7 +106,9 @@ class ListingEntry extends React.Component{
               <span className="listing-rent">{this.props.listing.rent}</span>
             </div>
             <div className="listing-details">
-              <span className="listing-bed-bath">2 Bed / 2 Bath {this.props.listing.sq_ft ? ' / ' + this.props.listing.sq_ft + ' sq. ft' : '' }</span>
+              <span className="listing-bed-bath">
+                {formatBedBath(this.props.listing)}
+              </span>
               <span className="listing-pets"><strong>Pets:</strong> {this.props.listing.pets}</span>
             </div>
             <div className="listing-amenities-fee">
@@ -80,7 +118,10 @@ class ListingEntry extends React.Component{
                 {this.props.listing.amenities}
               </div>
               <div className="listing-fee">
-                NO FEE
+                {this.props.listing.no_fee ?
+                  'NO FEE'
+                  : ''
+                }
               </div>
             </div>
           </div>
@@ -94,6 +135,13 @@ class ListingEntry extends React.Component{
             <span className="clickable">
               <AddPhotosModal listing={this.props.listing} />
             </span>
+            <span className="clickable">
+              {this.state.photosLoaded ?
+                <ListingPhotosGallery listing={this.props.listing} photos={this.state.photos}/>
+              :
+                '...'
+              }
+            </span>
             <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
               <Glyphicon glyph="trash" />
             </span>
@@ -106,8 +154,14 @@ class ListingEntry extends React.Component{
   }
 };
 
+function mapStateToProps(state) {
+  return {
+    photosAll: state.photoFiles
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing, fetchPhotos}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(ListingEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(ListingEntry);

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes} from 'react'
 import { fetchAnswers } from '../../actionCreators/surveysActions'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 
 
@@ -13,10 +13,15 @@ class Profile extends React.Component {
 
   componentWillMount() {
     console.log('hererr')
+    if (!this.props.authenticated) browserHistory.push('/welcome');
     if (!this.props.surveysResponses){
-    this.props.fetchAnswers()
+      this.props.fetchAnswers()
+    }
   }
-}
+
+  componentDidUpdate() {
+    if (!this.props.authenticated) browserHistory.push('/welcome');
+  }
 
   getValues (){
     const  Neighbors = this.props.surveysResponses.Neighbors;
@@ -51,7 +56,7 @@ renderList() {
         <tr>
           <td>Neighborhoods</td>
           <td>{userResponses.rentRank}</td>
-        </tr>  
+        </tr>
          <tr>
           <td>Commute</td>
           <td>{userResponses.commuteRank}</td>
@@ -67,14 +72,14 @@ renderList() {
         <tr>
           <td>Amenities</td>
           <td>{userResponses.amenitiesRank}</td>
-        </tr>        
+        </tr>
         <tr>
           <td>Pets</td>
           <td>{userResponses.petRank}</td>
         </tr>
 
        </tbody>
-      </table> 
+      </table>
 
 
       <table className="table">
@@ -92,11 +97,15 @@ renderList() {
           <tr>
             <td>Neighborhoods</td>
             <td>{userResponses.neighborhoodRank}</td>
-          </tr>  
-           <tr>
+          </tr>
+
+
+           {/* COMMUTE NOT CURRENTLY IN SURVEY
+             <tr>
             <td>Commute Range</td>
             <td>{userResponses.CommuteMin.value} to {userResponses.CommuteMax.value} </td>
           </tr>
+          */}
           <tr>
             <td>Fees</td>
             <td>{userResponses.fees.value}</td>
@@ -108,16 +117,16 @@ renderList() {
           <tr>
             <td>Amenities</td>
             <td>{userResponses.amenitiesRank}</td>
-          </tr>        
+          </tr>
           <tr>
             <td>Pets</td>
             <td>{userResponses.petRank}</td>
           </tr>
          </tbody>
-        </table> 
+        </table>
 
 
-      </div>    
+      </div>
       )
 
 }
