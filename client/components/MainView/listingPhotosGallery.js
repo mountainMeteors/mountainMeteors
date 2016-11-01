@@ -121,54 +121,54 @@ class ListingPhotosGallery extends React.Component {
     }
   }
 
-  _renderVideo(item) {
-    return (
-      <div>
-        <div className='image-gallery-image'>
-        {
-          this.state.showVideo[item.embedUrl] ?
-          <div className='video-wrapper'>
-            <a
-            className='close-video'
-            onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
-            />
-            <iframe
-            width='400'
-            height='255'
-            src={item.embedUrl}
-            frameBorder='5'
-            />
-          </div>
-          :
-          <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
-          <div className='play-button'/>
-            <img src={item.original}/>
-            {
-              item.description &&
-              <span
-              className='image-gallery-description'
-              style={{right: '0', left: 'initial'}}
-              >
-                {item.description}
-              </span> }
-              </a>
-        }
-        </div>
-      </div>
-    );
-  }
+  // _renderVideo(item) {
+  //   return (
+  //     <div>
+  //       <div className='image-gallery-image'>
+  //       {
+  //         this.state.showVideo[item.embedUrl] ?
+  //         <div className='video-wrapper'>
+  //           <a
+  //           className='close-video'
+  //           onClick={this._toggleShowVideo.bind(this, item.embedUrl)}
+  //           />
+  //           <iframe
+  //           width='400'
+  //           height='255'
+  //           src={item.embedUrl}
+  //           frameBorder='5'
+  //           />
+  //         </div>
+  //         :
+  //         <a onClick={this._toggleShowVideo.bind(this, item.embedUrl)}>
+  //         <div className='play-button'/>
+  //           <img src={item.original}/>
+  //           {
+  //             item.description &&
+  //             <span
+  //             className='image-gallery-description'
+  //             style={{right: '0', left: 'initial'}}
+  //             >
+  //               {item.description}
+  //             </span> }
+  //             </a>
+  //       }
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   render() {
 
     // console.log('in renderrereeeeer', this.props.photoFiles)
     let images = [];
-    this.props.photos.forEach(function(item){
-      images.push({
-        thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
-        original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
-      // renderItem: this._renderVideo.bind(this)
-      })
-    })
+    // this.props.photos.forEach(function(item){
+    //   images.push({
+    //     thumbnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+    //     original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+    //   // renderItem: this._renderVideo.bind(this)
+    //   })
+    // })
 
     // console.log('imagesssssss', images)
 
@@ -187,7 +187,7 @@ class ListingPhotosGallery extends React.Component {
               <section className='app'>
                 <ImageGallery
                 ref={i => this._imageGallery = i}
-                items={images}
+                items={this.props.photos}
                 lazyLoad={false}
                 onClick={this._onImageClick.bind(this)}
                 onImageLoad={this._onImageLoad}

@@ -40,7 +40,10 @@ router.get('/uploads/:id', (req,res) => {
   }).select('name')
 	.then(function(results){
 		results.forEach(function(item) {
-      listingPhotos.photoPaths.push(item.name)
+      listingPhotos.photoPaths.push({
+        original: item.name,
+        thumbnail: item.name
+      })
 		})
 
     console.log(req.params.id, 'sending', results.length, 'photos, ex.', results[0]);
