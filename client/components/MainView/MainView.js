@@ -63,7 +63,7 @@ class MainView extends React.Component {
 
   componentDidUpdate() {
     // console.log('main state updated', this.props, this.state);
-    //TODO (global throughout project): This redirect should really probably happen in a reduce to keep it WET across all protected pages
+    //TODO (global throughout project): This redirect should really probably happen in a reducer to keep it WET across all protected pages
     if (!this.props.authenticated) browserHistory.push('/welcome');
   }
 
@@ -85,9 +85,7 @@ class MainView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // listings: state.listings,
     authenticated: state.auth,
-    // userPrefs: state.userPrefs
   }
 }
 

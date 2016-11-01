@@ -12,17 +12,15 @@ import css from '../../styles/app.css'
 class ListingPhotosGallery extends React.Component {
   constructor(props) {
     super(props);
+    console.log('lpg props', props);
     this.state = {
-      showIndex: false,
       slideOnThumbnailHover: false,
       showBullets: true,
       infinite: true,
-      showThumbnails: true,
-      showFullscreenBton: true,
+      showFullscreenButton: false,
       showGalleryFullscreenButton: true,
-      showPlayButton: true,
+      showPlayButton: false,
       showGalleryPlayButton: true,
-      showNav: true,
       slideInterval: 2000,
       showVideo: {},
       showModal: false,
@@ -52,9 +50,10 @@ class ListingPhotosGallery extends React.Component {
 
   componentDidMount() {
     // console.log('herereeeeer', this.props.photoFiles)
-    if (!this.props.photoFiles){
-      this.props.fetchPhotos(75)
-    }
+    // console.log('LPG ID', this.props.listing.id);
+    // if (!this.props.photoFiles){
+    //   this.props.fetchPhotos(this.props.listing.id)
+    // }
   }
 
   _onImageClick(event) {
@@ -158,21 +157,6 @@ class ListingPhotosGallery extends React.Component {
 
   render() {
 
-    // console.log('in renderrereeeeer', this.props.photoFiles)
-    if (!this.props.photoFiles) {
-      return <div>loading</div>
-    }
-    let images = [];
-    this.props.photoFiles.forEach(function(item){
-      images.push({
-        thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
-        original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
-      // renderItem: this._renderVideo.bind(this)
-      })
-    })
-
-    // console.log('imagesssssss', images)
-
     return (
       <div>
         <div onClick={this.open.bind(this)}>
@@ -188,7 +172,7 @@ class ListingPhotosGallery extends React.Component {
               <section className='app'>
                 <ImageGallery
                 ref={i => this._imageGallery = i}
-                items={images}
+                items={this.props.photos}
                 lazyLoad={false}
                 onClick={this._onImageClick.bind(this)}
                 onImageLoad={this._onImageLoad}
@@ -198,11 +182,11 @@ class ListingPhotosGallery extends React.Component {
                 onPlay={this._onPlay.bind(this)}
                 infinite={this.state.infinite}
                 showBullets={this.state.showBullets}
-                showFullscreenButton={this.state.showFullscreenButton && this.state.showGalleryFullscreenButton}
-                showPlayButton={this.state.showPlayButton && this.state.showGalleryPlayButton}
-                showThumbnails={this.state.showThumbnails}
-                showIndex={this.state.showIndex}
-                showNav={this.state.showNav}
+                showFullscreenButton={this.state.showFullscreenButton}
+                showPlayButton={this.state.showPlayButton}
+                showThumbnails={true}
+                showIndex={false}
+                showNav={true}
                 slideInterval={parseInt(this.state.slideInterval)}
                 slideOnThumbnailHover={this.state.slideOnThumbnailHover}
                 />
@@ -222,17 +206,9 @@ class ListingPhotosGallery extends React.Component {
   }
 }
 
-
-function mapStateToProps(state){
-  // console.log('mapppp staeeee******',state.photoFiles)
-  return {
-    photoFiles: state.photoFiles.all
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchPhotos }, dispatch);
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (ListingPhotosGallery);
+export default connect(null, mapDispatchToProps) (ListingPhotosGallery);

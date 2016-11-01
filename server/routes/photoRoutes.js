@@ -30,18 +30,24 @@ router.post('/uploads', (req,res) => {
 
 
 router.get('/uploads/:id', (req,res) => {
-	console.log('hereeeeee')
-  const photoPaths = [];
- db('listingPhotos').where({
-	 listing_id: req.params.id
- }).select('name')
+	console.log('getting photos for listing', req.params.id)
+  const listingPhotos = {
+    listingId: req.params.id,
+    photoPaths: []
+  }
+  db('listingPhotos').where({
+ 	 listing_id: req.params.id
+  }).select('name')
 	.then(function(results){
-		console.log(results.length, typeof photoPaths)
 		results.forEach(function(item) {
-        photoPaths.push(item.name)
+      listingPhotos.photoPaths.push({
+        original: item.name,
+        thumbnail: item.name
+      })
 		})
 
-		res.send(photoPaths);
+    console.log(req.params.id, 'sending', results.length, 'photos, ex.', results[0]);
+		res.send(listingPhotos);
 	})
 })
 

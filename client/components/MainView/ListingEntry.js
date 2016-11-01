@@ -43,10 +43,14 @@ const formatBedBath = function(listing) {
 class ListingEntry extends React.Component{
   constructor(props){
     super(props);
-    // console.log('LE brought in', props);
+    console.log('LE brought in', props);
+    console.log('LE finding photos', props.photosAll, props.listing.id);
+    console.log('LE photos will be', props.photosAll[props.listing.id]);
 
     this.state = {
-      favorited: props.listing.favorited
+      favorited: props.listing.favorited,
+      photos: props.photosAll[props.listing.id] || {},
+      photosLoaded: false
     }
 
     // console.log('faved value', props.listing.favorited);
@@ -55,15 +59,24 @@ class ListingEntry extends React.Component{
   }
 
   componentWillMount() {
-    this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
+    // this.state.thumbnail = this.props.fetchPhotos(this.props.listing.id);
   }
 
   componentDidMount() {
     // console.log('rendered LE', this.props);
-  }
+    this.props.fetchPhotos(this.props.listing.id)
+    .then(() => {
+      console.log('LE promised photos are', this.props.photosAll);
+      this.setState({
+        photos: this.props.photosAll[this.props.listing.id],
+        photosLoaded: true
+      });
+    });
 
-  componentWillReceiveProps(props) {
-    // console.log('LE received new props', props);
+    //Might work, but 2-way business
+    // .then((photos) => {
+      // console.log('LE promised photos are', photos);
+    // });
   }
 
   toggleArchiveListing(listing) {
@@ -123,7 +136,11 @@ class ListingEntry extends React.Component{
               <AddPhotosModal listing={this.props.listing} />
             </span>
             <span className="clickable">
-              <ListingPhotosGallery listing={this.props.listing} />
+              {this.state.photosLoaded ?
+                <ListingPhotosGallery listing={this.props.listing} photos={this.state.photos}/>
+              :
+                '...'
+              }
             </span>
             <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
               <Glyphicon glyph="trash" />
@@ -137,8 +154,14 @@ class ListingEntry extends React.Component{
   }
 };
 
+function mapStateToProps(state) {
+  return {
+    photosAll: state.photoFiles
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({putListing, fetchPhotos}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(ListingEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(ListingEntry);
