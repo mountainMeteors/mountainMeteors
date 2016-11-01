@@ -12,6 +12,7 @@ import css from '../../styles/app.css'
 class ListingPhotosGallery extends React.Component {
   constructor(props) {
     super(props);
+    console.log('lpg props', props);
     this.state = {
       showIndex: false,
       slideOnThumbnailHover: false,
@@ -52,9 +53,10 @@ class ListingPhotosGallery extends React.Component {
 
   componentDidMount() {
     // console.log('herereeeeer', this.props.photoFiles)
-    if (!this.props.photoFiles){
-      this.props.fetchPhotos(75)
-    }
+    // console.log('LPG ID', this.props.listing.id);
+    // if (!this.props.photoFiles){
+    //   this.props.fetchPhotos(this.props.listing.id)
+    // }
   }
 
   _onImageClick(event) {
@@ -159,17 +161,17 @@ class ListingPhotosGallery extends React.Component {
   render() {
 
     // console.log('in renderrereeeeer', this.props.photoFiles)
-    if (!this.props.photoFiles) {
+    if (!this.props.photos) {
       return <div>loading</div>
     }
-    let images = [];
-    this.props.photoFiles.forEach(function(item){
-      images.push({
-        thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
-        original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
-      // renderItem: this._renderVideo.bind(this)
-      })
-    })
+    // let images = [];
+    // this.props.photoFiles.forEach(function(item){
+    //   images.push({
+    //     thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+    //     original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+    //   // renderItem: this._renderVideo.bind(this)
+    //   })
+    // })
 
     // console.log('imagesssssss', images)
 
@@ -188,7 +190,7 @@ class ListingPhotosGallery extends React.Component {
               <section className='app'>
                 <ImageGallery
                 ref={i => this._imageGallery = i}
-                items={images}
+                items={this.props.photos}
                 lazyLoad={false}
                 onClick={this._onImageClick.bind(this)}
                 onImageLoad={this._onImageLoad}
@@ -225,9 +227,9 @@ class ListingPhotosGallery extends React.Component {
 
 function mapStateToProps(state){
   // console.log('mapppp staeeee******',state.photoFiles)
-  return {
-    photoFiles: state.photoFiles.all
-  };
+  // return {
+  //   photoFiles: state.photoFiles
+  // };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -235,4 +237,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (ListingPhotosGallery);
+export default connect(null, mapDispatchToProps) (ListingPhotosGallery);
