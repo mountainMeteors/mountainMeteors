@@ -49,7 +49,8 @@ class ListingEntry extends React.Component{
 
     this.state = {
       favorited: props.listing.favorited,
-      photos: props.photosAll[props.listing.id] || {}
+      photos: props.photosAll[props.listing.id] || {},
+      photosLoaded: false
     }
 
     // console.log('faved value', props.listing.favorited);
@@ -67,7 +68,8 @@ class ListingEntry extends React.Component{
     .then(() => {
       console.log('LE promised photos are', this.props.photosAll);
       this.setState({
-        photos: this.props.photosAll[this.props.listing.id]
+        photos: this.props.photosAll[this.props.listing.id],
+        photosLoaded: true
       });
     });
 
@@ -134,7 +136,11 @@ class ListingEntry extends React.Component{
               <AddPhotosModal listing={this.props.listing} />
             </span>
             <span className="clickable">
-              <ListingPhotosGallery listing={this.props.listing} photos={this.state.photos}/>
+              {this.state.photosLoaded ?
+                <ListingPhotosGallery listing={this.props.listing} photos={this.state.photos}/>
+              :
+                '...'
+              }
             </span>
             <span className="clickable" onClick={() => {this.toggleArchiveListing(this.props.listing)}}>
               <Glyphicon glyph="trash" />

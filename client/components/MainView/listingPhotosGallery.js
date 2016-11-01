@@ -161,17 +161,14 @@ class ListingPhotosGallery extends React.Component {
   render() {
 
     // console.log('in renderrereeeeer', this.props.photoFiles)
-    if (!this.props.photos) {
-      return <div>loading</div>
-    }
-    // let images = [];
-    // this.props.photoFiles.forEach(function(item){
-    //   images.push({
-    //     thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
-    //     original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
-    //   // renderItem: this._renderVideo.bind(this)
-    //   })
-    // })
+    let images = [];
+    this.props.photos.forEach(function(item){
+      images.push({
+        thumnail: 'http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg',
+        original: `http://cdn-img1.streeteasy.com/nyc/image/21/226320621.jpg`
+      // renderItem: this._renderVideo.bind(this)
+      })
+    })
 
     // console.log('imagesssssss', images)
 
@@ -190,7 +187,7 @@ class ListingPhotosGallery extends React.Component {
               <section className='app'>
                 <ImageGallery
                 ref={i => this._imageGallery = i}
-                items={this.props.photos}
+                items={images}
                 lazyLoad={false}
                 onClick={this._onImageClick.bind(this)}
                 onImageLoad={this._onImageLoad}
