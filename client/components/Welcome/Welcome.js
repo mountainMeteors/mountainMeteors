@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { SplitButton, MenuItem, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
-<<<<<<< HEAD
-import {connect} from 'react-redux';
-import Team from '../../data/team';
-=======
 import { connect } from 'react-redux';
 import Team from '../../data/team';
 // import Images from '../../assets/team';
->>>>>>> featTeam
 // import {Table, Thead, Th, Tr} from 'reactable';
 
 class Welcome extends React.Component {
@@ -31,7 +26,6 @@ class Welcome extends React.Component {
     const Email = 'assets/icons/email.png';
 
     const devList = person.map(function(item, index){
-        console.log('#####item#####', item)
         return (
           <Col xs={6} md={3} key={index} padding={20}>
             <image src= {item.img} className='profile'/>
