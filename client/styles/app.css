@@ -12,7 +12,37 @@
   margin-top: 35%;
   text-align: center;
 }
-
+/*********** Welcome.js *************/
+.profile {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+}
+.icons_container {
+  text-align: center;
+  padding: 2px;
+}
+.icons {
+  text-align: center;
+  border-radius: 50%;
+  padding: 3px;
+  margin: 10px 0 10px 0;
+}
+.devNames {
+  font-size: 24px;
+  font-style: normal;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.devTitles {
+  font-size: 20px;
+  font-family: 'Raleway',serif;
+  text-align: center;
+  color: grey;
+}
 /*********** IMAGE SLIDE ************/
 @font-face {
   font-family: "Ionicons";
