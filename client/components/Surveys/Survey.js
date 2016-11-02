@@ -273,7 +273,7 @@ class Survey extends Component {
         Live and love your place.
         </div>
         <div className="textHeader_1nggxef">
-          What's important to you in a home? We want to know!
+          What's important to you in a home ? Let us know !
         </div>
         </div>
         </div>
