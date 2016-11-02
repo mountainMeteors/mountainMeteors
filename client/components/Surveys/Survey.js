@@ -256,7 +256,7 @@ class Survey extends Component {
     return (
       <div>
 
-        <Jumbotron style={{'backgroundImage': 'url(assets/survey/banner1.jpg)'}}>
+        {/*<Jumbotron style={{'backgroundImage': 'url(assets/survey/banner1.jpg)'}}>
         <div >
           <h2>What's important to you in a home?</h2>
           <h4>
@@ -265,7 +265,19 @@ class Survey extends Component {
           </h4>
           <p></p>
         </div>
-        </Jumbotron>
+        </Jumbotron>*/}
+        <div className="pageContainer_7utmf7-o_O-pageContainer_verticalSpacingTop_1f5xw8o">
+        <div className="offetFixedHeader_19bexa9">
+        <div className="textHeaderContainer_1sy11fq">
+        <div className="textHeader_rausch_1gtmji0">
+        Live and love your place.
+        </div>
+        <div className="textHeader_1nggxef">
+          What's important to you in a home? We want to know!
+        </div>
+        </div>
+        </div>
+        </div>
 
         <form onSubmit={this.onFormSubmit}>
           <div className="main_card">
