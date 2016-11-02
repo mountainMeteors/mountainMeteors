@@ -20,6 +20,7 @@
   padding: 10px;
   display: block;
   margin: 0 auto;
+  border:2px solid white;
 }
 .icons_container {
   text-align: center;
