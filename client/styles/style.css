@@ -742,3 +742,66 @@ th {
 .geosuggest-item--active:focus {
   background: #ccc;
 }
+
+/********** SURVEY HEADER *****************/
+.pageContainer_7utmf7-o_O-pageContainer_verticalSpacingTop_1f5xw8o {
+ max-width: 1080px !important;
+ margin: 0 auto !important;
+ background-color:transparent;
+ position: relative !important;
+ padding-left: 64px !important;
+ padding-right: 64px !important;
+ padding-top: 24px !important;
+}
+
+.offetFixedHeader_19bexa9 {
+  margin-top: 50px !important;
+}
+
+@media (max-width: 743px) {
+  .offetFixedHeader_19bexa9 {
+    margin-top: 42px !important;
+  }
+}
+
+.textHeaderContainer_1sy11fq {
+  width: 95% !important;
+}
+
+@media (max-width: 1127px) {
+  .textHeaderContainer_1sy11fq {
+    width: 100% !important;
+  }
+}
+                
+@media (max-width: 1127px) {
+  .textHeaderContainer_1sy11fq {
+    width: 100% !important;
+  }
+}
+
+.textHeader_1nggxef {
+  font-size: 39px !important;
+  line-height: 56px !important;
+  letter-spacing: -0.8px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  color: #484848 !important;
+  margin: 0px !important;
+  font-weight: 200 !important;
+}
+
+@media (max-width: 743px) {
+  .textHeader_1nggxef {
+    font-size: 40px !important;
+    line-height: 48px !important;
+    letter-spacing: -0.8px !important;
+  }
+}
+
+.textHeader_rausch_1gtmji0 {
+  font-weight: 700 !important;
+  font-size: 42px !important;
+  color:  #FF6347 !important;
+  margin-right: 8px !important;
+}
