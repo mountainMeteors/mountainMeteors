@@ -20,7 +20,7 @@ let team = [
     {
       'LinkedIn':'https://www.linkedin.com/in/jacksapperstein',
       'GitHub': 'https://github.com/JackSappo',
-      'Email': 'mailto:'
+      'Email': 'mailto:jisapp02@gmail.com'
     }
   },
   {
@@ -32,7 +32,7 @@ let team = [
     {
       'LinkedIn':'https://www.linkedin.com/in/samgowda',
       'GitHub': 'https://github.com/samgowda',
-      'Email': 'mailto:'
+      'Email': 'mailto:samgowda@gmail.com'
     }
   },
   {
@@ -44,7 +44,7 @@ let team = [
     {
       'LinkedIn':'https://www.linkedin.com/in/wentran',
       'GitHub': 'https://github.com/wentran',
-      'Email': 'mailto:'
+      'Email': 'mailto:wen.tran1@gmail.com'
     }
   }
 ]

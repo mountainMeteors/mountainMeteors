@@ -13,11 +13,33 @@
   text-align: center;
 }
 /*********** Welcome.js *************/
-.devContainer {
+.devlink {
+  position:absolute;
+  /*position:fixed;*/
+   right: 20px;
+  bottom: 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background-color: purple;
+  opacity: .7;
+  color: white;
+}
+
+.devicon {
+  position: absolute;
+  font-size: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%)
+}
+
+#devcontainer {
   color:white;
   position: absolute;
   background-color: white;
-  bottom: 0; right: 0;  left: 0;
+  width: 100%;
+  top: 100vh;
 }
 .profile {
   border-radius: 50%;
@@ -38,13 +60,13 @@
   padding: 3px;
   margin: 10px 0 10px 0;
 }
-.devNames {
+.devnames {
   font-size: 24px;
   font-style: normal;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
-.devTitles {
+.devtitles {
   font-size: 20px;
   font-family: 'Lora',serif;
   text-align: center;
