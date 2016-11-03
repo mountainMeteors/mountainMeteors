@@ -101,9 +101,9 @@ class Header extends React.Component {
       <ul className="nav navbar-nav">
         {this.renderLinks()}
       </ul>
-      <span className="title-container">
+      <div className="title-container">
         <Link to="/" className="title" >SeekPad</Link>
-      </span>
+      </div>
       {this.props.authenticated ?
         <div style={{'display':'inline', 'float': 'right'}}>
           <Button

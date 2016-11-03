@@ -14,6 +14,10 @@ a:focus {
   height: 100%;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 /*.no-scroll {
   overflow-y: hidden;
 }
@@ -23,6 +27,12 @@ a:focus {
   overflow-y: scroll;
 }
 
+.title-container {
+  position: absolute;
+  text-align: center;
+  left: 46%;
+  top: 4%;
+}
 
 a.title {
   font-family: 'Lobster';
@@ -37,7 +47,14 @@ a.title {
 }
 
 #header {
-  background-color: #2679ff
+  /*background-color: #2679ff;*/
+  background-color: black;
+  padding: 5px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .clickable {
@@ -773,7 +790,7 @@ th {
     width: 100% !important;
   }
 }
-                
+
 @media (max-width: 1127px) {
   .textHeaderContainer_1sy11fq {
     width: 100% !important;

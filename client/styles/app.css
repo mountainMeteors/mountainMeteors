@@ -15,8 +15,9 @@
 /*********** Welcome.js *************/
 .devlink {
   position:absolute;
-  right:5vh;
-  bottom:5vh;
+  /*position:fixed;*/
+   right: 20px;
+  bottom: 20px;
   width: 75px;
   height: 75px;
   border-radius: 50px;

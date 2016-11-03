@@ -20,12 +20,8 @@ class Welcome extends React.Component {
   }
 
   render() {
-    const person = Team;
-    const LinkedIn = 'assets/icons/li.png';
-    const GitHub = 'assets/icons/gh.png';
-    const Email = 'assets/icons/email.png';
 
-    const devList = person.map(function(item, index){
+    const devList = Team.map(function(item, index){
         return (
           <Col xs={6} md={3} key={index}>
             <img src= {item.img} className='profile' />
@@ -33,9 +29,9 @@ class Welcome extends React.Component {
             <h3 className='devtitles'> {item.role} </h3>
 
             <div className='icons_container'>
-              <a href={item.links.GitHub}><img src= {GitHub} className='icons' /></a>
-              <a href={item.links.LinkedIn}><img src= {LinkedIn} className='icons' /></a>
-              <a href={item.links.Email}><img src= {Email} className='icons' /></a>
+              <a href={item.links.GitHub}><img src='assets/icons/gh.png' className='icons' /></a>
+              <a href={item.links.LinkedIn}><img src='assets/icons/li.png' className='icons' /></a>
+              <a href={item.links.Email}><img src='assets/icons/email.png'className='icons' /></a>
             </div>
           </Col>
         )

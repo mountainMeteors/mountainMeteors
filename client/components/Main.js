@@ -39,7 +39,7 @@ class Main extends React.Component{
   render() {
     return (
       <div className="fh no-scroll">
-        <Grid fluid={ true } className="fh">
+        <Grid fluid={ true } className="fh no-padding">
           <Row id="header">
             <Header />
           </Row>
