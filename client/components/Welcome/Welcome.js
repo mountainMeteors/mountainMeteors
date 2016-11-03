@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SplitButton, MenuItem, Col } from 'react-bootstrap';
+import { SplitButton, MenuItem, Col, Glyphicon } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import Team from '../../data/team';
@@ -27,15 +27,15 @@ class Welcome extends React.Component {
 
     const devList = person.map(function(item, index){
         return (
-          <Col xs={6} md={3} key={index} padding={20}>
-            <image src= {item.img} className='profile'/>
-            <h2 className='devNames'> {item.name} </h2>
-            <h3 className='devTitles'> {item.role} </h3>
+          <Col xs={6} md={3} key={index}>
+            <img src= {item.img} className='profile' />
+            <h2 className='devnames'> {item.name} </h2>
+            <h3 className='devtitles'> {item.role} </h3>
 
             <div className='icons_container'>
-              <a href={item.links.GitHub}><image src= {GitHub} className='icons' /></a>
-              <a href={item.links.LinkedIn}><image src= {LinkedIn} className='icons' /></a>
-              <a href={item.links.Email}><image src= {Email} className='icons' /></a>
+              <a href={item.links.GitHub}><img src= {GitHub} className='icons' /></a>
+              <a href={item.links.LinkedIn}><img src= {LinkedIn} className='icons' /></a>
+              <a href={item.links.Email}><img src= {Email} className='icons' /></a>
             </div>
           </Col>
         )
@@ -43,14 +43,21 @@ class Welcome extends React.Component {
 
     return (
       <div>
-      <video id="background-video" poster="https://dl.dropboxusercontent.com/s/nzmafm1x7d5gh2r/GettyImages-597661487.jpg?dl=0 " autoPlay loop>
-        <source src="http://dl.dropboxusercontent.com/s/gamzhby2es6n5zr/FlatironVidA.mp4?dl=0" type="video/mp4" />
-      </video>
-        <div className='devContainer'>
+        <video id="background-video" poster="https://dl.dropboxusercontent.com/s/nzmafm1x7d5gh2r/GettyImages-597661487.jpg?dl=0 " autoPlay loop>
+          <source src="http://dl.dropboxusercontent.com/s/gamzhby2es6n5zr/FlatironVidA.mp4?dl=0" type="video/mp4" />
+        </video>
+        <div id='devcontainer'>
           <div className="row" style={{padding:10}}>
             {devList}
           </div>
         </div>
+        <a data-scroll href="#devcontainer">
+          <div className='devlink'>
+            <div className='devicon'>
+              <Glyphicon glyph="user" />
+            </div>
+          </div>
+        </a>
       </div>
     )
   }
