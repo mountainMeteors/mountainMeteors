@@ -12,7 +12,66 @@
   margin-top: 35%;
   text-align: center;
 }
+/*********** Welcome.js *************/
+.devlink {
+  position:absolute;
+  /*position:fixed;*/
+   right: 20px;
+  bottom: 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background-color: purple;
+  opacity: .7;
+  color: white;
+}
 
+.devicon {
+  position: absolute;
+  font-size: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%)
+}
+
+#devcontainer {
+  color:white;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  top: 100vh;
+}
+.profile {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+
+  display: block;
+  margin: 5px auto;
+  border:5px solid white;
+}
+.icons_container {
+  text-align: center;
+  padding: 2px;
+}
+.icons {
+  text-align: center;
+  border-radius: 50%;
+  padding: 3px;
+  margin: 10px 0 10px 0;
+}
+.devnames {
+  font-size: 24px;
+  font-style: normal;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.devtitles {
+  font-size: 20px;
+  font-family: 'Lora',serif;
+  text-align: center;
+  color: grey;
+}
 /*********** IMAGE SLIDE ************/
 @font-face {
   font-family: "Ionicons";
@@ -2296,6 +2355,7 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 50px;
   box-shadow:0 1px 3px rgba(0,0,0,0.12), 0
 }
