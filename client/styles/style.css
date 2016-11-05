@@ -216,6 +216,7 @@ label {
 
 .listing-photo {
   width: 135px; /* TODO: Make this dynamically = height instead of estimate*/
+  /*background-size: 100px 100px;*/
   /*margin-left: auto;*/
   float: right;
 }

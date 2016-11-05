@@ -37,6 +37,11 @@ const formatBedBath = function(listing) {
   return formattedStr;
 }
 
+const getThumbnail = function(photoArr) {
+  if (photoArr.length) return 'url(' + photoArr[0].thumbnail + ')';
+  else return 'url(http://localhost:2500/uploads/apt_placeholder.png)';
+}
+
 
 
 
@@ -153,6 +158,8 @@ class ListingEntry extends React.Component{
     )
   }
 };
+
+// <div className="listing-photo" style={{'backgroundImage': getThumbnail(this.state.photos)}}>
 
 function mapStateToProps(state) {
   return {
