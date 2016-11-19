@@ -151,7 +151,7 @@ class ListingEntry extends React.Component{
               <Glyphicon glyph="trash" />
             </span>
           </div>
-          <div className="listing-photo" style={{'backgroundImage': 'url(http://localhost:2500/uploads/apt_placeholder.png)'}}>
+          <div className="listing-photo" style={{'backgroundImage': 'url(assets/apt_placeholder.png)'}}>
           </div>
         </div>
       </div>
