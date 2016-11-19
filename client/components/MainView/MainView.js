@@ -7,7 +7,6 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { getListings } from '../../actionCreators/listingActions.js';
 import { getPrefs } from '../../actionCreators/accountActions.js';
-import AddListingsModal from '../AddListingsModal';
 import { browserHistory } from 'react-router';
 
 const tempMarkers = [{

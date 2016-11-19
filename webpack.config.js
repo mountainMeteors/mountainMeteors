@@ -30,8 +30,8 @@ var config = {
         loaders: ["css"]
       },
       //photos
-      { 
-        test: /\.(png|jpg)$/, 
+      {
+        test: /\.(png|jpg)$/,
         loader: 'file-loader?name=uploads/[name].[ext]'
       }
     ]

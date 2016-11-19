@@ -21,8 +21,6 @@ const router = (
       <Route path="/" component={App}>
         <IndexRoute component={MainView} />
         <Route path="survey" component={Survey} />
-        <Route path="viewphotos" component={ListingPhotosGallery} />
-        <Route path="addphotos" component={AddPhotosModal} />
         <Route path="profile" component={Profile} />
         <Route path="welcome" component={Welcome}/>
       </Route>
