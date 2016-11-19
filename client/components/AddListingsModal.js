@@ -353,7 +353,6 @@ class AddListingsModal extends React.Component {
 
 function mapStateToProps(state){
   return {
-    user_id: state.auth.user_id,
     scrapeData: state.scraper
   }
 }

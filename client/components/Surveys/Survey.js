@@ -267,16 +267,16 @@ class Survey extends Component {
         </div>
         </Jumbotron>*/}
         <div className="pageContainer_7utmf7-o_O-pageContainer_verticalSpacingTop_1f5xw8o">
-        <div className="offetFixedHeader_19bexa9">
-        <div className="textHeaderContainer_1sy11fq">
-        <div className="textHeader_rausch_1gtmji0">
-        Live and love your place.
-        </div>
-        <div className="textHeader_1nggxef">
-          What's important to you in a home ? Let us know !
-        </div>
-        </div>
-        </div>
+          <div className="offetFixedHeader_19bexa9">
+            <div className="textHeaderContainer_1sy11fq">
+              <div className="textHeader_rausch_1gtmji0">
+                Live and love your place.
+              </div>
+              <div className="textHeader_1nggxef">
+                What's important to you in a home? Let us know!
+              </div>
+            </div>
+          </div>
         </div>
 
         <form onSubmit={this.onFormSubmit}>

@@ -39,8 +39,8 @@ class Welcome extends React.Component {
 
     return (
       <div>
-        <video id="background-video" poster="https://dl.dropboxusercontent.com/s/nzmafm1x7d5gh2r/GettyImages-597661487.jpg?dl=0 " autoPlay loop>
-          <source src="http://dl.dropboxusercontent.com/s/gamzhby2es6n5zr/FlatironVidA.mp4?dl=0" type="video/mp4" />
+        <video id="background-video" autoPlay loop>
+          <source src="https://dl.dropboxusercontent.com/s/i0vkqah6o5ci920/525214755_Astor24.mp4?dl=0" type="video/mp4" />
         </video>
         <div id='devcontainer'>
           <div className="row" style={{padding:10}}>

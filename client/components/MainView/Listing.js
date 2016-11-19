@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 import ListingTabs from './ListingTabs';
 import ListingEntry from './ListingEntry';
-import AddPhotosModal from './AddPhotosModal';
 import { Link } from 'react-router';
 import { putListing } from '../../actionCreators/listingActions.js';
 import css from '../../styles/style.css';

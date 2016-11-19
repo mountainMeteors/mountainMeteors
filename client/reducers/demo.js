@@ -1,5 +1,5 @@
 //FLAG CONTROLLING DEMO MODE
-const demoMode = false;
+const demoMode = true;
 
 function demo(state = demoMode, action) {
   switch(action.type) {

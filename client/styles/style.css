@@ -47,8 +47,8 @@ a.title {
 }
 
 #header {
-  /*background-color: #2679ff;*/
-  background-color: black;
+  background-color: #2679ff;
+  /*background-color: black;*/
   padding: 5px;
 }
 
@@ -216,6 +216,7 @@ label {
 
 .listing-photo {
   width: 135px; /* TODO: Make this dynamically = height instead of estimate*/
+  /*background-size: 100px 100px;*/
   /*margin-left: auto;*/
   float: right;
 }
