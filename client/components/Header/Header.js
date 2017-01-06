@@ -105,7 +105,7 @@ class Header extends React.Component {
         <Link to="/" className="title" >SeekPad</Link>
       </div>
       {this.props.authenticated ?
-        <div style={{'display':'inline', 'float': 'right'}}>
+        <div style={{'display':'inline', 'float': 'right', 'margin-left': 'auto'}}>
           <Button
             bsStyle="success"
             style= {{'marginRight': '6px'}}
