@@ -742,3 +742,25 @@ th {
 .geosuggest-item--active:focus {
   background: #ccc;
 }
+
+/* SLOPPY QUICKFIXES JAN 2017 */
+.fh .flex {
+  width: 100%;
+}
+
+nav.navbar.navbar-light {
+  width: 100%;
+  flex-direction: row;
+}
+
+ul.nav.navbar-nav {
+  margin-right: auto;
+}
+
+.modal-dialog {
+  margin-top: 250px;
+}
+
+.modal-backdrop.fade.in {
+  opacity: .5;
+}
