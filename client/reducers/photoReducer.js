@@ -1,5 +1,6 @@
 import { FETCH_PHOTOS } from '../actionCreators/photoActions';
 
+
 export default function (state={}, action){
   switch(action.type) {
     case FETCH_PHOTOS:
