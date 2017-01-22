@@ -18,7 +18,7 @@ See our demo [here](https://seekpad.herokuapp.com).
 Best viewed at 67%
 
 ## Motivation
-After each experiencing nightmare stories in our individual apartment searches, our team came together to produce an application to remedy this situation. By allowing users to add the listings they are personally interested in, and sort them according to what is important to them personally, we feel SeekPad is able to greatly facilitate an otherwise painful process.
+After experiencing nightmare stories in our individual apartment searches, our team came together to produce an application to remedy this situation. By allowing users to add the listings they are tracking, and sort them according to what is personally important to them, SeekPad is able to greatly simplify an otherwise painful process.
 
 ## Tech Stack
 MySQL  
@@ -28,7 +28,6 @@ Node.js
 
 ## Team
 
-  - __Product Owner__: [Jack Sapperstein](http://github.com/jacksappo)
   - __Scrum Master__: [Yueh Chou](http://github.com/yuehkchou)
   - __Development Team Members__: [Jack Sapperstein](http://github.com/jacksappo), [Samantha Gowda](http://github.com/samgowda), [Wen Tran](http://github.com/wentran), [Yueh Chou](http://github.com/yuehkchou)
 
@@ -98,4 +97,4 @@ npm install
 - Implement APIs
   - Yelp: Identifies which areas have restaurants the user prefers
   - GoogleMaps Distance Matrix: Identifies the commute time to work
-- General styling can be improved
+- General styling
