@@ -61,7 +61,7 @@ class Header extends React.Component {
   renderLinks(){
     if(this.props.authenticated){
       return <li className="nav-item">
-        <Button onClick={this.logoutSubmit}>Logout</Button>
+        <Button bsSize="small" onClick={this.logoutSubmit}>Logout</Button>
       </li>
     } else {
       return [
