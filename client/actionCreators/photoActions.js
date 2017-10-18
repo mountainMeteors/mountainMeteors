@@ -7,10 +7,7 @@ export const FETCH_PHOTOS = 'FETCH_PHOTOS ';
 
 
 export function uploadPhotos(listingPhotos, listingId){
-	// console.log('actionnnnnn=======>', listingPhotos, listingId)
-  // const listingId = listingId || undefined;
 	var listingImages = listingPhotos.photos;
-	// console.log(listingImages);
   var req = request.post('/api/uploads/');
 
   listingImages.forEach((file) => {
@@ -20,8 +17,7 @@ export function uploadPhotos(listingPhotos, listingId){
   req.field('listingId', listingId)
   // .send ({listingId:listingId})
   .end(function(err,res){
-  	if (err) console.log(err)
-		else console.log('photo response', res)
+  	if (err) console.error(err)
   })
 
   return {
@@ -32,9 +28,7 @@ export function uploadPhotos(listingPhotos, listingId){
 }
 
 export function fetchPhotos (listingId){
-  // console.log(listingId, 'acccccction===>')
   const request = axios.get('api/uploads/' + listingId)
-  // console.log('paths=====>',request)
 
   return {
     type: FETCH_PHOTOS,

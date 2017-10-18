@@ -2,12 +2,10 @@ import axios from 'axios';
 import store from '../store/store';
 
 exports.scrapeListing = function(url){
-  console.log("URL", url)
   axios.post('/api/scrape', {
     url: url
   })
     .then(function(description){
-      console.log("RESP*******", description)
 
       //TODO catch single dwelling edge case,
       //TODO catch undefined edge case (i.e. body)
@@ -35,12 +33,11 @@ exports.scrapeListing = function(url){
       //   description.data.catsAllowed = false;
       // }
 
-      console.log("DESCRIPTION", description)
       store.dispatch({type: "SCRAPER_ACTION", payload: description})
 
 
     }).catch(function(err) {
-      console.log(err)
+      console.error(err)
     })
 
 

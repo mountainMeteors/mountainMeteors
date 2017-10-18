@@ -10,7 +10,6 @@ router.post('/dist', util.findDistance, function(req,res){
 
 var homeAddress, targetAddress
 router.get('/dist/:id', function(req,res) {
-  console.log('###req.params.id###', req.params.id)
   db('listings').innerJoin('users')
   .where({
     id: req.params.id,

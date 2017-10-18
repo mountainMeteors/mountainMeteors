@@ -8,7 +8,6 @@ export class Container extends React.Component {
 
   constructor(props){
     super(props);
-    console.log('container props', props)
 
     this.state = {
       showingInfoWindow: false,
@@ -50,7 +49,6 @@ export class Container extends React.Component {
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
-    console.log('###props###', this.props)
     const listMarkers = this.props.markers.map((mark, index) => {
       return (
         <Marker

@@ -15,16 +15,10 @@ class LoginForm extends React.Component {
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    console.log("THIS", this)
-  }
-
-  componentDidMount() {
-    console.log('props mounted', this.props)
   }
 
   onEmailChange(event){
     this.setState({ email: event.target.value });
-    console.log("EMAIL", event.target.value)
   }
 
   onPasswordChange(event){
@@ -33,14 +27,8 @@ class LoginForm extends React.Component {
 
   onFormSubmit(event){
     event.preventDefault();
-    console.log("IN FORM SUBMIT", this.state.password)
-    console.log('props', this.props);
-    console.log('sending', this.state.email, this.state.password);
     this.props.signUpUser({email: this.state.email, password: this.state.password});
-
   }
-
-
 
   render(){
     return (

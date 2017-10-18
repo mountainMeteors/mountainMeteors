@@ -6,14 +6,12 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const GET_PREFS = 'GET_PREFS';
 
 export const signUpUser = function(user){
-  console.log("ACTION SIGNUP USER", user)
-
   const request = axios.post('/api/signup', {
     email: user.email,
     password: user.password
   })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 
   return {
@@ -24,8 +22,6 @@ export const signUpUser = function(user){
 
 
 export const loginUser = function(user){
-  console.log("ACTION LOGIN USER", user)
-
   const request = axios.post('/api/login', {
     email: user.email,
     password: user.password
@@ -36,7 +32,7 @@ export const loginUser = function(user){
     }
   })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 
   return {
@@ -46,20 +42,17 @@ export const loginUser = function(user){
 }
 
 export const logoutUser = function(user){
-  console.log("ACTION LOGOUT USER", user)
-
   return {
     type: 'LOGOUT'
   };
 }
 
 export const getPrefs = function(){
-  console.log("ACTION GET PREFS")
   const request = axios.get('/api/surveys', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 
 

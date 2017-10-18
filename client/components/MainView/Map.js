@@ -3,7 +3,6 @@ import {GoogleMapLoader, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 
 class GoogMap extends React.Component {
   constructor(props){
-    console.log('const props', props);
     super(props);
 
     this.state = {
@@ -16,17 +15,14 @@ class GoogMap extends React.Component {
   }
 
   componentDidMount() {
-    console.log('map mounted props', this.props);
     this.getMarkers(this.props.listings);
   }
 
   componentWillReceiveProps(props) {
-    console.log('map received props', props);
     this.getMarkers(props.listings);
   }
 
   getMarkers(listings) {
-    // console.log('getting markers using', listings);
     this.setState({
       markers: listings.map(listing => {
         return {
@@ -45,13 +41,9 @@ class GoogMap extends React.Component {
   }
 
   handleMarkerClick(targetMarker) {
-    console.log('######TARGET OPEN MARKER#########', targetMarker)
     this.setState({//this === component
       markers: this.state.markers.map(marker => { //this === component
         if (marker === targetMarker) {
-          console.log('found marker to open', ...marker);
-          console.log('details', marker);
-          console.log('returning', {...marker, showInfo: true});
           return {
             ...marker,
             showInfo: true,
@@ -63,11 +55,9 @@ class GoogMap extends React.Component {
   }
 
   handleCloseClick(targetMarker) {
-    console.log('######TARGET CLOSE MARKER#########', targetMarker)
     this.setState({
       markers: this.state.markers.map(marker => {
         if (marker === targetMarker) {
-          console.log('found marker to close');
           return {
             ...marker,
             showInfo: false,
@@ -104,11 +94,9 @@ class GoogMap extends React.Component {
               {this.state.markers.map((marker, index) => {
                 // console.log('marker.archived', marker.archived);
                 const onClick = () => {
-                  console.log('running onClick');
                   return this.handleMarkerClick(marker);
                 }
                 const onCloseClick = () => {
-                  console.log('running onCloseClick');
                   return this.handleCloseClick(marker);
                 }
                 if(!marker.archived){

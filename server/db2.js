@@ -22,7 +22,7 @@ db.schema.hasTable('bearTest').then(function(exists){
       answer.string('brs', 50);
       answer.integer('price', 50);
       
-      console.log('Created users table');
+      // console.log('Created users table');
     })
     .catch(function(err){
       console.error(err);

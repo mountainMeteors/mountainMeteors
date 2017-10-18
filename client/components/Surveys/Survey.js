@@ -200,7 +200,6 @@ class Survey extends Component {
 
   // state[criteria] = value
   handleChange = (criteria,value) => {
-    console.log('======',criteria, value)
     this.setState({
       [criteria]: value
     })
@@ -240,12 +239,9 @@ class Survey extends Component {
 
     }
 
-    console.log("this+++++",this.props.user_id)
-    console.log(surveyResponses)
     this.props.postSurveyAnswers(surveyResponses, this.props.user_id)
     // browserHistory.push('/');
     .then (() => {
-      console.log('survey then hit');
       this.props.getPrefs();
       this.context.router.push('/');
     })

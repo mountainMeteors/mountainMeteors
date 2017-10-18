@@ -44,7 +44,6 @@ class AddPhotosModal extends React.Component {
   }
 
   onFormSubmit (event) {
-    console.log('adding photo for listing id=====>', this.props.listing.id)
     event.preventDefault();
     var listingPhotos = {
       photos: this.state.photos
