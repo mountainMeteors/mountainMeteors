@@ -73,7 +73,6 @@ app.get('/styles/app.css', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  console.log('req.url', req.url);
   res.sendFile(path.join(__dirname, 'client/index.html'));
 });
 

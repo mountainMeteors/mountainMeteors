@@ -9,14 +9,11 @@ const auth = function(state = tokenExists, action) {
       //TODO: SIGNUP should probably just log user in
 
     case 'LOGIN':
-      console.log('REDUC LOGIN USER', action);
       token = action.payload.data.token ? action.payload.data.token : null;
       window.localStorage.setItem('userToken', token)
       if (token) {
-        console.log('LOGGED IN');
         return true;
       } else {
-        console.log('ERROR LOGGING IN', token);
         return false;
       }
 

@@ -33,7 +33,6 @@ const formatBedBath = function(listing) {
     formattedStr += listing.sq_ft + ' Sq. Ft.'
   }
 
-  console.log('returning', formattedStr);
   return formattedStr;
 }
 
@@ -48,9 +47,6 @@ const getThumbnail = function(photoArr) {
 class ListingEntry extends React.Component{
   constructor(props){
     super(props);
-    console.log('LE brought in', props);
-    console.log('LE finding photos', props.photosAll, props.listing.id);
-    console.log('LE photos will be', props.photosAll[props.listing.id]);
 
     this.state = {
       favorited: props.listing.favorited,
@@ -71,7 +67,6 @@ class ListingEntry extends React.Component{
     // console.log('rendered LE', this.props);
     this.props.fetchPhotos(this.props.listing.id)
     .then(() => {
-      console.log('LE promised photos are', this.props.photosAll);
       this.setState({
         photos: this.props.photosAll[this.props.listing.id],
         photosLoaded: true
@@ -85,13 +80,11 @@ class ListingEntry extends React.Component{
   }
 
   toggleArchiveListing(listing) {
-    console.log('toggling', listing.id);
     let toggledVal = listing.archived === 0 ? 1 : 0;
     this.props.putListing(listing.id, {archived: toggledVal, favorited: 0});
   }
 
   toggleFavoriteListing(listing) {
-    console.log('toggling', listing.id);
     let toggledVal = listing.favorited === 0 ? 1 : 0;
     this.props.putListing(listing.id, {favorited: toggledVal});
   }

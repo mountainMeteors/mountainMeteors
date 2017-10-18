@@ -4,7 +4,6 @@ import { GETLISTINGS } from '../actionCreators/listingActions'
 function listings(state = [], action) {
   switch(action.type) {
     case 'GETLISTINGS':
-      console.log('listings reducer triggered. listings:', action);
       // console.log('listing reduc returning', Object.assign([], state, action.payload.data));
       // console.log('assigning', Object.assign([], state, action.payload.data));
       // console.log('reducer state', state);
@@ -26,7 +25,6 @@ function listings(state = [], action) {
       // state.push(action);
 
     case 'PUTLISTING':
-      console.log('reducer heard put listing', action.payload);
       let listingId = action.payload.id;
       let edits = action.payload.edits;
       state = state.slice();
@@ -38,7 +36,6 @@ function listings(state = [], action) {
         }
         return listing;
       })
-      console.log('returning state', state);
       return state;
 
     default:

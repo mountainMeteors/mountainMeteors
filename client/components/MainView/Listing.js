@@ -32,15 +32,12 @@ class Listing extends React.Component{
   }
 
   componentWillMount() {
-    // console.log('listing mount props', this.props);
     this.filterListings(this.props.listings);
   }
 
   //TODO: util
   calcScore(listing, prefTotal) {
     let prefs = this.props.prefs;
-    console.log('looki  ng at listing', listing);
-    // console.log('using prefs', this.props.prefs);
     let criteria = {
       // TODO: location: {},
       rent: {
@@ -75,8 +72,6 @@ class Listing extends React.Component{
 
     //Calculate amenities
     prefs.Amenities.forEach(amenity => {
-      // console.log('pref amenity', amenity.value);
-      // console.log('listing value', listing[amenity.value]);
       criteria[amenity.value] = {
         percent: (prefs.amenitiesRank / prefTotal) / prefs.Amenities.length,
         met: Boolean(listing[amenity.value])
@@ -84,21 +79,17 @@ class Listing extends React.Component{
       }
     });
 
-    // console.log('calculating score with criteria', criteria);
     //Calculate score
     let score = 100;
     for (var crit in criteria) {
       if (!criteria[crit].met) score -= criteria[crit].percent
     }
     score = score.toFixed(2);
-    // console.log('returning score', score);
     return score;
   }
 
   //TODO: util
   filterListings(listings) {
-    console.log('filtering', listings);
-    // console.log('using prefs', this.props.prefs);
     // let listingsFiltered = listings;
 
     //ONLY SHOW LISTINGS OF TYPE X
@@ -108,12 +99,8 @@ class Listing extends React.Component{
         listing => !Boolean(listing.archived)
       );
     } else {
-      console.log('view mode', this.state.viewMode);
       listingsFiltered = listingsFiltered.filter(
         listing => {
-          // console.log('listing is', listing.location);
-          // console.log('listing faved', listing.favorited);
-          // console.log('listing value', listing[this.state.viewMode]);
           return Boolean(listing[this.state.viewMode])
         }
       );
@@ -143,7 +130,6 @@ class Listing extends React.Component{
       listing.amenities = listing.amenities.join(' - ');
     })
 
-    console.log('setting state to', listingsFiltered);
     this.setState({listingsFiltered});
   }
 
@@ -156,14 +142,11 @@ class Listing extends React.Component{
   //When props are passed in, filters listings.
     //Needed because the props are passed to this component AFTER it renders
   componentWillReceiveProps(props) {
-    console.log('listing received props', props);
     this.filterListings(props.listings);
   }
 
   //Toggles state.viewMode and then updates listing
   toggleView(toggleVal) {
-    console.log('toggling view to', toggleVal);
-    console.log('type compare', typeof toggleVal, typeof this.state.viewMode);
     this.setState({viewMode: toggleVal},
       () => {this.filterListings(this.props.listings)}
     );

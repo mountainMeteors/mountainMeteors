@@ -19,9 +19,6 @@ var xray = Xray({
 });
 
 router.get('/listings', util.checkToken, (req, res) => {
-  console.log('listing req received', req.body);
-  console.log('token', req.headers['x-access-token']);
-  console.log('user info', req.user);
   return db('listings')
   .where({
     user_id: req.user.id
@@ -35,8 +32,6 @@ router.get('/listings', util.checkToken, (req, res) => {
 });
 
 router.post('/listings/', util.checkToken, (req, res) => {
-  console.log('listing req received at :id', req.body.userId);
-  console.log('REQUEST BODY', req.body)
   return db('listings')
   .where({
     user_id: req.user.id
@@ -118,14 +113,12 @@ router.post('/scrape', function(req, res){
 });
 
 router.put('/listings/', (req, res) => {
-  console.log('server put request', req.headers['listing-id'], req.body);
   return db('listings')
   .where({
     id: req.headers['listing-id']
   })
   .update(req.body) //REPRESENTS OBJECT CONTAINING ANY EDITS
   .then(function(listings) {
-     console.log('listings', listings);
      res.send({updated: listings});
   });
 });

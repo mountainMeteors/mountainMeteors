@@ -11,7 +11,6 @@ import { Form, FormControl, FormGroup, Col, Button, ControlLabel, Popover, Toolt
 
 class postPhotos extends Component{
   constructor(props) {
-    console.log('postPhotos const')
     super(props);
     this.state = {
       photos: []
@@ -35,7 +34,6 @@ class postPhotos extends Component{
     }
 
     onFormSubmit (event) {
-        console.log('iddddddd=====>', this.props.listing)
         event.preventDefault();
     var listingPhotos = {
         photos: this.state.photos
@@ -44,7 +42,6 @@ class postPhotos extends Component{
     }
 
     render () {
-        console.log('=============>', this.state.photos)
         return (
 
             <div>

@@ -49,9 +49,8 @@ exports.findDistance = function(req, res, next){
       body: '' //Set the body as a string
   }, function(error, response, body){
       if(error) {
-          console.log(error);
+          console.error(error);
       } else {
-        console.log('###RequestBody###', req.body)
         var bodyInfo = parseDist(JSON.parse(body));
         res.send({'Body': bodyInfo, 'Req': req.body})
           // console.log(response.statusCode, newInfo)

@@ -18,7 +18,6 @@ import { getDistance } from '../util/distUtil';
 class AddListingsModal extends React.Component {
 
   constructor(props){
-    // console.log('modal receiving props', props);
     super(props);
     this.state = {
       modalTitle: props.modalType === 'add' ? 'Add Listing' : 'Edit Listing',
@@ -40,9 +39,6 @@ class AddListingsModal extends React.Component {
         this.state[property] = '';
         if (property === 'pets') this.state[property] = 'none';
       }
-      // if (property === 'pets') {
-      //   console.log('PETS NOW', this.state[property]);
-      // }
     });
 
     this.state.showModal = false;
@@ -60,7 +56,6 @@ class AddListingsModal extends React.Component {
 
 
   componentWillReceiveProps(newProps) {
-    console.log("ding ding ding", newProps.scrapeData);
     if (Object.keys(newProps.scrapeData).length)
       this.setState({
         rent: newProps.scrapeData.rent[0],
@@ -82,21 +77,16 @@ class AddListingsModal extends React.Component {
   }
 
   handleChange = (input) => {
-    console.log('changed input', input);
-    console.log('changed at', input.target.name, input.target.value);
     var stateObj = {};
     stateObj[input.target.name] = input.target.value;
-    console.log('setting state', stateObj);
     this.setState(stateObj);
   }
 
   //TODO: Need to allow edit modal to pick up on previous values
   toggleBox = (input) => {
     let amenity = input.target.name;
-    console.log('toggled box from', amenity, this.state[amenity]);
     var stateObj = {};
     stateObj[amenity] = this.state[amenity] === 1 ? 0 : 1;
-    console.log('setting state', stateObj);
     this.setState(stateObj);
   }
 
@@ -107,7 +97,6 @@ class AddListingsModal extends React.Component {
   }
 
   onGeoSelect = (geoObj) => {
-    console.log('geoObj', geoObj);
     this.setState({
       location: geoObj.label.split(',')[0], //TODO: Might need to adapt this if a comma can be in address
       lat: geoObj.location.lat,
@@ -118,20 +107,17 @@ class AddListingsModal extends React.Component {
   }
 
   scrapeListingSubmit (event) {
-    console.log("EVENT FOR SCRAPE LISTING", event.target.value)
     this.setState({url: event.target.value, addressSelect: false})
     scrapeListing(event.target.value)
   }
 
   getDistanceSubmit (event) {
-    console.log('######DISTANCE#####', event.target)
     getDistance()
   }
 
   getValidationState (field) {
     if (this.props.scrapeData[field] &&
         this.props.scrapeData[field].length !== 0) {
-      console.log('RETURNED vstate');
       return 'success';
     }
   }
@@ -165,7 +151,6 @@ class AddListingsModal extends React.Component {
       lng: this.state.lng,
       url: this.state.url
     }
-    console.log('submitting', listings);
     if (this.props.modalType === "add") this.props.postListing(listings);
     else this.props.putListing(this.state.listingId, listings);
     this.close()

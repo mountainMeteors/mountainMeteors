@@ -12,7 +12,6 @@ import css from '../../styles/app.css'
 class ListingPhotosGallery extends React.Component {
   constructor(props) {
     super(props);
-    console.log('lpg props', props);
     this.state = {
       slideOnThumbnailHover: false,
       showBullets: true,

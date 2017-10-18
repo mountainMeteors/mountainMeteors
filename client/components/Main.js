@@ -22,18 +22,8 @@ class Main extends React.Component{
   }
 
   componentDidMount() {
-    console.log('main mounted props', this.props);
-    console.log('truthiness', !!this.props.listings && !!this.props.userPrefs);
     this.props.getPrefs();
     this.props.getListings();
-  }
-
-  componentDidUpdate() {
-    console.log('Main updated');
-  }
-
-  componentWillReceiveProps(props) {
-    console.log('MAIN received props', props);
   }
 
   render() {

@@ -22,10 +22,7 @@ exports.getDistance = function(){
       destination: '1216 Broadway, New York, NY 10001',
       travelMode: 'DRIVING'
   })
-  .then(function (response) {
-    console.log(response);
-  })
   .catch(function (error) {
-    console.log(error);
+    console.error(error);
   });
 }

@@ -5,8 +5,6 @@ const util = require('../util/authUtil');
 
 
 router.post('/uploads', (req,res) => {
-	console.log('hereeeeee')
-	console.log(req.files, 'bodyyyy*******', req.body)
   const photoList = [];
   var photoListString;
 
@@ -15,8 +13,6 @@ router.post('/uploads', (req,res) => {
     photoList.push(photoName);
     photoListString= JSON.stringify(photoList);
   }
-
-  console.log('*******',photoName,photoListString)
 
 	db('listingPhotos')
 	.insert ({
@@ -30,7 +26,6 @@ router.post('/uploads', (req,res) => {
 
 
 router.get('/uploads/:id', (req,res) => {
-	console.log('getting photos for listing', req.params.id)
   const listingPhotos = {
     listingId: req.params.id,
     photoPaths: []
@@ -46,7 +41,6 @@ router.get('/uploads/:id', (req,res) => {
       })
 		})
 
-    console.log(req.params.id, 'sending', results.length, 'photos, ex.', results[0]);
 		res.send(listingPhotos);
 	})
 })

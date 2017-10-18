@@ -8,19 +8,15 @@ const util = require('../util/authUtil');
 // const authUtil = require('../util/authUtil')
 
 router.use((req, res, next) => {
-  console.log('Request at /api received');
-  // console.log('next is', next);
   next();
 });
 
 router.post('/signup', (req, res) => {
-  console.log('server-side signup with', req.body);
   var email = req.body.email;
   var password = req.body.password;
 
   // var salt = bcrypt.genSaltSync(10);
   bcrypt.hash(password, null, null, function(err, hash) {
-    console.log('hashing', hash);
     return db('users')
       .insert({ email: email, password: hash})
       .then(function(dbRes) {
@@ -35,8 +31,6 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  console.log('server-side login with', req.body);
-  console.log('headers', req.headers);
   var email = req.body.email;
   var password = req.body.password;
 
@@ -46,10 +40,9 @@ router.post('/login', (req, res) => {
     })
     .then(function(dbRes) {
       var user = dbRes[0];
-      console.log('user is', user);
       if (user) {
         bcrypt.compare(password, user.password, function(err, match) {
-          if (err) console.log('err', err);
+          if (err) console.error('err', err);
           // if (match) res.send('user found, pw matches');
           if (match) util.createToken(req, res, user.id);
           else res.send('user found, no pw match');

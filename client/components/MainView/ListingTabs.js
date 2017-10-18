@@ -12,8 +12,6 @@ class ListingTabs extends React.Component{
   handleSelect(eventKey) {
     event.preventDefault();
     let toggleVal = `${eventKey}`;
-    console.log('activeKey', this.activeKey);
-    console.log('toggleVal is', toggleVal);
     this.props.toggleView(toggleVal)
   }
 

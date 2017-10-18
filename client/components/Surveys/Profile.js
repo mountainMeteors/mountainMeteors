@@ -12,7 +12,6 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log('hererr')
     if (!this.props.authenticated) browserHistory.push('/welcome');
     if (!this.props.surveysResponses){
       this.props.fetchAnswers()
@@ -25,7 +24,6 @@ class Profile extends React.Component {
 
   getValues (){
     const  Neighbors = this.props.surveysResponses.Neighbors;
-    console.log('wwww===>',Neighbors)
   }
 
 
@@ -33,7 +31,6 @@ class Profile extends React.Component {
 renderList() {
   const  userResponses = this.props.surveysResponses;
 
-  console.log('he***rererere', userResponses)
   if (!this.props.surveysResponses) {
     return <div>loading</div>
   }
@@ -138,7 +135,6 @@ renderList() {
       <div>
       <ul className='list-group col-sm-4'>
         YOUR SEARCH CRITTERIA RANKINGS:
-        {console.log('in render===*******===>', this.props.surveysResponses)}
         {this.renderList()}
       </ul>
       </div>
@@ -149,7 +145,6 @@ renderList() {
 
 
 function mapStateToProps(state) {
-  console.log('in mapstate==*****==>', typeof state.surveysResponses.all)
   return {
     surveysResponses: state.surveysResponses.all,
     isAuth: state.auth

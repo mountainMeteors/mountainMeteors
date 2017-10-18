@@ -3,7 +3,7 @@
 
 const config = require('./config')
 
-console.log("config.host", config.host)
+// console.log("config.host", config.host)
 const db = require('knex')({
   client: 'mysql',
   connection: {
@@ -29,7 +29,7 @@ db.schema.hasTable('users').then(function(exists){
       user.string('lastName', 50);
       user.text('prefs', 'longtext');
       user.timestamps();
-      console.log('Created users table');
+      // console.log('Created users table');
     })
     .catch(function(err){
       console.error(err);
@@ -67,7 +67,7 @@ db.schema.hasTable('listings').then(function(exists){
       listing.boolean('favorited').defaultTo(0);
       listing.boolean('archived').defaultTo(0);
       listing.timestamps();
-      console.log('Created listings table');
+      // console.log('Created listings table');
     })
     .catch(function(err){
       console.error(err);
@@ -83,7 +83,7 @@ db.schema.hasTable('listingPhotos').then(function(exists){
       photo.foreign('listing_id').references('id').inTable('listings');
       photo.string('name', 255).unique();
       photo.timestamps();
-      console.log('Created listingPhotos table');
+      // console.log('Created listingPhotos table');
     })
     .catch(function(err){
       console.error(err);
@@ -101,7 +101,7 @@ db.schema.hasTable('Rankings').then(function(exists){
       ranking.integer('amenities');
       ranking.integer('commute');
       ranking.integer('extras');
-      console.log('Created rankings table');
+      // console.log('Created rankings table');
     })
     .catch(function(err){
       console.error(err);

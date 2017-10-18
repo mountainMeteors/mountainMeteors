@@ -6,16 +6,14 @@ export const PUT_LISTING = 'PUTLISTING';
 
 export const getListings = function(){
   // Get request w/ header of token
-  console.log('ACTION GET LISTINGS');
   const request = axios.get('/api/listings/', {
     headers: {'x-access-token': window.localStorage.getItem('userToken')}
   })
   .then(function (response) {
-    console.log('=====> listings response received', response.data);
     return response;
   })
   .catch(function (error) {
-    console.log('=====> getlistings err', error);
+    console.error(error);
   });
 
   return {
@@ -25,7 +23,6 @@ export const getListings = function(){
 }
 
 export const postListing = function(preference){
-  // console.log("PREF******", preference)
   const request = axios.post('/api/listings/', {
     url: preference.url,
     location: preference.location,
@@ -66,12 +63,10 @@ export const postListing = function(preference){
 }
 
 export const putListing = function(id, edits) {;
-  console.log('put action', id, 'changing', edits);
   const request = axios.put('/api/listings/', edits, { //TODO: Should be wildcard, not header
     headers: {'listing-id': id}
   })
   .then((response) => {
-    console.log('PUT received response', response);
     return response;
   })
   .catch((response) => {

@@ -23,7 +23,6 @@ const tempOrigin = { lat: 40.7725833, lng: -73.9736894 };
 class MainView extends React.Component {
   constructor(props){
     super(props);
-    console.log('mv props', props);
   }
 
   componentWillMount() {
@@ -32,17 +31,6 @@ class MainView extends React.Component {
     // console.log('checking in mv for auth');
     // console.log('checking for survey', Object.keys(this.props.userPrefs).length);
     if (!this.props.authenticated) browserHistory.push('/welcome');
-  }
-
-  componentDidMount() {
-    console.log('mv mounted props', this.props);
-    // console.log('PREFS LENGTH', Object.keys(this.props.userPrefs).length);
-    // if (!this.props.authenticated) browserHistory.push('/welcome');
-    // else if (!Object.keys(this.props.userPrefs).length) browserHistory.push('/survey');
-  }
-
-  componentWillReceiveProps(props) {
-    console.log('mv received props', props);
   }
 
   // componentWillReceiveProps(props) {
